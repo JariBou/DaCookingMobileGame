@@ -1,0 +1,13 @@
+{
+  "name": "com.jaribou.graphicslabor",
+  "version": "4.0.1",
+  "displayName": "GraphicsLabor",
+  "description": "Graphics labor is a collection of scripts whose main goal is to help Game Programmers and Game Designers to make a game. With more Attributes, custom editor windows and Shapes debugging on screen.",
+  "unity": "2022.3",
+  "unityRelease": "12f1",
+  "author": {
+    "name": "Tomé Bourdié",
+    "url": "https://github.com/JariBou"
+  }
+  
+}
