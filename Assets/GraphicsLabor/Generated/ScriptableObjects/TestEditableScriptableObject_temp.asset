@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619c8340c245aa649852cc468de51163, type: 3}
+  m_Name: TestEditableScriptableObject_temp
+  m_EditorClassIdentifier: 
+  testString: test
+  testInt: 20
+  SerializableTestClass:
+    testInt: 0
+    SerializableTestClassButDifferent:
+      testInt: 0
+      testString: 
+      testFloat: 0
+      testInt2: 0
+      testListInt: 
+      testezrr: {fileID: 0}
+  testInt2: 25
+  testFloat: 56.2
+  testList: []
+  TestSO: {fileID: 0}
+  testGameObject: {fileID: 0}
+  SerializableTestClass2:
+    testInt: 0
+    SerializableTestClassButDifferent:
+      testInt: 0
+      testString: 
+      testFloat: 0
+      testInt2: 0
+      testListInt: 
+      testezrr: {fileID: 11400000, guid: fdcf5f8c632ef0142a10e89673e174ef, type: 2}
