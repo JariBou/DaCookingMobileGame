@@ -70,7 +70,7 @@ namespace GraphicsLabor.Scripts.Editor.Windows
             IOHelper.CreateFolder("Assets/GraphicsLabor/Scripts/Editor/Settings");
             WindowSettings settings = IOHelper.CreateAssetIfNeeded<WindowSettings>(CreateInstance<WindowSettings>(),
                 "Assets/GraphicsLabor/Scripts/Editor/Settings/WindowSettingsSo.asset");
-
+            
             _windowSettings = settings;
             return settings;
         }

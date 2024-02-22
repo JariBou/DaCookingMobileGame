@@ -1,4 +1,5 @@
 ﻿using System;
+using GraphicsLabor.Scripts.Core.Utility;
 using GraphicsLabor.Scripts.Editor.Settings;
 using GraphicsLabor.Scripts.Editor.Windows;
 using UnityEditor;
@@ -14,6 +15,11 @@ namespace GraphicsLabor.Scripts.Editor.Utility
         {
             // should close all Windows in the settings and reset all
             WindowSettings settings = WindowBase.GetWindowSettings();
+            if (settings == null)
+            {
+                GLogger.Log("No Settings?");
+                return;
+            }
             foreach (WindowBase window in settings.OpenedCustomWindows)
             {
                 try
