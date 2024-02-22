@@ -14,6 +14,8 @@ namespace _project.ScriptableObjects.Scripts
         [SerializeField] private List<IngredientsBundleSo> _baseBundles;
         [SerializeField, ReadOnly, TabProperty("Runtimes")] private List<IngredientsBundleSo> _possibleBundles = new();
         [SerializeField, ReadOnly, TabProperty("Runtimes")] private List<IngredientsBundleSo> _bannedBundles = new ();
+        
+        //TODO: rerolls will change maybe not bundles but full random
 
 
         public void ResetBundles()

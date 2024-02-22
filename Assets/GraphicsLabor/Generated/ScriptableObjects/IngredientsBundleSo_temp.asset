@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a863d7a5fb422f8e930b38d1d4c25a, type: 3}
   m_Name: IngredientsBundleSo_temp
   m_EditorClassIdentifier: 
-  _totalStatsOfBundle: {x: 0, y: 0, z: 0}
+  _totalStatsOfBundles: {x: 0, y: 0, z: 0}
   _bundleIngredients: []

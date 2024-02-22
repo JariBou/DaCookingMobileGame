@@ -225,10 +225,6 @@ namespace GraphicsLabor.Scripts.Editor.Windows
             _soNameAssetDic[GetSoClassName(so)] = so;
             SelectSo(GetSoClassName(so));
             GUI.FocusControl(null);
-            foreach (string key in _soNameAssetDic.Keys)
-            {
-                GLogger.Log($"Key: {key}");
-            }
         }
 
         /// <summary>
