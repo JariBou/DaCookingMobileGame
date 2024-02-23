@@ -79,14 +79,14 @@ public class SlideScreen : MonoBehaviour
         }
     }
 
-    public void ShakeCamera(float intensity, float duration)
+/*    public void ShakeCamera(float intensity, float duration)
     {
         _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = intensity;
         _virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = duration;
         _shakeIntensity = intensity;
         _shakeTimerMax = duration;
         _shakeTimer = duration;
-    }
+    }*/
 
 
 }
