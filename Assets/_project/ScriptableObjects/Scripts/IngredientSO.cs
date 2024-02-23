@@ -9,7 +9,7 @@ namespace _project.ScriptableObjects.Scripts
     {
         [SerializeField] private string _name;
         [SerializeField] private IngredientFamily _ingredientFamily;
-        [SerializeField] private Vector3 _stats; // TODO: Editor
+        [SerializeField] private Vector3 _stats;
         [SerializeField] private Sprite _icon;
         [SerializeField, TextArea] private string _description;
 

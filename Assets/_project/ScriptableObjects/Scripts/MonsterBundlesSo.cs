@@ -11,13 +11,12 @@ namespace _project.ScriptableObjects.Scripts
     {
         [SerializeField, ReadOnly] private Vector3 _totalStatsOfBundle;
 
+        [SerializeField] private bool _banBundleOnReroll = true;
+        
         [SerializeField] private List<IngredientsBundleSo> _baseBundles;
         [SerializeField, ReadOnly, TabProperty("Runtimes")] private List<IngredientsBundleSo> _possibleBundles = new();
         [SerializeField, ReadOnly, TabProperty("Runtimes")] private List<IngredientsBundleSo> _bannedBundles = new ();
-        
-        //TODO: rerolls will change maybe not bundles but full random
-
-
+       
         public void ResetBundles()
         {
             _possibleBundles = _baseBundles;
@@ -28,14 +27,14 @@ namespace _project.ScriptableObjects.Scripts
         {
             int selectedIndex = Random.Range(0, _possibleBundles.Count);
             IngredientsBundleSo selectedBundle = _possibleBundles[selectedIndex];
-            _bannedBundles.Add(selectedBundle); // If reroling does not ban a bundle change here
+            if(_banBundleOnReroll) _bannedBundles.Add(selectedBundle);
             _possibleBundles.RemoveAt(selectedIndex);
             return selectedBundle;
         }
 
         private void OnValidate()
         {
-            Vector3 total = new Vector3();
+            Vector3 total = new();
 
             foreach (IngredientsBundleSo bundle in _baseBundles)
             {
