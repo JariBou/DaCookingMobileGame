@@ -20,7 +20,7 @@ namespace _project.ScriptableObjects.Scripts
 
         public Vector3 GetTotalStats()
         {
-            Vector3 total = new Vector3();
+            Vector3 total = new();
 
             foreach (IngredientSo ingredient in _bundleIngredients)
             {

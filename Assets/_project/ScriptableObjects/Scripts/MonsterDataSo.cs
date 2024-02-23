@@ -12,7 +12,7 @@ namespace _project.ScriptableObjects.Scripts
         
         [SerializeField, TabProperty("Stats Config")] private Vector3 _statsMin;
         [SerializeField, TabProperty("Stats Config")] private Vector3 _statsMax;
-        [SerializeField, TabProperty("Stats Config")] private MonsterBundlesSo _bundles;
+        [SerializeField, TabProperty("Stats Config")] private IngredientsBundleSo _ingredients;
 
         [SerializeField, TabProperty("Sprites")] private Sprite _icon;
         [SerializeField, TabProperty("Sprites")] private Sprite _sleepingSprite;
@@ -27,7 +27,7 @@ namespace _project.ScriptableObjects.Scripts
         
         public Vector3 StatsMin => _statsMin;
         public Vector3 StatsMax => _statsMax;
-        public MonsterBundlesSo Bundles => _bundles;
+        public IngredientsBundleSo Ingredients => _ingredients;
         
         public Sprite Icon => _icon;
         public Sprite SleepingSprite => _sleepingSprite;
