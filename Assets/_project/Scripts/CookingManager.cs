@@ -6,7 +6,7 @@ namespace _project.Scripts
 {
     public class CookingManager : MonoBehaviour
     {
-        [SerializeField] private CookingMethodSo _cookingMethodSo;
+        [SerializeField] private CookingParamsSo _cookingParamsSo;
 
         [SerializeField] private Meal _currentMeal;
 
@@ -25,11 +25,23 @@ namespace _project.Scripts
         public void FeedMeal(MonsterDataSo monsterDataSo)
         {
             // TODO: idk if monster current stats are going to stay on SO
+            _currentMeal = null;
+        }
+        
+        public Meal CookMeal(CookingMethod cookingMethod)
+        {
+            return _currentMeal?.CookMeal(_cookingParamsSo.GetMultiplier(cookingMethod));
         }
         
         public Meal CookMeal(Meal meal, CookingMethod cookingMethod)
         {
-            return meal.CookMeal(_cookingMethodSo.GetMultiplier(cookingMethod));
+            return meal.CookMeal(_cookingParamsSo.GetMultiplier(cookingMethod));
+        }
+        
+        public Meal AddCondiment()
+        {
+            // TODO
+            return _currentMeal?.AddCondiment();
         }
 
         public Meal AddCondiment(Meal meal)

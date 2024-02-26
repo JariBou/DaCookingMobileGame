@@ -26,6 +26,14 @@ namespace _project.ScriptableObjects.Scripts
             {
                 total += ingredient.Stats;
             }
+            
+            Vector3 addedTotal = new();
+
+            foreach (IngredientSo ingredient in _bundleIngredients)
+            {
+                addedTotal += ingredient.RandomAddedstats;
+            }
+            //TODO: add random added stats to display
 
             return total;
         }

@@ -10,12 +10,14 @@ namespace _project.ScriptableObjects.Scripts
         [SerializeField] private string _name;
         [SerializeField] private IngredientFamily _ingredientFamily;
         [SerializeField] private Vector3 _stats;
+        [SerializeField] private Vector3 _randomAddedstats = Vector3.zero;
         [SerializeField] private Sprite _icon;
         [SerializeField, TextArea] private string _description;
 
         public string Name => _name;
         public IngredientFamily Family => _ingredientFamily;
         public Vector3 Stats => _stats;
+        public Vector3 RandomAddedstats => _randomAddedstats;
         public Sprite Icon => _icon;
         public string Description => _description;
     }
