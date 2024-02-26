@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
+  m_Name: SkeletonFish
+  m_EditorClassIdentifier: 
+  _name: Skeleton fish
+  _ingredientFamily: 2
+  _stats: {x: 8, y: 21, z: 2}
+  _randomAddedstats: {x: 9, y: 5, z: 4}
+  _icon: {fileID: -7649390487581985116, guid: 81082cefe617632479d591e3c3348ca7, type: 3}
+  _description: 'Skeleton Fish: Mysterious ingredient from the depths, known for
+    its crystalline texture and ethereal essence, awakening secret ocean aromas.'

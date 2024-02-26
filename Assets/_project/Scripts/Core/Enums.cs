@@ -2,7 +2,7 @@
 {
     public enum IngredientFamily
     {
-        Meat, Vegetable
+        Meat, Vegetable, Seafood
     }
 
     public enum CookingMethod
