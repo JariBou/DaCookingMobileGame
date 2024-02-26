@@ -13,7 +13,7 @@ namespace _project.Scripts
 
         public Meal CreateMeal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
-            return new Meal(ingredient1, ingredient2, ingredient3);
+            return new Meal(ingredient1, ingredient2, ingredient3).CreateIcon(_cookingParamsSo);
         }
 
         public Meal SetCurrentMeal(Meal meal)

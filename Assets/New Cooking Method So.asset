@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6df6bf802e64074b54427f3fb2375ac, type: 3}
   m_Name: New Cooking Method So
   m_EditorClassIdentifier: 
-  _method1: {x: 0, y: 0, z: 0}
+  _cookingMethod1: 0
+  _method1StatsMultiplier: {x: 0, y: 0, z: 0}
+  _cookingMethod2: 1
+  _method2StatsMultiplier: {x: 0, y: 0, z: 0}
+  _cookingMethod3: 2
+  _method3StatsMultiplier: {x: 0, y: 0, z: 0}
+  _mealIcons:
+  - _ingredientFamilyA: 0
+    _ingredientFamilyB: 0
+    _ingredientFamilyC: 0
+    _icon: {fileID: 0}
