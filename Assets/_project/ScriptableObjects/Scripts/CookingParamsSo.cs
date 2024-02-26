@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using _project.Scripts.Core;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.ScriptableObjectAttributes;
@@ -7,7 +9,7 @@ using UnityEngine;
 namespace _project.ScriptableObjects.Scripts
 {
     [Editable, CreateAssetMenu(menuName = "ScriptableObjects/CookingMethodSo")]
-    public class CookingMethodSo : ScriptableObject
+    public class CookingParamsSo : ScriptableObject
     {
 
         [TabProperty(nameof(CookingMethod.Method1)), SerializeField, ReadOnly] private CookingMethod _cookingMethod1 = CookingMethod.Method1;
@@ -18,6 +20,10 @@ namespace _project.ScriptableObjects.Scripts
         
         [TabProperty(nameof(CookingMethod.Method3)), SerializeField, ReadOnly] private CookingMethod _cookingMethod3 = CookingMethod.Method3;
         [TabProperty(nameof(CookingMethod.Method3)), SerializeField] private Vector3 _method3StatsMultiplier;
+
+        [SerializeField] private List<MealIcon> _mealIcons;
+
+        public List<MealIcon> MealIcons => _mealIcons;
 
 
         public Vector3 GetMultiplier(CookingMethod cookingMethod)
@@ -34,6 +40,16 @@ namespace _project.ScriptableObjects.Scripts
                     Debug.LogWarning("You should add that method in here first");
                     throw new ArgumentOutOfRangeException(nameof(cookingMethod), cookingMethod, null);
             }
+        }
+
+        public Sprite GetMealIcon(Meal meal)
+        {
+            foreach (MealIcon mealIcon in _mealIcons.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
+            {
+                return mealIcon.Icon;
+            }
+
+            throw new ArgumentException();
         }
 
     }
