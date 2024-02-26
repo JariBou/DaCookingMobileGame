@@ -9,6 +9,8 @@ public class Gauge : MonoBehaviour
     [Header("Gauge's Pivot")]
     [Range(0, -5)]
     [SerializeField] private float _yOffset;
+    [Range(-5, 5)]
+    [SerializeField] private float _GaugeOffset;
 
     [Header("Gauge's Values")]
     [Range(0, 180)]
@@ -44,8 +46,8 @@ public class Gauge : MonoBehaviour
     private void OnValidate()
     {
         Vector3 position = transform.position + Vector3.up * _yOffset;
-        float x = position.x + (Mathf.Abs(_yOffset) * Mathf.Cos(ConvertValueToAngle(_currentValue) * Mathf.Deg2Rad));
-        float y = position.y + (Mathf.Abs(_yOffset) * Mathf.Sin(ConvertValueToAngle(_currentValue) * Mathf.Deg2Rad));
+        float x = position.x + (Mathf.Abs(_yOffset + _GaugeOffset) * Mathf.Cos(ConvertValueToAngle(_currentValue) * Mathf.Deg2Rad));
+        float y = position.y + (Mathf.Abs(_yOffset + _GaugeOffset) * Mathf.Sin(ConvertValueToAngle(_currentValue) * Mathf.Deg2Rad));
         _needle.transform.position = new Vector3(x, y, 0);
         float angle = Mathf.Atan2(_needle.transform.position.y - position.y, _needle.transform.position.x - position.x) * Mathf.Rad2Deg;
         _needle.transform.rotation = Quaternion.Euler(0, 0, angle - 90);

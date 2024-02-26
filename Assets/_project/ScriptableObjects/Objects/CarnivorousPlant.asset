@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
-  m_Name: IngredientSo_temp
+  m_Name: CarnivorousPlant
   m_EditorClassIdentifier: 
   _name: CarnivorousPlant
   _ingredientFamily: 1
   _stats: {x: 5, y: -23, z: 24}
   _randomAddedstats: {x: 7, y: 5, z: 1}
-  _icon: {fileID: 0}
+  _icon: {fileID: 4299050923108985716, guid: 4bdb1883b690d8d44be91ea1b8534dc4, type: 3}
   _description: "\rCarnivorous Plant: A tantalizing ingredient, known for its vibrant
     flavor and slight bite, adding a wild twist to dishes that dare to embrace the
     untamed essence of nature."
