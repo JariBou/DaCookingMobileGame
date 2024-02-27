@@ -7,56 +7,56 @@ using TMPro;
 
 public class clickUp : MonoBehaviour
 {
-    public Vector3 scaleMultiplier = new Vector3(1.5f, 1.5f, 1f);
-    public float heightOffset = 1f;
-    public float moveDuration = 1f; 
+    [SerializeField] private Vector3 _scaleMultiplier = new Vector3(1.5f, 1.5f, 1f);
+    [SerializeField, Range(0,3)] private float _heightOffset = 1f;
+    [SerializeField, Range(0, 3)] private float _moveDuration = 1f; 
 
-    private Vector3 initialScale;
-    private Vector3 initialPosition;
-    private bool isScaled = false;
+    private Vector3 _initialScale;
+    private Vector3 _initialPosition;
+    private bool _isScaled = false;
 
-    private static List<clickUp> enlargedSprites = new List<clickUp>();
+    private static List<clickUp> _enlargedSprites = new List<clickUp>();
 
     void Start()
     {
-        initialScale = transform.localScale;
-        initialPosition = transform.position;
+        _initialScale = transform.localScale;
+        _initialPosition = transform.position;
     }
 
     void OnMouseDown()
     {
-        if (!isScaled)
+        if (!_isScaled)
         {
-            if (enlargedSprites.Count >= 3)
+            if (_enlargedSprites.Count >= 3)
             {
-                var firstSprite = enlargedSprites[0];
+                var firstSprite = _enlargedSprites[0];
                 firstSprite.Shrink();
-                enlargedSprites.RemoveAt(0);
+                _enlargedSprites.RemoveAt(0);
             }
 
-            transform.localScale = Vector3.Scale(initialScale, scaleMultiplier);
-            StartCoroutine(MoveObject(transform.position, transform.position + Vector3.up * heightOffset, moveDuration));
-            isScaled = true;
+            transform.localScale = Vector3.Scale(_initialScale, _scaleMultiplier);
+            StartCoroutine(MoveObject(transform.position, transform.position + Vector3.up * _heightOffset, _moveDuration));
+            _isScaled = true;
 
-            enlargedSprites.Add(this);
+            _enlargedSprites.Add(this);
                       
         }
         else
         {
-            transform.localScale = initialScale;
-            transform.position = initialPosition;
-            isScaled = false;
+            transform.localScale = Vector3.Scale(_initialScale, _scaleMultiplier *-1);
+            StartCoroutine(MoveObject(transform.position, _initialPosition, _moveDuration));
+            _isScaled = false;
 
-            enlargedSprites.Remove(this);
+            _enlargedSprites.Remove(this);
                        
         }
     }
 
     void Shrink()
     {
-        transform.localScale = initialScale;
-        transform.position = initialPosition;
-        isScaled = false;
+        transform.localScale = Vector3.Scale(_initialScale, _scaleMultiplier * -1);
+        StartCoroutine(MoveObject(transform.position, _initialPosition, _moveDuration));
+        _isScaled = false;
     }
 
     IEnumerator MoveObject(Vector3 startPos, Vector3 endPos, float duration)

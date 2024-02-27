@@ -167,7 +167,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Ph_plante-carnivore_0: 4299050923108985716
+      Ph_plante-carnivore_1: 481040422510450710
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
