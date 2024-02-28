@@ -7,21 +7,23 @@ using TMPro;
 
 public class clickUp : MonoBehaviour
 {
-    [SerializeField] private Vector3 _scaleMultiplier = new Vector3(1.5f, 1.5f, 1f);
-    [SerializeField, Range(0,3)] private float _heightOffset = 1f;
-    [SerializeField, Range(0, 3)] private float _moveSpeed = 1f; 
-    public float MoveSpeed => _moveSpeed;
+    [SerializeField] private float _scaleMultiplier = 1.25f;
+    [SerializeField, Range(0,4)] private float _heightOffset = 2f;
+    [SerializeField, Range(1, 10)] private float _moveSpeed = 5f;
 
     private Vector3 _initialScale;
     private Vector3 _initialPosition;
-    private Vector3 _endPos;
-    private Vector3 _endScale;
     public Vector3 InitialPosition => _initialPosition;
     public Vector3 InitialScale => _initialScale;
+
+
+    private Vector3 _endPos;
+    private Vector3 _endScale;
+
     private bool _isScaled = false;
     private bool _isMoving = false;
 
-    private static List<clickUp> _enlargedSprites = new List<clickUp>();
+    [SerializeField] private static List<clickUp> _enlargedSprites = new List<clickUp>();
 
     void Start()
     {
@@ -43,21 +45,20 @@ public class clickUp : MonoBehaviour
     }
     void OnMouseDown()
     {
-        if (!_isScaled && !_enlargedSprites.Contains(this))
+        if (!_isScaled && !_isMoving)
         {
             if (_enlargedSprites.Count >= 3)
             {
-                var firstSprite = _enlargedSprites[0];
-                firstSprite.StartMoving(firstSprite.InitialPosition, firstSprite.InitialScale);
+                _enlargedSprites[0].StartMoving(_enlargedSprites[0].InitialPosition, _enlargedSprites[0].InitialScale);
                 _enlargedSprites.RemoveAt(0);
             }
 
-            StartMoving(transform.position + Vector3.up * _heightOffset, Vector3.Scale(_initialScale, _scaleMultiplier));
+            StartMoving(transform.position + Vector3.up * _heightOffset, new Vector3(transform.localScale.x * _scaleMultiplier, transform.localScale.y * _scaleMultiplier, transform.localScale.z));
             _isScaled = true;
             _enlargedSprites.Add(this);
                       
         }
-        else if (_isScaled && _enlargedSprites.Contains(this))
+        else if (_isScaled && !_isMoving)
         {
             StartMoving(_initialPosition, _initialScale);
             _isScaled = false;
