@@ -16,6 +16,6 @@ MonoBehaviour:
   _ingredientFamily: 2
   _stats: {x: 8, y: 21, z: 2}
   _randomAddedstats: {x: 9, y: 5, z: 4}
-  _icon: {fileID: -7649390487581985116, guid: 81082cefe617632479d591e3c3348ca7, type: 3}
+  _icon: {fileID: 21300000, guid: 81082cefe617632479d591e3c3348ca7, type: 3}
   _description: 'Skeleton Fish: Mysterious ingredient from the depths, known for
     its crystalline texture and ethereal essence, awakening secret ocean aromas.'
