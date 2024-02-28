@@ -29,6 +29,7 @@ namespace _project.Scripts
         private bool _isMoving = false;
 
         [SerializeField] private IngredientSo _ingredientSo;
+        private IngredientSo _newIngredient;
         [SerializeField] private Card _cardDisplay;
 
         [SerializeField] private GameObject _padlock;
@@ -38,9 +39,10 @@ namespace _project.Scripts
         private Menu _menu;
 
         [Header("Changing Card")]
-        private bool _isPassing = false;
-        private bool _isAppearing = false;
-        [SerializeField, Range(1, 10)] private float _transitionSpeed = 5f;
+        [SerializeField] private bool _isPassing = false;
+        [SerializeField] private bool _isAppearing = false;
+        [SerializeField] private AnimationCurve _appearCurve;
+
         [SerializeField, Range(0, -6)] private float _negativeHeightOffset = 2f;
 
 
@@ -53,51 +55,52 @@ namespace _project.Scripts
         }
 
 
-        public IEnumerator PassIngredient(IngredientSo newIngredient)
+        public void PassIngredient(IngredientSo newIngredient)
         {
+            /*Debug.Log("Changing " + _ingredientSo.Name + " with " + newIngredient.Name);*/
+            _isAppearing = false;
             _isPassing = true; // La carte descend en dehors de l'écran
-            if (!_isPassing)
-            {
-                _ingredientSo = newIngredient;
-                _cardDisplay.InitializeCard(newIngredient);
-            }
-            yield return new WaitForSeconds(1f);
-            _isAppearing = true; // La carte remonte à sa position initiale
-
-
+            _newIngredient = newIngredient;
+            transform.position = _initialPosition;
         }
 
 
 
         private void Update()
         {
-            if (!_isMoving) return;
-            
-            transform.position = Vector3.Lerp(transform.position, _endPos, Time.deltaTime * _moveSpeed);
-            transform.localScale = Vector3.Lerp(transform.localScale, _endScale, Time.deltaTime * _moveSpeed);
-            if (Vector3.Distance(transform.position, _endPos) < 0.001f)
+           /* if (!_isMoving && !_isAppearing && _isPassing) return;*/
+            if (_isMoving)
             {
-                transform.position = _endPos;
-                transform.localScale = _endScale;
-                _isMoving = false;
+                transform.position = Vector3.Lerp(transform.position, _endPos, Time.deltaTime * _moveSpeed);
+                transform.localScale = Vector3.Lerp(transform.localScale, _endScale, Time.deltaTime * _moveSpeed);
+                if (Vector3.Distance(transform.position, _endPos) < 0.001f)
+                {
+                    transform.position = _endPos;
+                    transform.localScale = _endScale;
+                    _isMoving = false;
+                }
             }
 
-            
             if (_isPassing)
             {
-                transform.position = Vector3.Lerp(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, Time.deltaTime * _transitionSpeed);
-                if (Vector3.Distance(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset) < 0.001f)
+                transform.position = Vector3.MoveTowards(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, _appearCurve.Evaluate(Time.deltaTime));
+                if (Vector3.Distance(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset) < 0.01f)
                 {
                     transform.position = _initialPosition + Vector3.up * _negativeHeightOffset;
+                    _cardDisplay.InitializeCard(_newIngredient);
+                    _ingredientSo = _newIngredient;
+                    _newIngredient = null;
                     _isPassing = false;
+                    _isAppearing = true;
                 }
             }
             if (_isAppearing)
             {
-                transform.position = Vector3.Lerp(transform.position, _initialPosition, Time.deltaTime * _transitionSpeed);
-                if (Vector3.Distance(transform.position, _initialPosition + Vector3.up * _heightOffset) < 0.001f)
+                _isPassing = false;
+                transform.position = Vector3.MoveTowards(transform.position, _initialPosition, _appearCurve.Evaluate(Time.deltaTime));
+                if (Vector3.Distance(transform.position, _initialPosition) < 0.01f)
                 {
-                    transform.position = _initialPosition + Vector3.up * _heightOffset;
+                    transform.position = _initialPosition;
                     _isAppearing = false;
                 }
             }
@@ -105,32 +108,35 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            switch (_isScaled)
+            if (!_isPassing && !_isAppearing)
             {
-                case false:
+                switch (_isScaled)
                 {
-                    if (_enlargedSprites.Count >= 3)
-                    {
-                        _enlargedSprites[0].StartMoving(_enlargedSprites[0].InitialPosition, _enlargedSprites[0].InitialScale, false);
-                        _enlargedSprites[0]._padlock.SetActive(false);
-                        _enlargedSprites.RemoveAt(0);
-                        _menu.UpdateMenu();
-                    }
+                    case false:
+                        {
+                            if (_enlargedSprites.Count >= 3)
+                            {
+                                _enlargedSprites[0].StartMoving(_enlargedSprites[0].InitialPosition, _enlargedSprites[0].InitialScale, false);
+                                _enlargedSprites[0]._padlock.SetActive(false);
+                                _enlargedSprites.RemoveAt(0);
+                                _menu.UpdateMenu();
+                            }
 
-                    StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
-                    _isScaled = true;
-                    _padlock.SetActive(true);
-                    _enlargedSprites.Add(this);
-                    _menu.UpdateMenu();
-                    break;
+                            StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
+                            _isScaled = true;
+                            _padlock.SetActive(true);
+                            _enlargedSprites.Add(this);
+                            _menu.UpdateMenu();
+                            break;
+                        }
+                    case true:
+                        StartMoving(_initialPosition, _initialScale);
+                        _isScaled = false;
+                        _padlock.SetActive(false);
+                        _enlargedSprites.Remove(this);
+                        _menu.UpdateMenu();
+                        break;
                 }
-                case true:
-                    StartMoving(_initialPosition, _initialScale);
-                    _isScaled = false;
-                    _padlock.SetActive(false);
-                    _enlargedSprites.Remove(this);
-                    _menu.UpdateMenu();
-                    break;
             }
         }
 
