@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44a863d7a5fb422f8e930b38d1d4c25a, type: 3}
-  m_Name: IngredientsBundleSo_temp
+  m_Name: IngredientPack1
   m_EditorClassIdentifier: 
   _totalStatsOfBundles: {x: 51, y: 173, z: -315}
   _bundleIngredients:

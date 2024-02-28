@@ -13,6 +13,9 @@ namespace _project.Scripts
         [SerializeField] private TextMeshProUGUI _cardPower;
         [SerializeField] private SpriteRenderer _cardImage;
         [SerializeField] private SpriteRenderer _cardBack;
+
+
+        [Header("Ingredient of the card")]  
         public IngredientSo _ingredientSo;
 
         private void Start()
@@ -29,9 +32,20 @@ namespace _project.Scripts
         {
             _cardName.text = name;
             _cardDescription.text = description;
-            _cardHunger.text = hunger.ToString();
-            _cardSatisfaction.text = satisfaction.ToString();
-            _cardPower.text = power.ToString();
+            if (hunger > 0)
+                _cardHunger.text = "+" + hunger.ToString();
+            else
+                _cardHunger.text = hunger.ToString();
+
+            if (satisfaction > 0)
+                _cardSatisfaction.text = "+" + satisfaction.ToString();
+            else
+                _cardSatisfaction.text = satisfaction.ToString();
+
+            if (power > 0)
+                _cardPower.text = "+" + power.ToString();
+            else
+                _cardPower.text = power.ToString();
             _cardImage.sprite = image;
             _cardBack.color = CalculateAverageColor(image);
         }

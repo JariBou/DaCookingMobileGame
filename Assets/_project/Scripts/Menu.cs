@@ -28,6 +28,7 @@ namespace _project.Scripts
                 _ingredientStats[i]._cardSatisfaction.text = "";
                 _ingredientStats[i]._cardPower.text = "";
                 _ingredientStats[i]._cardImage.sprite = null;
+                
             }
         
         }
@@ -47,6 +48,7 @@ namespace _project.Scripts
                     _ingredientStats[i]._cardSatisfaction.text = "";
                     _ingredientStats[i]._cardPower.text = "";
                     _ingredientStats[i]._cardImage.sprite = null;
+                    _finalMealImage.sprite = null;
                 }
             }
 
@@ -55,24 +57,58 @@ namespace _project.Scripts
                 Meal meal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
                     ClickUp._enlargedSprites[1].Ingredient, ClickUp._enlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = meal.Icon;
-                _finalHunger.text = meal.Stats.x.ToString(CultureInfo.InvariantCulture);
-                _finalSatisfaction.text = meal.Stats.y.ToString(CultureInfo.InvariantCulture);
-                _finalPower.text = meal.Stats.z.ToString(CultureInfo.InvariantCulture);
+                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x) > 0)
+                    _finalHunger.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+                else
+                    _finalHunger.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+
+                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y) > 0)
+                    _finalSatisfaction.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+                else
+                    _finalSatisfaction.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+
+                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z) > 0)
+                    _finalPower.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                else
+                    _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
             }
             else
             {
-                _finalHunger.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
-                _finalSatisfaction.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
-                _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x) > 0)
+                    _finalHunger.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+                else
+                    _finalHunger.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+
+                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y) > 0)
+                    _finalSatisfaction.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+                else
+                    _finalSatisfaction.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+
+                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z) > 0)
+                    _finalPower.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                else
+                    _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
             }
         }
 
         private void UpdateIngredient(int order)
         {
             _ingredientStats[order]._cardName.text = ClickUp._enlargedSprites[order].Ingredient.name;
-            _ingredientStats[order]._cardHunger.text = ClickUp._enlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
-            _ingredientStats[order]._cardSatisfaction.text = ClickUp._enlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
-            _ingredientStats[order]._cardPower.text = ClickUp._enlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
+            if (ClickUp._enlargedSprites[order].Ingredient.Stats.x > 0)
+                _ingredientStats[order]._cardHunger.text = "+" + ClickUp._enlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
+            else
+                _ingredientStats[order]._cardHunger.text = ClickUp._enlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
+
+
+            if (ClickUp._enlargedSprites[order].Ingredient.Stats.y > 0)
+                _ingredientStats[order]._cardSatisfaction.text = "+" + ClickUp._enlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
+            else
+                _ingredientStats[order]._cardSatisfaction.text = ClickUp._enlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
+
+            if (ClickUp._enlargedSprites[order].Ingredient.Stats.z > 0)
+                _ingredientStats[order]._cardPower.text = "+" + ClickUp._enlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
+            else
+                _ingredientStats[order]._cardPower.text = ClickUp._enlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
             _ingredientStats[order]._cardImage.sprite = ClickUp._enlargedSprites[order].Ingredient.Icon;
         }
 

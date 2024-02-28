@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
-  m_Name: IngredientSo_temp
+  m_Name: Mouse
   m_EditorClassIdentifier: 
-  _name: Alien Plant
-  _ingredientFamily: 1
+  _name: Mouse
+  _ingredientFamily: 0
   _stats: {x: 9, y: 33, z: -77}
   _randomAddedstats: {x: 7, y: 5, z: 1}
-  _icon: {fileID: 5180377384728892934, guid: 6a347aed3c0021744825f8ca0170ba8c, type: 3}
-  _description: 'Alien Plant: An exotic, otherworldly ingredient, boasting unfamiliar
-    flavors and textures that challenge the palate and inspire innovative culinary
-    creations, often glowing with an ethereal luminescence.'
+  _icon: {fileID: 21300000, guid: 9a2b6aec2c7b28147a48160d9a840e08, type: 3}
+  _description: 'Mouse: A fictional dish from a whimsical or fantasy culinary world,
+    where it might be prepared with imaginative ingredients for a unique, enchanting
+    flavor experience.'
