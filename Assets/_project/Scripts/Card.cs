@@ -17,13 +17,12 @@ namespace _project.Scripts
 
         private void Start()
         {
-            InitializeCard(_ingredientSo.Name, _ingredientSo.Description, _ingredientSo.Stats.x, _ingredientSo.Stats.y, _ingredientSo.Stats.z, _ingredientSo.Icon);
+            InitializeCard(_ingredientSo);
         }
 
-
-        private void Update()
+        public void InitializeCard(IngredientSo ingredientSo)
         {
-        
+            InitializeCard(ingredientSo.Name, ingredientSo.Description, ingredientSo.Stats.x, ingredientSo.Stats.y, ingredientSo.Stats.z, ingredientSo.Icon);
         }
 
         public void InitializeCard(string name, string description, float hunger, float satisfaction, float power, Sprite image)

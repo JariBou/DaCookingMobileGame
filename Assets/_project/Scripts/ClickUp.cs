@@ -27,6 +27,7 @@ namespace _project.Scripts
         private bool _isMoving = false;
 
         [SerializeField] private IngredientSo _ingredientSo;
+        [SerializeField] private Card _cardDisplay;
 
         public static List<ClickUp> _enlargedSprites = new List<ClickUp>();
 
@@ -43,6 +44,7 @@ namespace _project.Scripts
         public void PassIngredient(IngredientSo newIngredient)
         {
             _ingredientSo = newIngredient;
+            _cardDisplay.InitializeCard(newIngredient);
         }
 
         private void Update()
