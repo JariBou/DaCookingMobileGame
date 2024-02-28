@@ -431,7 +431,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PH_poisson-spectre_0: -7649390487581985116
+      PH_poisson-spectre_1: 4283234382093922150
+      PH_poisson-spectre_10: 3622202502469619758
+      PH_poisson-spectre_11: 4361947795403886183
+      PH_poisson-spectre_12: -7901004174905529829
+      PH_poisson-spectre_2: -7439073219813650071
+      PH_poisson-spectre_3: 7249345093193177440
+      PH_poisson-spectre_4: 8000345380136738833
+      PH_poisson-spectre_5: 5838828208958594430
+      PH_poisson-spectre_6: 8486008874831780231
+      PH_poisson-spectre_7: -4941301900429715083
+      PH_poisson-spectre_8: 7887342184002565271
+      PH_poisson-spectre_9: 4501868170290075959
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
