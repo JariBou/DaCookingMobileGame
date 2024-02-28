@@ -18,4 +18,8 @@ MonoBehaviour:
   _method2StatsMultiplier: {x: 0, y: 0, z: 0}
   _cookingMethod3: 2
   _method3StatsMultiplier: {x: 0, y: 0, z: 0}
-  _mealIcons: []
+  _mealIcons:
+  - _ingredientFamilyA: 0
+    _ingredientFamilyB: 1
+    _ingredientFamilyC: 2
+    _icon: {fileID: 1295277539485042539, guid: 2248546b940fe154a90e18c78d3ff315, type: 3}
