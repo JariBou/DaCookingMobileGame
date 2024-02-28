@@ -5270,6 +5270,7 @@ MonoBehaviour:
   _heightOffset: 2
   _moveSpeed: 5
   _ingredientSo: {fileID: 0}
+  _cardDisplay: {fileID: 1110905832}
 --- !u!61 &1110905834
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7303,6 +7304,7 @@ MonoBehaviour:
   _heightOffset: 2
   _moveSpeed: 5
   _ingredientSo: {fileID: 0}
+  _cardDisplay: {fileID: 1718802612}
 --- !u!61 &1718802614
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7718,6 +7720,7 @@ MonoBehaviour:
   _heightOffset: 2
   _moveSpeed: 5
   _ingredientSo: {fileID: 0}
+  _cardDisplay: {fileID: 1731368069}
 --- !u!61 &1731368071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8671,6 +8674,7 @@ MonoBehaviour:
   _heightOffset: 2
   _moveSpeed: 5
   _ingredientSo: {fileID: 0}
+  _cardDisplay: {fileID: 1876569058}
 --- !u!61 &1876569055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9162,7 +9166,7 @@ MonoBehaviour:
   _finalHunger: {fileID: 463749158}
   _finalSatisfaction: {fileID: 962826622}
   _finalPower: {fileID: 2134872750}
-  _finalMealImage: {fileID: 0}
+  _finalMealImage: {fileID: 568075686}
   _goPhase2Button: {fileID: 0}
 --- !u!1 &1930098750
 GameObject:
