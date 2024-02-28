@@ -11,10 +11,12 @@ namespace _project.Scripts.Core
         [SerializeField] private Vector3 _stats;
         [SerializeField] private Vector3 _addedStats;
         [SerializeField] private List<IngredientSo> _ingredients = new(3);
+        [SerializeField] private Sprite _icon;
         
         public Vector3 Stats => _stats;
         public Vector3 AddedStats => _addedStats;
         public List<IngredientSo> Ingredients => _ingredients;
+        public Sprite Icon => _icon;
 
         public Meal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
@@ -49,10 +51,16 @@ namespace _project.Scripts.Core
             return this;
         }
 
-        public Meal AddCondiment()
+        public Meal AddCondiment(CondimentSo condimentSo)
         {
-            // TODO
+            _stats += condimentSo.Value;
             
+            return this;
+        }
+
+        public Meal CreateIcon(CookingParamsSo cookingParamsSo)
+        {
+            _icon = cookingParamsSo.GetMealIcon(this);
             return this;
         }
     }

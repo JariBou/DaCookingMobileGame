@@ -12,6 +12,8 @@ namespace _project.ScriptableObjects.Scripts
 
         [SerializeField] private List<IngredientSo> _bundleIngredients;
 
+        public List<IngredientSo> BundleIngredients => _bundleIngredients;
+
 
         private void OnValidate()
         {
@@ -22,14 +24,14 @@ namespace _project.ScriptableObjects.Scripts
         {
             Vector3 total = new();
 
-            foreach (IngredientSo ingredient in _bundleIngredients)
+            foreach (IngredientSo ingredient in BundleIngredients)
             {
                 total += ingredient.Stats;
             }
             
             Vector3 addedTotal = new();
 
-            foreach (IngredientSo ingredient in _bundleIngredients)
+            foreach (IngredientSo ingredient in BundleIngredients)
             {
                 addedTotal += ingredient.RandomAddedstats;
             }

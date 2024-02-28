@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using Cinemachine;
 
-public class SlideScreen : MonoBehaviour
+namespace _project.Scripts
 {
-    private bool _isSliding = false;
-    private bool _isSetUp = true;
-    [SerializeField] private DragAndDrop _dragAndDrop;
-    [Range(0, 1)]
-    public float _slideMultiplicator = 0.1f;
-    [SerializeField] private AnimationCurve _slideCurve;
+    public class SlideScreen : MonoBehaviour
+    {
+        private bool _isSliding = false;
+        private bool _isSetUp = true;
+        [SerializeField] private DragAndDrop _dragAndDrop;
+        [Range(0, 1)]
+        public float _slideMultiplicator = 0.1f;
+        [SerializeField] private AnimationCurve _slideCurve;
 /*    [Header("Cinemachine")]
     [SerializeField] private float _cinemachineIntensity = 0.5f;
     [SerializeField] private float _cinemachineDuration = 0.5f;
@@ -20,35 +19,35 @@ public class SlideScreen : MonoBehaviour
     private float _shakeTimerMax;
     private float _shakeIntensity;*/
 
-    private CinemachineVirtualCamera _virtualCamera;
-    // Start is called before the first frame update
-    void Start()
-    {
-        _virtualCamera = GetComponent<CinemachineVirtualCamera>();
-        _isSetUp = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (_isSliding && Mathf.Abs(Pointer.current.delta.ReadValue().x) < Mathf.Abs(Pointer.current.delta.ReadValue().y))
+        private CinemachineVirtualCamera _virtualCamera;
+        // Start is called before the first frame update
+        private void Start()
         {
-            
-            float deltaY = Pointer.current.delta.ReadValue().y;
-            transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Lerp(transform.position.y, transform.position.y - deltaY * _slideMultiplicator, _slideCurve.Evaluate(Time.deltaTime)), 0, 20), transform.position.z);
-            if (transform.position.y != 20 || transform.position.y != 0) _isSetUp = false;
+            _virtualCamera = GetComponent<CinemachineVirtualCamera>();
+            _isSetUp = true;
         }
-        else if (!_isSliding && transform.position.y != 0 && transform.position.y != 20)
+
+        // Update is called once per frame
+        private void Update()
         {
-            if (transform.position.y < 10 && !_isSetUp)
+            if (_isSliding && Mathf.Abs(Pointer.current.delta.ReadValue().x) < Mathf.Abs(Pointer.current.delta.ReadValue().y))
             {
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 0, _slideCurve.Evaluate(Time.deltaTime)), transform.position.z);
+            
+                float deltaY = Pointer.current.delta.ReadValue().y;
+                transform.position = new Vector3(transform.position.x, Mathf.Clamp(Mathf.Lerp(transform.position.y, transform.position.y - deltaY * _slideMultiplicator, _slideCurve.Evaluate(Time.deltaTime)), 0, 20), transform.position.z);
+                if (transform.position.y != 20 || transform.position.y != 0) _isSetUp = false;
             }
-            else if (transform.position.y > 10 && !_isSetUp)
+            else if (!_isSliding && transform.position.y != 0 && transform.position.y != 20)
             {
-                transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 20, _slideCurve.Evaluate(Time.deltaTime)), transform.position.z);
-            }
-        } 
+                if (transform.position.y < 10 && !_isSetUp)
+                {
+                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 0, _slideCurve.Evaluate(Time.deltaTime)), transform.position.z);
+                }
+                else if (transform.position.y > 10 && !_isSetUp)
+                {
+                    transform.position = new Vector3(transform.position.x, Mathf.Lerp(transform.position.y, 20, _slideCurve.Evaluate(Time.deltaTime)), transform.position.z);
+                }
+            } 
 /*        if (_shakeTimer > 0)
         {
             _shakeTimer -= Time.deltaTime;
@@ -65,19 +64,19 @@ public class SlideScreen : MonoBehaviour
             _isSetUp = true;
             ShakeCamera(_cinemachineIntensity, _cinemachineDuration);
         }*/
-    }
+        }
 
-    public void OnSlide(InputAction.CallbackContext context)
-    {
-        if (context.performed && !_dragAndDrop.IsDragging)
+        public void OnSlide(InputAction.CallbackContext context)
         {
-            _isSliding = true;
+            if (context.performed && !_dragAndDrop.IsDragging)
+            {
+                _isSliding = true;
+            }
+            else if (context.canceled)
+            {
+                _isSliding = false;
+            }
         }
-        else if (context.canceled)
-        {
-            _isSliding = false;
-        }
-    }
 
 /*    public void ShakeCamera(float intensity, float duration)
     {
@@ -89,4 +88,5 @@ public class SlideScreen : MonoBehaviour
     }*/
 
 
+    }
 }
