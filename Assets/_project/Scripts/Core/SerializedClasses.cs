@@ -51,9 +51,9 @@ namespace _project.Scripts.Core
             return this;
         }
 
-        public Meal AddCondiment()
+        public Meal AddCondiment(CondimentSo condimentSo)
         {
-            // TODO
+            _stats += condimentSo.Value;
             
             return this;
         }

@@ -23,6 +23,11 @@ namespace _project.Scripts
             CurrentStats = new Vector3(x, y, z);
         }
 
+        /// <summary>
+        /// Returns true if meal satisfied the monster
+        /// </summary>
+        /// <param name="meal"></param>
+        /// <returns></returns>
         public bool FeedMeal(Meal meal)
         {
             CurrentStats += meal.Stats;

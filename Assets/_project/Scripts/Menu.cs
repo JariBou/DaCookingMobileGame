@@ -1,48 +1,42 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using _project.Scripts.Core;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Menu : MonoBehaviour
+namespace _project.Scripts
 {
-    [SerializeField] IngredientStats[] _ingredientStats;
-    [SerializeField] TextMeshProUGUI _finalHunger;
-    [SerializeField] TextMeshProUGUI _finalSatisfaction;
-    [SerializeField] TextMeshProUGUI _finalPower;
-    [SerializeField] Image _finalMealImage;
-    [SerializeField] Button _GoPhase2Button;
-
-    [SerializeField] clickUp clickUp;
-    // Start is called before the first frame update
-    void Start()
+    public class Menu : MonoBehaviour
     {
-        for (int i = 0; i < _ingredientStats.Length; i++)
-        {
-            _ingredientStats[i]._cardName.text = "";
-            _ingredientStats[i]._cardHunger.text = "";
-            _ingredientStats[i]._cardSatisfaction.text = "";
-            _ingredientStats[i]._cardPower.text = "";
-            _ingredientStats[i]._cardImage.sprite = null;
-        }
-        
-    }
+        [SerializeField] private CookingManager _cookingManager;
+        [SerializeField] private IngredientStats[] _ingredientStats;
+        [SerializeField] private TextMeshProUGUI _finalHunger;
+        [SerializeField] private TextMeshProUGUI _finalSatisfaction;
+        [SerializeField] private TextMeshProUGUI _finalPower;
+        [SerializeField] private Image _finalMealImage;
+        [SerializeField] private Button _goPhase2Button;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void UpdateMenu()
-    {
-        if (clickUp._enlargedSprites.Count > 0)
+        // Start is called before the first frame update
+        private void Start()
         {
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
-                if (i < clickUp._enlargedSprites.Count)
+                _ingredientStats[i]._cardName.text = "";
+                _ingredientStats[i]._cardHunger.text = "";
+                _ingredientStats[i]._cardSatisfaction.text = "";
+                _ingredientStats[i]._cardPower.text = "";
+                _ingredientStats[i]._cardImage.sprite = null;
+            }
+        
+        }
+
+        public void UpdateMenu()
+        {
+            for (int i = 0; i < _ingredientStats.Length; i++)
+            {
+                if (i < ClickUp._enlargedSprites.Count)
                 {
                     UpdateIngredient(i);
                 }
@@ -55,40 +49,45 @@ public class Menu : MonoBehaviour
                     _ingredientStats[i]._cardImage.sprite = null;
                 }
             }
-        }
-        else
-        {
-            for (int i = 0; i < _ingredientStats.Length; i++)
+
+            if (ClickUp._enlargedSprites.Count == 3)
             {
-                _ingredientStats[i]._cardName.text = "";
-                _ingredientStats[i]._cardHunger.text = "";
-                _ingredientStats[i]._cardSatisfaction.text = "";
-                _ingredientStats[i]._cardPower.text = "";
-                _ingredientStats[i]._cardImage.sprite = null;
+                Meal meal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
+                    ClickUp._enlargedSprites[1].Ingredient, ClickUp._enlargedSprites[2].Ingredient));
+                _finalMealImage.sprite = meal.Icon;
+                _finalHunger.text = meal.Stats.x.ToString(CultureInfo.InvariantCulture);
+                _finalSatisfaction.text = meal.Stats.y.ToString(CultureInfo.InvariantCulture);
+                _finalPower.text = meal.Stats.z.ToString(CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                _finalHunger.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+                _finalSatisfaction.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+                _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
             }
         }
-        _finalHunger.text = clickUp._enlargedSprites.Sum(x => x._ingredientSo.Stats.x).ToString();
-        _finalSatisfaction.text = clickUp._enlargedSprites.Sum(x => x._ingredientSo.Stats.y).ToString();
-        _finalPower.text = clickUp._enlargedSprites.Sum(x => x._ingredientSo.Stats.z).ToString();
 
+        private void UpdateIngredient(int order)
+        {
+            _ingredientStats[order]._cardName.text = ClickUp._enlargedSprites[order].Ingredient.name;
+            _ingredientStats[order]._cardHunger.text = ClickUp._enlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
+            _ingredientStats[order]._cardSatisfaction.text = ClickUp._enlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
+            _ingredientStats[order]._cardPower.text = ClickUp._enlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
+            _ingredientStats[order]._cardImage.sprite = ClickUp._enlargedSprites[order].Ingredient.Icon;
+        }
+
+        public void ConfirmMeal()
+        {
+            // TODO
+        }
     }
-
-    private void UpdateIngredient(int order)
+    [Serializable]
+    public struct IngredientStats
     {
-        _ingredientStats[order]._cardName.text = clickUp._enlargedSprites[order]._ingredientSo.name;
-        _ingredientStats[order]._cardHunger.text = clickUp._enlargedSprites[order]._ingredientSo.Stats.x.ToString();
-        _ingredientStats[order]._cardSatisfaction.text = clickUp._enlargedSprites[order]._ingredientSo.Stats.y.ToString();
-        _ingredientStats[order]._cardPower.text = clickUp._enlargedSprites[order]._ingredientSo.Stats.z.ToString();
-        _ingredientStats[order]._cardImage.sprite = clickUp._enlargedSprites[order]._ingredientSo.Icon;
-
+        public TextMeshProUGUI _cardName;
+        public TextMeshProUGUI _cardHunger;
+        public TextMeshProUGUI _cardSatisfaction;
+        public TextMeshProUGUI _cardPower;
+        public Image _cardImage;
     }
-}
-[Serializable]
-public struct IngredientStats
-{
-    public TextMeshProUGUI _cardName;
-    public TextMeshProUGUI _cardHunger;
-    public TextMeshProUGUI _cardSatisfaction;
-    public TextMeshProUGUI _cardPower;
-    public Image _cardImage;
 }

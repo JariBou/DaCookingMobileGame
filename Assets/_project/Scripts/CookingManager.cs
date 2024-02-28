@@ -22,10 +22,16 @@ namespace _project.Scripts
             return meal;
         }
 
-        public void FeedMeal(MonsterDataSo monsterDataSo)
+        /// <summary>
+        /// Returns true if meal satisfied the monster
+        /// </summary>
+        /// <param name="monsterInstance"></param>
+        /// <returns></returns>
+        public bool FeedMeal(MonsterInstance monsterInstance)
         {
-            // TODO: idk if monster current stats are going to stay on SO
+            bool result = monsterInstance.FeedMeal(_currentMeal);
             _currentMeal = null;
+            return result;
         }
         
         public Meal CookMeal(CookingMethod cookingMethod)
@@ -38,16 +44,16 @@ namespace _project.Scripts
             return meal.CookMeal(_cookingParamsSo.GetMultiplier(cookingMethod));
         }
         
-        public Meal AddCondiment()
+        public Meal AddCondiment(CondimentSo condimentSo)
         {
-            // TODO
-            return _currentMeal?.AddCondiment();
+            // TODO add *1 or *-1 multiplier
+            return _currentMeal?.AddCondiment(condimentSo);
         }
 
-        public Meal AddCondiment(Meal meal)
+        public Meal AddCondiment(Meal meal, CondimentSo condimentSo)
         {
-            // TODO
-            return meal.AddCondiment();
+            // TODO add *1 or *-1 multiplier
+            return meal.AddCondiment(condimentSo);
         }
         
     }

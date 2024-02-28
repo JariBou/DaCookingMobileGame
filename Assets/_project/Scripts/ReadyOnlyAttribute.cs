@@ -1,5 +1,8 @@
 ﻿using System;
 
-internal class ReadyOnlyAttribute : Attribute
+namespace _project.Scripts
 {
+    internal class ReadyOnlyAttribute : Attribute
+    {
+    }
 }
