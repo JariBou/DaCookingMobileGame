@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using _project.ScriptableObjects.Scripts;
 using UnityEngine;
 
 namespace _project.Scripts.Core
@@ -15,7 +16,7 @@ namespace _project.Scripts.Core
                 listToTestFor.Remove(el);
             }
 
-            return !listToTestFor.Any();
+            return listToTestFor.Count <= 0;
         }
     }
 

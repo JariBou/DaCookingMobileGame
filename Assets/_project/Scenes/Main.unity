@@ -9162,7 +9162,7 @@ MonoBehaviour:
   _finalHunger: {fileID: 463749158}
   _finalSatisfaction: {fileID: 962826622}
   _finalPower: {fileID: 2134872750}
-  _finalMealImage: {fileID: 0}
+  _finalMealImage: {fileID: 568075686}
   _goPhase2Button: {fileID: 0}
 --- !u!1 &1930098750
 GameObject:

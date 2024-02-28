@@ -191,7 +191,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PH_Sandwich_Mutant_0: -8071964510408386132
+      PH_Sandwich_Mutant_1: 1295277539485042539
+      PH_Sandwich_Mutant_2: 8998966135973354585
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
