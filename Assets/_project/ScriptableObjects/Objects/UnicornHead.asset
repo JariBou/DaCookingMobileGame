@@ -16,6 +16,6 @@ MonoBehaviour:
   _ingredientFamily: 0
   _stats: {x: -12, y: 33, z: 20}
   _randomAddedstats: {x: 5, y: 2, z: 8}
-  _icon: {fileID: 8225959850776148724, guid: aed5245c012ff7749acf40ffa7a9306d, type: 3}
+  _icon: {fileID: 21300000, guid: aed5245c012ff7749acf40ffa7a9306d, type: 3}
   _description: 'Unicorn Head: Rare ingredient offering an explosion of magical flavors,
     promising a magical culinary experience.'
