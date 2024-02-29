@@ -56,13 +56,13 @@ namespace _project.Scripts
             {
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
                     ClickUp._enlargedSprites[1].Ingredient, ClickUp._enlargedSprites[2].Ingredient));
-                _finalMealImage.sprite = meal.Icon;
+                _finalMealImage.sprite = _currentMeal.Icon;
                 
-                _finalHunger.text = (meal.Stats.x > 0 ? "+" : "") + meal.Stats.x.ToString(CultureInfo.InvariantCulture);
+                _finalHunger.text = (_currentMeal.Stats.x > 0 ? "+" : "") + _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
 
-                _finalSatisfaction.text = (meal.Stats.y > 0 ? "+" : "") + meal.Stats.y.ToString(CultureInfo.InvariantCulture);
+                _finalSatisfaction.text = (_currentMeal.Stats.y > 0 ? "+" : "") + _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
 
-                _finalPower.text = (meal.Stats.z > 0 ? "+" : "") + meal.Stats.z.ToString(CultureInfo.InvariantCulture);
+                _finalPower.text = (_currentMeal.Stats.z > 0 ? "+" : "") + _currentMeal.Stats.z.ToString(CultureInfo.InvariantCulture);
             }
             else
             {
