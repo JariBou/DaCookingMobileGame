@@ -1,3 +1,4 @@
+using System.Globalization;
 using _project.ScriptableObjects.Scripts;
 using TMPro;
 using UnityEngine;
@@ -28,24 +29,15 @@ namespace _project.Scripts
             InitializeCard(ingredientSo.Name, ingredientSo.Description, ingredientSo.Stats.x, ingredientSo.Stats.y, ingredientSo.Stats.z, ingredientSo.Icon);
         }
 
-        public void InitializeCard(string name, string description, float hunger, float satisfaction, float power, Sprite image)
+        public void InitializeCard(string ingredientName, string description, float hunger, float satisfaction, float power, Sprite image)
         {
-            _cardName.text = name;
+            _cardName.text = ingredientName;
             _cardDescription.text = description;
-            if (hunger > 0)
-                _cardHunger.text = "+" + hunger.ToString();
-            else
-                _cardHunger.text = hunger.ToString();
-
-            if (satisfaction > 0)
-                _cardSatisfaction.text = "+" + satisfaction.ToString();
-            else
-                _cardSatisfaction.text = satisfaction.ToString();
-
-            if (power > 0)
-                _cardPower.text = "+" + power.ToString();
-            else
-                _cardPower.text = power.ToString();
+            
+            _cardHunger.text = (hunger > 0 ? "+" : "") + hunger.ToString(CultureInfo.InvariantCulture);
+            _cardSatisfaction.text = (satisfaction > 0 ? "+" : "") + satisfaction.ToString(CultureInfo.InvariantCulture);
+            _cardPower.text = (power > 0 ? "+" : "") + power.ToString(CultureInfo.InvariantCulture);
+            
             _cardImage.sprite = image;
             _cardBack.color = CalculateAverageColor(image);
         }
