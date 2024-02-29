@@ -17,6 +17,7 @@ namespace _project.Scripts
         [SerializeField] private TextMeshProUGUI _finalPower;
         [SerializeField] private Image _finalMealImage;
         [SerializeField] private Button _goPhase2Button;
+        private Meal _currentMeal;
 
         // Start is called before the first frame update
         private void Start()
@@ -47,12 +48,13 @@ namespace _project.Scripts
                     _ingredientStats[i]._cardPower.text = "";
                     _ingredientStats[i]._cardImage.sprite = null;
                     _finalMealImage.sprite = null;
+                    _currentMeal = null;
                 }
             }
 
             if (ClickUp._enlargedSprites.Count == 3)
             {
-                Meal meal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
+                _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
                     ClickUp._enlargedSprites[1].Ingredient, ClickUp._enlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = meal.Icon;
                 
@@ -78,6 +80,7 @@ namespace _project.Scripts
                     _finalPower.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
                 else
                     _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                /*_goPhase2Button.interactable = false;*/
             }
         }
 
@@ -104,7 +107,14 @@ namespace _project.Scripts
 
         public void ConfirmMeal()
         {
-            // TODO
+            if (_currentMeal != null)
+            {
+                Debug.Log("Phase2");
+            }
+            else
+            {
+                Debug.Log("No meal");
+            }
         }
     }
     [Serializable]
