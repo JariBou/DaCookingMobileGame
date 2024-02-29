@@ -33,18 +33,46 @@ namespace _project.Scripts
             {
                 possibleIngredients.RemoveAt(possibleIngredients.FindIndex(el => el == ingredientSo));
             }
-        
-        
+
             foreach (ClickUp clickUp in _cards)
             {
                 if (clickUp.IsScaled) continue; // If not selected
-                
-                int rIndex = Random.Range(0, possibleIngredients.Count);
-                
-                clickUp.PassIngredient(possibleIngredients[rIndex]);
-                possibleIngredients.RemoveAt(rIndex);
+
+                if (possibleIngredients.Count > 0) // Vérifiez si la liste contient encore des éléments
+                {
+                    int rIndex = Random.Range(0, possibleIngredients.Count);
+                    clickUp.PassIngredient(possibleIngredients[rIndex]);
+                    possibleIngredients.RemoveAt(rIndex); // Assurez-vous que cet index est valide
+                }
+                else
+                {
+                    // Gérez le cas où il n'y a plus d'ingrédients disponibles
+                    Debug.LogWarning("Plus d'ingrédients disponibles pour le re-roll");
+                    break; // Sortez de la boucle si aucun ingrédient n'est disponible
+                }
             }
         }
+
+        /*        public void ReRollBundle()
+                {
+                    List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
+
+                    foreach (IngredientSo ingredientSo in GetSelectedIngredients())
+                    {
+                        possibleIngredients.RemoveAt(possibleIngredients.FindIndex(el => el == ingredientSo));
+                    }
+
+
+                    foreach (ClickUp clickUp in _cards)
+                    {
+                        if (clickUp.IsScaled) continue; // If not selected
+
+                        int rIndex = Random.Range(0, possibleIngredients.Count);
+
+                        clickUp.PassIngredient(possibleIngredients[rIndex]);
+                        possibleIngredients.RemoveAt(rIndex);
+                    }
+                }*/
 
         private List<IngredientSo> GetSelectedIngredients()
         {
