@@ -3383,7 +3383,7 @@ Transform:
   m_GameObject: {fileID: 799982990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106.77, y: 0, z: -5}
+  m_LocalPosition: {x: 35.59, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7731,6 +7731,7 @@ GameObject:
   - component: {fileID: 1811537245}
   - component: {fileID: 1811537246}
   - component: {fileID: 1811537247}
+  - component: {fileID: 1811537248}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -7875,6 +7876,20 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1811537248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811537243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8148c7d6c6e7e542a6b0045d82f95b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 2098448610}
+  moveRightOnClick: 0
 --- !u!1 &1839128996
 GameObject:
   m_ObjectHideFlags: 0
@@ -9434,6 +9449,7 @@ GameObject:
   - component: {fileID: 2098448610}
   - component: {fileID: 2098448609}
   - component: {fileID: 2098448611}
+  - component: {fileID: 2098448612}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -9489,7 +9505,7 @@ Transform:
   m_GameObject: {fileID: 2098448608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 106.77, y: 0, z: -5}
+  m_LocalPosition: {x: 35.59, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9534,6 +9550,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2098448612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098448608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8148c7d6c6e7e542a6b0045d82f95b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  virtualCamera: {fileID: 2098448610}
+  moveRightOnClick: 0
 --- !u!1 &2099469074
 GameObject:
   m_ObjectHideFlags: 0
