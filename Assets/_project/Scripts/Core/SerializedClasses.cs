@@ -66,13 +66,14 @@ namespace _project.Scripts.Core
     }
 
     [Serializable]
-    public class MealIcon
+    public class MealBaseInfo
     {
         [SerializeField] private IngredientFamily _ingredientFamilyA;
         [SerializeField] private IngredientFamily _ingredientFamilyB;
         [SerializeField] private IngredientFamily _ingredientFamilyC;
 
         [SerializeField] private Sprite _icon;
+        [SerializeField] private string _name;
 
         public IngredientFamily IngredientFamilyA => _ingredientFamilyA;
         public IngredientFamily IngredientFamilyB => _ingredientFamilyB;
@@ -81,5 +82,7 @@ namespace _project.Scripts.Core
         public List<IngredientFamily> IngredientFamilies => new()
             { _ingredientFamilyA, _ingredientFamilyB, _ingredientFamilyC };
         public Sprite Icon => _icon;
+
+        public string Name => _name;
     }
 }

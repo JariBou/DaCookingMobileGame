@@ -21,9 +21,9 @@ namespace _project.ScriptableObjects.Scripts
         [TabProperty(nameof(CookingMethod.Method3)), SerializeField, ReadOnly] private CookingMethod _cookingMethod3 = CookingMethod.Method3;
         [TabProperty(nameof(CookingMethod.Method3)), SerializeField] private Vector3 _method3StatsMultiplier;
 
-        [SerializeField] private List<MealIcon> _mealIcons;
+        [SerializeField] private List<MealBaseInfo> _mealIcons;
 
-        public List<MealIcon> MealIcons => _mealIcons;
+        public List<MealBaseInfo> MealIcons => _mealIcons;
 
 
         public Vector3 GetMultiplier(CookingMethod cookingMethod)
@@ -44,7 +44,7 @@ namespace _project.ScriptableObjects.Scripts
 
         public Sprite GetMealIcon(Meal meal)
         {
-            foreach (MealIcon mealIcon in _mealIcons.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
+            foreach (MealBaseInfo mealIcon in _mealIcons.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
             {
                 return mealIcon.Icon;
             }
