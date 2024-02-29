@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
+using _project.Scripts.Core;
 using UnityEngine;
 
 namespace _project.Scripts
@@ -110,7 +111,7 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            if (_isPassing || _isAppearing || !_recipeDisplayScript.IsEnabled) return;
+            if (_isPassing || _isAppearing || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
             
             switch (_isScaled)
             {

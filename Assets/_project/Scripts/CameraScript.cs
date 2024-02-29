@@ -16,8 +16,9 @@ namespace _project.Scripts
         [SerializeField] private AnimationCurve _slideCurve;
         private float _timer;
         private bool _isMoving;
+        public int CurrentIndex => _currentPosIndex;
 
-        
+
         // Start is called before the first frame update
         void Start()
         {
@@ -41,7 +42,7 @@ namespace _project.Scripts
         }
         
         [Button]
-        public void NextPos()
+        public void NextPhase()
         {
             _currentPosIndex = (_currentPosIndex + 1) % _positions.Count;
             _isMoving = true;

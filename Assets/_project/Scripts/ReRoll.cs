@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _project.ScriptableObjects.Scripts;
+using _project.Scripts.Core;
 using UnityEngine;
 
 namespace _project.Scripts
@@ -18,7 +19,7 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            if (_rerollCount >= _rerollChance || !_recipeDisplayScript.IsEnabled) return;
+            if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1 ) return;
         
             _rerollCount++;
             ReRollBundle();

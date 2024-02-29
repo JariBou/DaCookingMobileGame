@@ -17,13 +17,13 @@ namespace _project.Scripts
         [SerializeField] private TextMeshProUGUI _finalPower;
         [SerializeField] private Image _finalMealImage;
         [SerializeField] private CameraScript _camera;
+        [SerializeField] private MealDisplayScript _nextPhaseMealDisplay;
         private Meal _currentMeal;
-        public bool IsEnabled { get; private set; }
+        public CookingManager CookingManager => _cookingManager;
 
         // Start is called before the first frame update
         private void Start()
         {
-            IsEnabled = true;
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
                 ResetIngredientStats(_ingredientStats[i]);
@@ -107,8 +107,8 @@ namespace _project.Scripts
             if (_currentMeal != null)
             {
                 Debug.Log("Going to Phase2");
-                _camera.NextPos();
-                IsEnabled = false;
+                _camera.NextPhase();
+                _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
             }
             else
             {

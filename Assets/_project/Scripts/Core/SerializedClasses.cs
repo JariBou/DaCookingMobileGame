@@ -18,6 +18,11 @@ namespace _project.Scripts.Core
         public List<IngredientSo> Ingredients => _ingredients;
         public Sprite Icon => _icon;
 
+        public Meal(Meal baseMeal) : this(baseMeal.Ingredients[0], baseMeal.Ingredients[1], baseMeal.Ingredients[2])
+        {
+            _icon = baseMeal.Icon ? baseMeal.Icon : null;
+        }
+
         public Meal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
             _stats = ingredient1.Stats + ingredient2.Stats + ingredient3.Stats;

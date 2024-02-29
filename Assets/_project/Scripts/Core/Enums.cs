@@ -7,6 +7,15 @@
 
     public enum CookingMethod
     {
-        Method1, Method2, Method3
+        Method1, Method2, Method3, 
+        Null = 63
+    }
+
+    public enum PhaseCode
+    {
+        Phase1 = 0,
+        Phase2 = 1,
+        Phase3 = 2,
+        Phase4 = 3,
     }
 }

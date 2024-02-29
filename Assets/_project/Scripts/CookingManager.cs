@@ -10,6 +10,11 @@ namespace _project.Scripts
 
         [SerializeField] private Meal _currentMeal;
 
+        [SerializeField] private CameraScript _camera;
+        public CameraScript Camera => _camera;
+
+        public PhaseCode GetCurrentPhase() => (PhaseCode)_camera.CurrentIndex;
+
 
         public Meal CreateMeal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
@@ -55,6 +60,10 @@ namespace _project.Scripts
             // TODO add *1 or *-1 multiplier
             return meal.AddCondiment(condimentSo);
         }
-        
+
+        public Meal GetCurrentMeal()
+        {
+            return _currentMeal;
+        }
     }
 }
