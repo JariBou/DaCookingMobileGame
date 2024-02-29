@@ -15,7 +15,7 @@ public class ReRoll : MonoBehaviour
     [SerializeField, Range(1, 10)] private int _rerollChance = 2;
     private int _rerollCount = 0;
     private bool _isRerolling = false;
-    [SerializeField] private bool _canHaveSameIngredientInDeck = true;
+    [SerializeField] private bool _canHaveSameIngredientInDeck;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,36 +39,41 @@ public class ReRoll : MonoBehaviour
 
     private void ReRollBundle()
     {
-        Debug.Log("Rerolling");
         for (int i = 0; i < _cards.Length; i++)
         {
             if (!_cards[i].IsScaled)
             {
-               _cards[i].PassIngredient(RandomIngredient(_cards[i].Ingredient));
+               _cards[i].PassIngredient(RandomIngredient(_cards[i].Ingredient, i));
             }
         }
     }
 
-    private IngredientSo RandomIngredient(IngredientSo ingredient)
+    private IngredientSo RandomIngredient(IngredientSo currentIngredient, int rank)
     {
-        IngredientSo newIngredient;
-        for (int i = 0; i < _bundleSo.BundleIngredients.Count; i++)
+        
+        List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
+        possibleIngredients.Remove(currentIngredient);
+
+        if (!_canHaveSameIngredientInDeck)
         {
-            newIngredient = _bundleSo.BundleIngredients[Random.Range(0, _bundleSo.BundleIngredients.Count)];
-            if (newIngredient != ingredient)
-            {
-                if (IsInDeck(newIngredient) && _canHaveSameIngredientInDeck)
-                {
-                    return newIngredient;
-                }
-            }
+            possibleIngredients.RemoveAll(ingredient => IsInDeck(ingredient, rank));
         }
-        return ingredient;
+
+       
+        if (possibleIngredients.Count > 0)
+        {
+            IngredientSo newIngredient = possibleIngredients[Random.Range(0, possibleIngredients.Count)];
+            return newIngredient;
+            
+        }
+
+        
+        return currentIngredient;
     }
 
-    private bool IsInDeck(IngredientSo ingredient)
+    private bool IsInDeck(IngredientSo ingredient, int rank)
     {
-        for (int i = 0; i < _cards.Length; i++)
+        for (int i = 0; i < rank + 1; i++)
         {
             if (_cards[i].Ingredient == ingredient)
             {
