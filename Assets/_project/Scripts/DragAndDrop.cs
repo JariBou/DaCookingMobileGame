@@ -82,6 +82,14 @@ namespace _project.Scripts
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
-        }   
+        }
+        private void OnMouseDrag()
+        {
+            if (_isDragging)
+            {
+                Vector2 ScreenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                _hit.transform.position = new Vector3(ScreenMousePosition.x, ScreenMousePosition.y, _hit.transform.position.z);
+            }
+        }
     }
 }
