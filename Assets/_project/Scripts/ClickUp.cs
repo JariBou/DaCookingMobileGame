@@ -42,6 +42,8 @@ namespace _project.Scripts
         [SerializeField] private bool _isPassing = false;
         [SerializeField] private bool _isAppearing = false;
         [SerializeField] private AnimationCurve _appearCurve;
+        [SerializeField, Range(0,10)] private float _animationDuration = 1f;
+        private float timer;
 
         [SerializeField, Range(0, -6)] private float _negativeHeightOffset = 2f;
 
@@ -59,7 +61,7 @@ namespace _project.Scripts
         {
             /*Debug.Log("Changing " + _ingredientSo.Name + " with " + newIngredient.Name);*/
             _isAppearing = false;
-            _isPassing = true; // La carte descend en dehors de l'écran
+            _isPassing = true; // La carte descend en dehors de l'Ã©cran
             _newIngredient = newIngredient;
             transform.position = _initialPosition;
         }
@@ -83,7 +85,8 @@ namespace _project.Scripts
 
             if (_isPassing)
             {
-                transform.position = Vector3.MoveTowards(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, _appearCurve.Evaluate(Time.deltaTime));
+                timer += Time.deltaTime;
+                transform.position = Vector3.Lerp(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, _appearCurve.Evaluate(timer/_animationDuration));
                 if (Vector3.Distance(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset) < 0.01f)
                 {
                     transform.position = _initialPosition + Vector3.up * _negativeHeightOffset;
@@ -92,16 +95,19 @@ namespace _project.Scripts
                     _newIngredient = null;
                     _isPassing = false;
                     _isAppearing = true;
+                    timer = 0;
                 }
             }
             if (_isAppearing)
             {
+                timer += Time.deltaTime;
                 _isPassing = false;
-                transform.position = Vector3.MoveTowards(transform.position, _initialPosition, _appearCurve.Evaluate(Time.deltaTime));
+                transform.position = Vector3.Lerp(transform.position, _initialPosition, _appearCurve.Evaluate(timer/_animationDuration));
                 if (Vector3.Distance(transform.position, _initialPosition) < 0.01f)
                 {
                     transform.position = _initialPosition;
                     _isAppearing = false;
+                    timer = 0;
                 }
             }
         }

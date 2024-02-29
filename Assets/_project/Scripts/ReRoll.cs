@@ -1,80 +1,56 @@
-using _project.ScriptableObjects.Scripts;
-using _project.Scripts;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
+using _project.ScriptableObjects.Scripts;
 using UnityEngine;
 
-
-public class ReRoll : MonoBehaviour
+namespace _project.Scripts
 {
-
-    [SerializeField] private IngredientsBundleSo _bundleSo;
-    [SerializeField] private ClickUp[] _cards;
-    [SerializeField, Range(1, 10)] private int _rerollChance = 2;
-    private int _rerollCount = 0;
-    private bool _isRerolling = false;
-    [SerializeField] private bool _canHaveSameIngredientInDeck = true;
-    // Start is called before the first frame update
-    void Start()
+    public class ReRoll : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        [SerializeField] private IngredientsBundleSo _bundleSo;
+        [SerializeField] private ClickUp[] _cards;
+        [SerializeField, Range(1, 10)] private int _rerollChance = 2;
+        private int _rerollCount = 0;
+        private bool _isRerolling = false;
+        [SerializeField] private bool _canHaveSameIngredientInDeck;
 
-    private void OnMouseDown()
-    {
-        if (_rerollCount < _rerollChance)
+        private void OnMouseDown()
         {
+            if (_rerollCount >= _rerollChance) return;
+        
             _rerollCount++;
             ReRollBundle();
         }
-    }
 
-    private void ReRollBundle()
-    {
-        Debug.Log("Rerolling");
-        for (int i = 0; i < _cards.Length; i++)
+        public void ReRollBundle()
         {
-            if (!_cards[i].IsScaled)
+            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
+
+            foreach (IngredientSo ingredientSo in GetSelectedIngredients())
             {
-               _cards[i].PassIngredient(RandomIngredient(_cards[i].Ingredient));
+                possibleIngredients.RemoveAt(possibleIngredients.FindIndex(el => el == ingredientSo));
+            }
+        
+        
+            foreach (ClickUp clickUp in _cards)
+            {
+                if (clickUp.IsScaled) continue; // If not selected
+                
+                int rIndex = Random.Range(0, possibleIngredients.Count);
+                
+                clickUp.PassIngredient(possibleIngredients[rIndex]);
+                possibleIngredients.RemoveAt(rIndex);
             }
         }
-    }
 
-    private IngredientSo RandomIngredient(IngredientSo ingredient)
-    {
-        IngredientSo newIngredient;
-        for (int i = 0; i < _bundleSo.BundleIngredients.Count; i++)
+        private List<IngredientSo> GetSelectedIngredients()
         {
-            newIngredient = _bundleSo.BundleIngredients[Random.Range(0, _bundleSo.BundleIngredients.Count)];
-            if (newIngredient != ingredient)
-            {
-                if (IsInDeck(newIngredient) && _canHaveSameIngredientInDeck)
-                {
-                    return newIngredient;
-                }
-            }
-        }
-        return ingredient;
-    }
+            List<IngredientSo> list = new List<IngredientSo>(3);
+        
+            list.AddRange(from clickUp in _cards where clickUp.IsScaled select clickUp.Ingredient);
 
-    private bool IsInDeck(IngredientSo ingredient)
-    {
-        for (int i = 0; i < _cards.Length; i++)
-        {
-            if (_cards[i].Ingredient == ingredient)
-            {
-                return true;
-            }
+            return list;
         }
-        return false;
     }
 }

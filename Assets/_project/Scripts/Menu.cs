@@ -28,9 +28,7 @@ namespace _project.Scripts
                 _ingredientStats[i]._cardSatisfaction.text = "";
                 _ingredientStats[i]._cardPower.text = "";
                 _ingredientStats[i]._cardImage.sprite = null;
-                
             }
-        
         }
 
         public void UpdateMenu()
