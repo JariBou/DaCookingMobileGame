@@ -4202,7 +4202,7 @@ MonoBehaviour:
   - {fileID: 1386556179}
   - {fileID: 181266515}
   - {fileID: 357402756}
-  - {fileID: 0}
+  - {fileID: 1580356589}
   _rerollChance: 10
   _canHaveSameIngredientInDeck: 0
 --- !u!1 &1452787969
@@ -4750,6 +4750,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+--- !u!114 &1580356589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4382056428397478889, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+  m_PrefabInstance: {fileID: 1534460337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acf6d8fef53e3ff43a2218c7244db075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1581226839
 GameObject:
   m_ObjectHideFlags: 0

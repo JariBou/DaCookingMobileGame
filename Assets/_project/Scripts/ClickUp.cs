@@ -61,7 +61,7 @@ namespace _project.Scripts
         {
             /*Debug.Log("Changing " + _ingredientSo.Name + " with " + newIngredient.Name);*/
             _isAppearing = false;
-            _isPassing = true; // La carte descend en dehors de l'écran
+            _isPassing = true; // La carte descend en dehors de l'Ã©cran
             _newIngredient = newIngredient;
             transform.position = _initialPosition;
         }
