@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _project.Scripts.Core
 {
@@ -12,17 +13,20 @@ namespace _project.Scripts.Core
         [SerializeField] private Vector3 _addedStats;
         [SerializeField] private List<IngredientSo> _ingredients = new(3);
         [SerializeField] private Sprite _icon;
-        
+        [SerializeField] private string _name;
+
         public Vector3 Stats => _stats;
         public Vector3 AddedStats => _addedStats;
         public List<IngredientSo> Ingredients => _ingredients;
         public Sprite Icon => _icon;
 
+        public string Name => _name;
+        
         public Meal(Meal baseMeal) : this(baseMeal.Ingredients[0], baseMeal.Ingredients[1], baseMeal.Ingredients[2])
         {
             _icon = baseMeal.Icon ? baseMeal.Icon : null;
         }
-
+      
         public Meal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
             _stats = ingredient1.Stats + ingredient2.Stats + ingredient3.Stats;

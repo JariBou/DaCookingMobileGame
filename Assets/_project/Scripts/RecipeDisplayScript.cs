@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using _project.Scripts.Core;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,12 +11,13 @@ namespace _project.Scripts
 {
     public class RecipeDisplayScript : MonoBehaviour
     {
-        [SerializeField] private CookingManager _cookingManager;
+        [SerializeField] private CookingManager _cookingManager;        
         [SerializeField] private IngredientStats[] _ingredientStats;
         [SerializeField] private TextMeshProUGUI _finalHunger;
         [SerializeField] private TextMeshProUGUI _finalSatisfaction;
         [SerializeField] private TextMeshProUGUI _finalPower;
         [SerializeField] private Image _finalMealImage;
+        [SerializeField] private TextMeshProUGUI _finalMealName;
         [SerializeField] private CameraScript _camera;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplay;
         private Meal _currentMeal;
@@ -54,7 +56,9 @@ namespace _project.Scripts
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = _currentMeal.Icon;
-                
+                _finalMealName.text = _currentMeal.Name;
+
+
                 _finalHunger.text = (_currentMeal.Stats.x > 0 ? "+" : "") + _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
 
                 _finalSatisfaction.text = (_currentMeal.Stats.y > 0 ? "+" : "") + _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
