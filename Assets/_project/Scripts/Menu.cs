@@ -17,6 +17,7 @@ namespace _project.Scripts
         [SerializeField] private TextMeshProUGUI _finalPower;
         [SerializeField] private Image _finalMealImage;
         [SerializeField] private Button _goPhase2Button;
+        private Meal _currentMeal;
 
         // Start is called before the first frame update
         private void Start()
@@ -49,28 +50,30 @@ namespace _project.Scripts
                     _ingredientStats[i]._cardPower.text = "";
                     _ingredientStats[i]._cardImage.sprite = null;
                     _finalMealImage.sprite = null;
+                    _currentMeal = null;
                 }
             }
 
             if (ClickUp._enlargedSprites.Count == 3)
             {
-                Meal meal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
+                _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
                     ClickUp._enlargedSprites[1].Ingredient, ClickUp._enlargedSprites[2].Ingredient));
-                _finalMealImage.sprite = meal.Icon;
-                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x) > 0)
-                    _finalHunger.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+                _finalMealImage.sprite = _currentMeal.Icon;
+                if (_currentMeal.Stats.x > 0)
+                    _finalHunger.text = "+" + _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
                 else
-                    _finalHunger.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+                    _finalHunger.text = _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
 
-                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y) > 0)
-                    _finalSatisfaction.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+                if (_currentMeal.Stats.y > 0)
+                    _finalSatisfaction.text = "+" + _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
                 else
-                    _finalSatisfaction.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+                    _finalSatisfaction.text = _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
 
-                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z) > 0)
-                    _finalPower.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                if (_currentMeal.Stats.z > 0)
+                    _finalPower.text = "+" + _currentMeal.Stats.z.ToString(CultureInfo.InvariantCulture);
                 else
-                    _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                    _finalPower.text = _currentMeal.Stats.z.ToString(CultureInfo.InvariantCulture);
+                /*_goPhase2Button.interactable = true;*/
             }
             else
             {
@@ -88,6 +91,7 @@ namespace _project.Scripts
                     _finalPower.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
                 else
                     _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                /*_goPhase2Button.interactable = false;*/
             }
         }
 
@@ -114,7 +118,14 @@ namespace _project.Scripts
 
         public void ConfirmMeal()
         {
-            // TODO
+            if (_currentMeal != null)
+            {
+                Debug.Log("Phase2");
+            }
+            else
+            {
+                Debug.Log("No meal");
+            }
         }
     }
     [Serializable]
