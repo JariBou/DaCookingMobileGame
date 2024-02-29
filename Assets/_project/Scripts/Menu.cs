@@ -57,20 +57,12 @@ namespace _project.Scripts
                 Meal meal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp._enlargedSprites[0].Ingredient,
                     ClickUp._enlargedSprites[1].Ingredient, ClickUp._enlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = meal.Icon;
-                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x) > 0)
-                    _finalHunger.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
-                else
-                    _finalHunger.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
+                
+                _finalHunger.text = (meal.Stats.x > 0 ? "+" : "") + meal.Stats.x.ToString(CultureInfo.InvariantCulture);
 
-                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y) > 0)
-                    _finalSatisfaction.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
-                else
-                    _finalSatisfaction.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
+                _finalSatisfaction.text = (meal.Stats.y > 0 ? "+" : "") + meal.Stats.y.ToString(CultureInfo.InvariantCulture);
 
-                if (ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z) > 0)
-                    _finalPower.text = "+" + ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
-                else
-                    _finalPower.text = ClickUp._enlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                _finalPower.text = (meal.Stats.z > 0 ? "+" : "") + meal.Stats.z.ToString(CultureInfo.InvariantCulture);
             }
             else
             {
