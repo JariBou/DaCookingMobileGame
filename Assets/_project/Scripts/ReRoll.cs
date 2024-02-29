@@ -13,7 +13,7 @@ namespace _project.Scripts
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
         private int _rerollCount = 0;
         private bool _isRerolling = false;
-        [SerializeField] private bool _canHaveSameIngredientInDeck;
+/*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
 
         private void OnMouseDown()
         {
