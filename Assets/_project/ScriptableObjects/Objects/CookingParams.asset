@@ -13,13 +13,59 @@ MonoBehaviour:
   m_Name: CookingParams
   m_EditorClassIdentifier: 
   _cookingMethod1: 0
-  _method1StatsMultiplier: {x: 0, y: 0, z: 0}
+  _method1StatsMultiplier: {x: 1.25, y: 0, z: 0.75}
   _cookingMethod2: 1
-  _method2StatsMultiplier: {x: 0, y: 0, z: 0}
+  _method2StatsMultiplier: {x: 0, y: 0.5, z: 1.5}
   _cookingMethod3: 2
-  _method3StatsMultiplier: {x: 0, y: 0, z: 0}
+  _method3StatsMultiplier: {x: 0.25, y: 2, z: 0}
   _mealIcons:
+  - _ingredientFamilyA: 1
+    _ingredientFamilyB: 2
+    _ingredientFamilyC: 2
+    _icon: {fileID: -5159998450949331858, guid: 328bdc3fa1650e7448bbabfd13231804, type: 3}
+    _name: Psychosushis
   - _ingredientFamilyA: 0
+    _ingredientFamilyB: 0
+    _ingredientFamilyC: 0
+    _icon: {fileID: 6071268267034401230, guid: 8122a9710ef4dcd41bd87d15c08378e6, type: 3}
+    _name: Brochette humainement viandue
+  - _ingredientFamilyA: 1
+    _ingredientFamilyB: 1
+    _ingredientFamilyC: 0
+    _icon: {fileID: 7548794707154259472, guid: 59b934c2dbba92f4a9f44a724aed03ab, type: 3}
+    _name: "M\xE9li-m\xE9lo de coeur humain sur son lit de plante carnivore"
+  - _ingredientFamilyA: 1
+    _ingredientFamilyB: 0
+    _ingredientFamilyC: 0
+    _icon: {fileID: 6919195248809828904, guid: 11815b43f1cc7d8488bc6299993065ae, type: 3}
+    _name: "R\xF4ti c\xE9r\xE9bral en salade"
+  - _ingredientFamilyA: 1
+    _ingredientFamilyB: 1
+    _ingredientFamilyC: 1
+    _icon: {fileID: 7077826869597143375, guid: f758b57142bc61a4aa0da898cdfd41d1, type: 3}
+    _name: "Salade v\xE9n\xE9neuse"
+  - _ingredientFamilyA: 1
+    _ingredientFamilyB: 0
+    _ingredientFamilyC: 2
+    _icon: {fileID: -8071964510408386132, guid: 606aec2f50bae83469c2d83b86c168d1, type: 3}
+    _name: Sandwich mordant
+  - _ingredientFamilyA: 1
     _ingredientFamilyB: 1
     _ingredientFamilyC: 2
-    _icon: {fileID: 1295277539485042539, guid: 2248546b940fe154a90e18c78d3ff315, type: 3}
+    _icon: {fileID: 6044799029972071473, guid: 1ef3bba173cd1d341bb7b52343de1984, type: 3}
+    _name: "Soupe oculaire aux l\xE9gumes"
+  - _ingredientFamilyA: 2
+    _ingredientFamilyB: 2
+    _ingredientFamilyC: 2
+    _icon: {fileID: -7890828034357963859, guid: f2b7be6617c032b419898d7e8b518a7f, type: 3}
+    _name: "Brandade de fruits de mer avari\xE9s"
+  - _ingredientFamilyA: 0
+    _ingredientFamilyB: 0
+    _ingredientFamilyC: 2
+    _icon: {fileID: -3408478300425195292, guid: e17a29ad8e856d6409a4e48a9e25fa73, type: 3}
+    _name: Brochette de rat et poiscaille
+  - _ingredientFamilyA: 2
+    _ingredientFamilyB: 2
+    _ingredientFamilyC: 0
+    _icon: {fileID: -5807574126089160812, guid: a52ad542bad371f4c894fd3c6610fe83, type: 3}
+    _name: Filet spectral avec barbaque humaine

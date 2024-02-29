@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Unicorn Head
   _ingredientFamily: 0
-  _stats: {x: -12, y: 33, z: 20}
+  _stats: {x: 27, y: 9, z: 2}
   _randomAddedstats: {x: 5, y: 2, z: 8}
   _icon: {fileID: 21300000, guid: 568ee5e95bf17f340b6366e37b5fe405, type: 3}
   _description: 'Unicorn Head: Rare ingredient offering an explosion of magical flavors,
