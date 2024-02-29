@@ -10,6 +10,7 @@ namespace _project.Scripts
 
         [SerializeField] private IngredientsBundleSo _bundleSo;
         [SerializeField] private ClickUp[] _cards;
+        [SerializeField] private RecipeDisplayScript _recipeDisplayScript;
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
         private int _rerollCount = 0;
         private bool _isRerolling = false;
@@ -17,7 +18,7 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            if (_rerollCount >= _rerollChance) return;
+            if (_rerollCount >= _rerollChance || !_recipeDisplayScript.IsEnabled) return;
         
             _rerollCount++;
             ReRollBundle();

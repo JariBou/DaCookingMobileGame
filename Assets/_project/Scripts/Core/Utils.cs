@@ -18,6 +18,13 @@ namespace _project.Scripts.Core
 
             return listToTestFor.Count <= 0;
         }
+        
+        public static int Mod(float x, float m)
+        {
+            int q = (int)Math.Floor(x / m);
+            float r = x - q * m;
+            return (int)r;
+        }
     }
 
     public static class Extensions

@@ -35,7 +35,7 @@ namespace _project.Scripts
 
         public static List<ClickUp> EnlargedSprites = new();
 
-        private Menu _menu;
+        private RecipeDisplayScript _recipeDisplayScript;
 
         [Header("Changing Card")]
         [SerializeField] private bool _isPassing = false;
@@ -52,7 +52,7 @@ namespace _project.Scripts
             _ingredientSo = GetComponent<Card>()._ingredientSo;
             _initialScale = transform.localScale;
             _initialPosition = transform.position;
-            _menu = FindFirstObjectByType<Menu>();
+            _recipeDisplayScript = FindFirstObjectByType<RecipeDisplayScript>();
         }
 
         public void PassIngredient(IngredientSo newIngredient)
@@ -110,7 +110,7 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            if (_isPassing || _isAppearing) return;
+            if (_isPassing || _isAppearing || !_recipeDisplayScript.IsEnabled) return;
             
             switch (_isScaled)
             {
@@ -121,14 +121,14 @@ namespace _project.Scripts
                         EnlargedSprites[0].StartMoving(EnlargedSprites[0].InitialPosition, EnlargedSprites[0].InitialScale, false);
                         EnlargedSprites[0]._padlock.SetActive(false);
                         EnlargedSprites.RemoveAt(0);
-                        _menu.UpdateMenu();
+                        _recipeDisplayScript.UpdateMenu();
                     }
 
                     StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
                     _isScaled = true;
                     _padlock.SetActive(true);
                     EnlargedSprites.Add(this);
-                    _menu.UpdateMenu();
+                    _recipeDisplayScript.UpdateMenu();
                     break;
                 }
                 case true:
@@ -136,7 +136,7 @@ namespace _project.Scripts
                     _isScaled = false;
                     _padlock.SetActive(false);
                     EnlargedSprites.Remove(this);
-                    _menu.UpdateMenu();
+                    _recipeDisplayScript.UpdateMenu();
                     break;
             }
         }

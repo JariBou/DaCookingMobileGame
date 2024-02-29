@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace _project.Scripts
 {
-    public class Menu : MonoBehaviour
+    public class RecipeDisplayScript : MonoBehaviour
     {
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private IngredientStats[] _ingredientStats;
@@ -16,12 +16,14 @@ namespace _project.Scripts
         [SerializeField] private TextMeshProUGUI _finalSatisfaction;
         [SerializeField] private TextMeshProUGUI _finalPower;
         [SerializeField] private Image _finalMealImage;
-        [SerializeField] private Button _goPhase2Button;
+        [SerializeField] private CameraScript _camera;
         private Meal _currentMeal;
+        public bool IsEnabled { get; private set; }
 
         // Start is called before the first frame update
         private void Start()
         {
+            IsEnabled = true;
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
                 ResetIngredientStats(_ingredientStats[i]);
@@ -104,7 +106,9 @@ namespace _project.Scripts
         {
             if (_currentMeal != null)
             {
-                Debug.Log("Phase2");
+                Debug.Log("Going to Phase2");
+                _camera.NextPos();
+                IsEnabled = false;
             }
             else
             {
