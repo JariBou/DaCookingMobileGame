@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 2248546b940fe154a90e18c78d3ff315
+guid: 8122a9710ef4dcd41bd87d15c08378e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8071964510408386132
-    second: PH_Sandwich_Mutant_0
-  - first:
-      213: 1295277539485042539
-    second: PH_Sandwich_Mutant_1
-  - first:
-      213: 8998966135973354585
-    second: PH_Sandwich_Mutant_2
+      213: 6071268267034401230
+    second: PH_Brochette de main_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -102,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PH_Sandwich_Mutant_0
+      name: PH_Brochette de main_0
       rect:
         serializedVersion: 2
-        x: 35
-        y: 833
-        width: 13
-        height: 25
+        x: 108
+        y: 264
+        width: 1803
+        height: 1586
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,50 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ca95c8d7b0f9aff80800000000000000
-      internalID: -8071964510408386132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PH_Sandwich_Mutant_1
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 476
-        width: 1908
-        height: 1074
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b674c8a3f00c9f110800000000000000
-      internalID: 1295277539485042539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PH_Sandwich_Mutant_2
-      rect:
-        serializedVersion: 2
-        x: 389
-        y: 455
-        width: 24
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95c1678a500c2ec70800000000000000
-      internalID: 8998966135973354585
+      spriteID: ec9dfa8625a714450800000000000000
+      internalID: 6071268267034401230
       vertices: []
       indices: 
       edges: []
@@ -191,10 +130,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      PH_Sandwich_Mutant_0: -8071964510408386132
-      PH_Sandwich_Mutant_1: 1295277539485042539
-      PH_Sandwich_Mutant_2: 8998966135973354585
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
