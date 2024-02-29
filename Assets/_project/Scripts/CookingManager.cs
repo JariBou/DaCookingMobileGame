@@ -15,7 +15,6 @@ namespace _project.Scripts
 
         public PhaseCode GetCurrentPhase() => (PhaseCode)_camera.CurrentIndex;
 
-
         public Meal CreateMeal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
             return new Meal(ingredient1, ingredient2, ingredient3).CreateIcon(_cookingParamsSo);

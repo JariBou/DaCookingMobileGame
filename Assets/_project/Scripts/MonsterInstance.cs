@@ -7,13 +7,20 @@ using Random = UnityEngine.Random;
 
 namespace _project.Scripts
 {
-    public class MonsterInstance
+    public class MonsterInstance : MonoBehaviour
     {
+        [SerializeField] private MonsterDataSo _baseMonsterDataSo;
         public Vector3 CurrentStats { get; private set; }
 
         public MonsterDataSo MonsterData { get; private set; }
 
-        public MonsterInstance(MonsterDataSo dataSo)
+
+        private void Start()
+        {
+            InitializeMonster(_baseMonsterDataSo);
+        }
+
+        public void InitializeMonster(MonsterDataSo dataSo)
         {
             MonsterData = dataSo;
 

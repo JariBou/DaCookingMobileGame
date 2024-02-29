@@ -5513,6 +5513,7 @@ GameObject:
   - component: {fileID: 1596713401}
   - component: {fileID: 1596713404}
   - component: {fileID: 1596713403}
+  - component: {fileID: 1596713405}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -5676,6 +5677,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _lerpValue: 0.1
+--- !u!114 &1596713405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596713400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3b71a741c0f465fad7ddefb3da444cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _baseMonsterDataSo: {fileID: 11400000, guid: 99b889a07f15a464787d513140eb978f, type: 2}
 --- !u!1001 &1675246404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8327,6 +8341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6053581124376789860}
+  - component: {fileID: 6053581124376789861}
   m_Layer: 0
   m_Name: phase 3
   m_TagString: Untagged
@@ -8367,6 +8382,7 @@ MonoBehaviour:
   _resultMealDisplayScript: {fileID: 8717160910175382966}
   _cookingParams: {fileID: 11400000, guid: 196ff6f4fbe458a45b5a63d85fe36096, type: 2}
   _cookingManager: {fileID: 1596713401}
+  _nextPhaseMealDisplayScript: {fileID: 5162864852790932402}
 --- !u!222 &1461106471514495447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10120,6 +10136,7 @@ GameObject:
   - component: {fileID: 2957424723373685161}
   - component: {fileID: 4404893536586926825}
   - component: {fileID: 751131540203838752}
+  - component: {fileID: 5162864852790932402}
   m_Layer: 5
   m_Name: 'Meal after Cooking '
   m_TagString: Untagged
@@ -10127,6 +10144,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5162864852790932402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5162864852790932401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b37ce5ebdf6aa6d46abc23997e858c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mealName: {fileID: 0}
+  _mealStatX: {fileID: 966296944657787466}
+  _mealStatY: {fileID: 9174842227890664650}
+  _mealStatZ: {fileID: 5640226663805694068}
+  _mealImage: {fileID: 751131540203838752}
 --- !u!224 &5196312464615381980
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10681,6 +10715,19 @@ Transform:
   - {fileID: 2629269247232391581}
   m_Father: {fileID: 84670090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6053581124376789861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345490185016467426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24d2e2dcf89bf8d4ca4563441a784d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cookingManager: {fileID: 1596713401}
 --- !u!224 &6063077255721491272
 RectTransform:
   m_ObjectHideFlags: 0
