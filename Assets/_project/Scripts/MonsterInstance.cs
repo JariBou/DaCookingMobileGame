@@ -10,12 +10,12 @@ namespace _project.Scripts
     public class MonsterInstance : MonoBehaviour
     {
         [SerializeField] private MonsterDataSo _baseMonsterDataSo;
-        public Vector3 CurrentStats { get; private set; }
+        public Vector3Int CurrentStats { get; private set; }
 
         public MonsterDataSo MonsterData { get; private set; }
 
 
-        private void Start()
+        private void Awake()
         {
             InitializeMonster(_baseMonsterDataSo);
         }
@@ -27,7 +27,7 @@ namespace _project.Scripts
             int x = Random.Range(dataSo.RandomStatsMin.x, dataSo.RandomStatsMax.x);
             int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
             int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
-            CurrentStats = new Vector3(x, y, z);
+            CurrentStats = new Vector3Int(x, y, z);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace _project.Scripts
         public bool FeedMeal(Meal meal)
         {
             CurrentStats += meal.Stats;
-            CurrentStats.Clamp(Vector3.zero, new Vector3(100, 100, 100));
+            CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
 
             return CurrentStats.IsInBounds(MonsterData.StatsMin, MonsterData.StatsMax);
         }

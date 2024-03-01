@@ -25,7 +25,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3988262711087478190}
-  m_LocalRotation: {x: -0, y: -0, z: 0.6515669, w: 0.75859123}
+  m_LocalRotation: {x: -0, y: -0, z: 0.654079, w: 0.7564262}
   m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.019770622, y: 0.17826825}
+  m_AnchoredPosition: {x: -0.01979065, y: 0.17813712}
   m_SizeDelta: {x: 0.1952, y: 1.3219}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &8984751344434251459
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.65799993, g: 0, b: 0, a: 0.2}
+  m_Color: {r: 0.66, g: 0, b: 0, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -167,12 +167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _yOffset: -0.63
-  _GaugeOffset: 0.65
+  _gaugeOffset: 0.65
   _leftAngleCramped: 95
   _rightAngleCramped: 95
   _maxValue: 100
-  _currentValue: 40.1
-  _previsualizationValue: 7.2
+  _currentValue: 40
+  _previsualizationValue: 7
   _needle: {fileID: 8250398152856923675}
   _needlePrevisualization: {fileID: 3988262711087478190}
 --- !u!1 &7555506960608717103
@@ -275,7 +275,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8250398152856923675}
-  m_LocalRotation: {x: -0, y: -0, z: 0.16341504, w: 0.9865574}
+  m_LocalRotation: {x: -0, y: -0, z: 0.1650549, w: 0.9862844}
   m_LocalPosition: {x: 0, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -284,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.0064487457, y: 0.19418174}
+  m_AnchoredPosition: {x: -0.006511688, y: 0.19416028}
   m_SizeDelta: {x: 0.1952, y: 1.3219}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &6712121446065922285

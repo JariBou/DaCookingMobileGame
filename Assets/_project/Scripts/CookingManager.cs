@@ -1,17 +1,20 @@
 ﻿using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _project.Scripts
 {
     public class CookingManager : MonoBehaviour
     {
         [SerializeField] private CookingParamsSo _cookingParamsSo;
-
         [SerializeField] private Meal _currentMeal;
-
         [SerializeField] private CameraScript _camera;
+        [SerializeField] private MonsterInstance _monsterInstance;
+        [FormerlySerializedAs("_gaugeHandler")] [SerializeField] private GaugeHandler _gaugeGaugeManager;
+        
         public CameraScript Camera => _camera;
+        public GaugeHandler GaugeManager => _gaugeGaugeManager;
 
         public PhaseCode GetCurrentPhase() => (PhaseCode)_camera.CurrentIndex;
 
@@ -31,9 +34,10 @@ namespace _project.Scripts
         /// </summary>
         /// <param name="monsterInstance"></param>
         /// <returns></returns>
-        public bool FeedMeal(MonsterInstance monsterInstance)
+        public bool FeedMeal()
         {
-            bool result = monsterInstance.FeedMeal(_currentMeal);
+            bool result = _monsterInstance.FeedMeal(_currentMeal);
+            _gaugeGaugeManager.NewPhase();
             _currentMeal = null;
             return result;
         }

@@ -24,7 +24,11 @@ namespace _project.Scripts
         public void UpdateMealDisplay()
         {
             _resultMealDisplayScript.gameObject.SetActive(true);
-            _resultMealDisplayScript.UpdateDisplay(new Meal(_cookingManager.GetCurrentMeal()).CookMeal(_cookingParams.GetMultiplier(SelectedCookingMethod)));
+            Meal tempMeal =
+                new Meal(_cookingManager.GetCurrentMeal()).CookMeal(
+                    _cookingParams.GetMultiplier(SelectedCookingMethod));
+            _resultMealDisplayScript.UpdateDisplay(tempMeal);
+            _cookingManager.GaugeManager.PrevisualizeMeal(tempMeal);
         }
 /*
         public void UpdateMealDisplayPhase3(CondimentSo condiment)
