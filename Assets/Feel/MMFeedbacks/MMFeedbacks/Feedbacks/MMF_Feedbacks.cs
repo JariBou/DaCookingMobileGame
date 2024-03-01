@@ -97,8 +97,11 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
 
-
-			if (Mode == Modes.PlayTargetFeedbacks)
+			if (Mode == Modes.PlayFeedbacksInArea)
+			{
+				MMFeedbacksShakeEvent.Trigger(ChannelData, OnlyTriggerPlayersInRange, EventRange, EventOriginTransform.position);    
+			}
+			else if (Mode == Modes.PlayTargetFeedbacks)
 			{
 				TargetFeedbacks?.PlayFeedbacks(position, feedbacksIntensity);
 			}

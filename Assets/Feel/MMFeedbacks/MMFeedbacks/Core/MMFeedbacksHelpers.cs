@@ -27,6 +27,27 @@ namespace MoreMountains.Feedbacks
 			float remappedValue = C + (x - A) / (B - A) * (D - C);
 			return remappedValue;
 		}
+
+		/// <summary>
+		/// A helper used to migrate values from an AnimationCurve field to a MMTweenType, useful when updating
+		/// old feedbacks to use them without losing legacy values 
+		/// </summary>
+		/// <param name="oldCurve"></param>
+		/// <param name="newTweenType"></param>
+		/// <param name="owner"></param>
+		public static void MigrateCurve(AnimationCurve oldCurve, MMTweenType newTweenType, MMF_Player owner)
+		{
+			if ((oldCurve.keys.Length > 0) && (!newTweenType.Initialized))
+			{
+				newTweenType.Curve = oldCurve;
+				newTweenType.MMTweenDefinitionType = MMTweenDefinitionTypes.AnimationCurve;
+				oldCurve = null;
+				newTweenType.Initialized = true;
+				#if UNITY_EDITOR
+				UnityEditor.Undo.RecordObject(owner, "Ports animation curve to tween system");
+				#endif
+			}
+		}
 	}
 
 	public class MMFReadOnlyAttribute : PropertyAttribute { }
