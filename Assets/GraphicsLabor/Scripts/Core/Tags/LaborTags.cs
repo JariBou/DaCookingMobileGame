@@ -11,6 +11,6 @@ namespace GraphicsLabor.Scripts.Core.Tags
 	{
 		Null = 1 << 0,
 		Entity = 1 << 1,
-		Player = 1 << 2,
+		Boss = 1 << 2,
 	}
 }

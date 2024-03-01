@@ -1,17 +1,24 @@
+using System;
+using GraphicsLabor.Scripts.Core.Tags;
+using GraphicsLabor.Scripts.Core.Tags.Components;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using GraphicsLabor.Scripts.Core.Utility;
 
 namespace _project.Scripts
 {
     public class DragAndDrop : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerMask = 0;
+        [SerializeField, Range(1f, 2f)] private float _scaleOnDrag = 1.5f;
         private bool _isDragging = false;
+        private bool _onBoss = false;
+        private CookingManager _cookingManager;
         public bool IsDragging => _isDragging;
         private Collider2D _hit;
-        [Range(0, 1)]
-        public float _lerpValue = 0.1f;
+        [SerializeField, Range(0, 1)]
+        private float _lerpValue = 0.1f;
         // Start is called before the first frame update
 
         // Update is called once per frame
@@ -20,7 +27,7 @@ namespace _project.Scripts
             if (_isDragging)
             {
                 Vector2 ScreenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                _hit.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
                 if (Mouse.current.delta.ReadValue().x != 0 || Mouse.current.delta.ReadValue().y != 0)
                 {
@@ -79,10 +86,41 @@ namespace _project.Scripts
             {
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
+
+                Dropped();
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
         }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.HasExactTags(LaborTags.Boss))
+            {
+                _onBoss = true;
+                _cookingManager = other.GetComponent<LinkedLaborTagComponent>()
+                    .GetLinkedMonoBehaviour<CookingManager>();
+            }
+        }
+        
+        private void OnTriggerExit2D(Collider2D other)
+        {
+            if (other.HasExactTags(LaborTags.Boss))
+            {
+                _onBoss = false;
+                _cookingManager = null;
+            }
+        }
+
+        private void Dropped()
+        {
+            if (_onBoss)
+            {
+                _cookingManager.FeedMeal();
+                Destroy(gameObject);
+            }
+        }
+
         private void OnMouseDrag()
         {
             if (_isDragging)

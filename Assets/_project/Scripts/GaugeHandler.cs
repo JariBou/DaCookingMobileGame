@@ -15,9 +15,7 @@ namespace _project.Scripts
 
         private void Start()
         {
-            _gaugeX.PassBoth(_monsterInstance.CurrentStats.x);
-            _gaugeY.PassBoth(_monsterInstance.CurrentStats.y);
-            _gaugeZ.PassBoth(_monsterInstance.CurrentStats.z);
+            NewPhase();
         }
 
         public void PrevisualizeMeal(Meal meal)
@@ -37,6 +35,13 @@ namespace _project.Scripts
         private int ClampValue(int val, float valToAdd)
         {
             return (int)Math.Clamp(val + valToAdd, 0, 100);
+        }
+
+        public void NewPhase()
+        {
+            _gaugeX.PassBoth(_monsterInstance.CurrentStats.x);
+            _gaugeY.PassBoth(_monsterInstance.CurrentStats.y);
+            _gaugeZ.PassBoth(_monsterInstance.CurrentStats.z);
         }
     }
 }

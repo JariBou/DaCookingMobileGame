@@ -10,6 +10,7 @@ namespace _project.Scripts
         [SerializeField] private CookingParamsSo _cookingParamsSo;
         [SerializeField] private Meal _currentMeal;
         [SerializeField] private CameraScript _camera;
+        [SerializeField] private MonsterInstance _monsterInstance;
         [FormerlySerializedAs("_gaugeHandler")] [SerializeField] private GaugeHandler _gaugeGaugeManager;
         
         public CameraScript Camera => _camera;
@@ -33,9 +34,10 @@ namespace _project.Scripts
         /// </summary>
         /// <param name="monsterInstance"></param>
         /// <returns></returns>
-        public bool FeedMeal(MonsterInstance monsterInstance)
+        public bool FeedMeal()
         {
-            bool result = monsterInstance.FeedMeal(_currentMeal);
+            bool result = _monsterInstance.FeedMeal(_currentMeal);
+            _gaugeGaugeManager.NewPhase();
             _currentMeal = null;
             return result;
         }
