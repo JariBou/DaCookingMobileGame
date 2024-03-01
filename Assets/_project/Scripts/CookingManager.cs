@@ -54,6 +54,12 @@ namespace _project.Scripts
             return _currentMeal?.AddCondiment(condimentSo);
         }
 
+        public Meal AddCondiment(CondimentSo condimentSO , int sign)
+        {
+            // TODO add *1 or *-1 multiplier
+            return _currentMeal?.AddCondiment(condimentSO, sign);
+        }
+
         public Meal AddCondiment(Meal meal, CondimentSo condimentSo)
         {
             // TODO add *1 or *-1 multiplier

@@ -63,6 +63,12 @@ namespace _project.Scripts.Core
             return this;
         }
 
+        public Meal AddCondiment(CondimentSo condimentSo, int sign)
+        {
+            _stats += condimentSo.Value * sign;
+            
+            return this;
+        }
         public Meal CreateIcon(CookingParamsSo cookingParamsSo)
         {
             _icon = cookingParamsSo.GetMealIcon(this);

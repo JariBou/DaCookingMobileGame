@@ -1,12 +1,14 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace _project.Scripts
 {
     public class DragAndDrop : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerMask = 0;
+        [SerializeField] private LayerMask _layerMaskCondiment = 0;
         private bool _isDragging = false;
         public bool IsDragging => _isDragging;
         private Collider2D _hit;
@@ -72,16 +74,43 @@ namespace _project.Scripts
                 {
                     _isDragging = true;
                     _hit = hit;
+                    _hit.GetComponent<Image>().color = new Color(_hit.GetComponent<Image>().color.r, _hit.GetComponent<Image>().color.g, _hit.GetComponent<Image>().color.b, 0.2f);
                     //Effet sonore à rajouter pour le ramassage de l'objet
                 }
             }
             else if (context.canceled)
             {
+                
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
+                _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
+                Collider2D _hitCondiment = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
+                if (_hitCondiment != null)
+                {
+                    if (_hitCondiment.gameObject.tag == "MinusButton")
+                    {
+                        Negative();
+                    }
+                    else if (_hitCondiment.gameObject.tag == "PlusButton")
+                    {
+                        Positive();
+                    }
+                    //Effet sonore à rajouter pour le lâché de l'objet
+                }
+                _hit.GetComponent<Image>().color = new Color(_hit.GetComponent<Image>().color.r, _hit.GetComponent<Image>().color.g, _hit.GetComponent<Image>().color.b, 1);
+
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
+        }
+
+        private void Positive()
+        {
+            _hit.GetComponent<DragableObject>().AddSeosoning(1);
+        }
+        private void Negative()
+        {
+            _hit.GetComponent<DragableObject>().AddSeosoning(-1);
         }
         private void OnMouseDrag()
         {

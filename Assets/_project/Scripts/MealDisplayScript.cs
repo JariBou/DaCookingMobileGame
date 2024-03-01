@@ -17,6 +17,7 @@ namespace _project.Scripts
 
         public void UpdateDisplay(Meal meal)
         {
+/*            _mealName.text = "dd";*/
             _mealStatX.text = meal.Stats.x.ToString(CultureInfo.InvariantCulture);
             _mealStatY.text = meal.Stats.y.ToString(CultureInfo.InvariantCulture);
             _mealStatZ.text = meal.Stats.z.ToString(CultureInfo.InvariantCulture);
