@@ -14,6 +14,7 @@ namespace _project.Scripts
 
         [SerializeField] private float _timeToSlide;
         [SerializeField] private AnimationCurve _slideCurve;
+        
         private float _timer;
         private bool _isMoving;
         public int CurrentIndex => _currentPosIndex;

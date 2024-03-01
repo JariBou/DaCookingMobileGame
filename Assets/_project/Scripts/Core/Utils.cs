@@ -30,7 +30,7 @@ namespace _project.Scripts.Core
     public static class Extensions
     {
 
-        public static Vector3 Clamp(this Vector3 self, Vector3 min, Vector3 max)
+        public static Vector3Int ClampCustom(this Vector3Int self, Vector3Int min, Vector3Int max)
         {
             self.x = Math.Clamp(self.x, min.x, max.x);
             self.y = Math.Clamp(self.y, min.y, max.y);
@@ -38,7 +38,7 @@ namespace _project.Scripts.Core
             return self;
         }
         
-        public static bool IsInBounds(this Vector3 self, Vector3 min, Vector3 max)
+        public static bool IsInBounds(this Vector3Int self, Vector3Int min, Vector3Int max)
         {
             bool isInBounds = true;
 

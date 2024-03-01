@@ -1,17 +1,19 @@
 ﻿using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _project.Scripts
 {
     public class CookingManager : MonoBehaviour
     {
         [SerializeField] private CookingParamsSo _cookingParamsSo;
-
         [SerializeField] private Meal _currentMeal;
-
         [SerializeField] private CameraScript _camera;
+        [FormerlySerializedAs("_gaugeHandler")] [SerializeField] private GaugeHandler _gaugeGaugeManager;
+        
         public CameraScript Camera => _camera;
+        public GaugeHandler GaugeManager => _gaugeGaugeManager;
 
         public PhaseCode GetCurrentPhase() => (PhaseCode)_camera.CurrentIndex;
 

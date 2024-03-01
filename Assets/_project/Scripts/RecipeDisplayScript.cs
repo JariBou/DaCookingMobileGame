@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Linq;
 using _project.Scripts.Core;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +10,7 @@ namespace _project.Scripts
 {
     public class RecipeDisplayScript : MonoBehaviour
     {
-        [SerializeField] private CookingManager _cookingManager;        
+        [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private IngredientStats[] _ingredientStats;
         [SerializeField] private TextMeshProUGUI _finalHunger;
         [SerializeField] private TextMeshProUGUI _finalSatisfaction;
@@ -46,6 +45,7 @@ namespace _project.Scripts
                 {
                     ResetIngredientStats(_ingredientStats[i]);
 
+                    _cookingManager.GaugeManager.RestartPrevGauges();
                     _finalMealImage.sprite = null;
                     _currentMeal = null;
                 }
@@ -56,14 +56,15 @@ namespace _project.Scripts
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = _currentMeal.Icon;
-                _finalMealName.text = _currentMeal.Name;
-
+                // _finalMealName.text = _currentMeal.Name;
 
                 _finalHunger.text = (_currentMeal.Stats.x > 0 ? "+" : "") + _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
 
                 _finalSatisfaction.text = (_currentMeal.Stats.y > 0 ? "+" : "") + _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
 
                 _finalPower.text = (_currentMeal.Stats.z > 0 ? "+" : "") + _currentMeal.Stats.z.ToString(CultureInfo.InvariantCulture);
+                
+                _cookingManager.GaugeManager.PrevisualizeMeal(_currentMeal);
             }
             else
             {

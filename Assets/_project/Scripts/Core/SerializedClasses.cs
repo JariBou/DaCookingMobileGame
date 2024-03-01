@@ -9,13 +9,13 @@ namespace _project.Scripts.Core
     [Serializable]
     public class Meal
     {
-        [SerializeField] private Vector3 _stats;
+        [SerializeField] private Vector3Int _stats;
         [SerializeField] private Vector3 _addedStats;
         [SerializeField] private List<IngredientSo> _ingredients = new(3);
         [SerializeField] private Sprite _icon;
         [SerializeField] private string _name;
 
-        public Vector3 Stats => _stats;
+        public Vector3Int Stats => _stats;
         public Vector3 AddedStats => _addedStats;
         public List<IngredientSo> Ingredients => _ingredients;
         public Sprite Icon => _icon;
@@ -51,9 +51,9 @@ namespace _project.Scripts.Core
 
         public Meal CookMeal(Vector3 multiplier)
         {
-            _stats.x *= multiplier.x;
-            _stats.y *= multiplier.y;
-            _stats.z *= multiplier.z;
+            _stats.x = (int)Math.Round(_stats.x * multiplier.x);
+            _stats.y = (int)Math.Round(_stats.y * multiplier.y);
+            _stats.z = (int)Math.Round(_stats.z * multiplier.z);
             
             //TODO does multiplier affect random added stats?
             
