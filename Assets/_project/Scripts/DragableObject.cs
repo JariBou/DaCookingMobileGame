@@ -16,6 +16,7 @@ public class DragableObject : MonoBehaviour
     private Vector3 _initialPosition;
     [SerializeField] private CookingManager _cookingManager;
     [SerializeField] private MealDisplayScript _mealDisplayScript;
+    [SerializeField] private GaugeHandler _gaugeHandler;
     public Vector3 InitialPosition => _initialPosition;
 
     [SerializeField] private int _maxQuantity;
@@ -57,11 +58,13 @@ public class DragableObject : MonoBehaviour
 
     public void AddSeosoning(int sign)
     {
+        /*Debug.Log("Add seasoning");*/
         if (_maxQuantity <= 0) return;
         _cookingManager.AddCondiment(_condimentSo, sign);
         _mealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
         _maxQuantity--;
         ChangeQuantity();
+        _gaugeHandler.PrevisualizeMeal(_cookingManager.GetCurrentMeal());
 
     }
 

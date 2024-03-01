@@ -21,6 +21,7 @@ namespace _project.Scripts
         private Collider2D _hit;
         [SerializeField, Range(0, 1)]
         private float _lerpValue = 0.1f;
+        [SerializeField] private GaugeHandler _gaugeHandler;
         // Start is called before the first frame update
 
         // Update is called once per frame
@@ -81,21 +82,24 @@ namespace _project.Scripts
                 {
                     _isDragging = true;
                     _hit = hit;
-                    _hit.GetComponent<Image>().color = new Color(_hit.GetComponent<Image>().color.r, _hit.GetComponent<Image>().color.g, _hit.GetComponent<Image>().color.b, 0.2f);
+                    Image _hitImage = _hit.GetComponent<Image>();
+                    _hit.GetComponent<Image>().color = new Color(_hitImage.color.r, _hitImage.color.g, _hitImage.color.b,0.2f);
                     //Effet sonore à rajouter pour le ramassage de l'objet
                 }
             }
             else if (context.canceled)
             {
-                
+                if (_hit == null) return;
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
 
                 Dropped();
+
                 _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
                 Collider2D _hitCondiment = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
                 if (_hitCondiment != null)
                 {
+                    /*Debug.Log("Yes");*/
                     if (_hitCondiment.gameObject.tag == "MinusButton")
                     {
                         Negative();
@@ -106,7 +110,8 @@ namespace _project.Scripts
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
-                _hit.GetComponent<Image>().color = new Color(_hit.GetComponent<Image>().color.r, _hit.GetComponent<Image>().color.g, _hit.GetComponent<Image>().color.b, 1);
+                Image _hitImage = _hit.GetComponent<Image>();
+                _hit.GetComponent<Image>().color = new Color(_hitImage.color.r, _hitImage.color.g, _hitImage.color.b, 1);
 
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
@@ -115,10 +120,12 @@ namespace _project.Scripts
 
         private void Positive()
         {
+            /*Debug.Log("Positive");*/
             _hit.GetComponent<DragableObject>().AddSeosoning(1);
         }
         private void Negative()
         {
+            /*Debug.Log("Negative");*/
             _hit.GetComponent<DragableObject>().AddSeosoning(-1);
         }
 
@@ -146,7 +153,7 @@ namespace _project.Scripts
             if (_onBoss)
             {
                 _cookingManager.FeedMeal();
-                Destroy(gameObject);
+                Destroy(_hit);
             }
         }
 

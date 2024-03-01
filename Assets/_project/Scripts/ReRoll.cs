@@ -31,7 +31,11 @@ namespace _project.Scripts
 
             foreach (IngredientSo ingredientSo in GetSelectedIngredients())
             {
-                possibleIngredients.RemoveAt(possibleIngredients.FindIndex(el => el == ingredientSo));
+                int index = possibleIngredients.FindIndex(el => el == ingredientSo);
+                if (index != -1) // Vérifiez si l'élément a été trouvé
+                {
+                    possibleIngredients.RemoveAt(index);
+                }
             }
 
             foreach (ClickUp clickUp in _cards)

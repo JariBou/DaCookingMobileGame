@@ -5917,7 +5917,12 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 64
+  _scaleOnDrag: 1.5
+  _layerMaskCondiment:
+    serializedVersion: 2
+    m_Bits: 256
   _lerpValue: 0.1
+  _gaugeHandler: {fileID: 2023671285}
 --- !u!114 &1596713405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12362,6 +12367,7 @@ MonoBehaviour:
   _condimentSo: {fileID: 11400000, guid: 1d27ae456b6b1d34eab6bebc99bc0ffd, type: 2}
   _cookingManager: {fileID: 1596713401}
   _mealDisplayScript: {fileID: 5162864852790932402}
+  _gaugeHandler: {fileID: 2023671285}
   _maxQuantity: 2
 --- !u!224 &7147530971769888342
 RectTransform:
@@ -12503,6 +12509,7 @@ MonoBehaviour:
   _condimentSo: {fileID: 11400000, guid: 08328c131f8ec7540a8da7d73916e5c6, type: 2}
   _cookingManager: {fileID: 1596713401}
   _mealDisplayScript: {fileID: 5162864852790932402}
+  _gaugeHandler: {fileID: 2023671285}
   _maxQuantity: 2
 --- !u!224 &7309374980510838360
 RectTransform:
@@ -12619,6 +12626,7 @@ MonoBehaviour:
   _condimentSo: {fileID: 11400000, guid: 63663a8781f466f488f3d3ca044dfb04, type: 2}
   _cookingManager: {fileID: 1596713401}
   _mealDisplayScript: {fileID: 5162864852790932402}
+  _gaugeHandler: {fileID: 2023671285}
   _maxQuantity: 3
 --- !u!222 &7448467246825682572
 CanvasRenderer:
@@ -13246,7 +13254,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _scaleOnDrag: 1.5
+  _layerMaskCondiment:
+    serializedVersion: 2
+    m_Bits: 0
   _lerpValue: 0.1
+  _gaugeHandler: {fileID: 0}
 --- !u!222 &8675591350455609301
 CanvasRenderer:
   m_ObjectHideFlags: 0
