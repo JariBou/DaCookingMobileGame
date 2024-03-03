@@ -19,7 +19,8 @@ namespace GraphicsLabor.Scripts.Core.Tags
             {
                 throw new MissingComponentException($"{nameof(self)} is missing required ITagHolder component");
             }
-
+            Debug.Log(component.GetLaborTags());
+            Debug.Log(tags);
             return component.GetLaborTags() == tags;
         }
 

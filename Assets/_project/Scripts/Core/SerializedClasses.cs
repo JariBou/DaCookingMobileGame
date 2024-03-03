@@ -78,6 +78,12 @@ namespace _project.Scripts.Core
             _icon = cookingParamsSo.GetMealIcon(this);
             return this;
         }
+
+        public Meal SetName(string name)
+        {
+            _name = name;
+            return this;
+        }
     }
 
     [Serializable]

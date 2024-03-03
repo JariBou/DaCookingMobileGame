@@ -36,6 +36,7 @@ namespace _project.Scripts
         /// <returns></returns>
         public bool FeedMeal()
         {
+            Debug.Log("Feeding Boss");
             bool result = _monsterInstance.FeedMeal(_currentMeal);
             _gaugeGaugeManager.NewPhase();
             _currentMeal = null;

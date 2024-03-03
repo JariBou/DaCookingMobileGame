@@ -93,7 +93,11 @@ namespace _project.Scripts
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
 
-                Dropped();
+                if (_onBoss)
+                {
+                    Dropped();
+                    return;
+                }
 
                 _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
                 Collider2D _hitCondiment = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
@@ -131,6 +135,7 @@ namespace _project.Scripts
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            Debug.Log(other.gameObject.name);
             if (other.HasExactTags(LaborTags.Boss))
             {
                 _onBoss = true;
@@ -150,11 +155,8 @@ namespace _project.Scripts
 
         private void Dropped()
         {
-            if (_onBoss)
-            {
-                _cookingManager.FeedMeal();
-                Destroy(_hit);
-            }
+            _cookingManager.FeedMeal();
+            Destroy(_hit);
         }
 
         private void OnMouseDrag()
