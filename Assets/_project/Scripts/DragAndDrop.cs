@@ -82,8 +82,8 @@ namespace _project.Scripts
                 {
                     _isDragging = true;
                     _hit = hit;
-                    Image _hitImage = _hit.GetComponent<Image>();
-                    _hit.GetComponent<Image>().color = new Color(_hitImage.color.r, _hitImage.color.g, _hitImage.color.b,0.2f);
+                    Image hitImage = _hit.GetComponent<Image>();
+                    _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b,0.2f);
                     //Effet sonore à rajouter pour le ramassage de l'objet
                 }
             }
@@ -100,22 +100,22 @@ namespace _project.Scripts
                 }
 
                 _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
-                Collider2D _hitCondiment = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
-                if (_hitCondiment != null)
+                Collider2D hitCondiment = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
+                if (hitCondiment != null)
                 {
                     /*Debug.Log("Yes");*/
-                    if (_hitCondiment.gameObject.tag == "MinusButton")
+                    if (hitCondiment.gameObject.CompareTag("MinusButton"))
                     {
                         Negative();
                     }
-                    else if (_hitCondiment.gameObject.tag == "PlusButton")
+                    else if (hitCondiment.gameObject.CompareTag("PlusButton"))
                     {
                         Positive();
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
-                Image _hitImage = _hit.GetComponent<Image>();
-                _hit.GetComponent<Image>().color = new Color(_hitImage.color.r, _hitImage.color.g, _hitImage.color.b, 1);
+                Image hitImage = _hit.GetComponent<Image>();
+                _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
 
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
@@ -163,8 +163,8 @@ namespace _project.Scripts
         {
             if (_isDragging)
             {
-                Vector2 ScreenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                _hit.transform.position = new Vector3(ScreenMousePosition.x, ScreenMousePosition.y, _hit.transform.position.z);
+                Vector2 screenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                _hit.transform.position = new Vector3(screenMousePosition.x, screenMousePosition.y, _hit.transform.position.z);
             }
         }
     }
