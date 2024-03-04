@@ -16,7 +16,7 @@ namespace _project.Scripts
         [SerializeField] private LayerMask _layerMaskCondiment = 0;
         private bool _isDragging = false;
         private bool _onBoss = false;
-        private CookingManager _cookingManager;
+        [SerializeField] private CookingManager _cookingManager;
         public bool IsDragging => _isDragging;
         private Collider2D _hit;
         [SerializeField, Range(0, 1)]
@@ -93,24 +93,29 @@ namespace _project.Scripts
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
 
-                if (_onBoss)
+                try
                 {
-                    Dropped();
-                    return;
+                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
                 }
-
-                _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
-                Collider2D hitCondiment = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
-                if (hitCondiment != null)
+                catch (Exception e)
+                {
+                  
+                }
+                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
+                if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
-                    if (hitCondiment.gameObject.CompareTag("MinusButton"))
+                    if (hitObject.gameObject.CompareTag("MinusButton"))
                     {
                         Negative();
                     }
-                    else if (hitCondiment.gameObject.CompareTag("PlusButton"))
+                    else if (hitObject.gameObject.CompareTag("PlusButton"))
                     {
                         Positive();
+                    } else if (hitObject.HasExactTags(LaborTags.Boss))
+                    {
+                        Dropped(_hit.gameObject);
+                        return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
@@ -133,30 +138,10 @@ namespace _project.Scripts
             _hit.GetComponent<DragableObject>().AddSeosoning(-1);
         }
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            Debug.Log(other.gameObject.name);
-            if (other.HasExactTags(LaborTags.Boss))
-            {
-                _onBoss = true;
-                _cookingManager = other.GetComponent<LinkedLaborTagComponent>()
-                    .GetLinkedMonoBehaviour<CookingManager>();
-            }
-        }
-        
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other.HasExactTags(LaborTags.Boss))
-            {
-                _onBoss = false;
-                _cookingManager = null;
-            }
-        }
-
-        private void Dropped()
+        private void Dropped(GameObject hitGameObject)
         {
             _cookingManager.FeedMeal();
-            Destroy(_hit);
+            Destroy(hitGameObject);
         }
 
         private void OnMouseDrag()
