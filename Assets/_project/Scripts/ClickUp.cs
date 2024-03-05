@@ -124,7 +124,12 @@ namespace _project.Scripts
         private void OnMouseDown()
         {
             if (_isPassing || _isAppearing || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
-            
+
+            DoClick();
+        }
+
+        public void DoClick()
+        {
             switch (_isScaled)
             {
                 case false:
