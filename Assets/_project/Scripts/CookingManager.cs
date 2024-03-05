@@ -40,6 +40,7 @@ namespace _project.Scripts
             bool result = _monsterInstance.FeedMeal(_currentMeal);
             _gaugeGaugeManager.NewPhase();
             _currentMeal = null;
+            Debug.Log($"Result: {result}");
             return result;
         }
         

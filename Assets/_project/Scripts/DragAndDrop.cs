@@ -29,7 +29,6 @@ namespace _project.Scripts
         {
             if (_isDragging)
             {
-                Vector2 ScreenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
                 if (Mouse.current.delta.ReadValue().x != 0 || Mouse.current.delta.ReadValue().y != 0)

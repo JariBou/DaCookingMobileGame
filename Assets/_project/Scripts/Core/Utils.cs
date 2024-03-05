@@ -42,9 +42,9 @@ namespace _project.Scripts.Core
         {
             bool isInBounds = true;
 
-            isInBounds &= self.x > min.x && self.x < max.x;
-            isInBounds &= self.y > min.y && self.y < max.y;
-            isInBounds &= self.z > min.z && self.z < max.z;
+            isInBounds &= self.x >= min.x && self.x <= max.x;
+            isInBounds &= self.y >= min.y && self.y <= max.y;
+            isInBounds &= self.z >= min.z && self.z <= max.z;
             
             return isInBounds;
         }
