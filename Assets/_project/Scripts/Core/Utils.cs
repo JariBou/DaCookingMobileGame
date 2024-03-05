@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using _project.ScriptableObjects.Scripts;
 using UnityEngine;
 
 namespace _project.Scripts.Core

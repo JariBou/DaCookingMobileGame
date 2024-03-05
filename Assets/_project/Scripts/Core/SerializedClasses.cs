@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace _project.Scripts.Core
 {
@@ -19,7 +18,6 @@ namespace _project.Scripts.Core
         public Vector3 AddedStats => _addedStats;
         public List<IngredientSo> Ingredients => _ingredients;
         public Sprite Icon => _icon;
-
         public string Name => _name;
         
         public Meal(Meal baseMeal) : this(baseMeal.Ingredients[0], baseMeal.Ingredients[1], baseMeal.Ingredients[2])
@@ -78,7 +76,17 @@ namespace _project.Scripts.Core
             _icon = cookingParamsSo.GetMealIcon(this);
             return this;
         }
+        
+        public Meal CreateName(CookingParamsSo cookingParamsSo)
+        {
+            _name = cookingParamsSo.GetMealName(this);
+            return this;
+        }
 
+        public Meal Initialize(CookingParamsSo cookingParamsSo)
+        {
+            return CreateIcon(cookingParamsSo).CreateName(cookingParamsSo);
+        }
         public Meal SetName(string name)
         {
             _name = name;
