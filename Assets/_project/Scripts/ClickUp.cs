@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
+using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts
 {
@@ -35,7 +37,7 @@ namespace _project.Scripts
 
         public static List<ClickUp> EnlargedSprites = new();
 
-        private Menu _menu;
+        private RecipeDisplayScript _recipeDisplayScript;
 
         [Header("Changing Card")]
         [SerializeField] private bool _isPassing = false;
@@ -47,12 +49,17 @@ namespace _project.Scripts
         [SerializeField, Range(0, -6)] private float _negativeHeightOffset = 2f;
 
 
+        [Header("GameFeel")]
+        [SerializeField] private UnityEvent _onCardClick;
+        [SerializeField] private UnityEvent _onCardUnClick;
+
+
         private void Start()
         {
             _ingredientSo = GetComponent<Card>()._ingredientSo;
             _initialScale = transform.localScale;
             _initialPosition = transform.position;
-            _menu = FindFirstObjectByType<Menu>();
+            _recipeDisplayScript = FindFirstObjectByType<RecipeDisplayScript>();
         }
 
         public void PassIngredient(IngredientSo newIngredient)
@@ -110,7 +117,7 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            if (_isPassing || _isAppearing) return;
+            if (_isPassing || _isAppearing || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
             
             switch (_isScaled)
             {
@@ -121,22 +128,24 @@ namespace _project.Scripts
                         EnlargedSprites[0].StartMoving(EnlargedSprites[0].InitialPosition, EnlargedSprites[0].InitialScale, false);
                         EnlargedSprites[0]._padlock.SetActive(false);
                         EnlargedSprites.RemoveAt(0);
-                        _menu.UpdateMenu();
+                        _recipeDisplayScript.UpdateMenu();
                     }
 
                     StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
                     _isScaled = true;
+                    _onCardClick?.Invoke();
                     _padlock.SetActive(true);
                     EnlargedSprites.Add(this);
-                    _menu.UpdateMenu();
+                    _recipeDisplayScript.UpdateMenu();
                     break;
                 }
                 case true:
                     StartMoving(_initialPosition, _initialScale);
                     _isScaled = false;
+                    _onCardUnClick?.Invoke();
                     _padlock.SetActive(false);
                     EnlargedSprites.Remove(this);
-                    _menu.UpdateMenu();
+                    _recipeDisplayScript.UpdateMenu();
                     break;
             }
         }
@@ -146,6 +155,7 @@ namespace _project.Scripts
             _endPos = endPos;
             _endScale = scale;
             _isMoving = true;
+            if (!willScale) _onCardUnClick?.Invoke();
             _isScaled = willScale;
         }
 

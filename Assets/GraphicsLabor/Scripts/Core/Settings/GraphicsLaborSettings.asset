@@ -16,4 +16,4 @@ MonoBehaviour:
   _tagsPath: Assets/GraphicsLabor/Scripts/Core/Tags
   _tags:
   - Entity
-  - Player
+  - Boss

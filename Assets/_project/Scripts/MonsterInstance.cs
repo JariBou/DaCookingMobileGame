@@ -7,20 +7,27 @@ using Random = UnityEngine.Random;
 
 namespace _project.Scripts
 {
-    public class MonsterInstance
+    public class MonsterInstance : MonoBehaviour
     {
-        public Vector3 CurrentStats { get; private set; }
+        [SerializeField] private MonsterDataSo _baseMonsterDataSo;
+        public Vector3Int CurrentStats { get; private set; }
 
         public MonsterDataSo MonsterData { get; private set; }
 
-        public MonsterInstance(MonsterDataSo dataSo)
+
+        private void Awake()
+        {
+            InitializeMonster(_baseMonsterDataSo);
+        }
+
+        public void InitializeMonster(MonsterDataSo dataSo)
         {
             MonsterData = dataSo;
 
             int x = Random.Range(dataSo.RandomStatsMin.x, dataSo.RandomStatsMax.x);
             int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
             int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
-            CurrentStats = new Vector3(x, y, z);
+            CurrentStats = new Vector3Int(x, y, z);
         }
 
         /// <summary>
@@ -31,7 +38,7 @@ namespace _project.Scripts
         public bool FeedMeal(Meal meal)
         {
             CurrentStats += meal.Stats;
-            CurrentStats.Clamp(Vector3.zero, new Vector3(100, 100, 100));
+            CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
 
             return CurrentStats.IsInBounds(MonsterData.StatsMin, MonsterData.StatsMax);
         }

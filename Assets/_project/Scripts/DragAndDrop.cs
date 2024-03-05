@@ -1,17 +1,29 @@
+using System;
+using GraphicsLabor.Scripts.Core.Tags;
+using GraphicsLabor.Scripts.Core.Tags.Components;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using GraphicsLabor.Scripts.Core.Utility;
+using TMPro;
 
 namespace _project.Scripts
 {
     public class DragAndDrop : MonoBehaviour
     {
         [SerializeField] private LayerMask _layerMask = 0;
+        [SerializeField, Range(1f, 2f)] private float _scaleOnDrag = 1.5f;
+        [SerializeField] private LayerMask _layerMaskCondiment = 0;
         private bool _isDragging = false;
+        private bool _onBoss = false;
+        [SerializeField] private CookingManager _cookingManager;
+        [SerializeField] private TMP_Text _bossStateText;
         public bool IsDragging => _isDragging;
         private Collider2D _hit;
-        [Range(0, 1)]
-        public float _lerpValue = 0.1f;
+        [SerializeField, Range(0, 1)]
+        private float _lerpValue = 0.1f;
+        [SerializeField] private GaugeHandler _gaugeHandler;
         // Start is called before the first frame update
 
         // Update is called once per frame
@@ -19,8 +31,7 @@ namespace _project.Scripts
         {
             if (_isDragging)
             {
-                Vector2 ScreenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                _hit.transform.localScale = new Vector3(1.5f, 1.5f, 1);
+                _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
                 if (Mouse.current.delta.ReadValue().x != 0 || Mouse.current.delta.ReadValue().y != 0)
                 {
@@ -72,16 +83,80 @@ namespace _project.Scripts
                 {
                     _isDragging = true;
                     _hit = hit;
+                    Image hitImage = _hit.GetComponent<Image>();
+                    _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b,0.2f);
                     //Effet sonore à rajouter pour le ramassage de l'objet
                 }
             }
             else if (context.canceled)
             {
+                if (_hit == null) return;
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
+
+                try
+                {
+                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
+                }
+                catch (Exception e)
+                {
+                  
+                }
+                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
+                if (hitObject != null)
+                {
+                    /*Debug.Log("Yes");*/
+                    if (hitObject.gameObject.CompareTag("MinusButton"))
+                    {
+                        Negative();
+                    }
+                    else if (hitObject.gameObject.CompareTag("PlusButton"))
+                    {
+                        Positive();
+                    } else if (hitObject.HasExactTags(LaborTags.Boss))
+                    {
+                        Dropped(_hit.gameObject);
+                        return;
+                    }
+                    //Effet sonore à rajouter pour le lâché de l'objet
+                }
+                Image hitImage = _hit.GetComponent<Image>();
+                _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
+
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
-        }   
+        }
+
+        private void Positive()
+        {
+            /*Debug.Log("Positive");*/
+            _hit.GetComponent<DragableObject>().AddSeosoning(1);
+        }
+        private void Negative()
+        {
+            /*Debug.Log("Negative");*/
+            _hit.GetComponent<DragableObject>().AddSeosoning(-1);
+        }
+
+        private void Dropped(GameObject hitGameObject)
+        {
+            bool result = _cookingManager.FeedMeal();
+
+            _bossStateText.text = result ? "Monster Satisfied GG" : "Monster not happy";
+            _bossStateText.color = result ? Color.green : Color.red;
+            _bossStateText.gameObject.SetActive(true);
+            
+            hitGameObject.GetComponent<DraggedMealScript>().Deactivate();
+        }
+
+        private void OnMouseDrag()
+        {
+            if (_isDragging)
+            {
+                Vector2 screenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                _hit.transform.position = new Vector3(screenMousePosition.x, screenMousePosition.y, _hit.transform.position.z);
+            }
+        }
     }
 }

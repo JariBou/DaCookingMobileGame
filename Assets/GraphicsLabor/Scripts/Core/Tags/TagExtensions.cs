@@ -12,14 +12,13 @@ namespace GraphicsLabor.Scripts.Core.Tags
         /// <param name="tags">Tags to test for</param>
         /// <returns></returns>
         /// <exception cref="MissingComponentException">Whenever the checked MonoBehaviour doesn't have a component implementing ITagHolder</exception>
-        public static bool HasExactTags(this MonoBehaviour self, LaborTags tags)
+        public static bool HasExactTags(this UnityEngine.Component self, LaborTags tags)
         {
             ITagHolder component = self.GetComponent<ITagHolder>();
             if (component == null)
             {
                 throw new MissingComponentException($"{nameof(self)} is missing required ITagHolder component");
             }
-
             return component.GetLaborTags() == tags;
         }
 

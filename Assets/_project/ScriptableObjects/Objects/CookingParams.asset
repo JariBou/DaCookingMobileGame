@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CookingParams
   m_EditorClassIdentifier: 
   _cookingMethod1: 0
-  _method1StatsMultiplier: {x: 1.25, y: 0, z: 0.75}
+  _method1StatsMultiplier: {x: 1.25, y: 1, z: 0.75}
   _cookingMethod2: 1
-  _method2StatsMultiplier: {x: 0, y: 0.5, z: 1.5}
+  _method2StatsMultiplier: {x: 1, y: 0.5, z: 1.5}
   _cookingMethod3: 2
-  _method3StatsMultiplier: {x: 0.25, y: 2, z: 0}
+  _method3StatsMultiplier: {x: 0.25, y: 2, z: 1}
   _mealIcons:
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 2
