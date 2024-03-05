@@ -4,7 +4,6 @@ using System.Linq;
 using _project.Scripts.Core;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 
 namespace _project.Scripts
@@ -13,7 +12,6 @@ namespace _project.Scripts
     {
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private IngredientStats[] _ingredientStats;
-        [SerializeField] private MealDisplayScript _mealDisplayScript;
         [SerializeField] private CameraScript _camera;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplay;
         private Meal _currentMeal;
@@ -37,11 +35,12 @@ namespace _project.Scripts
         [SerializeField] private float _animationDuration = 1f;
         private float _timer;
         [SerializeField] private AnimationCurve AnimationCurve;
+        [SerializeField] private TMP_Text _finalMealName;
+        [SerializeField] private Image _finalMealImage;
 
         // Start is called before the first frame update
         private void Start()
         {
-            _nextPhaseMealDisplay.ResetDisplay();
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
                 ResetIngredientStats(_ingredientStats[i]);
@@ -90,6 +89,9 @@ namespace _project.Scripts
 
                     _cookingManager.GaugeManager.RestartPrevGauges();
                     _currentMeal = null;
+                    _finalMealImage.sprite = null;
+                    _finalMealName.text = "";
+
                 }
             }
 
@@ -136,8 +138,8 @@ namespace _project.Scripts
             if (_currentMeal != null)
             {
                 Debug.Log("Going to Phase2");
-                _camera.NextPhase();
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
+                _camera.NextPhase();
             }
             else
             {

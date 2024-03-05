@@ -7564,7 +7564,6 @@ GameObject:
   - component: {fileID: 1849140285}
   - component: {fileID: 1849140287}
   - component: {fileID: 1849140286}
-  - component: {fileID: 1849140288}
   m_Layer: 5
   m_Name: Final Meal
   m_TagString: Untagged
@@ -7636,23 +7635,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849140284}
   m_CullTransparentMesh: 1
---- !u!114 &1849140288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1849140284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b37ce5ebdf6aa6d46abc23997e858c34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mealName: {fileID: 638763538}
-  _mealStatX: {fileID: 463749158}
-  _mealStatY: {fileID: 962826622}
-  _mealStatZ: {fileID: 2134872750}
-  _mealImage: {fileID: 568075686}
 --- !u!114 &1876569054 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4382056428397478889, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
@@ -8050,16 +8032,11 @@ MonoBehaviour:
     _cardSatisfaction: {fileID: 1221813532}
     _cardPower: {fileID: 1839128998}
     _cardImage: {fileID: 1452787971}
-  _mealDisplayScript: {fileID: 1849140288}
   _camera: {fileID: 2098448612}
   _nextPhaseMealDisplay: {fileID: 5608204401457565526}
   _finalHunger: {fileID: 463749158}
   _finalSatisfaction: {fileID: 962826622}
   _finalPower: {fileID: 2134872750}
-  _finalMealImage: {fileID: 568075686}
-  _finalMealName: {fileID: 0}
-  _camera: {fileID: 2098448612}
-  _nextPhaseMealDisplay: {fileID: 5608204401457565526}
   _animationDuration: 1
   AnimationCurve:
     serializedVersion: 2
@@ -8085,6 +8062,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _finalMealName: {fileID: 638763538}
+  _finalMealImage: {fileID: 568075686}
 --- !u!1 &1928253568
 GameObject:
   m_ObjectHideFlags: 0
