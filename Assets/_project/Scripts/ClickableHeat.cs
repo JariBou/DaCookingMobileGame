@@ -1,34 +1,37 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class ClickableHeat : MonoBehaviour
+namespace _project.Scripts
 {
-    [SerializeField] private Image imageComponent;
-    [SerializeField, Range(0, 0.5f)] private float grayDuration = 1f;
-    [SerializeField] private Color grayColor = new Color(0.5f, 0.5f, 0.5f, 1f);
-    private bool isGrayed = false;
-
-    private void OnMouseDown()
+    public class ClickableHeat : MonoBehaviour
     {
-        if (!isGrayed)
+        [FormerlySerializedAs("imageComponent")] [SerializeField] private Image _imageComponent;
+        [FormerlySerializedAs("grayDuration")] [SerializeField, Range(0, 0.5f)] private float _grayDuration = 1f;
+        [FormerlySerializedAs("grayColor")] [SerializeField] private Color _grayColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+        private bool _isGrayed = false;
+
+        private void OnMouseDown()
         {
-            StartCoroutine(GrayImage());
+            if (!_isGrayed)
+            {
+                StartCoroutine(GrayImage());
+            }
         }
-    }
 
-    private IEnumerator GrayImage()
-    {
-        isGrayed = true;
-        Debug.Log("L'image a été cliquée !");
+        private IEnumerator GrayImage()
+        {
+            _isGrayed = true;
+            Debug.Log("L'image a ï¿½tï¿½ cliquï¿½e !");
 
-        imageComponent.color = grayColor;
+            _imageComponent.color = _grayColor;
 
-        yield return new WaitForSeconds(grayDuration);
+            yield return new WaitForSeconds(_grayDuration);
 
-        imageComponent.color = Color.white;
+            _imageComponent.color = Color.white;
 
-        isGrayed = false;
+            _isGrayed = false;
+        }
     }
 }

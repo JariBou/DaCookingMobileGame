@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using UnityEngine;
@@ -34,7 +33,7 @@ namespace _project.Scripts
 
         [SerializeField] private GameObject _padlock;
 
-        public static List<ClickUp> _enlargedSprites = new List<ClickUp>();
+        public static List<ClickUp> EnlargedSprites = new();
 
         private Menu _menu;
 
@@ -43,7 +42,7 @@ namespace _project.Scripts
         [SerializeField] private bool _isAppearing = false;
         [SerializeField] private AnimationCurve _appearCurve;
         [SerializeField, Range(0,10)] private float _animationDuration = 1f;
-        private float timer;
+        private float _timer;
 
         [SerializeField, Range(0, -6)] private float _negativeHeightOffset = 2f;
 
@@ -56,17 +55,14 @@ namespace _project.Scripts
             _menu = FindFirstObjectByType<Menu>();
         }
 
-
         public void PassIngredient(IngredientSo newIngredient)
         {
             /*Debug.Log("Changing " + _ingredientSo.Name + " with " + newIngredient.Name);*/
             _isAppearing = false;
             _isPassing = true; // La carte descend en dehors de l'écran
-            _newIngredient = newIngredient;
+            _newIngredient = newIngredient; 
             transform.position = _initialPosition;
         }
-
-
 
         private void Update()
         {
@@ -85,8 +81,8 @@ namespace _project.Scripts
 
             if (_isPassing)
             {
-                timer += Time.deltaTime;
-                transform.position = Vector3.Lerp(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, _appearCurve.Evaluate(timer/_animationDuration));
+                _timer += Time.deltaTime;
+                transform.position = Vector3.Lerp(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, _appearCurve.Evaluate(_timer/_animationDuration));
                 if (Vector3.Distance(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset) < 0.01f)
                 {
                     transform.position = _initialPosition + Vector3.up * _negativeHeightOffset;
@@ -95,54 +91,53 @@ namespace _project.Scripts
                     _newIngredient = null;
                     _isPassing = false;
                     _isAppearing = true;
-                    timer = 0;
+                    _timer = 0;
                 }
             }
             if (_isAppearing)
             {
-                timer += Time.deltaTime;
+                _timer += Time.deltaTime;
                 _isPassing = false;
-                transform.position = Vector3.Lerp(transform.position, _initialPosition, _appearCurve.Evaluate(timer/_animationDuration));
+                transform.position = Vector3.Lerp(transform.position, _initialPosition, _appearCurve.Evaluate(_timer/_animationDuration));
                 if (Vector3.Distance(transform.position, _initialPosition) < 0.01f)
                 {
                     transform.position = _initialPosition;
                     _isAppearing = false;
-                    timer = 0;
+                    _timer = 0;
                 }
             }
         }
 
         private void OnMouseDown()
         {
-            if (!_isPassing && !_isAppearing)
+            if (_isPassing || _isAppearing) return;
+            
+            switch (_isScaled)
             {
-                switch (_isScaled)
+                case false:
                 {
-                    case false:
-                        {
-                            if (_enlargedSprites.Count >= 3)
-                            {
-                                _enlargedSprites[0].StartMoving(_enlargedSprites[0].InitialPosition, _enlargedSprites[0].InitialScale, false);
-                                _enlargedSprites[0]._padlock.SetActive(false);
-                                _enlargedSprites.RemoveAt(0);
-                                _menu.UpdateMenu();
-                            }
-
-                            StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
-                            _isScaled = true;
-                            _padlock.SetActive(true);
-                            _enlargedSprites.Add(this);
-                            _menu.UpdateMenu();
-                            break;
-                        }
-                    case true:
-                        StartMoving(_initialPosition, _initialScale);
-                        _isScaled = false;
-                        _padlock.SetActive(false);
-                        _enlargedSprites.Remove(this);
+                    if (EnlargedSprites.Count >= 3)
+                    {
+                        EnlargedSprites[0].StartMoving(EnlargedSprites[0].InitialPosition, EnlargedSprites[0].InitialScale, false);
+                        EnlargedSprites[0]._padlock.SetActive(false);
+                        EnlargedSprites.RemoveAt(0);
                         _menu.UpdateMenu();
-                        break;
+                    }
+
+                    StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
+                    _isScaled = true;
+                    _padlock.SetActive(true);
+                    EnlargedSprites.Add(this);
+                    _menu.UpdateMenu();
+                    break;
                 }
+                case true:
+                    StartMoving(_initialPosition, _initialScale);
+                    _isScaled = false;
+                    _padlock.SetActive(false);
+                    EnlargedSprites.Remove(this);
+                    _menu.UpdateMenu();
+                    break;
             }
         }
 
