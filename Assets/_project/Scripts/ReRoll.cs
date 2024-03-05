@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -88,6 +90,15 @@ namespace _project.Scripts
             list.AddRange(from clickUp in _cards where clickUp.IsScaled select clickUp.Ingredient);
 
             return list;
+        }
+
+        [NaughtyAttributes.Button]
+        public void ResetCards()
+        {
+            foreach (ClickUp clickUp in _cards)
+            {
+                clickUp.ResetCard();
+            }
         }
     }
 }

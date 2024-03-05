@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -163,6 +164,14 @@ namespace _project.Scripts
             _isMoving = true;
             if (!willScale) _onCardUnClick?.Invoke();
             _isScaled = willScale;
+        }
+
+        [Button("Reset Card")]
+        public void ResetCard()
+        {
+            StartMoving(_initialPosition, _initialScale, false);
+            _isScaled = false;
+            _padlock.SetActive(false);
         }
 
 
