@@ -9,9 +9,9 @@ namespace _project.Scripts
     public class MealDisplayScript : MonoBehaviour
     {
         [SerializeField] private TMP_Text _mealName;
-        [SerializeField] private TMP_Text _mealStatX;
-        [SerializeField] private TMP_Text _mealStatY;
-        [SerializeField] private TMP_Text _mealStatZ;
+        [SerializeField] private TMP_Text _finalHunger;
+        [SerializeField] private TMP_Text _finalSatisfaction;
+        [SerializeField] private TMP_Text _finalPower;
         [SerializeField] private Image _mealImage;
 
         [Header("GameFeel")]
@@ -33,11 +33,15 @@ namespace _project.Scripts
         public void UpdateDisplay(Meal meal)
         {
             if (_mealName) _mealName.text = meal.Name ?? "";
-            _mealStatX.text = (meal.Stats.x >= 0 ? "+" : "") + meal.Stats.x.ToString(CultureInfo.InvariantCulture);
-            _mealStatY.text = (meal.Stats.y >= 0 ? "+" : "") + meal.Stats.y.ToString(CultureInfo.InvariantCulture);
-            _mealStatZ.text = (meal.Stats.z >= 0 ? "+" : "") + meal.Stats.z.ToString(CultureInfo.InvariantCulture);
+            _finalHunger.text = (meal.Stats.x >= 0 ? "+" : "") + meal.Stats.x.ToString(CultureInfo.InvariantCulture);
+            _finalSatisfaction.text = (meal.Stats.y >= 0 ? "+" : "") + meal.Stats.y.ToString(CultureInfo.InvariantCulture);
+            _finalPower.text = (meal.Stats.z >= 0 ? "+" : "") + meal.Stats.z.ToString(CultureInfo.InvariantCulture);
             _mealImage.sprite = meal.Icon;
+          
+        }
 
+        public void Update()
+        {
             if (_canChangeMealValues)
             {
                 _timer += Time.deltaTime;
@@ -60,15 +64,6 @@ namespace _project.Scripts
                 }
             }
         }
-        
-        public void ResetDisplay()
-        {
-            if (_mealName) _mealName.text = "";
-            _mealStatX.text = "0";
-            _mealStatY.text = "0";
-            _mealStatZ.text = "0";
-            _mealImage.sprite = null;
-        }
 
         private void ChangeFinalMealStats(int hunger, int satisfaction, int power)
         {
@@ -80,23 +75,34 @@ namespace _project.Scripts
             _canChangeMealValues = true;
         }
 
+
         private void UpdateFinalMealDisplay()
         {
             if (_currentFinalHungerValue > 0)
-                _mealStatX.text = "+" + _currentFinalHungerValue.ToString(CultureInfo.InvariantCulture);
+                _finalHunger.text = "+" + _currentFinalHungerValue.ToString(CultureInfo.InvariantCulture);
             else
-                _mealStatX.text = _currentFinalHungerValue.ToString(CultureInfo.InvariantCulture);
+                _finalHunger.text = _currentFinalHungerValue.ToString(CultureInfo.InvariantCulture);
 
             if (_currentFinalSatisfactionValue > 0)
-                _mealStatY.text = "+" + _currentFinalSatisfactionValue.ToString(CultureInfo.InvariantCulture);
+                _finalSatisfaction.text = "+" + _currentFinalSatisfactionValue.ToString(CultureInfo.InvariantCulture);
             else
-                _mealStatY.text = _currentFinalSatisfactionValue.ToString(CultureInfo.InvariantCulture);
+                _finalSatisfaction.text = _currentFinalSatisfactionValue.ToString(CultureInfo.InvariantCulture);
 
             if (_currentPowerValue > 0)
-                _mealStatZ.text = "+" + _currentPowerValue.ToString(CultureInfo.InvariantCulture);
+                _finalPower.text = "+" + _currentPowerValue.ToString(CultureInfo.InvariantCulture);
             else
-                _mealStatZ.text = _currentPowerValue.ToString(CultureInfo.InvariantCulture);
+                _finalPower.text = _currentPowerValue.ToString(CultureInfo.InvariantCulture);
 
         }
+
+        public void ResetDisplay()
+        {
+            if (_mealName) _mealName.text = "";
+            _finalHunger.text = "0";
+            _finalSatisfaction.text = "0";
+            _finalPower.text = "0";
+            _mealImage.sprite = null;
+        }      
+     
     }
 }
