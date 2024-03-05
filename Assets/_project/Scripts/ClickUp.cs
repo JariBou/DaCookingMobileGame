@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts
 {
@@ -46,6 +47,11 @@ namespace _project.Scripts
         private float _timer;
 
         [SerializeField, Range(0, -6)] private float _negativeHeightOffset = 2f;
+
+
+        [Header("GameFeel")]
+        [SerializeField] private UnityEvent _onCardClick;
+        [SerializeField] private UnityEvent _onCardUnClick;
 
 
         private void Start()
@@ -127,6 +133,7 @@ namespace _project.Scripts
 
                     StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
                     _isScaled = true;
+                    _onCardClick?.Invoke();
                     _padlock.SetActive(true);
                     EnlargedSprites.Add(this);
                     _recipeDisplayScript.UpdateMenu();
@@ -135,6 +142,7 @@ namespace _project.Scripts
                 case true:
                     StartMoving(_initialPosition, _initialScale);
                     _isScaled = false;
+                    _onCardUnClick?.Invoke();
                     _padlock.SetActive(false);
                     EnlargedSprites.Remove(this);
                     _recipeDisplayScript.UpdateMenu();
@@ -147,6 +155,7 @@ namespace _project.Scripts
             _endPos = endPos;
             _endScale = scale;
             _isMoving = true;
+            if (!willScale) _onCardUnClick?.Invoke();
             _isScaled = willScale;
         }
 
