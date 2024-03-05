@@ -4,6 +4,7 @@ using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -22,6 +23,12 @@ namespace _project.Scripts
         [SerializeField] private TMP_Text _multiplierY;
         [SerializeField] private TMP_Text _multiplierZ;
         private bool _isGrayed = false;
+
+        [Header("GameFeel")]
+        [SerializeField] private UnityEvent _OnHeatClick;
+
+        private bool _IsClick;
+        public bool IsClick => _IsClick;
 
         private void Start()
         {
@@ -42,6 +49,11 @@ namespace _project.Scripts
 
             _manager.SelectedCookingMethod = _cookingMethod;
             _manager.UpdateMealDisplay();
+
+            if (_OnHeatClick != null)
+            {
+                _OnHeatClick.Invoke();
+            }
 
         }
 
