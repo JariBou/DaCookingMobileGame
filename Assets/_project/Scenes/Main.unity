@@ -2246,6 +2246,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.19416028
       objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _animationDuration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8466999700173164386, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_LocalPosition.z
       value: 3
@@ -5253,8 +5269,24 @@ PrefabInstance:
       value: 0.19416028
       objectReference: {fileID: 0}
     - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _animationDuration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: _previsualizationValue
       value: 39
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8466999700173164386, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5764,6 +5796,7 @@ GameObject:
   - component: {fileID: 1596713404}
   - component: {fileID: 1596713403}
   - component: {fileID: 1596713405}
+  - component: {fileID: 1596713406}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -5936,6 +5969,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _baseMonsterDataSo: {fileID: 11400000, guid: 99b889a07f15a464787d513140eb978f, type: 2}
+--- !u!114 &1596713406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596713400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614edb33c38bcf949846d5675f29f9fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutomaticallyUnparentOnAwake: 1
+  settingsSo: {fileID: 11400000, guid: 07ea3ff88e1ecb84d91f58aa804badc6, type: 2}
+  AudioSourcePoolSize: 10
+  PoolCanExpand: 1
 --- !u!1001 &1675246404
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6510,8 +6559,24 @@ PrefabInstance:
       value: 0.19416028
       objectReference: {fileID: 0}
     - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _animationDuration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: _previsualizationValue
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073058322896723793, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
+      propertyPath: _appearCurve.m_Curve.Array.data[1].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8466999700173164386, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_LocalPosition.z

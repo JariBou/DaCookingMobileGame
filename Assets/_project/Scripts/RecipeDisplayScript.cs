@@ -22,6 +22,22 @@ namespace _project.Scripts
         private Meal _currentMeal;
         public CookingManager CookingManager => _cookingManager;
 
+        [Header("GameFeel")]
+        private bool _canChangeMealValues;
+
+        private int _currentFinalHungerValue;
+        private int _finalHungerValue;
+
+        private int _currentFinalSatisfactionValue;
+        private int _finalSatisfactionValue;
+
+        private int _currentPowerValue;
+        private int _finalPowerValue;
+
+        private float _animationDuration = 1f;
+        private float _timer;
+        [SerializeField] private AnimationCurve AnimationCurve;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -30,6 +46,21 @@ namespace _project.Scripts
                 ResetIngredientStats(_ingredientStats[i]);
                 _finalMealImage.sprite = null;
                 _currentMeal = null;
+            }
+        }
+
+        public void Update()
+        {
+            if (_canChangeMealValues)
+            {
+                if (_currentFinalHungerValue != _finalHungerValue || _currentFinalSatisfactionValue != _finalSatisfactionValue || _currentPowerValue != _finalPowerValue)
+                {
+                    ChangeFinalMealString(_finalHungerValue, _finalSatisfactionValue, _finalPowerValue);
+                }
+                if (_currentFinalHungerValue == _finalHungerValue && _currentFinalSatisfactionValue == _finalSatisfactionValue && _currentPowerValue == _finalPowerValue)
+                {
+                    _canChangeMealValues = false;
+                }
             }
         }
 
@@ -56,32 +87,18 @@ namespace _project.Scripts
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = _currentMeal.Icon;
-                // _finalMealName.text = _currentMeal.Name;
 
-                _finalHunger.text = (_currentMeal.Stats.x > 0 ? "+" : "") + _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
+                _finalHungerValue = _currentMeal.Stats.x;
+                _finalSatisfactionValue = _currentMeal.Stats.y;
+                _finalPowerValue = _currentMeal.Stats.z;
 
-                _finalSatisfaction.text = (_currentMeal.Stats.y > 0 ? "+" : "") + _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
-
-                _finalPower.text = (_currentMeal.Stats.z > 0 ? "+" : "") + _currentMeal.Stats.z.ToString(CultureInfo.InvariantCulture);
-                
                 _cookingManager.GaugeManager.PrevisualizeMeal(_currentMeal);
             }
             else
             {
-                if (ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.x) > 0)
-                    _finalHunger.text = "+" + ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
-                else
-                    _finalHunger.text = ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
-
-                if (ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.y) > 0)
-                    _finalSatisfaction.text = "+" + ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
-                else
-                    _finalSatisfaction.text = ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.y).ToString(CultureInfo.InvariantCulture);
-
-                if (ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.z) > 0)
-                    _finalPower.text = "+" + ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
-                else
-                    _finalPower.text = ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.z).ToString(CultureInfo.InvariantCulture);
+                _finalHungerValue= ClickUp.EnlargedSprites.Sum(ingredient => (int) ingredient.Ingredient.Stats.x);
+                _finalSatisfactionValue = ClickUp.EnlargedSprites.Sum(ingredient => (int) ingredient.Ingredient.Stats.y);
+                _finalPowerValue = ClickUp.EnlargedSprites.Sum(ingredient => (int) ingredient.Ingredient.Stats.z);
                 /*_goPhase2Button.interactable = false;*/
             }
         }
@@ -120,7 +137,7 @@ namespace _project.Scripts
                 Debug.Log("No meal");
             }
         }
-        
+
         private void ResetIngredientStats(IngredientStats ingredientStats)
         {
             ingredientStats._cardName.text = "";
@@ -129,15 +146,51 @@ namespace _project.Scripts
             ingredientStats._cardPower.text = "";
             ingredientStats._cardImage.sprite = null;
         }
-        
-    }
-    [Serializable]
-    public struct IngredientStats
-    {
-        public TextMeshProUGUI _cardName;
-        public TextMeshProUGUI _cardHunger;
-        public TextMeshProUGUI _cardSatisfaction;
-        public TextMeshProUGUI _cardPower;
-        public Image _cardImage;
+
+        private void ChangeFinalMealString(float hunger, float satisfaction, float power)
+        {
+            if (hunger > 0)
+                _finalHunger.text = "+" + hunger.ToString(CultureInfo.InvariantCulture);
+            else
+                _finalHunger.text = hunger.ToString(CultureInfo.InvariantCulture);
+            if (satisfaction > 0)
+                _finalSatisfaction.text = "+" + satisfaction.ToString(CultureInfo.InvariantCulture);
+            else
+                _finalSatisfaction.text = satisfaction.ToString(CultureInfo.InvariantCulture);
+            if (power > 0)
+                _finalPower.text = "+" + power.ToString(CultureInfo.InvariantCulture);
+            else
+                _finalPower.text = power.ToString(CultureInfo.InvariantCulture);
+
+        }
+
+        private void ChangeFinalMealString(string name,float hunger, float satisfaction, float power)
+        {
+            _finalMealName.text = name;
+
+            if (hunger > 0)
+                _finalHunger.text = "+" + hunger.ToString(CultureInfo.InvariantCulture);
+            else
+                _finalHunger.text = hunger.ToString(CultureInfo.InvariantCulture);
+            if (satisfaction > 0)
+                _finalSatisfaction.text = "+" + satisfaction.ToString(CultureInfo.InvariantCulture);
+            else
+                _finalSatisfaction.text = satisfaction.ToString(CultureInfo.InvariantCulture);
+            if (power > 0)
+                _finalPower.text = "+" + power.ToString(CultureInfo.InvariantCulture);
+            else
+                _finalPower.text = power.ToString(CultureInfo.InvariantCulture);
+
+        }
+
+        [Serializable]
+        public struct IngredientStats
+        {
+            public TextMeshProUGUI _cardName;
+            public TextMeshProUGUI _cardHunger;
+            public TextMeshProUGUI _cardSatisfaction;
+            public TextMeshProUGUI _cardPower;
+            public Image _cardImage;
+        }
     }
 }
