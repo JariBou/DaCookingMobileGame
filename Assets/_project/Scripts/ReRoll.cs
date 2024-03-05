@@ -3,6 +3,7 @@ using System.Linq;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts
 {
@@ -15,6 +16,7 @@ namespace _project.Scripts
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
         private int _rerollCount = 0;
         private bool _isRerolling = false;
+        [SerializeField] private UnityEvent _OnReRoll;
 /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
 
         private void OnMouseDown()
@@ -23,6 +25,7 @@ namespace _project.Scripts
         
             _rerollCount++;
             ReRollBundle();
+            _OnReRoll?.Invoke();
         }
 
         public void ReRollBundle()
