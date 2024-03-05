@@ -12,23 +12,22 @@ namespace _project.Scripts
     {
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private IngredientStats[] _ingredientStats;
-        [SerializeField] private TextMeshProUGUI _finalHunger;
-        [SerializeField] private TextMeshProUGUI _finalSatisfaction;
-        [SerializeField] private TextMeshProUGUI _finalPower;
-        [SerializeField] private Image _finalMealImage;
-        [SerializeField] private TextMeshProUGUI _finalMealName;
+        [SerializeField] private MealDisplayScript _mealDisplayScript;
         [SerializeField] private CameraScript _camera;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplay;
         private Meal _currentMeal;
+        [SerializeField] private TMP_Text _finalHunger;
+        [SerializeField] private TMP_Text _finalSatisfaction;
+        [SerializeField] private TMP_Text _finalPower;
         public CookingManager CookingManager => _cookingManager;
 
         // Start is called before the first frame update
         private void Start()
         {
+            _nextPhaseMealDisplay.ResetDisplay();
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
                 ResetIngredientStats(_ingredientStats[i]);
-                _finalMealImage.sprite = null;
                 _currentMeal = null;
             }
         }
@@ -46,7 +45,6 @@ namespace _project.Scripts
                     ResetIngredientStats(_ingredientStats[i]);
 
                     _cookingManager.GaugeManager.RestartPrevGauges();
-                    _finalMealImage.sprite = null;
                     _currentMeal = null;
                 }
             }
@@ -55,19 +53,15 @@ namespace _project.Scripts
             {
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
-                _finalMealImage.sprite = _currentMeal.Icon;
-                // _finalMealName.text = _currentMeal.Name;
-
-                _finalHunger.text = (_currentMeal.Stats.x > 0 ? "+" : "") + _currentMeal.Stats.x.ToString(CultureInfo.InvariantCulture);
-
-                _finalSatisfaction.text = (_currentMeal.Stats.y > 0 ? "+" : "") + _currentMeal.Stats.y.ToString(CultureInfo.InvariantCulture);
-
-                _finalPower.text = (_currentMeal.Stats.z > 0 ? "+" : "") + _currentMeal.Stats.z.ToString(CultureInfo.InvariantCulture);
+                
+                _mealDisplayScript.UpdateDisplay(_currentMeal);
                 
                 _cookingManager.GaugeManager.PrevisualizeMeal(_currentMeal);
             }
             else
             {
+                _mealDisplayScript.ResetDisplay();
+                
                 if (ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.x) > 0)
                     _finalHunger.text = "+" + ClickUp.EnlargedSprites.Sum(x => x.Ingredient.Stats.x).ToString(CultureInfo.InvariantCulture);
                 else
@@ -93,8 +87,7 @@ namespace _project.Scripts
                 _ingredientStats[order]._cardHunger.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
             else
                 _ingredientStats[order]._cardHunger.text = ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
-
-
+            
             if (ClickUp.EnlargedSprites[order].Ingredient.Stats.y > 0)
                 _ingredientStats[order]._cardSatisfaction.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
             else

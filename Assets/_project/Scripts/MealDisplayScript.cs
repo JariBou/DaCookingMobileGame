@@ -17,11 +17,20 @@ namespace _project.Scripts
 
         public void UpdateDisplay(Meal meal)
         {
-/*            _mealName.text = "dd";*/
-            _mealStatX.text = meal.Stats.x.ToString(CultureInfo.InvariantCulture);
-            _mealStatY.text = meal.Stats.y.ToString(CultureInfo.InvariantCulture);
-            _mealStatZ.text = meal.Stats.z.ToString(CultureInfo.InvariantCulture);
+            if (_mealName) _mealName.text = meal.Name ?? "";
+            _mealStatX.text = (meal.Stats.x >= 0 ? "+" : "") + meal.Stats.x.ToString(CultureInfo.InvariantCulture);
+            _mealStatY.text = (meal.Stats.y >= 0 ? "+" : "") + meal.Stats.y.ToString(CultureInfo.InvariantCulture);
+            _mealStatZ.text = (meal.Stats.z >= 0 ? "+" : "") + meal.Stats.z.ToString(CultureInfo.InvariantCulture);
             _mealImage.sprite = meal.Icon;
+        }
+        
+        public void ResetDisplay()
+        {
+            if (_mealName) _mealName.text = "";
+            _mealStatX.text = "0";
+            _mealStatY.text = "0";
+            _mealStatZ.text = "0";
+            _mealImage.sprite = null;
         }
     }
 }

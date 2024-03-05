@@ -5,6 +5,7 @@ using _project.Scripts.Core;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.ScriptableObjectAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _project.ScriptableObjects.Scripts
 {
@@ -21,9 +22,9 @@ namespace _project.ScriptableObjects.Scripts
         [TabProperty(nameof(CookingMethod.Method3)), SerializeField, ReadOnly] private CookingMethod _cookingMethod3 = CookingMethod.Method3;
         [TabProperty(nameof(CookingMethod.Method3)), SerializeField] private Vector3 _method3StatsMultiplier;
 
-        [SerializeField] private List<MealBaseInfo> _mealIcons;
+        [FormerlySerializedAs("_mealIcons")] [SerializeField] private List<MealBaseInfo> _mealBaseInfos;
 
-        public List<MealBaseInfo> MealIcons => _mealIcons;
+        public List<MealBaseInfo> MealBaseInfos => _mealBaseInfos;
 
 
         public Vector3 GetMultiplier(CookingMethod cookingMethod)
@@ -44,7 +45,7 @@ namespace _project.ScriptableObjects.Scripts
 
         public Sprite GetMealIcon(Meal meal)
         {
-            foreach (MealBaseInfo mealIcon in _mealIcons.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
+            foreach (MealBaseInfo mealIcon in _mealBaseInfos.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
             {
                 return mealIcon.Icon;
             }
@@ -52,5 +53,14 @@ namespace _project.ScriptableObjects.Scripts
             throw new ArgumentException();
         }
 
+        public string GetMealName(Meal meal)
+        {
+            foreach (MealBaseInfo mealIcon in _mealBaseInfos.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
+            {
+                return mealIcon.Name;
+            }
+            
+            throw new ArgumentException();
+        }
     }
 }
