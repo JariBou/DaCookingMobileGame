@@ -1,17 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using _project.Scripts;
 using UnityEngine;
 
-public class LastPhaseScript : MonoBehaviour
+namespace _project.Scripts
 {
-
-    [SerializeField] private CameraScript _camera;
-
-
-    public void GoNextPhase()
+    public class LastPhaseScript : MonoBehaviour
     {
-        _camera.NextPhase();
-    }
 
+        [SerializeField] private CameraScript _camera;
+
+
+        public void GoNextPhase()
+        {
+            _camera.NextPhase();
+        }
+
+    }
 }

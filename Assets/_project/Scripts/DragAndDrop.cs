@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using GraphicsLabor.Scripts.Core.Utility;
+using TMPro;
 
 namespace _project.Scripts
 {
@@ -17,6 +18,7 @@ namespace _project.Scripts
         private bool _isDragging = false;
         private bool _onBoss = false;
         [SerializeField] private CookingManager _cookingManager;
+        [SerializeField] private TMP_Text _bossStateText;
         public bool IsDragging => _isDragging;
         private Collider2D _hit;
         [SerializeField, Range(0, 1)]
@@ -139,7 +141,12 @@ namespace _project.Scripts
 
         private void Dropped(GameObject hitGameObject)
         {
-            _cookingManager.FeedMeal();
+            bool result = _cookingManager.FeedMeal();
+
+            _bossStateText.text = result ? "Monster Satisfied GG" : "Monster not happy";
+            _bossStateText.color = result ? Color.green : Color.red;
+            _bossStateText.gameObject.SetActive(true);
+            
             Destroy(hitGameObject);
         }
 
