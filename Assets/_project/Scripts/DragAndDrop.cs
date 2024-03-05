@@ -147,7 +147,7 @@ namespace _project.Scripts
             _bossStateText.color = result ? Color.green : Color.red;
             _bossStateText.gameObject.SetActive(true);
             
-            Destroy(hitGameObject);
+            hitGameObject.GetComponent<DraggedMealScript>().Deactivate();
         }
 
         private void OnMouseDrag()
