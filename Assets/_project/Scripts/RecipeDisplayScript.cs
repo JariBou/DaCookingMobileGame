@@ -4,6 +4,7 @@ using System.Linq;
 using _project.Scripts.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace _project.Scripts
@@ -37,6 +38,12 @@ namespace _project.Scripts
         [SerializeField] private AnimationCurve AnimationCurve;
         [SerializeField] private TMP_Text _finalMealName;
         [SerializeField] private Image _finalMealImage;
+
+        [Header("Game Feel")]
+        [SerializeField] private UnityEvent _onMealAppear;
+        [SerializeField] private UnityEvent _onMealChange;
+        [SerializeField] private UnityEvent _onMealDisappear;
+        [SerializeField] private UnityEvent _goNextPhase;
 
         // Start is called before the first frame update
         private void Start()
@@ -88,7 +95,7 @@ namespace _project.Scripts
                     ResetIngredientStats(_ingredientStats[i]);
 
                     _cookingManager.GaugeManager.RestartPrevGauges();
-                    _currentMeal = null;
+                    _onMealDisappear?.Invoke();
                     _finalMealImage.sprite = null;
                     _finalMealName.text = "";
 
@@ -96,7 +103,9 @@ namespace _project.Scripts
             }
 
             if (ClickUp.EnlargedSprites.Count == 3)
-            {
+            {   
+                if (_currentMeal == null) _onMealAppear?.Invoke();
+                else if (_currentMeal != null) _onMealChange?.Invoke();
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = _currentMeal.Icon;
@@ -140,6 +149,7 @@ namespace _project.Scripts
                 Debug.Log("Going to Phase2");
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
                 _camera.NextPhase();
+                _goNextPhase?.Invoke();
             }
             else
             {
