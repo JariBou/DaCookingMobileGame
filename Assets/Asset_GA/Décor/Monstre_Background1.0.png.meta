@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Monstre_Background1.0_0: -5272538758809777678
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

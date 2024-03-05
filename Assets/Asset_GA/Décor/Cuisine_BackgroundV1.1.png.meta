@@ -202,7 +202,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cuisine_BackgroundV1.1_0: 568834139725102979
+      Cuisine_BackgroundV1.1_1: 4814606230018491755
+      Cuisine_BackgroundV1.1_2: -5367619032840148407
+      Cuisine_BackgroundV1.1_3: -9076890043454275798
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

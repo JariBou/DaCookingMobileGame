@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Four_Feu_Moyen_0: 3395609511045267761
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
