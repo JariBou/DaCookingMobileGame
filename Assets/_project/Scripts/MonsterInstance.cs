@@ -38,7 +38,7 @@ namespace _project.Scripts
         public bool FeedMeal(Meal meal)
         {
             CurrentStats += meal.Stats;
-            CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
+            CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
 
             return CurrentStats.IsInBounds(MonsterData.StatsMin, MonsterData.StatsMax);
         }

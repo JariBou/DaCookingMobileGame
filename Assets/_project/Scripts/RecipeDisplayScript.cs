@@ -4,7 +4,6 @@ using System.Linq;
 using _project.Scripts.Core;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.UI;
 
 namespace _project.Scripts
@@ -13,14 +12,12 @@ namespace _project.Scripts
     {
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private IngredientStats[] _ingredientStats;
-        [SerializeField] private TextMeshProUGUI _finalHunger;
-        [SerializeField] private TextMeshProUGUI _finalSatisfaction;
-        [SerializeField] private TextMeshProUGUI _finalPower;
-        [SerializeField] private Image _finalMealImage;
-        [SerializeField] private TextMeshProUGUI _finalMealName;
         [SerializeField] private CameraScript _camera;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplay;
         private Meal _currentMeal;
+        [SerializeField] private TMP_Text _finalHunger;
+        [SerializeField] private TMP_Text _finalSatisfaction;
+        [SerializeField] private TMP_Text _finalPower;
         public CookingManager CookingManager => _cookingManager;
 
         [Header("GameFeel")]
@@ -38,6 +35,8 @@ namespace _project.Scripts
         [SerializeField] private float _animationDuration = 1f;
         private float _timer;
         [SerializeField] private AnimationCurve AnimationCurve;
+        [SerializeField] private TMP_Text _finalMealName;
+        [SerializeField] private Image _finalMealImage;
 
         // Start is called before the first frame update
         private void Start()
@@ -45,7 +44,6 @@ namespace _project.Scripts
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
                 ResetIngredientStats(_ingredientStats[i]);
-                _finalMealImage.sprite = null;
                 _currentMeal = null;
             }
             UpdateFinalMealDisplay();
@@ -90,8 +88,10 @@ namespace _project.Scripts
                     ResetIngredientStats(_ingredientStats[i]);
 
                     _cookingManager.GaugeManager.RestartPrevGauges();
-                    _finalMealImage.sprite = null;
                     _currentMeal = null;
+                    _finalMealImage.sprite = null;
+                    _finalMealName.text = "";
+
                 }
             }
 
@@ -120,8 +120,7 @@ namespace _project.Scripts
                 _ingredientStats[order]._cardHunger.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
             else
                 _ingredientStats[order]._cardHunger.text = ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
-
-
+            
             if (ClickUp.EnlargedSprites[order].Ingredient.Stats.y > 0)
                 _ingredientStats[order]._cardSatisfaction.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
             else
@@ -139,8 +138,8 @@ namespace _project.Scripts
             if (_currentMeal != null)
             {
                 Debug.Log("Going to Phase2");
-                _camera.NextPhase();
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
+                _camera.NextPhase();
             }
             else
             {

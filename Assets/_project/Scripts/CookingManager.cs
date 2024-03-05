@@ -20,7 +20,7 @@ namespace _project.Scripts
 
         public Meal CreateMeal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
-            return new Meal(ingredient1, ingredient2, ingredient3).CreateIcon(_cookingParamsSo);
+            return new Meal(ingredient1, ingredient2, ingredient3).Initialize(_cookingParamsSo);
         }
 
         public Meal SetCurrentMeal(Meal meal)
@@ -36,9 +36,11 @@ namespace _project.Scripts
         /// <returns></returns>
         public bool FeedMeal()
         {
+            Debug.Log("Feeding Boss");
             bool result = _monsterInstance.FeedMeal(_currentMeal);
             _gaugeGaugeManager.NewPhase();
             _currentMeal = null;
+            Debug.Log($"Result: {result}");
             return result;
         }
         

@@ -2146,6 +2146,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503051665}
   m_CullTransparentMesh: 1
+--- !u!1 &544474045
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544474048}
+  - component: {fileID: 544474047}
+  - component: {fileID: 544474046}
+  m_Layer: 6
+  m_Name: MonsterInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &544474046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544474045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: +/- 3
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 0.5
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: -3.134552, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &544474047
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544474045}
+  m_CullTransparentMesh: 1
+--- !u!224 &544474048
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544474045}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.009992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4339445235814156027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 39.24, y: -3.75}
+  m_SizeDelta: {x: 1.9631, y: 0.573}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &562369238
 GameObject:
   m_ObjectHideFlags: 0
@@ -11155,6 +11291,8 @@ MonoBehaviour:
   _layerMaskCondiment:
     serializedVersion: 2
     m_Bits: 256
+  _cookingManager: {fileID: 1596713401}
+  _bossStateText: {fileID: 544474046}
   _lerpValue: 0.1
   _gaugeHandler: {fileID: 2023671285}
 --- !u!114 &1596713405
@@ -12732,13 +12870,11 @@ MonoBehaviour:
     _cardSatisfaction: {fileID: 1221813532}
     _cardPower: {fileID: 1839128998}
     _cardImage: {fileID: 1452787971}
+  _camera: {fileID: 2098448612}
+  _nextPhaseMealDisplay: {fileID: 5608204401457565526}
   _finalHunger: {fileID: 463749158}
   _finalSatisfaction: {fileID: 962826622}
   _finalPower: {fileID: 2134872750}
-  _finalMealImage: {fileID: 568075686}
-  _finalMealName: {fileID: 0}
-  _camera: {fileID: 2098448612}
-  _nextPhaseMealDisplay: {fileID: 5608204401457565526}
   _animationDuration: 1
   AnimationCurve:
     serializedVersion: 2
@@ -12945,6 +13081,8 @@ MonoBehaviour:
         NestParticles: 1
         ApplyRotation: 0
         ApplyScale: 0
+  _finalMealName: {fileID: 638763538}
+  _finalMealImage: {fileID: 568075686}
 --- !u!1 &1928253568
 GameObject:
   m_ObjectHideFlags: 0
@@ -16194,6 +16332,7 @@ Transform:
   - {fileID: 5107978174391139929}
   - {fileID: 8767666596624790395}
   - {fileID: 93071140}
+  - {fileID: 544474048}
   m_Father: {fileID: 84670090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &4364873258903887388
@@ -16725,7 +16864,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 841848359391324305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17030,7 +17169,7 @@ GameObject:
   - component: {fileID: 5391124403765608552}
   - component: {fileID: 8134984985197751280}
   - component: {fileID: 8767666596624790396}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17340,6 +17479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cookingManager: {fileID: 1596713401}
+  _monsterInfoDisplay: {fileID: 544474045}
+  _draggedMeal: {fileID: 8639535067393494908}
 --- !u!224 &6063077255721491272
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18473,7 +18614,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -18769,18 +18910,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 841848359391324305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2f099a6e8b8c914d8310f2ce68f7288, type: 3}
+  m_Script: {fileID: 11500000, guid: 974bc61002d558c4f9e291f737af34ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _scaleOnDrag: 1.5
-  _layerMaskCondiment:
-    serializedVersion: 2
-    m_Bits: 0
-  _lerpValue: 0.1
-  _gaugeHandler: {fileID: 0}
 --- !u!222 &8675591350455609301
 CanvasRenderer:
   m_ObjectHideFlags: 0
