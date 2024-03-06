@@ -17,6 +17,7 @@ namespace _project.Scripts
         [SerializeField] private CookingPhaseScript _manager;
         [FormerlySerializedAs("grayDuration")] [SerializeField, Range(0, 0.5f)] private float _grayDuration = 1f;
         [FormerlySerializedAs("grayColor")] [SerializeField] private Color _grayColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+        [SerializeField] private GameObject _ImageHoven;
 
         [Header("Display")] 
         [SerializeField] private TMP_Text _multiplierX;
@@ -50,12 +51,15 @@ namespace _project.Scripts
             _manager.SelectedCookingMethod = _cookingMethod;
             _manager.UpdateMealDisplay();
 
+            _ImageHoven.gameObject.SetActive(true);
+
             if (_OnHeatClick != null)
             {
                 _OnHeatClick.Invoke();
             }
 
         }
+                
 
         public Vector3 GetMultipliers()
         {
