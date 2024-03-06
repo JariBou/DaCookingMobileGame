@@ -3956,92 +3956,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &787321432
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 787321434}
-  - component: {fileID: 787321433}
-  m_Layer: 0
-  m_Name: Screen1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &787321433
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787321432}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.22331783, g: 0.29134953, b: 0.9622642, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!4 &787321434
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 787321432}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
-  m_LocalScale: {x: 35.5, y: 20, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796088616
 GameObject:
   m_ObjectHideFlags: 0
@@ -12459,7 +12373,7 @@ MonoBehaviour:
     m_Bits: 256
   _cookingManager: {fileID: 1596713401}
   _bossStateText: {fileID: 544474046}
-  _lerpValue: 0.1
+  _lerpValue: 0.604
   _gaugeHandler: {fileID: 2023671285}
   _press:
     m_Name: Press
@@ -12470,14 +12384,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: f6eea050-56a5-4e44-988f-4f7be34606e7
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    - m_Name: 
       m_Id: 2f3c9f7c-e3f8-4f91-93bb-7b16848b3342
       m_Path: <Touchscreen>/Press
       m_Interactions: 
@@ -12485,64 +12391,61 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Press
       m_Flags: 0
-    - m_Name: 
-      m_Id: 76ecd68b-cfea-4d50-8ea6-70740df33ce8
-      m_Path: <Pointer>/press
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    - m_Name: 
-      m_Id: d4c57819-3a54-453e-91f4-bb2a153e09b5
-      m_Path: <Touchscreen>/primaryTouch
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Press
-      m_Flags: 0
     m_Flags: 0
-  _screenPosition:
-    m_Name: Screen Position
+  _screenMousePosition:
+    m_Name: Screen Mouse Position
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: a150f580-0c5e-495f-9dba-a3109cd7b381
+    m_Id: 00ea43cb-42bb-4072-8c44-2b60c8dc9d98
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: eb5fd520-18cb-4ff4-93bb-1120ba5ad162
+      m_Id: 5cba3837-8d6e-4a0c-be8b-1c1121bafa8b
       m_Path: <Mouse>/position
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Screen Position
+      m_Action: Screen Mouse Position
       m_Flags: 0
+    m_Flags: 0
+  _click:
+    m_Name: Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6e139e00-a04d-4b3e-bb30-3bf406816928
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 2f12a300-fded-4c58-a9a1-bf333a8fd73b
+      m_Id: 2dc3d991-eadc-4508-b30e-2d9c2eb32adc
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Click
+      m_Flags: 0
+    m_Flags: 0
+  _screenTouchPosition:
+    m_Name: Screen Touch Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 6033dc6b-91e3-4402-88d0-7fa2ab9650cb
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: df5ec219-cc22-44e3-8ebb-e64824240114
       m_Path: <Touchscreen>/position
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Screen Position
-      m_Flags: 0
-    - m_Name: 
-      m_Id: cfb7465b-72cf-4cea-89eb-2cbde96550c9
-      m_Path: <Pointer>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Screen Position
-      m_Flags: 0
-    - m_Name: 
-      m_Id: 8552cf91-ca37-4052-856d-d1bbde1bb5aa
-      m_Path: <Touchscreen>/primaryTouch/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Screen Position
+      m_Action: Screen Touch Position
       m_Flags: 0
     m_Flags: 0
+  _currentMousePosition: {x: 0, y: 0}
+  _currentTouchPosition: {x: 0, y: 0}
+  _isTouch: 0
 --- !u!114 &1596713405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21003,7 +20906,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 799982994}
   - {fileID: 2098448610}
-  - {fileID: 787321434}
   - {fileID: 84670090}
   - {fileID: 742249379}
   - {fileID: 1596713402}
