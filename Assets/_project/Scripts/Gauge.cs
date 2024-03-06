@@ -19,26 +19,14 @@ namespace _project.Scripts
         [Range(0, 180)]
         [SerializeField] private float _rightAngleCramped = 180;
         [SerializeField] private float _maxValue = 100;
-        private float _angle;
-        private float _angle2;
         
         [SerializeField, Range(0, 100)] private int _currentValue = 0;
         [SerializeField, Range(0, 100)] private int _previsualizationValue = 0;
         private float _previousValue = 0;
 
-        [Header("Gauge's Animation")]
-        [SerializeField] private AnimationCurve _appearCurve;
-        [SerializeField] private float _animationDuration = 0.5f;
-        private float _timer = 0;
-        private float _timer2 = 0;
-
         [Header("Gauge's Needle")]
         [SerializeField] private GameObject _needle;
         [SerializeField] private GameObject _needlePrevisualization;
-
-        private bool _isPassingValue = false;
-        private bool _isPassingPrevisualizationValue = false;
-
 
         // Start is called before the first frame update
         private void Start()
@@ -49,26 +37,7 @@ namespace _project.Scripts
         // Update is called once per frame
         private void Update()
         {
-            if (_isPassingValue)
-            {
-                _timer += Time.deltaTime;
-                _needle.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle - 90), _appearCurve.Evaluate(_timer / _animationDuration));
-                if (_timer >= _animationDuration)
-                {
-                    _isPassingValue = false;
-                    _timer = 0;
-                }
-            }
-            if (_isPassingPrevisualizationValue)
-            {
-                _timer2 += Time.deltaTime;
-                _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/_animationDuration));
-                if (_timer2 >= _animationDuration)
-                {
-                    _isPassingPrevisualizationValue = false;
-                    _timer2 = 0;
-                }
-            }
+        
         }
 
         private void OnDrawGizmosSelected()
@@ -108,8 +77,8 @@ namespace _project.Scripts
             float x = position.x + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Cos(ConvertValueToAngle(value) * Mathf.Deg2Rad));
             float y = position.y + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Sin(ConvertValueToAngle(value) * Mathf.Deg2Rad));
             _needle.transform.position = new Vector3(x, y, 0);
-            _angle = Mathf.Atan2(_needle.transform.position.y - position.y, _needle.transform.position.x - position.x) * Mathf.Rad2Deg;
-            _isPassingValue = true;
+            float angle = Mathf.Atan2(_needle.transform.position.y - position.y, _needle.transform.position.x - position.x) * Mathf.Rad2Deg;
+            _needle.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
             _currentValue = value;
         }
 
@@ -119,8 +88,8 @@ namespace _project.Scripts
             float x2 = position2.x + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Cos(ConvertValueToAngle(prevValue) * Mathf.Deg2Rad));
             float y2 = position2.y + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Sin(ConvertValueToAngle(prevValue) * Mathf.Deg2Rad));
             _needlePrevisualization.transform.position = new Vector3(x2, y2, 0);
-            _angle2 = Mathf.Atan2(_needlePrevisualization.transform.position.y - position2.y, _needlePrevisualization.transform.position.x - position2.x) * Mathf.Rad2Deg;
-            _isPassingPrevisualizationValue = true;
+            float angle2 = Mathf.Atan2(_needlePrevisualization.transform.position.y - position2.y, _needlePrevisualization.transform.position.x - position2.x) * Mathf.Rad2Deg;
+            _needlePrevisualization.transform.rotation = Quaternion.Euler(0, 0, angle2 - 90);
             _previsualizationValue = prevValue;
         }
 

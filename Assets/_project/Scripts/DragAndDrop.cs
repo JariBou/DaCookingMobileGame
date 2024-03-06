@@ -24,8 +24,6 @@ namespace _project.Scripts
         [SerializeField, Range(0, 1)]
         private float _lerpValue = 0.1f;
         [SerializeField] private GaugeHandler _gaugeHandler;
-
-        private Vector2 _position;
         // Start is called before the first frame update
 
         // Update is called once per frame
@@ -80,8 +78,7 @@ namespace _project.Scripts
         {
             if (context.performed)
             {
-                Debug.Log(context.ReadValue<Vector2>());
-                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>()), (int)_layerMask);
+                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMask);
                 if (hit != null)
                 {
                     _isDragging = true;
@@ -105,7 +102,7 @@ namespace _project.Scripts
                 {
                   
                 }
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>()), (int)_layerMaskCondiment);
+                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
@@ -129,11 +126,6 @@ namespace _project.Scripts
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
-        }
-
-        public void GetTouchPos(InputAction.CallbackContext context)
-        {
-            
         }
 
         private void Positive()
