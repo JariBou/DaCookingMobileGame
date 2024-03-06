@@ -52,6 +52,8 @@ namespace _project.Scripts
         [Header("GameFeel")]
         [SerializeField] private UnityEvent _onCardClick;
         [SerializeField] private UnityEvent _onCardUnClick;
+        [SerializeField] private UnityEvent _onCardPass;
+        [SerializeField] private UnityEvent _onCardAppear;
 
 
         private void Start()
@@ -67,6 +69,7 @@ namespace _project.Scripts
             /*Debug.Log("Changing " + _ingredientSo.Name + " with " + newIngredient.Name);*/
             _isAppearing = false;
             _isPassing = true; // La carte descend en dehors de l'écran
+            _onCardPass?.Invoke();
             _newIngredient = newIngredient; 
             transform.position = _initialPosition;
         }
@@ -88,6 +91,7 @@ namespace _project.Scripts
 
             if (_isPassing)
             {
+                
                 _timer += Time.deltaTime;
                 transform.position = Vector3.Lerp(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset, _appearCurve.Evaluate(_timer/_animationDuration));
                 if (Vector3.Distance(transform.position, _initialPosition + Vector3.up * _negativeHeightOffset) < 0.01f)
@@ -97,12 +101,14 @@ namespace _project.Scripts
                     _ingredientSo = _newIngredient;
                     _newIngredient = null;
                     _isPassing = false;
+                    _onCardAppear?.Invoke();
                     _isAppearing = true;
                     _timer = 0;
                 }
             }
             if (_isAppearing)
             {
+                
                 _timer += Time.deltaTime;
                 _isPassing = false;
                 transform.position = Vector3.Lerp(transform.position, _initialPosition, _appearCurve.Evaluate(_timer/_animationDuration));
@@ -118,7 +124,12 @@ namespace _project.Scripts
         private void OnMouseDown()
         {
             if (_isPassing || _isAppearing || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
-            
+
+            DoClick();
+        }
+
+        public void DoClick()
+        {
             switch (_isScaled)
             {
                 case false:

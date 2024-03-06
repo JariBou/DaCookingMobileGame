@@ -3,6 +3,7 @@ using System.Linq;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts
 {
@@ -15,6 +16,7 @@ namespace _project.Scripts
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
         private int _rerollCount = 0;
         private bool _isRerolling = false;
+        [SerializeField] private UnityEvent _OnReRoll;
 /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
 
         private void OnMouseDown()
@@ -23,6 +25,7 @@ namespace _project.Scripts
         
             _rerollCount++;
             ReRollBundle();
+            _OnReRoll?.Invoke();
         }
 
         public void ReRollBundle()
@@ -32,7 +35,7 @@ namespace _project.Scripts
             foreach (IngredientSo ingredientSo in GetSelectedIngredients())
             {
                 int index = possibleIngredients.FindIndex(el => el == ingredientSo);
-                if (index != -1) // Vérifiez si l'élément a été trouvé
+                if (index != -1) // Vï¿½rifiez si l'ï¿½lï¿½ment a ï¿½tï¿½ trouvï¿½
                 {
                     possibleIngredients.RemoveAt(index);
                 }
@@ -42,7 +45,7 @@ namespace _project.Scripts
             {
                 if (clickUp.IsScaled) continue; // If not selected
 
-                if (possibleIngredients.Count > 0) // Vérifiez si la liste contient encore des éléments
+                if (possibleIngredients.Count > 0) // Vï¿½rifiez si la liste contient encore des ï¿½lï¿½ments
                 {
                     int rIndex = Random.Range(0, possibleIngredients.Count);
                     clickUp.PassIngredient(possibleIngredients[rIndex]);
@@ -50,9 +53,9 @@ namespace _project.Scripts
                 }
                 else
                 {
-                    // Gérez le cas où il n'y a plus d'ingrédients disponibles
-                    Debug.LogWarning("Plus d'ingrédients disponibles pour le re-roll");
-                    break; // Sortez de la boucle si aucun ingrédient n'est disponible
+                    // Gï¿½rez le cas oï¿½ il n'y a plus d'ingrï¿½dients disponibles
+                    Debug.LogWarning("Plus d'ingrï¿½dients disponibles pour le re-roll");
+                    break; // Sortez de la boucle si aucun ingrï¿½dient n'est disponible
                 }
             }
         }
@@ -85,6 +88,32 @@ namespace _project.Scripts
             list.AddRange(from clickUp in _cards where clickUp.IsScaled select clickUp.Ingredient);
 
             return list;
+        }
+
+        public void RedistributeCards()
+        {
+            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
+            
+            foreach (ClickUp clickUp in _cards)
+            {
+                if (clickUp.IsScaled)
+                {
+                    clickUp.DoClick();
+                }
+                
+                if (possibleIngredients.Count > 0) // Vï¿½rifiez si la liste contient encore des ï¿½lï¿½ments
+                {
+                    int rIndex = Random.Range(0, possibleIngredients.Count);
+                    clickUp.PassIngredient(possibleIngredients[rIndex]);
+                    possibleIngredients.RemoveAt(rIndex); // Assurez-vous que cet index est valide
+                }
+                else
+                {
+                    // Gï¿½rez le cas oï¿½ il n'y a plus d'ingrï¿½dients disponibles
+                    Debug.LogWarning("Plus d'ingrï¿½dients disponibles pour le re-roll");
+                    break; // Sortez de la boucle si aucun ingrï¿½dient n'est disponible
+                }
+            }
         }
     }
 }
