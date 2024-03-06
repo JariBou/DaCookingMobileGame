@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using GraphicsLabor.Scripts.Core.Utility;
 using TMPro;
+using System.Collections;
 
 namespace _project.Scripts
 {
@@ -24,7 +25,25 @@ namespace _project.Scripts
         [SerializeField, Range(0, 1)]
         private float _lerpValue = 0.1f;
         [SerializeField] private GaugeHandler _gaugeHandler;
+        [SerializeField] private InputAction _press, _screenPosition;
         // Start is called before the first frame update
+
+        private Vector2 _currentScreenPosition;
+        private void Awake()
+        {
+            _press.Enable();
+            _screenPosition.Enable();
+            _screenPosition.performed += context => { _currentScreenPosition = context.ReadValue<Vector2>();};
+            _press.performed += _ => OnClickHandler(_); 
+            _press.canceled += _ => OnClickHandler(_);
+
+            
+        }
+
+        private IEnumerator Drag()
+        {
+            throw new NotImplementedException();
+        }
 
         // Update is called once per frame
         private void Update()
@@ -33,7 +52,7 @@ namespace _project.Scripts
             {
                 _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
-                if (Mouse.current.delta.ReadValue().x != 0 || Mouse.current.delta.ReadValue().y != 0)
+                if (_currentScreenPosition.x != 0 || _currentScreenPosition.y != 0)
                 {
                     //Effet sonore à ajouter pour le mouvement de l'objet
                 }
@@ -42,7 +61,7 @@ namespace _project.Scripts
 
         private void MouseScreenCheck(Collider2D hitObject)
         {
-            Vector2 screenMousePosition = Mouse.current.position.ReadValue();
+            Vector2 screenMousePosition = _currentScreenPosition;
 #if UNITY_EDITOR
             if (screenMousePosition.x < 0) 
                 hitObject.transform.position = new Vector3(Mathf.Lerp(_hit.transform.position.x, 0 - Camera.main.ScreenToWorldPoint(Handles.GetMainGameViewSize()).x, _lerpValue), hitObject.transform.position.y, hitObject.transform.position.z);
@@ -78,9 +97,11 @@ namespace _project.Scripts
         {
             if (context.performed)
             {
-                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMask);
+                Debug.Log("Click");
+                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentScreenPosition), (int)_layerMask);
                 if (hit != null)
                 {
+                    Debug.Log("Hit");
                     _isDragging = true;
                     _hit = hit;
                     Image hitImage = _hit.GetComponent<Image>();
@@ -90,6 +111,7 @@ namespace _project.Scripts
             }
             else if (context.canceled)
             {
+                Debug.Log("Unclick");
                 if (_hit == null) return;
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
@@ -102,7 +124,7 @@ namespace _project.Scripts
                 {
                   
                 }
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
+                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentScreenPosition), (int)_layerMaskCondiment);
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
@@ -154,7 +176,7 @@ namespace _project.Scripts
         {
             if (_isDragging)
             {
-                Vector2 screenMousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector2 screenMousePosition = Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue());
                 _hit.transform.position = new Vector3(screenMousePosition.x, screenMousePosition.y, _hit.transform.position.z);
             }
         }

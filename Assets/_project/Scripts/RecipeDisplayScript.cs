@@ -93,12 +93,6 @@ namespace _project.Scripts
                 else
                 {
                     ResetIngredientStats(_ingredientStats[i]);
-
-                    _cookingManager.GaugeManager.RestartPrevGauges();
-                    _onMealDisappear?.Invoke();
-                    _finalMealImage.sprite = null;
-                    _finalMealName.text = "";
-
                 }
             }
 
@@ -109,12 +103,17 @@ namespace _project.Scripts
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 _finalMealImage.sprite = _currentMeal.Icon;
-                ChangeFinalMealStats(_currentMeal.Stats.x, _currentMeal.Stats.y, _currentMeal.Stats.z);
+                ChangeFinalMealStats(_currentMeal.Name, _currentMeal.Stats.x, _currentMeal.Stats.y, _currentMeal.Stats.z);
 
                 _cookingManager.GaugeManager.PrevisualizeMeal(_currentMeal);
             }
             else
             {
+                _cookingManager.GaugeManager.RestartPrevGauges();
+                _onMealDisappear?.Invoke();
+                _finalMealImage.sprite = null;
+                _currentMeal = null;
+                _finalMealName.text = "";
                 ChangeFinalMealStats(ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.x), 
                         ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.y), 
                     ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.z));     
