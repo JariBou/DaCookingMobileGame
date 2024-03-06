@@ -19,17 +19,35 @@ namespace _project.Scripts
         private int _rerollCount = 0;
         private bool _isRerolling = false;
         [SerializeField] private UnityEvent _OnReRoll;
-/*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
-
+        private SpriteRenderer _spriteRenderer;
+        /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
+        void Start()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
         private void OnMouseDown()
         {
-            if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1 ) return;
-        
+            _spriteRenderer.color = new Color32(200, 200, 200, 255);
+            if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
+
             _rerollCount++;
             ReRollBundle();
             _OnReRoll?.Invoke();
         }
+        private void OnMouseUp()
+        {
+            _spriteRenderer.color = new Color32(255, 255, 255, 255);
+        }
+        
 
+        /*        public void Reroll()
+                {
+                    if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1 ) return;
+
+                    _rerollCount++;
+                    ReRollBundle();
+                    _OnReRoll?.Invoke();
+                }*/
         public void ReRollBundle()
         {
             List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);

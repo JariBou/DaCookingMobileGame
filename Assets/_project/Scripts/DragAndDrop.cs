@@ -16,12 +16,12 @@ namespace _project.Scripts
         [SerializeField] private LayerMask _layerMask = 0;
         [SerializeField, Range(1f, 2f)] private float _scaleOnDrag = 1.5f;
         [SerializeField] private LayerMask _layerMaskCondiment = 0;
-        private bool _isDragging = false;
+        
         private bool _onBoss = false;
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private TMP_Text _bossStateText;
         public bool IsDragging => _isDragging;
-        private Collider2D _hit;
+        
         [SerializeField, Range(0, 1)]
         private float _lerpValue = 0.1f;
         [SerializeField] private GaugeHandler _gaugeHandler;
@@ -30,8 +30,9 @@ namespace _project.Scripts
 
         [SerializeField] private Vector2 _currentMousePosition;
         [SerializeField] private Vector2 _currentTouchPosition;
-
-        [SerializeField] private bool _isTouch = false;
+        private Collider2D _hit;
+        /*[SerializeField]*/ private bool _isDragging = false;
+        /*[SerializeField]*/ private bool _isTouch = false;
         private void Awake()
         {
             _press.Enable();
@@ -40,19 +41,26 @@ namespace _project.Scripts
             _screenTouchPosition.Enable();
 
             _screenMousePosition.performed += context => { _currentMousePosition = context.ReadValue<Vector2>();};
-            _screenTouchPosition.performed += context => { _currentTouchPosition = context.ReadValue<Vector2>();};
+            /*_screenTouchPosition.performed += context => { _currentTouchPosition = context.ReadValue<Vector2>();};*/ // J'update la position du touch dans l'update pour éviter un bug avec le drag and drop
+
 
             _press.performed += _ => OnTouchHandler(_); 
             _press.canceled += _ => OnTouchHandler(_);
+
 
             _click.performed += _ => OnClickHandler(_);
             _click.canceled += _ => OnClickHandler(_);
 
         }
 
+
         // Update is called once per frame
         private void Update()
         {
+            if (_isTouch)
+            {
+                _currentTouchPosition = Touchscreen.current.position.ReadValue();
+            }
             if (_isDragging)
             {
                 _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
@@ -66,7 +74,7 @@ namespace _project.Scripts
 
         private void MouseScreenCheck(Collider2D hitObject)
         {
-            Vector2 screenPointerPosition = _isTouch ? _currentTouchPosition : _currentMousePosition;
+            Vector2 screenPointerPosition = (_isTouch && _isDragging) ? _currentTouchPosition : _currentMousePosition;
             
 #if UNITY_EDITOR
             if (screenPointerPosition.x < 0) 
@@ -103,7 +111,7 @@ namespace _project.Scripts
         {
             if (context.performed)
             {
-                Debug.Log("Click");
+                /*Debug.Log("Click");*/
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMask);
                 if (hit != null)
                 {
@@ -117,7 +125,7 @@ namespace _project.Scripts
             }
             else if (context.canceled)
             {
-                Debug.Log("Unclick");
+                /*Debug.Log("Unclick");*/
                 if (_hit == null) return;
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
@@ -130,6 +138,7 @@ namespace _project.Scripts
                 {
                   
                 }
+                
                 Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMaskCondiment);
                 if (hitObject != null)
                 {
@@ -141,15 +150,20 @@ namespace _project.Scripts
                     else if (hitObject.gameObject.CompareTag("PlusButton"))
                     {
                         Positive();
-                    } else if (hitObject.HasExactTags(LaborTags.Boss))
+                    } 
+                    else if (hitObject.HasExactTags(LaborTags.Boss))
                     {
                         Dropped(_hit.gameObject);
+                        _hit = null;
                         return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
                 Image hitImage = _hit.GetComponent<Image>();
                 _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
+                _hit = null;
+                
+                
 
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
@@ -158,8 +172,9 @@ namespace _project.Scripts
 
         public void OnTouchHandler(InputAction.CallbackContext context)
         {
+            
             if (context.performed)
-            {   
+            {
                 _isTouch = true;
                 Debug.Log("Touch");
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMask);
@@ -176,9 +191,10 @@ namespace _project.Scripts
             else if (context.canceled)
             {
                 _isTouch = false;
-                Debug.Log("Untouch");
-                if (_hit == null) return;
                 _isDragging = false;
+                /*Debug.Log("Untouch");*/
+                if (_hit == null) return;
+
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
 
                 try
@@ -190,6 +206,7 @@ namespace _project.Scripts
 
                 }
                 Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMaskCondiment);
+                _currentTouchPosition = Vector2.zero;
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
@@ -210,7 +227,8 @@ namespace _project.Scripts
                 }
                 Image hitImage = _hit.GetComponent<Image>();
                 _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
-
+                
+                
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 

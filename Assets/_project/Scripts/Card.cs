@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Globalization;
 using _project.ScriptableObjects.Scripts;
+using _project.Scripts.Core;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
@@ -15,6 +18,8 @@ namespace _project.Scripts
         [SerializeField] private SpriteRenderer _cardImage;
         [SerializeField] private SpriteRenderer _cardBack;
 
+        [SerializeField] private List<Sprite> _cardBacks = new List<Sprite>();
+
 
         [Header("Ingredient of the card")]  
         public IngredientSo _ingredientSo;
@@ -26,10 +31,10 @@ namespace _project.Scripts
 
         public void InitializeCard(IngredientSo ingredientSo)
         {
-            InitializeCard(ingredientSo.Name, ingredientSo.Description, ingredientSo.Stats.x, ingredientSo.Stats.y, ingredientSo.Stats.z, ingredientSo.Icon);
+            InitializeCard(ingredientSo.Name, ingredientSo.Description, ingredientSo.Stats.x, ingredientSo.Stats.y, ingredientSo.Stats.z, ingredientSo.Icon, ingredientSo);
         }
 
-        public void InitializeCard(string ingredientName, string description, float hunger, float satisfaction, float power, Sprite image)
+        public void InitializeCard(string ingredientName, string description, float hunger, float satisfaction, float power, Sprite image, IngredientSo ingredientSo)
         {
             _cardName.text = ingredientName;
             _cardDescription.text = description;
@@ -39,7 +44,7 @@ namespace _project.Scripts
             _cardPower.text = (power > 0 ? "+" : "") + power.ToString(CultureInfo.InvariantCulture);
             
             _cardImage.sprite = image;
-            _cardBack.color = CalculateAverageColor(image);
+            _cardBack.sprite = SetCardSprite(ingredientSo);
         }
 
         private Color CalculateAverageColor(Sprite sprite)
@@ -66,6 +71,21 @@ namespace _project.Scripts
             float averageB = totalB / pixels.Length;
 /*        Debug.Log(averageR + " " + averageG + " " + averageB);*/
             return new Color(averageR, averageG, averageB);
+        }
+
+        private Sprite SetCardSprite(IngredientSo ingredientSo)
+        {
+            switch (ingredientSo.Family)
+            {
+                case IngredientFamily.Meat:
+                    return _cardBacks[0];
+                case IngredientFamily.Vegetable:
+                    return _cardBacks[1];
+                case IngredientFamily.Seafood:
+                    return _cardBacks[2];
+                default:
+                    return null;
+            }
         }
     }
 }
