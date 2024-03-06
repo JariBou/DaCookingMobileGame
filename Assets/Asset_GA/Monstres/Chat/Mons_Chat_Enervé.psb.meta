@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 500
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -109,8 +109,8 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Joue_G
       guid: fae03ac4c69476449aebaaf00926320b
-      position: {x: 111.029755, y: -340.68433, z: 0}
-      rotation: {x: 0, y: 0, z: -0.26430324, w: 0.9644397}
+      position: {x: 111.02959, y: -340.68402, z: 0}
+      rotation: {x: 0, y: 0, z: -0.26430324, w: 0.96443963}
       length: 252.66269
       parentId: 1
       color:
@@ -118,17 +118,17 @@ ScriptedImporter:
         rgba: 4278255488
     - name: "CE_T\xEAte"
       guid: c3061672fd13d304ca772d65170a00d2
-      position: {x: 554.1638, y: 202.63062, z: 0}
-      rotation: {x: 0, y: 0, z: 0.80028045, w: 0.59962595}
-      length: 312.4861
+      position: {x: 554.1638, y: 202.63013, z: 0}
+      rotation: {x: 0, y: 0, z: 0.8002805, w: 0.59962595}
+      length: 312.48608
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4294902015
     - name: CE_Joue_D
       guid: df9c5c8fe20bf854e8eae4f2852c4255
-      position: {x: 246.48032, y: 274.7681, z: 0}
-      rotation: {x: 0, y: 0, z: 0.06494283, w: 0.997889}
+      position: {x: 246.48044, y: 274.76825, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0649428, w: 0.99788904}
       length: 271.738
       parentId: 1
       color:
@@ -136,17 +136,17 @@ ScriptedImporter:
         rgba: 4278223103
     - name: "CE_Oeil_T\xEAte_Central"
       guid: 8b6ca6782094c7b4bbc3ddf9876b3bbc
-      position: {x: 377.48077, y: -6.2253523, z: 0}
+      position: {x: 377.48087, y: -6.2251906, z: 0}
       rotation: {x: 0, y: 0, z: 0.8602356, w: 0.5098968}
-      length: 2.2114344
+      length: 2.2114336
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4294901888
     - name: CE_Oreille_1_G
       guid: 9bb311d99f233ec459147cb1f6a1a027
-      position: {x: 510.14197, y: -411.8451, z: 0}
-      rotation: {x: 0, y: 0, z: -0.064875044, w: 0.99789345}
+      position: {x: 510.14178, y: -411.84485, z: 0}
+      rotation: {x: 0, y: 0, z: -0.0648746, w: 0.99789345}
       length: 165.97815
       parentId: 1
       color:
@@ -154,27 +154,27 @@ ScriptedImporter:
         rgba: 4294901760
     - name: CE_Oreille_1_D
       guid: 362473a7fa6865347999391002cd7f23
-      position: {x: 609.5123, y: 200.6372, z: 0}
-      rotation: {x: 0, y: 0, z: -0.11885889, w: 0.99291116}
-      length: 178.22488
+      position: {x: 609.51245, y: 200.63733, z: 0}
+      rotation: {x: 0, y: 0, z: -0.1188585, w: 0.9929112}
+      length: 178.22491
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: CE_Oreille_2_G
       guid: e213c4bd5c695eb4784e56a9fd7b77b0
-      position: {x: 165.97823, y: -0.0000044691005, z: 0}
-      rotation: {x: 0, y: 0, z: 0.32039446, w: 0.9472843}
-      length: 185.42073
+      position: {x: 165.97801, y: -0.00036076357, z: 0}
+      rotation: {x: 0, y: 0, z: 0.32039395, w: 0.94728434}
+      length: 185.42072
       parentId: 4
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_Oreille_2_D
       guid: 59aece9e98e85b8418f3e4bb0d8472f7
-      position: {x: 178.22493, y: 0.00034422067, z: 0}
-      rotation: {x: 0, y: 0, z: -0.3621019, w: 0.93213856}
-      length: 228.63484
+      position: {x: 178.22513, y: -0.00023028994, z: 0}
+      rotation: {x: 0, y: 0, z: -0.36210224, w: 0.9321384}
+      length: 228.6348
       parentId: 5
       color:
         serializedVersion: 2
@@ -888,27 +888,27 @@ ScriptedImporter:
     spriteBone:
     - name: "CE_Oeil_T\xEAte_Central"
       guid: 8b6ca6782094c7b4bbc3ddf9876b3bbc
-      position: {x: 174.10498, y: 138.66187, z: 0}
-      rotation: {x: 0, y: 0, z: 0.92388, w: -0.38268232}
-      length: 2.2114344
+      position: {x: 174.10498, y: 138.66138, z: 0}
+      rotation: {x: 0, y: 0, z: 0.92388004, w: -0.3826824}
+      length: 2.2114336
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4294901888
     - name: "CE_Oeil_T\xEAte_G"
       guid: 9a031c542587a874bb45d804b56ee3a6
-      position: {x: 373.53638, y: 73.74951, z: 0}
-      rotation: {x: 0, y: 0, z: 0.38192683, w: 0.92419255}
-      length: 2.213682
+      position: {x: 373.53638, y: 73.74902, z: 0}
+      rotation: {x: 0, y: 0, z: 0.3819269, w: 0.9241926}
+      length: 2.2136817
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4286578943
     - name: "CE_Oeil_T\xEAte_D"
       guid: 2a468674fa5ec3143aa1d3e6ec869ed6
-      position: {x: 39.958984, y: 38.842285, z: 0}
-      rotation: {x: 0, y: 0, z: -0.6259618, w: 0.77985376}
-      length: 1.8969765
+      position: {x: 39.958984, y: 38.841797, z: 0}
+      rotation: {x: 0, y: 0, z: -0.6259617, w: 0.77985376}
+      length: 1.8969764
       parentId: -1
       color:
         serializedVersion: 2
@@ -1211,9 +1211,9 @@ ScriptedImporter:
     spriteBone:
     - name: "CE_T\xEAte"
       guid: c3061672fd13d304ca772d65170a00d2
-      position: {x: 391.16382, y: -117.369385, z: 0}
-      rotation: {x: 0, y: 0, z: 0.80028045, w: 0.59962595}
-      length: 312.4861
+      position: {x: 391.16382, y: -117.36987, z: 0}
+      rotation: {x: 0, y: 0, z: 0.8002805, w: 0.59962595}
+      length: 312.48608
       parentId: -1
       color:
         serializedVersion: 2
@@ -1725,44 +1725,44 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Jambe_Inf_G
       guid: 8007fc2370af16e4093a9e04bf6d83ec
-      position: {x: 210.13382, y: -0.0006010802, z: 0}
-      rotation: {x: 0, y: 0, z: -0.045210347, w: 0.99897754}
-      length: 461.90482
+      position: {x: 210.13394, y: 0.00035896688, z: 0}
+      rotation: {x: 0, y: 0, z: -0.0452094, w: 0.9989776}
+      length: 461.9048
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_Jambe_Mid_G
       guid: 89cd82e24c23e0343965b8afc27d9980
-      position: {x: 527.75433, y: -0.000008533541, z: 0}
-      rotation: {x: 0, y: 0, z: -0.025689324, w: 0.99967}
-      length: 210.134
+      position: {x: 527.75433, y: -0.00023667434, z: 0}
+      rotation: {x: 0, y: 0, z: -0.025689926, w: 0.99967}
+      length: 210.13387
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_Jambe_Sup_G
       guid: 483bcde1c3867e24bbd146621d7cc7e2
-      position: {x: 146.18495, y: -156.97202, z: 0}
-      rotation: {x: 0, y: 0, z: -0.98046094, w: 0.19671416}
-      length: 527.75433
+      position: {x: 146.18509, y: -156.97227, z: 0}
+      rotation: {x: 0, y: 0, z: -0.98046094, w: 0.19671384}
+      length: 527.7544
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4294967040
     - name: CE_Colonne
       guid: 356931ffec2f47842b2b1da99f59e9f2
-      position: {x: 246.134, y: -0.00023488773, z: 0}
+      position: {x: 246.13408, y: -0.00041010417, z: 0}
       rotation: {x: 0, y: 0, z: 0.06333367, w: 0.9979924}
-      length: 282.76526
+      length: 282.765
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4278255615
     - name: CE_Torse
       guid: 8a0a361cd1ddc54498011dd22b8c6f30
-      position: {x: 282.7652, y: -0.00018891561, z: 0}
-      rotation: {x: 0, y: 0, z: -0.008861659, w: 0.9999608}
+      position: {x: 282.7647, y: 0.00012924676, z: 0}
+      rotation: {x: 0, y: 0, z: -0.008861489, w: 0.9999608}
       length: 467.49063
       parentId: 3
       color:
@@ -1770,9 +1770,9 @@ ScriptedImporter:
         rgba: 4278255360
     - name: CE_Coup
       guid: 1e9a8bcf986d55044886b0d2d691c5fe
-      position: {x: 458.2983, y: 0.22194535, z: 0}
-      rotation: {x: 0, y: 0, z: 0.12094507, w: 0.9926593}
-      length: 174.90959
+      position: {x: 458.2986, y: 0.2220066, z: 0}
+      rotation: {x: 0, y: 0, z: 0.120945014, w: 0.9926592}
+      length: 174.90962
       parentId: 4
       color:
         serializedVersion: 2
@@ -1780,34 +1780,34 @@ ScriptedImporter:
     - name: CE_Bassin
       guid: f315c9778c074f14cadcc4990e90017f
       position: {x: 670.60205, y: 1417.6774, z: 0}
-      rotation: {x: 0, y: 0, z: 0.64764035, w: 0.76194626}
-      length: 246.13426
+      rotation: {x: 0, y: 0, z: 0.64764017, w: 0.7619463}
+      length: 246.13406
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_Jambe_Sup_D
       guid: e74da64d73ed2144fa6a663f68230e4c
-      position: {x: 143.09177, y: 138.89606, z: 0}
-      rotation: {x: 0, y: 0, z: 0.9608963, w: 0.27690858}
-      length: 449.58936
+      position: {x: 143.09172, y: 138.89609, z: 0}
+      rotation: {x: 0, y: 0, z: 0.9608963, w: 0.27690867}
+      length: 449.58963
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4294902015
     - name: CE_Jambe_Mid_D
       guid: 155021429bcfc484b8848dc3267d4a1a
-      position: {x: 449.58923, y: -0.000056787176, z: 0}
-      rotation: {x: 0, y: 0, z: 0.6582831, w: 0.7527704}
-      length: 295.2189
+      position: {x: 449.58932, y: 0.000025868561, z: 0}
+      rotation: {x: 0, y: 0, z: 0.65828335, w: 0.7527702}
+      length: 295.21887
       parentId: 7
       color:
         serializedVersion: 2
         rgba: 4278223103
     - name: CE_Jambe_Inf_D
       guid: 12279c0a8836eba43ae58bfc1881d47b
-      position: {x: 295.2188, y: -0.0001751091, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5307556, w: 0.847525}
+      position: {x: 295.2188, y: -0.00047857434, z: 0}
+      rotation: {x: 0, y: 0, z: -0.53075576, w: 0.8475249}
       length: 415.3187
       parentId: 8
       color:
@@ -1815,8 +1815,8 @@ ScriptedImporter:
         rgba: 4278255488
     - name: CE_Bras_Sup_G
       guid: b04b7c72c3a8dda489cf9863de1eaac3
-      position: {x: 285.12076, y: -271.78552, z: 0}
-      rotation: {x: 0, y: 0, z: -0.9669, w: 0.25515592}
+      position: {x: 285.12085, y: -271.7853, z: 0}
+      rotation: {x: 0, y: 0, z: -0.96690005, w: 0.25515544}
       length: 512.80994
       parentId: 4
       color:
@@ -1824,9 +1824,9 @@ ScriptedImporter:
         rgba: 4286643968
     - name: CE_Bras_Sup_D
       guid: 92ce74a5e407c8247867f44d5d1b89ef
-      position: {x: 337.44736, y: 304.70593, z: 0}
-      rotation: {x: 0, y: 0, z: 0.98727405, w: 0.15902843}
-      length: 446.31348
+      position: {x: 337.4476, y: 304.70602, z: 0}
+      rotation: {x: 0, y: 0, z: 0.98727405, w: 0.15902838}
+      length: 446.31345
       parentId: 4
       color:
         serializedVersion: 2
@@ -2115,22 +2115,22 @@ ScriptedImporter:
         boneIndex3: 6
     - position: {x: 485.252, y: 2490.998}
       boneWeight:
-        weight0: 0
-        weight1: 0
+        weight0: 0.52
+        weight1: 0.48
         weight2: 0
         weight3: 0
         boneIndex0: 5
-        boneIndex1: 0
+        boneIndex1: 4
         boneIndex2: 6
         boneIndex3: 6
     - position: {x: 461.032, y: 2517.0981}
       boneWeight:
-        weight0: 0
-        weight1: 0
+        weight0: 0.23000002
+        weight1: 0.77
         weight2: 0
         weight3: 0
         boneIndex0: 5
-        boneIndex1: 0
+        boneIndex1: 4
         boneIndex2: 6
         boneIndex3: 6
     - position: {x: 445.226, y: 2509.92}
@@ -2911,9 +2911,9 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Oeil_Torse
       guid: b13c24a57abeb5347990db9fef74d674
-      position: {x: 65.80884, y: 40.90674, z: 0}
+      position: {x: 65.80884, y: 40.90625, z: 0}
       rotation: {x: 0, y: 0, z: 0.7071064, w: 0.7071072}
-      length: 2.0629883
+      length: 2.062988
       parentId: -1
       color:
         serializedVersion: 2
@@ -3216,9 +3216,9 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Torse
       guid: 8a0a361cd1ddc54498011dd22b8c6f30
-      position: {x: 135.177, y: 67.18677, z: 0}
+      position: {x: 135.177, y: 67.18628, z: 0}
       rotation: {x: 0, y: 0, z: 0.68819463, w: 0.72552615}
-      length: 467.4907
+      length: 467.49063
       parentId: -1
       color:
         serializedVersion: 2
@@ -3532,27 +3532,27 @@ ScriptedImporter:
     spriteBone:
     - name: PtitDoight_1_D
       guid: 524b200d7d8b0f74fb34d9ab7456ed32
-      position: {x: 191.65674, y: 53.82617, z: 0}
-      rotation: {x: 0, y: 0, z: 0.9997879, w: -0.02059529}
-      length: 80.93304
+      position: {x: 191.6565, y: 53.825928, z: 0}
+      rotation: {x: 0, y: 0, z: 0.99978787, w: -0.020595495}
+      length: 80.933044
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4286578943
     - name: PtitDoight_2_D
       guid: 5bc14050bcf04584d84a8adb2028bd95
-      position: {x: 80.93276, y: 0.000026797703, z: 0}
-      rotation: {x: 0, y: 0, z: -0.55148923, w: 0.8341821}
-      length: 136.78535
+      position: {x: 80.933014, y: -0.00012265593, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5514889, w: 0.83418226}
+      length: 136.78545
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278223103
     - name: PtitDoight_3_D
       guid: 4d5c01a2b83803e458ce14000a1fe182
-      position: {x: 136.78563, y: 0.0007090377, z: 0}
-      rotation: {x: 0, y: 0, z: -0.51683146, w: 0.85608715}
-      length: 180.65462
+      position: {x: 136.78566, y: 0.0004742678, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5168321, w: 0.85608685}
+      length: 180.65466
       parentId: 1
       color:
         serializedVersion: 2
@@ -3932,18 +3932,18 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Pouce_1_D
       guid: 4def79e7041d9d641a549692b6de2a7e
-      position: {x: 145.97119, y: 57.816162, z: 0}
-      rotation: {x: 0, y: 0, z: 0.690084, w: 0.7237293}
-      length: 119.735634
+      position: {x: 145.97095, y: 57.815918, z: 0}
+      rotation: {x: 0, y: 0, z: 0.6900838, w: 0.72372955}
+      length: 119.73611
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Pouce_2_D
       guid: 03be9634646afc641a83142cb9fd6451
-      position: {x: 119.735916, y: -0.00013438129, z: 0}
-      rotation: {x: 0, y: 0, z: 0.48975822, w: 0.87185836}
-      length: 116.89104
+      position: {x: 119.73622, y: 0.000016245147, z: 0}
+      rotation: {x: 0, y: 0, z: 0.48975864, w: 0.87185806}
+      length: 116.89101
       parentId: 0
       color:
         serializedVersion: 2
@@ -4323,54 +4323,54 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Bras_Sup_D
       guid: 92ce74a5e407c8247867f44d5d1b89ef
-      position: {x: 836.70483, y: 636.2451, z: 0}
-      rotation: {x: 0, y: 0, z: 0.8257356, w: -0.5640574}
-      length: 446.3136
+      position: {x: 836.7051, y: 636.2446, z: 0}
+      rotation: {x: 0, y: 0, z: 0.82573557, w: -0.5640574}
+      length: 446.31354
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_Bras_Inf_D
       guid: e80a68317d32d7641b90e29d0a6d7bcf
-      position: {x: 446.3135, y: -0.000015791942, z: 0}
-      rotation: {x: 0, y: 0, z: -0.8354137, w: 0.5496216}
-      length: 324.19086
+      position: {x: 446.31387, y: 0.000041402447, z: 0}
+      rotation: {x: 0, y: 0, z: -0.83541363, w: 0.5496219}
+      length: 324.1909
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: CE_Main_D
       guid: 44c2ea34677228e428693b18ebb7ab58
-      position: {x: 324.19064, y: 0.00013100193, z: 0}
-      rotation: {x: 0, y: 0, z: 0.218744, w: 0.9757823}
-      length: 188.27199
+      position: {x: 324.19107, y: -0.00030726928, z: 0}
+      rotation: {x: 0, y: 0, z: 0.21874386, w: 0.9757824}
+      length: 188.27197
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: CE_Pouce_1_D
       guid: 4def79e7041d9d641a549692b6de2a7e
-      position: {x: 20.575119, y: -101.43184, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5972953, w: 0.8020214}
-      length: 119.735634
+      position: {x: 20.575506, y: -101.43231, z: 0}
+      rotation: {x: 0, y: 0, z: -0.59729576, w: 0.80202115}
+      length: 119.73608
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Doight_1_D
       guid: 63e459e456a1b8741932799b372f82bd
-      position: {x: 188.27197, y: 0.00034300608, z: 0}
-      rotation: {x: 0, y: 0, z: -0.22380666, w: 0.97463363}
-      length: 253.31352
+      position: {x: 188.27237, y: -0.00020511152, z: 0}
+      rotation: {x: 0, y: 0, z: -0.22380672, w: 0.9746335}
+      length: 253.3135
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4278255360
     - name: PtitDoight_1_D
       guid: 524b200d7d8b0f74fb34d9ab7456ed32
-      position: {x: 130.2457, y: 75.98497, z: 0}
-      rotation: {x: 0, y: 0, z: 0.18852842, w: 0.9820677}
-      length: 80.93305
+      position: {x: 130.24612, y: 75.98443, z: 0}
+      rotation: {x: 0, y: 0, z: 0.18852843, w: 0.9820677}
+      length: 80.93304
       parentId: 2
       color:
         serializedVersion: 2
@@ -4915,18 +4915,18 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Index_2_G
       guid: ef3d2a86a048cf84090a937973a73a66
-      position: {x: 172.79045, y: -0.00018586549, z: 0}
-      rotation: {x: 0, y: 0, z: -0.39948672, w: 0.91673905}
-      length: 172.74469
+      position: {x: 172.79085, y: -0.0004464334, z: 0}
+      rotation: {x: 0, y: 0, z: -0.399486, w: 0.9167393}
+      length: 172.74464
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255615
     - name: CE_Index_1_G
       guid: 6de67ef346d1e674c9adc8e237f4f4b4
-      position: {x: 182.41943, y: 374.8838, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5847096, w: 0.81124264}
-      length: 172.79074
+      position: {x: 182.41919, y: 374.8838, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5847102, w: 0.8112422}
+      length: 172.79091
       parentId: -1
       color:
         serializedVersion: 2
@@ -5284,53 +5284,53 @@ ScriptedImporter:
     spriteBone:
     - name: CE_Doight_1_G
       guid: 302047badb708804da2da005292a37b4
-      position: {x: 237.51114, y: 22.457447, z: 0}
-      rotation: {x: 0, y: 0, z: -0.33899343, w: 0.94078875}
-      length: 267.22876
+      position: {x: 237.51144, y: 22.457495, z: 0}
+      rotation: {x: 0, y: 0, z: -0.33899334, w: 0.94078875}
+      length: 267.2288
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4278255360
     - name: CE_Main_G
       guid: 4b07ca221bd74ad4da5dea39c1f220f1
-      position: {x: 349.34097, y: -0.0005148433, z: 0}
-      rotation: {x: 0, y: 0, z: 0.1183532, w: 0.99297154}
-      length: 155.18246
+      position: {x: 349.34073, y: -0.00034753, z: 0}
+      rotation: {x: 0, y: 0, z: 0.118353054, w: 0.99297166}
+      length: 155.1825
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4294901888
     - name: CE_Bras_Inf_G
       guid: de48e2e4af6d7a847b44b7b94dda30f0
-      position: {x: 512.8102, y: 0.0004735391, z: 0}
-      rotation: {x: 0, y: 0, z: -0.14868979, w: 0.988884}
-      length: 349.34094
+      position: {x: 512.81, y: 0.00023752141, z: 0}
+      rotation: {x: 0, y: 0, z: -0.1486891, w: 0.98888403}
+      length: 349.34106
       parentId: 3
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Bras_Sup_G
       guid: b04b7c72c3a8dda489cf9863de1eaac3
-      position: {x: 15.631348, y: 1285.5664, z: 0}
-      rotation: {x: 0, y: 0, z: -0.52591425, w: 0.85053766}
-      length: 512.81006
+      position: {x: 15.631348, y: 1285.5657, z: 0}
+      rotation: {x: 0, y: 0, z: -0.52591467, w: 0.85053736}
+      length: 512.80994
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: CE_Pouce_1_G
       guid: 3febf2ce95b4c63459463e47816a6798
-      position: {x: 48.949993, y: -159.7724, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5040511, w: 0.86367387}
-      length: 95.53904
+      position: {x: 48.95012, y: -159.77226, z: 0}
+      rotation: {x: 0, y: 0, z: -0.50405186, w: 0.8636734}
+      length: 95.53911
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_Pouce_2_G
       guid: 8d6394649a191214daede1727a45dfe9
-      position: {x: 95.53915, y: 0.00002117343, z: 0}
-      rotation: {x: 0, y: 0, z: 0.33979008, w: 0.9405013}
+      position: {x: 95.53942, y: -0.00027830037, z: 0}
+      rotation: {x: 0, y: 0, z: 0.33979094, w: 0.94050103}
       length: 181.68613
       parentId: 4
       color:
@@ -5920,17 +5920,17 @@ ScriptedImporter:
     spriteBone:
     - name: CE_MachoirQueu_Inf_1
       guid: 93b2acc9010b4a0418db2816f38bc16a
-      position: {x: 373.80194, y: 219.97708, z: 0}
-      rotation: {x: 0, y: 0, z: -0.10048836, w: 0.9949383}
-      length: 467.697
+      position: {x: 373.80182, y: 219.97705, z: 0}
+      rotation: {x: 0, y: 0, z: -0.100488424, w: 0.9949382}
+      length: 467.6972
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_Queu_5
       guid: 2a921bffdc65ed6489cae4fd65d19f83
-      position: {x: 366.74472, y: 0.00005996565, z: 0}
-      rotation: {x: 0, y: 0, z: -0.3879094, w: 0.92169756}
+      position: {x: 366.74475, y: 0.00056581787, z: 0}
+      rotation: {x: 0, y: 0, z: -0.38790974, w: 0.9216974}
       length: 311.73544
       parentId: 2
       color:
@@ -5938,27 +5938,27 @@ ScriptedImporter:
         rgba: 4294901888
     - name: CE_Queu_4
       guid: 2dc3228f40897de4a9d8d296a9d3dc48
-      position: {x: 353.0259, y: 0.00004451706, z: 0}
-      rotation: {x: 0, y: 0, z: -0.39631042, w: 0.9181166}
-      length: 366.74457
+      position: {x: 353.02573, y: -0.00031180496, z: 0}
+      rotation: {x: 0, y: 0, z: -0.39631018, w: 0.9181167}
+      length: 366.7448
       parentId: 3
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Queu_3
       guid: 3e9eb8b01875a024e89ba795102da9c2
-      position: {x: 346.9985, y: 0.00036459704, z: 0}
-      rotation: {x: 0, y: 0, z: -0.24705006, w: 0.9690028}
-      length: 353.0258
+      position: {x: 346.99866, y: 0.0000056551216, z: 0}
+      rotation: {x: 0, y: 0, z: -0.24705005, w: 0.9690028}
+      length: 353.02603
       parentId: 4
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: CE_Queu_2
       guid: b7c055393c4c4634f97d229a35259211
-      position: {x: 321.6715, y: 0.00010420332, z: 0}
-      rotation: {x: 0, y: 0, z: 0.3754108, w: 0.9268586}
-      length: 346.99887
+      position: {x: 321.6712, y: 0.0000668669, z: 0}
+      rotation: {x: 0, y: 0, z: 0.375411, w: 0.9268584}
+      length: 346.9986
       parentId: 5
       color:
         serializedVersion: 2
@@ -5966,43 +5966,43 @@ ScriptedImporter:
     - name: CE_Queu_1
       guid: 5918e038b977d6b4e8263b7a0ecd457c
       position: {x: 1293.3401, y: 1766.2366, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5534412, w: 0.8328883}
-      length: 321.67126
+      rotation: {x: 0, y: 0, z: -0.55344135, w: 0.8328882}
+      length: 321.6712
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_MachoirQueu_Sup_1
       guid: 7fd20ed23b0398546927357767515a8a
-      position: {x: 255.16112, y: -169.40489, z: 0}
-      rotation: {x: 0, y: 0, z: -0.41392747, w: 0.91031}
-      length: 407.898
+      position: {x: 255.16052, y: -169.40471, z: 0}
+      rotation: {x: 0, y: 0, z: -0.41392744, w: 0.91031}
+      length: 407.89807
       parentId: 1
       color:
         serializedVersion: 2
         rgba: 4286578943
     - name: CE_MachoirQueu_Sup_2
       guid: a76590b1cf0f6994d908ea17a37fcc9f
-      position: {x: 407.89822, y: 0.00015763486, z: 0}
-      rotation: {x: 0, y: 0, z: -0.07107984, w: 0.9974707}
-      length: 341.56467
+      position: {x: 407.89813, y: 0.000260513, z: 0}
+      rotation: {x: 0, y: 0, z: -0.071079984, w: 0.9974706}
+      length: 341.56458
       parentId: 6
       color:
         serializedVersion: 2
         rgba: 4278223103
     - name: CE_MachoirQueu_Sup_3
       guid: 514a961010080ec4eb5d3d8bbe66a613
-      position: {x: 341.56464, y: 0.00021450064, z: 0}
-      rotation: {x: 0, y: 0, z: -0.12813973, w: 0.99175614}
-      length: 350.24
+      position: {x: 341.5646, y: 0.00009178074, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12813951, w: 0.99175614}
+      length: 350.2401
       parentId: 7
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: CE_MachoirQueu_Sup_4
       guid: 5cefd31e02057c74d95d3437624fede1
-      position: {x: 350.2401, y: 0.00013601342, z: 0}
-      rotation: {x: 0, y: 0, z: -0.021399505, w: 0.999771}
+      position: {x: 350.2402, y: -0.000050815142, z: 0}
+      rotation: {x: 0, y: 0, z: -0.021399558, w: 0.99977106}
       length: 381.84885
       parentId: 8
       color:
@@ -6010,27 +6010,27 @@ ScriptedImporter:
         rgba: 4294967040
     - name: CE_MachoirQueu_Inf_2
       guid: 7db943aba2d9f6f4e88a3db066a56f48
-      position: {x: 467.69714, y: 0.00016266163, z: 0}
-      rotation: {x: 0, y: 0, z: -0.33705494, w: 0.941485}
-      length: 414.76987
+      position: {x: 467.69736, y: 0.00025062272, z: 0}
+      rotation: {x: 0, y: 0, z: -0.33705488, w: 0.941485}
+      length: 414.76968
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4294902015
     - name: CE_MachoirQueu_Inf_3
       guid: e17f9fc6795fee74ba0c52cd422c7301
-      position: {x: 414.7697, y: 0.00014142023, z: 0}
-      rotation: {x: 0, y: 0, z: 0.058194906, w: 0.9983053}
-      length: 414.4814
+      position: {x: 414.76996, y: 0.000027400012, z: 0}
+      rotation: {x: 0, y: 0, z: 0.058194917, w: 0.99830526}
+      length: 414.48135
       parentId: 10
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_MachoirQueu_Inf_4
       guid: f5566ed1ad251e040b5eff398048fc0f
-      position: {x: 414.4814, y: 0.00003433031, z: 0}
-      rotation: {x: 0, y: 0, z: 0.18522471, w: 0.9826962}
-      length: 349.72855
+      position: {x: 414.48132, y: 0.000087018125, z: 0}
+      rotation: {x: 0, y: 0, z: 0.1852248, w: 0.98269624}
+      length: 349.72858
       parentId: 11
       color:
         serializedVersion: 2
@@ -7038,25 +7038,25 @@ ScriptedImporter:
     - name: CE_Bassin
       guid: f315c9778c074f14cadcc4990e90017f
       position: {x: 2211.602, y: 1968.6774, z: 0}
-      rotation: {x: 0, y: 0, z: 0.64764035, w: 0.76194626}
-      length: 246.13426
+      rotation: {x: 0, y: 0, z: 0.64764017, w: 0.7619463}
+      length: 246.13406
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_Colonne
       guid: 356931ffec2f47842b2b1da99f59e9f2
-      position: {x: 246.13406, y: -0.000112610986, z: 0}
+      position: {x: 246.13394, y: 0.00003365137, z: 0}
       rotation: {x: 0, y: 0, z: 0.063333675, w: 0.9979924}
-      length: 282.76523
+      length: 282.765
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278255615
     - name: CE_Torse
       guid: 8a0a361cd1ddc54498011dd22b8c6f30
-      position: {x: 282.7652, y: -0.0000911978, z: 0}
-      rotation: {x: 0, y: 0, z: -0.008861666, w: 0.9999607}
+      position: {x: 282.76486, y: -0.000070318405, z: 0}
+      rotation: {x: 0, y: 0, z: -0.008861496, w: 0.9999608}
       length: 467.4906
       parentId: 1
       color:
@@ -7065,16 +7065,16 @@ ScriptedImporter:
     - name: CE_Jambe_Sup_G
       guid: 483bcde1c3867e24bbd146621d7cc7e2
       position: {x: 146.18501, y: -156.9719, z: 0}
-      rotation: {x: 0, y: -0, z: -0.9804609, w: 0.19671421}
-      length: 527.75446
+      rotation: {x: 0, y: -0, z: -0.98046094, w: 0.19671385}
+      length: 527.7544
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4294967040
     - name: CE_Jambe_Inf_G
       guid: 8007fc2370af16e4093a9e04bf6d83ec
-      position: {x: 210.13393, y: -0.00029389633, z: 0}
-      rotation: {x: 0, y: 0, z: -0.04521037, w: 0.9989775}
+      position: {x: 210.134, y: 0.00033470526, z: 0}
+      rotation: {x: 0, y: 0, z: -0.045209415, w: 0.99897754}
       length: 461.90494
       parentId: 46
       color:
@@ -7083,25 +7083,25 @@ ScriptedImporter:
     - name: CE_Jambe_Sup_D
       guid: e74da64d73ed2144fa6a663f68230e4c
       position: {x: 143.09183, y: 138.89618, z: 0}
-      rotation: {x: 0, y: -0, z: 0.9608963, w: 0.27690858}
-      length: 449.58936
+      rotation: {x: 0, y: -0, z: 0.9608963, w: 0.27690867}
+      length: 449.5896
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4294902015
     - name: CE_Jambe_Mid_D
       guid: 155021429bcfc484b8848dc3267d4a1a
-      position: {x: 449.58932, y: 0.000016983497, z: 0}
-      rotation: {x: 0, y: 0, z: 0.6582832, w: 0.7527704}
-      length: 295.2189
+      position: {x: 449.58945, y: 0.00005326695, z: 0}
+      rotation: {x: 0, y: 0, z: 0.65828335, w: 0.75277025}
+      length: 295.21884
       parentId: 5
       color:
         serializedVersion: 2
         rgba: 4278223103
     - name: CE_Jambe_Inf_D
       guid: 12279c0a8836eba43ae58bfc1881d47b
-      position: {x: 295.21887, y: 0.000041825122, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5307556, w: 0.847525}
+      position: {x: 295.2188, y: -0.000017532417, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5307557, w: 0.84752494}
       length: 415.31866
       parentId: 6
       color:
@@ -7110,25 +7110,25 @@ ScriptedImporter:
     - name: CE_Bras_Sup_G
       guid: b04b7c72c3a8dda489cf9863de1eaac3
       position: {x: 285.12073, y: -271.78552, z: 0}
-      rotation: {x: 0, y: -0, z: -0.96689993, w: 0.2551559}
-      length: 512.81006
+      rotation: {x: 0, y: -0, z: -0.96690005, w: 0.2551554}
+      length: 512.81
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: CE_Bras_Inf_G
       guid: de48e2e4af6d7a847b44b7b94dda30f0
-      position: {x: 512.81006, y: -0.0000210617, z: 0}
-      rotation: {x: 0, y: 0, z: -0.14868975, w: 0.9888839}
-      length: 349.34094
+      position: {x: 512.80994, y: 0.0003211311, z: 0}
+      rotation: {x: 0, y: 0, z: -0.14868909, w: 0.98888403}
+      length: 349.34103
       parentId: 8
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Main_G
       guid: 4b07ca221bd74ad4da5dea39c1f220f1
-      position: {x: 349.34103, y: 0.000034628803, z: 0}
-      rotation: {x: 0, y: 0, z: 0.1183532, w: 0.9929716}
+      position: {x: 349.3408, y: -0.0000060914754, z: 0}
+      rotation: {x: 0, y: 0, z: 0.11835303, w: 0.9929716}
       length: 155.18248
       parentId: 9
       color:
@@ -7137,16 +7137,16 @@ ScriptedImporter:
     - name: CE_Index_1_G
       guid: 6de67ef346d1e674c9adc8e237f4f4b4
       position: {x: 166.69205, y: -58.52147, z: 0}
-      rotation: {x: 0, y: 0, z: -0.040109713, w: 0.9991953}
-      length: 172.79071
+      rotation: {x: 0, y: 0, z: -0.040110454, w: 0.9991953}
+      length: 172.79092
       parentId: 10
       color:
         serializedVersion: 2
         rgba: 4286578943
     - name: CE_Index_2_G
       guid: ef3d2a86a048cf84090a937973a73a66
-      position: {x: 172.79073, y: -0.00027218496, z: 0}
-      rotation: {x: 0, y: 0, z: -0.39948675, w: 0.916739}
+      position: {x: 172.79086, y: -0.00020270856, z: 0}
+      rotation: {x: 0, y: 0, z: -0.399486, w: 0.9167393}
       length: 172.74467
       parentId: 11
       color:
@@ -7164,16 +7164,16 @@ ScriptedImporter:
     - name: CE_Pouce_1_G
       guid: 3febf2ce95b4c63459463e47816a6798
       position: {x: 48.95002, y: -159.77266, z: 0}
-      rotation: {x: 0, y: 0, z: -0.504051, w: 0.86367387}
-      length: 95.53905
+      rotation: {x: 0, y: 0, z: -0.5040518, w: 0.86367345}
+      length: 95.53911
       parentId: 10
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_Pouce_2_G
       guid: 8d6394649a191214daede1727a45dfe9
-      position: {x: 95.53912, y: -0.000036213103, z: 0}
-      rotation: {x: 0, y: 0, z: 0.33979008, w: 0.94050133}
+      position: {x: 95.53917, y: 0.000057341313, z: 0}
+      rotation: {x: 0, y: 0, z: 0.33979088, w: 0.94050103}
       length: 181.68614
       parentId: 14
       color:
@@ -7182,26 +7182,26 @@ ScriptedImporter:
     - name: CE_Bras_Sup_D
       guid: 92ce74a5e407c8247867f44d5d1b89ef
       position: {x: 337.44733, y: 304.70596, z: 0}
-      rotation: {x: 0, y: 0, z: 0.987274, w: 0.15902843}
-      length: 446.31363
+      rotation: {x: 0, y: -0, z: 0.98727405, w: 0.15902838}
+      length: 446.31345
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_Bras_Inf_D
       guid: e80a68317d32d7641b90e29d0a6d7bcf
-      position: {x: 446.31354, y: 0.000050415285, z: 0}
-      rotation: {x: 0, y: -0, z: -0.83541375, w: 0.5496216}
-      length: 324.1908
+      position: {x: 446.31357, y: 0.000026460919, z: 0}
+      rotation: {x: 0, y: -0, z: -0.8354136, w: 0.5496218}
+      length: 324.1909
       parentId: 16
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: CE_Main_D
       guid: 44c2ea34677228e428693b18ebb7ab58
-      position: {x: 324.19058, y: 0.00023699176, z: 0}
-      rotation: {x: 0, y: 0, z: 0.21874405, w: 0.9757823}
-      length: 188.27197
+      position: {x: 324.19107, y: 0.000018663355, z: 0}
+      rotation: {x: 0, y: 0, z: 0.21874382, w: 0.97578233}
+      length: 188.272
       parentId: 17
       color:
         serializedVersion: 2
@@ -7209,16 +7209,16 @@ ScriptedImporter:
     - name: CE_Pouce_1_D
       guid: 4def79e7041d9d641a549692b6de2a7e
       position: {x: 20.575136, y: -101.43215, z: 0}
-      rotation: {x: 0, y: 0, z: -0.59729534, w: 0.80202144}
-      length: 119.7356
+      rotation: {x: 0, y: 0, z: -0.59729564, w: 0.80202115}
+      length: 119.736115
       parentId: 18
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Pouce_2_D
       guid: 03be9634646afc641a83142cb9fd6451
-      position: {x: 119.73579, y: -0.000034710203, z: 0}
-      rotation: {x: 0, y: 0, z: 0.4897582, w: 0.87185836}
+      position: {x: 119.73628, y: 0.000036717378, z: 0}
+      rotation: {x: 0, y: 0, z: 0.48975867, w: 0.8718581}
       length: 116.891014
       parentId: 19
       color:
@@ -7227,7 +7227,7 @@ ScriptedImporter:
     - name: PtitDoight_1_D
       guid: 524b200d7d8b0f74fb34d9ab7456ed32
       position: {x: 130.24573, y: 75.984604, z: 0}
-      rotation: {x: 0, y: 0, z: 0.1885284, w: 0.9820678}
+      rotation: {x: 0, y: 0, z: 0.18852851, w: 0.98206776}
       length: 80.93304
       parentId: 18
       color:
@@ -7235,17 +7235,17 @@ ScriptedImporter:
         rgba: 4286578943
     - name: PtitDoight_2_D
       guid: 5bc14050bcf04584d84a8adb2028bd95
-      position: {x: 80.93299, y: -0.000013417277, z: 0}
-      rotation: {x: 0, y: 0, z: -0.55148923, w: 0.8341821}
-      length: 136.78535
+      position: {x: 80.93299, y: 0.000106959895, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5514888, w: 0.8341823}
+      length: 136.78543
       parentId: 21
       color:
         serializedVersion: 2
         rgba: 4278223103
     - name: CE_Doight_1_D
       guid: 63e459e456a1b8741932799b372f82bd
-      position: {x: 188.27197, y: -0.000015608704, z: 0}
-      rotation: {x: 0, y: 0, z: -0.22380666, w: 0.9746336}
+      position: {x: 188.27205, y: 0.000054928998, z: 0}
+      rotation: {x: 0, y: 0, z: -0.22380674, w: 0.9746336}
       length: 253.3135
       parentId: 18
       color:
@@ -7254,16 +7254,16 @@ ScriptedImporter:
     - name: CE_Coup
       guid: 1e9a8bcf986d55044886b0d2d691c5fe
       position: {x: 458.29828, y: 0.2219606, z: 0}
-      rotation: {x: 0, y: 0, z: 0.12094507, w: 0.9926593}
-      length: 174.90959
+      rotation: {x: 0, y: 0, z: 0.12094501, w: 0.9926592}
+      length: 174.90962
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: "CE_T\xEAte"
       guid: c3061672fd13d304ca772d65170a00d2
-      position: {x: 174.90955, y: -0.00011249965, z: 0}
-      rotation: {x: 0, y: 0, z: 0.047505263, w: 0.998871}
+      position: {x: 174.90953, y: -0.000021668551, z: 0}
+      rotation: {x: 0, y: 0, z: 0.047505338, w: 0.998871}
       length: 312.48615
       parentId: 24
       color:
@@ -7273,42 +7273,42 @@ ScriptedImporter:
       guid: 5918e038b977d6b4e8263b7a0ecd457c
       position: {x: -117.982925, y: -37.2344, z: 0}
       rotation: {x: 0, y: -0, z: -0.96110445, w: 0.2761852}
-      length: 321.67123
+      length: 321.6712
       parentId: 0
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_Queu_2
       guid: b7c055393c4c4634f97d229a35259211
-      position: {x: 321.6712, y: 0.00005137847, z: 0}
-      rotation: {x: 0, y: 0, z: 0.3754108, w: 0.92685854}
-      length: 346.99878
+      position: {x: 321.67123, y: 0.00007921446, z: 0}
+      rotation: {x: 0, y: 0, z: 0.37541103, w: 0.9268584}
+      length: 346.99857
       parentId: 26
       color:
         serializedVersion: 2
         rgba: 4278255615
     - name: CE_Queu_3
       guid: 3e9eb8b01875a024e89ba795102da9c2
-      position: {x: 346.99863, y: 0.0001609993, z: 0}
-      rotation: {x: 0, y: 0, z: -0.24705006, w: 0.9690027}
-      length: 353.02576
+      position: {x: 346.99854, y: -0.00007880137, z: 0}
+      rotation: {x: 0, y: 0, z: -0.24704999, w: 0.9690027}
+      length: 353.026
       parentId: 27
       color:
         serializedVersion: 2
         rgba: 4286643968
     - name: CE_Queu_4
       guid: 2dc3228f40897de4a9d8d296a9d3dc48
-      position: {x: 353.0258, y: 0.000027955772, z: 0}
-      rotation: {x: 0, y: 0, z: -0.3963104, w: 0.9181166}
-      length: 366.74463
+      position: {x: 353.02603, y: 0.000008119678, z: 0}
+      rotation: {x: 0, y: 0, z: -0.39631018, w: 0.9181167}
+      length: 366.7448
       parentId: 28
       color:
         serializedVersion: 2
         rgba: 4294934528
     - name: CE_Queu_5
       guid: 2a921bffdc65ed6489cae4fd65d19f83
-      position: {x: 366.74475, y: 0.000011316095, z: 0}
-      rotation: {x: 0, y: 0, z: -0.3879095, w: 0.9216975}
+      position: {x: 366.74475, y: 0.00015591917, z: 0}
+      rotation: {x: 0, y: 0, z: -0.3879099, w: 0.9216974}
       length: 311.73544
       parentId: 29
       color:
@@ -7317,34 +7317,34 @@ ScriptedImporter:
     - name: CE_MachoirQueu_Sup_1
       guid: 7fd20ed23b0398546927357767515a8a
       position: {x: 255.16101, y: -169.4048, z: 0}
-      rotation: {x: 0, y: 0, z: -0.41392747, w: 0.9103099}
-      length: 407.898
+      rotation: {x: 0, y: 0, z: -0.41392735, w: 0.91031}
+      length: 407.89804
       parentId: 30
       color:
         serializedVersion: 2
         rgba: 4286578943
     - name: CE_MachoirQueu_Sup_2
       guid: a76590b1cf0f6994d908ea17a37fcc9f
-      position: {x: 407.8982, y: 0.00013581611, z: 0}
-      rotation: {x: 0, y: 0, z: -0.07107974, w: 0.9974707}
-      length: 341.56467
+      position: {x: 407.89792, y: 0.00007477182, z: 0}
+      rotation: {x: 0, y: 0, z: -0.07107994, w: 0.9974706}
+      length: 341.56454
       parentId: 31
       color:
         serializedVersion: 2
         rgba: 4278223103
     - name: CE_MachoirQueu_Sup_3
       guid: 514a961010080ec4eb5d3d8bbe66a613
-      position: {x: 341.56473, y: 0.0000009972282, z: 0}
-      rotation: {x: 0, y: 0, z: -0.12813964, w: 0.99175614}
-      length: 350.23993
+      position: {x: 341.56454, y: 0.000048520706, z: 0}
+      rotation: {x: 0, y: 0, z: -0.12813954, w: 0.99175614}
+      length: 350.24005
       parentId: 32
       color:
         serializedVersion: 2
         rgba: 4278255488
     - name: CE_MachoirQueu_Sup_4
       guid: 5cefd31e02057c74d95d3437624fede1
-      position: {x: 350.24005, y: -0.0000032233584, z: 0}
-      rotation: {x: 0, y: 0, z: -0.021399586, w: 0.999771}
+      position: {x: 350.2401, y: -0.00008009359, z: 0}
+      rotation: {x: 0, y: 0, z: -0.021399535, w: 0.999771}
       length: 381.8488
       parentId: 33
       color:
@@ -7354,33 +7354,33 @@ ScriptedImporter:
       guid: 93b2acc9010b4a0418db2816f38bc16a
       position: {x: 373.8017, y: 219.97723, z: 0}
       rotation: {x: 0, y: 0, z: -0.100488424, w: 0.99493825}
-      length: 467.697
+      length: 467.69724
       parentId: 30
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_MachoirQueu_Inf_2
       guid: 7db943aba2d9f6f4e88a3db066a56f48
-      position: {x: 467.69733, y: 0.00013420788, z: 0}
+      position: {x: 467.69742, y: 0.00014106525, z: 0}
       rotation: {x: 0, y: 0, z: -0.33705482, w: 0.94148505}
-      length: 414.76987
+      length: 414.76965
       parentId: 35
       color:
         serializedVersion: 2
         rgba: 4294902015
     - name: CE_MachoirQueu_Inf_3
       guid: e17f9fc6795fee74ba0c52cd422c7301
-      position: {x: 414.76974, y: 0.00009546127, z: 0}
-      rotation: {x: 0, y: 0, z: 0.058194906, w: 0.99830526}
-      length: 414.48138
+      position: {x: 414.7697, y: 0.00001421408, z: 0}
+      rotation: {x: 0, y: 0, z: 0.0581949, w: 0.99830526}
+      length: 414.4813
       parentId: 36
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: CE_MachoirQueu_Inf_4
       guid: f5566ed1ad251e040b5eff398048fc0f
-      position: {x: 414.48138, y: -0.00002523858, z: 0}
-      rotation: {x: 0, y: 0, z: 0.18522465, w: 0.98269624}
+      position: {x: 414.4814, y: 0.000079534395, z: 0}
+      rotation: {x: 0, y: 0, z: 0.18522473, w: 0.98269624}
       length: 349.72852
       parentId: 37
       color:
@@ -7442,8 +7442,8 @@ ScriptedImporter:
         rgba: 4278255488
     - name: PtitDoight_3_D
       guid: 4d5c01a2b83803e458ce14000a1fe182
-      position: {x: 136.78546, y: 0.000079477344, z: 0}
-      rotation: {x: 0, y: 0, z: -0.51683146, w: 0.8560872}
+      position: {x: 136.78558, y: 0.0001720599, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5168321, w: 0.8560868}
       length: 180.65463
       parentId: 22
       color:
@@ -7451,9 +7451,9 @@ ScriptedImporter:
         rgba: 4286643968
     - name: CE_Jambe_Mid_G
       guid: 89cd82e24c23e0343965b8afc27d9980
-      position: {x: 527.7544, y: -0.00024489465, z: 0}
-      rotation: {x: 0, y: 0, z: -0.025689349, w: 0.99966997}
-      length: 210.13405
+      position: {x: 527.75446, y: 0.00020764286, z: 0}
+      rotation: {x: 0, y: 0, z: -0.025689945, w: 0.99966997}
+      length: 210.13391
       parentId: 3
       color:
         serializedVersion: 2
@@ -7461,8 +7461,8 @@ ScriptedImporter:
     - name: CE_Oreille_1_D
       guid: 362473a7fa6865347999391002cd7f23
       position: {x: 609.5123, y: 200.63719, z: 0}
-      rotation: {x: 0, y: 0, z: -0.11885889, w: 0.99291116}
-      length: 178.2249
+      rotation: {x: 0, y: 0, z: -0.1188585, w: 0.9929112}
+      length: 178.22495
       parentId: 25
       color:
         serializedVersion: 2
@@ -7470,16 +7470,16 @@ ScriptedImporter:
     - name: CE_Oreille_1_G
       guid: 9bb311d99f233ec459147cb1f6a1a027
       position: {x: 510.14185, y: -411.845, z: 0}
-      rotation: {x: 0, y: 0, z: -0.06487507, w: 0.9978934}
-      length: 165.97816
+      rotation: {x: 0, y: 0, z: -0.06487461, w: 0.99789345}
+      length: 165.9782
       parentId: 25
       color:
         serializedVersion: 2
         rgba: 4294901760
     - name: CE_Oreille_2_D
       guid: 59aece9e98e85b8418f3e4bb0d8472f7
-      position: {x: 178.22482, y: 0.000041583433, z: 0}
-      rotation: {x: 0, y: 0, z: -0.36210197, w: 0.93213856}
+      position: {x: 178.2249, y: -0.0000378142, z: 0}
+      rotation: {x: 0, y: 0, z: -0.3621023, w: 0.93213844}
       length: 228.63486
       parentId: 47
       color:
@@ -7487,8 +7487,8 @@ ScriptedImporter:
         rgba: 4294902015
     - name: CE_Oreille_2_G
       guid: e213c4bd5c695eb4784e56a9fd7b77b0
-      position: {x: 165.9783, y: 0.000044483822, z: 0}
-      rotation: {x: 0, y: 0, z: 0.32039446, w: 0.9472843}
+      position: {x: 165.97807, y: -0.00018554574, z: 0}
+      rotation: {x: 0, y: 0, z: 0.320394, w: 0.94728446}
       length: 185.42073
       parentId: 48
       color:
