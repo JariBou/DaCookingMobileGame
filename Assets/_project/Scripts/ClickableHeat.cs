@@ -28,6 +28,12 @@ namespace _project.Scripts
         [Header("GameFeel")]
         [SerializeField] private UnityEvent _OnHeatClick;
 
+        [Header("Particle System")]
+        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private Color _particleColor = Color.red;
+        [SerializeField] private float _particleSpeed = 1f;
+        [SerializeField] private float _particleSize = 1f;
+
         private bool _IsClick;
         public bool IsClick => _IsClick;
 
@@ -57,6 +63,11 @@ namespace _project.Scripts
             {
                 _OnHeatClick.Invoke();
             }
+
+            var mainModule = _particleSystem.main;
+            mainModule.startColor = _particleColor;
+            mainModule.startSpeed = _particleSpeed;
+            mainModule.startSize = _particleSize;
 
         }
                 
