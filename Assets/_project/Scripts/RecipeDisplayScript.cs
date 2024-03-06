@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using _project.Scripts.Core;
+using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +21,12 @@ namespace _project.Scripts
         [SerializeField] private TMP_Text _finalHunger;
         [SerializeField] private TMP_Text _finalSatisfaction;
         [SerializeField] private TMP_Text _finalPower;
+        [SerializeField] private float _slideTime = 1f;
+        [SerializeField] private Transform _uiTransform;
+
+        [SerializeField] private AnimationCurve _uiSlideCurve;
+        [SerializeField] private AnimationCurve _mealSlideCurve;
+        [SerializeField] private AnimationCurve _ingredientSlideCurve;
         public CookingManager CookingManager => _cookingManager;
 
         [Header("GameFeel")]
@@ -41,6 +50,7 @@ namespace _project.Scripts
         // Start is called before the first frame update
         private void Start()
         {
+            _finalMealImage.enabled = false;
             for (int i = 0; i < _ingredientStats.Length; i++)
             {
                 ResetIngredientStats(_ingredientStats[i]);
@@ -99,7 +109,7 @@ namespace _project.Scripts
             {
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
-                _finalMealImage.sprite = _currentMeal.Icon;
+                //_finalMealImage.sprite = _currentMeal.Icon;
                 ChangeFinalMealStats(_currentMeal.Stats.x, _currentMeal.Stats.y, _currentMeal.Stats.z);
 
                 _cookingManager.GaugeManager.PrevisualizeMeal(_currentMeal);
@@ -137,14 +147,104 @@ namespace _project.Scripts
         {
             if (_currentMeal != null)
             {
+                
+
+                StartCoroutine(SlideIngredients());
+                
                 Debug.Log("Going to Phase2");
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
-                _camera.NextPhase();
             }
             else
             {
                 Debug.Log("No meal");
             }
+        }
+        
+        private IEnumerator SlideIngredients()
+        {
+
+            List<Vector2> startPositions = new List<Vector2>(3)
+            {
+                _ingredientStats[0]._cardImage.transform.position,
+                _ingredientStats[1]._cardImage.transform.position,
+                _ingredientStats[2]._cardImage.transform.position
+            };
+            
+            float timer = 0;
+            while (timer < _slideTime)
+            {
+                timer += Time.deltaTime;
+                for (int i = 0; i < 3; i++)
+                {
+                    _ingredientStats[i]._cardImage.transform.position = Vector2.Lerp(startPositions[i], _finalMealImage.transform.position,
+                        _ingredientSlideCurve.Evaluate(timer / _slideTime));
+                }
+                
+                yield return new WaitForEndOfFrame();
+            }
+            
+            for (int i = 0; i < 3; i++)
+            {
+                _ingredientStats[i]._cardImage.enabled = false;
+            }
+
+            _finalMealImage.enabled = true;
+            _finalMealImage.sprite = _currentMeal.Icon;
+
+            yield return new WaitForSeconds(0.5f);
+            StartCoroutine(SlideUi());
+
+            while (_cookingManager.GetCurrentPhase() != PhaseCode.Phase3)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+            
+            yield return new WaitForSeconds(1);
+            
+            for (int i = 0; i < 3; i++)
+            {
+                _ingredientStats[i]._cardImage.transform.position = startPositions[i];
+                _ingredientStats[i]._cardImage.enabled = true;
+            }
+        }
+
+        private IEnumerator SlideMeal()
+        {
+            _camera.NextPhase();
+            
+            Vector2 startPos = _finalMealImage.transform.position;
+            float timer = 0;
+            while (timer < _slideTime)
+            {
+                timer += Time.deltaTime;
+                _finalMealImage.transform.position = Vector2.Lerp(startPos, _nextPhaseMealDisplay.transform.position,
+                    _mealSlideCurve.Evaluate(timer / _slideTime));
+                yield return new WaitForEndOfFrame();
+            }
+        }
+        
+        private IEnumerator SlideUi()
+        {
+            Vector2 startPos = _uiTransform.position;
+            
+            float timer = 0;
+            float slideTime = 0.5f;
+            while (timer < slideTime)
+            {
+                timer += Time.deltaTime;
+                _uiTransform.position = Vector2.Lerp(startPos, startPos + Vector2.down * 20f,
+                    _uiSlideCurve.Evaluate(timer / slideTime));
+                yield return new WaitForEndOfFrame();
+            }
+            
+            StartCoroutine(SlideMeal());
+            
+            while (_cookingManager.GetCurrentPhase() != PhaseCode.Phase3)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
+            _uiTransform.position = startPos;
         }
 
         private void ResetIngredientStats(IngredientStats ingredientStats)

@@ -21,7 +21,7 @@ namespace _project.Scripts
             _mealStatX.text = (meal.Stats.x >= 0 ? "+" : "") + meal.Stats.x.ToString(CultureInfo.InvariantCulture);
             _mealStatY.text = (meal.Stats.y >= 0 ? "+" : "") + meal.Stats.y.ToString(CultureInfo.InvariantCulture);
             _mealStatZ.text = (meal.Stats.z >= 0 ? "+" : "") + meal.Stats.z.ToString(CultureInfo.InvariantCulture);
-            _mealImage.sprite = meal.Icon;
+            if (_mealImage) _mealImage.sprite = meal.Icon;
         }
         
         public void ResetDisplay()
@@ -30,7 +30,7 @@ namespace _project.Scripts
             _mealStatX.text = "0";
             _mealStatY.text = "0";
             _mealStatZ.text = "0";
-            _mealImage.sprite = null;
+            if (_mealImage) _mealImage.sprite = null;
         }
     }
 }
