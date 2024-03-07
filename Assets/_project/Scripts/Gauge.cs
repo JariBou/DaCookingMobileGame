@@ -104,6 +104,7 @@ namespace _project.Scripts
 
         public void PassValue(int value)
         {
+            _timer = 0;
             Vector3 position = transform.position + Vector3.up * _yOffset;
             float x = position.x + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Cos(ConvertValueToAngle(value) * Mathf.Deg2Rad));
             float y = position.y + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Sin(ConvertValueToAngle(value) * Mathf.Deg2Rad));
@@ -115,6 +116,7 @@ namespace _project.Scripts
 
         public void PassPrevisualizationValue(int prevValue)
         {
+            _timer2 = 0;
             Vector3 position2 = transform.position + Vector3.up * _yOffset;
             float x2 = position2.x + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Cos(ConvertValueToAngle(prevValue) * Mathf.Deg2Rad));
             float y2 = position2.y + (Mathf.Abs(_yOffset + _gaugeOffset) * Mathf.Sin(ConvertValueToAngle(prevValue) * Mathf.Deg2Rad));

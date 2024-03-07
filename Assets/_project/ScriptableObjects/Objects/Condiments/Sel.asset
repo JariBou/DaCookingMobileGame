@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sel
   m_EditorClassIdentifier: 
   _name: Sel
-  _value: {x: 3, y: 0, z: 0}
+  _value: {x: 3, y: -2, z: 1}
   _icon: {fileID: 0}
   _description: 

@@ -7,6 +7,8 @@ TagManager:
   - Food
   - MinusButton
   - PlusButton
+  - Seosoning
+  - Boss
   layers:
   - Default
   - TransparentFX

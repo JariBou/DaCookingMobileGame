@@ -31,7 +31,7 @@ namespace _project.Scripts
         [SerializeField] private Vector2 _currentMousePosition;
         [SerializeField] private Vector2 _currentTouchPosition;
         [SerializeField] private Vector2 _lastTouchScreenPosition;
-        private Collider2D _hit;
+        [SerializeField] private Collider2D _hit;
         /*[SerializeField]*/ private bool _isDragging = false;
         /*[SerializeField]*/ private bool _isTouch = false;
         private void Awake()
@@ -157,16 +157,15 @@ namespace _project.Scripts
                     else if (hitObject.gameObject.CompareTag("PlusButton"))
                     {
                         Positive();
-                    } 
-                    else if (hitObject.HasExactTags(LaborTags.Boss))
+                    }
+                    else if (hitObject.gameObject.CompareTag("Seosoning"))
+                    {
+                        AddCond();
+                    }
+                    else if (hitObject.gameObject.CompareTag("Boss"))
                     {
                         Dropped(_hit.gameObject);
-                        _hit = null;
                         return;
-                    }
-                    else
-                    {
-                        _hit.transform.position = _initialPosition;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
@@ -218,8 +217,9 @@ namespace _project.Scripts
                 {
 
                 }
+                Debug.Log(_lastTouchScreenPosition);
                 Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_lastTouchScreenPosition), (int)_layerMaskCondiment);
-                
+
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
@@ -231,36 +231,40 @@ namespace _project.Scripts
                     {
                         Positive();
                     }
-                    else if (hitObject.HasExactTags(LaborTags.Boss))
+                    else if (hitObject.gameObject.CompareTag("Seosoning"))
+                    {
+                        AddCond();
+                    }
+                    else if (hitObject.gameObject.CompareTag("Boss"))
                     {
                         Dropped(_hit.gameObject);
                         return;
-                    }
-                    else
-                    {
-                        _hit.transform.position = _initialPosition; 
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
                 Image hitImage = _hit.GetComponent<Image>();
                 _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
-                
-                
+                _hit = null;
+
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
         }
 
-
+        private void AddCond()
+        {
+           /* Debug.Log("Add cond");*/
+            _hit.GetComponent<DragableObject>().AddSeosoning();
+        }
 
         private void Positive()
         {
-            Debug.Log("Positive");
+            /*Debug.Log("Positive");*/
             _hit.GetComponent<DragableObject>().AddSeosoning(1);
         }
         private void Negative()
         {
-            Debug.Log("Negative");
+            /*Debug.Log("Negative");*/
             _hit.GetComponent<DragableObject>().AddSeosoning(-1);
         }
 
