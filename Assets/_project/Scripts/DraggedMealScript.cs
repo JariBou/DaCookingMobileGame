@@ -1,0 +1,50 @@
+using UnityEngine;
+using UnityEngine.Serialization;
+
+namespace _project.Scripts
+{
+    public class DraggedMealScript : MonoBehaviour, IDraggable
+    {
+        [FormerlySerializedAs("_lastPhasePhaseScript")] [FormerlySerializedAs("_condimentPhaseScript")] [SerializeField] private LastPhaseScript _lastPhaseScript;
+        private Vector3 _initialPosition;
+        private bool _usable;
+
+
+        private void Awake()
+        {
+            _initialPosition = transform.position;
+        }
+
+        public void ResetPosition()
+        {
+            transform.position = _initialPosition;
+        }
+
+        public void EnableUse()
+        {
+            _usable = true;
+        }
+
+        public void DisableUse()
+        {
+            _usable = false;
+        }
+
+        public void Deactivate()
+        {
+            _lastPhaseScript.EndFeedingPhase();
+            gameObject.SetActive(false);
+            DisableUse();
+        }
+
+        public void Activate()
+        {
+            gameObject.SetActive(true);
+        }
+
+        public bool IsActive()
+        {
+            return _usable;
+        }
+    }
+}

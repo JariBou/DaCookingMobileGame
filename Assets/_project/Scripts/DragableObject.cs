@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DragableObject : MonoBehaviour
+public class DragableObject : MonoBehaviour, IDraggable
 {
     /*    [SerializeField] private SeasoningType _seasoningType;*/
     [Header("Stats")]
@@ -27,6 +27,7 @@ public class DragableObject : MonoBehaviour
     [SerializeField] private CookingManager _cookingManager;
     [SerializeField] private MealDisplayScript _mealDisplayScript;
     [SerializeField] private GaugeHandler _gaugeHandler;
+    private bool _usable;
     public Vector3 InitialPosition => _initialPosition;
 
     
@@ -83,7 +84,21 @@ public class DragableObject : MonoBehaviour
         UpdateQuantity();
         SetStats(_condimentSo);
     }
+    
+    public void EnableUse()
+    {
+        _usable = true;
+    }
 
+    public void DisableUse()
+    {
+        _usable = false;
+    }
+
+    public bool IsActive()
+    {
+        return _usable;
+    }
 }
 
 /*[Serializable]

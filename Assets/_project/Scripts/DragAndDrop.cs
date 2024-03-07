@@ -190,6 +190,7 @@ namespace _project.Scripts
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMask);
                 if (hit != null)
                 {
+                    if (!hit.GetComponent<IDraggable>().IsActive()) return;
                     _initialPosition = hit.transform.position;
                     Debug.Log("Hit");
                     _isDragging = true;
