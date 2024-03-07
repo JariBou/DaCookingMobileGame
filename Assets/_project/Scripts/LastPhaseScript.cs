@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _project.Scripts
 {
     public class LastPhaseScript : MonoBehaviour
     {
         [SerializeField] private CookingManager _cookingManager;
-        [SerializeField] private GameObject _monsterInfoDisplay;
         [SerializeField] private DraggedMealScript _draggedMeal;
+        [SerializeField] private BossScript _bossScript;
         [SerializeField] private Transform _uiTransform;
         [SerializeField] private Transform _decorTransform;
         [SerializeField] private Transform _meal;
@@ -17,6 +19,8 @@ namespace _project.Scripts
         [SerializeField] private float _zoomTime;
         [SerializeField] private AnimationCurve _uiSlideCurve;
         [SerializeField] private ReRoll _reRoll;
+        [SerializeField] private List<DragableObject> _condiments;
+        [SerializeField] private Button _button;
 
         private Vector2 _startBgScale;
         private Vector2 _startUiPos;
@@ -29,16 +33,20 @@ namespace _project.Scripts
             _startBgScale = _decorTransform.localScale;
         }
 
+        public void PassBossScript(BossScript bossScript)
+        {
+            _bossScript = bossScript;
+        }
 
         public void GoNextPhase()
         {
             _cookingManager.Camera.NextPhase();
             StartCoroutine(SlideUi());
-            _monsterInfoDisplay.SetActive(false);
         }
 
         private IEnumerator SlideUi()
         {
+            _button.gameObject.SetActive(false);
             float timer = 0;
             while (timer < _slideTime)
             {
@@ -46,6 +54,11 @@ namespace _project.Scripts
                 _uiTransform.position = Vector2.Lerp(_startUiPos, _startUiPos + Vector2.down * 30f,
                     _uiSlideCurve.Evaluate(timer / _slideTime));
                 yield return new WaitForEndOfFrame();
+            }
+
+            foreach (DragableObject condiment in _condiments)
+            {
+                condiment.DisableUse();
             }
             
             timer = 0;
@@ -59,6 +72,7 @@ namespace _project.Scripts
                 yield return new WaitForEndOfFrame();
             }
             _draggedMeal.EnableUse();
+            _bossScript.ActivateFeeding();
         }
         
         private IEnumerator EndFeedingPhaseRoutine()
@@ -82,6 +96,12 @@ namespace _project.Scripts
             _uiTransform.position = _startUiPos;
             _draggedMeal.ResetPosition();
             _draggedMeal.Activate();
+            _bossScript.DeactivateFeeding();
+            foreach (DragableObject condiment in _condiments)
+            {
+                condiment.EnableUse();
+            }
+            _button.gameObject.SetActive(true);
         }
 
         public void EndFeedingPhase()

@@ -47,6 +47,8 @@ namespace _project.Scripts
         [SerializeField] private AnimationCurve AnimationCurve;
         [SerializeField] private TMP_Text _finalMealName;
         [SerializeField] private Image _finalMealImage;
+        [SerializeField] private Button _button;
+        [SerializeField] private Button _rerollButton;
 
         [Header("Game Feel")]
         [SerializeField] private UnityEvent _onMealAppear;
@@ -172,6 +174,8 @@ namespace _project.Scripts
         
         private IEnumerator SlideIngredients()
         {
+            _button.gameObject.SetActive(false);
+            _rerollButton.gameObject.SetActive(false);
 
             List<Vector2> startPositions = new List<Vector2>(3)
             {
@@ -210,6 +214,8 @@ namespace _project.Scripts
                 yield return new WaitForFixedUpdate();
             }
             
+            _button.gameObject.SetActive(true);
+            _rerollButton.gameObject.SetActive(true);
             yield return new WaitForSeconds(1);
             
             for (int i = 0; i < 3; i++)

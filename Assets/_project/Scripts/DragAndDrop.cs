@@ -19,7 +19,6 @@ namespace _project.Scripts
         
         private bool _onBoss = false;
         [SerializeField] private CookingManager _cookingManager;
-        [SerializeField] private TMP_Text _bossStateText;
         public bool IsDragging => _isDragging;
         
         [SerializeField, Range(0, 1)]
@@ -165,6 +164,8 @@ namespace _project.Scripts
                     else if (hitObject.gameObject.CompareTag("Boss"))
                     {
                         Dropped(_hit.gameObject);
+                        _hit = null;
+                        return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
@@ -238,12 +239,11 @@ namespace _project.Scripts
                     else if (hitObject.gameObject.CompareTag("Boss"))
                     {
                         Dropped(_hit.gameObject);
-                        return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
                 Image hitImage = _hit.GetComponent<Image>();
-                _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
+                hitImage.color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
                 _hit = null;
 
                 //Effet sonore à rajouter pour le lâché de l'objet
@@ -271,11 +271,10 @@ namespace _project.Scripts
         private void Dropped(GameObject hitGameObject)
         {
             bool result = _cookingManager.FeedMeal();
-
-            _bossStateText.text = result ? "Monster Satisfied GG" : "Monster not happy";
-            _bossStateText.color = result ? Color.green : Color.red;
-            _bossStateText.gameObject.SetActive(true);
             
+            Image hitImage = hitGameObject.GetComponent<Image>();
+            hitImage.color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
+
             hitGameObject.GetComponent<DraggedMealScript>().Deactivate();
         }
 
