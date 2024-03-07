@@ -34,6 +34,7 @@ namespace _project.Scripts
             MonsterData = dataSo;
             _maxNumberOfMeals = dataSo.MaxNumberOfMeals;
             _numberOfMeals = 0;
+            if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
 
             int x = Random.Range(dataSo.RandomStatsMin.x, dataSo.RandomStatsMax.x);
             int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
