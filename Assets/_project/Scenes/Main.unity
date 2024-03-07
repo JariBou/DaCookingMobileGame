@@ -2421,7 +2421,7 @@ MonoBehaviour:
         RepeatUntilStopped: 0
         CameraShakeProperties:
           Duration: 0.3
-          Amplitude: 0.5
+          Amplitude: 1
           Frequency: 30
           AmplitudeX: 0
           AmplitudeY: 0
@@ -6144,7 +6144,7 @@ MonoBehaviour:
         RepeatUntilStopped: 0
         CameraShakeProperties:
           Duration: 0.3
-          Amplitude: 0.5
+          Amplitude: 0.8
           Frequency: 30
           AmplitudeX: 0
           AmplitudeY: 0
@@ -16633,9 +16633,9 @@ MonoBehaviour:
   IdleAmplitude: 0
   IdleFrequency: 1
   LerpSpeed: 5
-  TestDuration: 0.3
+  TestDuration: 0.5
   TestAmplitude: 2
-  TestFrequency: 20
+  TestFrequency: 50
   TestShakeButton: 0
 --- !u!1 &2110671472
 GameObject:
@@ -20588,7 +20588,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _particleSystem: {fileID: 2061906699}
-  _particleColor: {r: 0.21016884, g: 1, b: 0, a: 1}
+  _particleColor: {r: 1, g: 0.3803922, b: 0, a: 1}
   _particleSpeed: 9
   _particleSize: 2
 --- !u!222 &6444178513059299391
@@ -21615,7 +21615,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _particleSystem: {fileID: 2061906699}
-  _particleColor: {r: 0.8301887, g: 0.39520827, b: 0.090067655, a: 1}
+  _particleColor: {r: 0.95294124, g: 0.31764707, b: 0.12941177, a: 1}
   _particleSpeed: 7
   _particleSize: 1.5
 --- !u!1 &8216814781429721650
@@ -22333,7 +22333,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _particleSystem: {fileID: 2061906699}
-  _particleColor: {r: 0, g: 0.16084719, b: 1, a: 1}
+  _particleColor: {r: 0.21176472, g: 0.5529412, b: 0.97647065, a: 1}
   _particleSpeed: 11
   _particleSize: 2.5
 --- !u!61 &9201063185205418047
