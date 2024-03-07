@@ -9,17 +9,27 @@ using UnityEngine;
 
 public class DragableObject : MonoBehaviour
 {
-    [SerializeField] private SeasoningType _seasoningType;
-    [SerializeField] private TextMeshProUGUI _stats;
+    /*    [SerializeField] private SeasoningType _seasoningType;*/
+    [Header("Stats")]
+    [SerializeField] private TextMeshProUGUI _hungerStats;
+    [SerializeField] private TextMeshProUGUI _satisfactionStats;
+    [SerializeField] private TextMeshProUGUI _powerStats;
+
+    [Header("Quantity")]    
     [SerializeField] private TextMeshProUGUI _quantity;
+    [SerializeField] private int _maxQuantity;
+
+    [Header("Condiment")]
     [SerializeField] private CondimentSo _condimentSo;
     private Vector3 _initialPosition;
+
+    [Header("References")]
     [SerializeField] private CookingManager _cookingManager;
     [SerializeField] private MealDisplayScript _mealDisplayScript;
     [SerializeField] private GaugeHandler _gaugeHandler;
     public Vector3 InitialPosition => _initialPosition;
 
-    [SerializeField] private int _maxQuantity;
+    
      
     void Start()
     {
@@ -34,24 +44,12 @@ public class DragableObject : MonoBehaviour
 
     public void SetStats(CondimentSo condiment)
     {
-        switch (_seasoningType)
-        {
-            case SeasoningType.Hunger:
-                _stats.text = "+/- " + condiment.Value.x.ToString();
-                _stats.color = Color.green;
-                break;
-            case SeasoningType.Satisfaction:
-                _stats.text = "+/- " + condiment.Value.y.ToString();
-                _stats.color = Color.red;
-                break;
-            case SeasoningType.Power:
-                _stats.text = "+/- " + condiment.Value.z.ToString();
-                _stats.color = Color.blue;
-                break;
-        }
+        _hungerStats.text = condiment.Value.x.ToString();
+        _satisfactionStats.text = condiment.Value.y.ToString();
+        _powerStats.text = condiment.Value.z.ToString();
     }
 
-    private void ChangeQuantity()
+    private void UpdateQuantity()
     {
         _quantity.text = _maxQuantity.ToString();
     }
@@ -63,23 +61,36 @@ public class DragableObject : MonoBehaviour
         _cookingManager.AddCondiment(_condimentSo, sign);
         _mealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
         _maxQuantity--;
-        ChangeQuantity();
+        UpdateQuantity();
+        _gaugeHandler.PrevisualizeMeal(_cookingManager.GetCurrentMeal());
+
+    }
+
+    public void AddSeosoning()
+    {
+        /*Debug.Log("Add seasoning");*/
+        if (_maxQuantity <= 0) return;
+        _cookingManager.AddCondiment(_condimentSo);
+        _mealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
+        _maxQuantity--;
+        UpdateQuantity();
         _gaugeHandler.PrevisualizeMeal(_cookingManager.GetCurrentMeal());
 
     }
 
     private void OnValidate()
     {
-        ChangeQuantity();
+        UpdateQuantity();
         SetStats(_condimentSo);
     }
 
 }
 
-[Serializable]
+/*[Serializable]
 public enum SeasoningType
 {
     Hunger,
     Satisfaction,
     Power
 }
+*/

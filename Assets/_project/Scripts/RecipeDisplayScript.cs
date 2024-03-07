@@ -230,6 +230,13 @@ namespace _project.Scripts
                     _mealSlideCurve.Evaluate(timer / _slideTime));
                 yield return new WaitForEndOfFrame();
             }
+
+            while (_cookingManager.GetCurrentPhase() != PhaseCode.Phase3)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+
+            _finalMealImage.transform.position = startPos;
         }
         
         private IEnumerator SlideUi()

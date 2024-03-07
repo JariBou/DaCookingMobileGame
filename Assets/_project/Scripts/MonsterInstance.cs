@@ -14,6 +14,7 @@ namespace _project.Scripts
 
         public MonsterDataSo MonsterData { get; private set; }
 
+        public List<MonsterDataSo> MonsterDatas = new List<MonsterDataSo>();
 
         private void Awake()
         {
@@ -30,6 +31,15 @@ namespace _project.Scripts
             CurrentStats = new Vector3Int(x, y, z);
         }
 
+        public void BackToMenu()
+        {
+
+        }
+
+        public void ChangeMonster(MonsterDataSo dataSo)
+        {
+
+        }
         /// <summary>
         /// Returns true if meal satisfied the monster
         /// </summary>
