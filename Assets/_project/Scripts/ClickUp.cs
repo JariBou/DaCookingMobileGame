@@ -55,6 +55,7 @@ namespace _project.Scripts
         [SerializeField] private UnityEvent _onCardUnClick;
         [SerializeField] private UnityEvent _onCardPass;
         [SerializeField] private UnityEvent _onCardAppear;
+        private bool _isLocked;
 
 
         private void Awake()
@@ -124,7 +125,7 @@ namespace _project.Scripts
 
         private void OnMouseDown()
         {
-            if (_isPassing || _isAppearing || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
+            if (_isPassing || _isAppearing || _isLocked || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
             DoClick();
         }
@@ -160,6 +161,16 @@ namespace _project.Scripts
                     _recipeDisplayScript.UpdateMenu();
                     break;
             }
+        }
+
+        public void Lock()
+        {
+            _isLocked = true;
+        }
+        
+        public void Unlock()
+        {
+            _isLocked = false;
         }
 
         public void StartMoving(Vector3 endPos, Vector3 scale, bool willScale = true)

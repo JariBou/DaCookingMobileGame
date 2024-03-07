@@ -21,6 +21,9 @@ namespace _project.Scripts
         private bool _isRerolling = false;
         [FormerlySerializedAs("_OnReRoll")] [SerializeField] private UnityEvent _onReRoll;
         private SpriteRenderer _spriteRenderer;
+
+        public ClickUp[] Cards => _cards;
+
         /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
         void Start()
         {
@@ -63,7 +66,7 @@ namespace _project.Scripts
                 }
             }
 
-            foreach (ClickUp clickUp in _cards)
+            foreach (ClickUp clickUp in Cards)
             {
                 if (clickUp.IsScaled) continue; // If not selected
 
@@ -107,7 +110,7 @@ namespace _project.Scripts
         {
             List<IngredientSo> list = new List<IngredientSo>(3);
         
-            list.AddRange(from clickUp in _cards where clickUp.IsScaled select clickUp.Ingredient);
+            list.AddRange(from clickUp in Cards where clickUp.IsScaled select clickUp.Ingredient);
 
             return list;
         }
@@ -115,7 +118,7 @@ namespace _project.Scripts
         [NaughtyAttributes.Button]
         public void ResetCards()
         {
-            foreach (ClickUp clickUp in _cards)
+            foreach (ClickUp clickUp in Cards)
             {
                 clickUp.ResetCard();
             }
@@ -125,7 +128,7 @@ namespace _project.Scripts
         {
             List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
             
-            foreach (ClickUp clickUp in _cards)
+            foreach (ClickUp clickUp in Cards)
             {
                 if (clickUp.IsScaled)
                 {

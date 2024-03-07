@@ -55,6 +55,7 @@ namespace _project.Scripts
         [SerializeField] private UnityEvent _onMealChange;
         [SerializeField] private UnityEvent _onMealDisappear;
         [SerializeField] private UnityEvent _goNextPhase;
+        [SerializeField] private ReRoll _reroll;
 
         // Start is called before the first frame update
         private void Start()
@@ -183,6 +184,11 @@ namespace _project.Scripts
                 _ingredientStats[1]._cardImage.transform.position,
                 _ingredientStats[2]._cardImage.transform.position
             };
+
+            foreach (ClickUp card in _reroll.Cards)
+            {
+                card.Lock();
+            }
             
             float timer = 0;
             while (timer < _slideTime)
@@ -216,6 +222,10 @@ namespace _project.Scripts
             
             _button.gameObject.SetActive(true);
             _rerollButton.gameObject.SetActive(true);
+            foreach (ClickUp card in _reroll.Cards)
+            {
+                card.Unlock();
+            }
             yield return new WaitForSeconds(1);
             
             for (int i = 0; i < 3; i++)
