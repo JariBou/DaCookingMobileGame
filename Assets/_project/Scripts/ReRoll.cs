@@ -25,29 +25,29 @@ namespace _project.Scripts
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
-        private void OnMouseDown()
+        /*        private void OnMouseDown()
+                {
+                    _spriteRenderer.color = new Color32(200, 200, 200, 255);
+                    if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
+
+                    _rerollCount++;
+                    ReRollBundle();
+                    _OnReRoll?.Invoke();
+                }
+                private void OnMouseUp()
+                {
+                    _spriteRenderer.color = new Color32(255, 255, 255, 255);
+                }*/
+
+
+        public void Reroll()
         {
-            _spriteRenderer.color = new Color32(200, 200, 200, 255);
             if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
             _rerollCount++;
             ReRollBundle();
             _OnReRoll?.Invoke();
         }
-        private void OnMouseUp()
-        {
-            _spriteRenderer.color = new Color32(255, 255, 255, 255);
-        }
-        
-
-        /*        public void Reroll()
-                {
-                    if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1 ) return;
-
-                    _rerollCount++;
-                    ReRollBundle();
-                    _OnReRoll?.Invoke();
-                }*/
         public void ReRollBundle()
         {
             List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);

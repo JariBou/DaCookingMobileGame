@@ -156,7 +156,6 @@ namespace _project.Scripts
             if (_currentMeal != null)
             {
                 
-
                 StartCoroutine(SlideIngredients());
                 
                 Debug.Log("Going to Phase2");
@@ -198,6 +197,7 @@ namespace _project.Scripts
             }
 
             _finalMealImage.enabled = true;
+            _finalMealImage.gameObject.SetActive(true);
             _finalMealImage.sprite = _currentMeal.Icon;
 
             yield return new WaitForSeconds(0.5f);
