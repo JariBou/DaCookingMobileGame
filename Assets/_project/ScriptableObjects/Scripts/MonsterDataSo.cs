@@ -1,6 +1,7 @@
 ﻿using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.ScriptableObjectAttributes;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _project.ScriptableObjects.Scripts
 {
@@ -9,6 +10,7 @@ namespace _project.ScriptableObjects.Scripts
     {
         [SerializeField] private string _name;
         [SerializeField, TextArea] private string _description;
+        [FormerlySerializedAs("_numberOfMeals")] [SerializeField] private int _maxNumberOfMeals;
         
         [SerializeField, Tooltip("Min stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMin;
         [SerializeField, Tooltip("Max stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMax;
@@ -34,5 +36,6 @@ namespace _project.ScriptableObjects.Scripts
         public Sprite AngrySprite => _angrySprite;
         public Vector3Int RandomStatsMin => _randomStatsMin;
         public Vector3Int RandomStatsMax => _randomStatsMax;
+        public int MaxNumberOfMeals => _maxNumberOfMeals;
     }
 }
