@@ -30,6 +30,7 @@ namespace _project.Scripts
 
         [SerializeField] private Vector2 _currentMousePosition;
         [SerializeField] private Vector2 _currentTouchPosition;
+        [SerializeField] private Vector2 _lastTouchScreenPosition;
         private Collider2D _hit;
         /*[SerializeField]*/ private bool _isDragging = false;
         /*[SerializeField]*/ private bool _isTouch = false;
@@ -60,6 +61,10 @@ namespace _project.Scripts
             if (_isTouch)
             {
                 _currentTouchPosition = Touchscreen.current.position.ReadValue();
+            }
+            else if (!_isTouch)
+            {
+                _currentTouchPosition = Vector2.zero;
             }
             if (_isDragging)
             {
@@ -107,6 +112,7 @@ namespace _project.Scripts
             hitObject.transform.position = new Vector3(hitObject.transform.position.x, Mathf.Lerp(_hit.transform.position.y, Camera.main.ScreenToWorldPoint(screenMousePosition).y, _lerpValue), hitObject.transform.position.z);
 #endif
         }
+        private Vector2 _initialPosition;
         public void OnClickHandler(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -115,6 +121,7 @@ namespace _project.Scripts
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMask);
                 if (hit != null)
                 {
+                    _initialPosition = hit.transform.position;
                     Debug.Log("Hit");
                     _isDragging = true;
                     _hit = hit;
@@ -157,6 +164,10 @@ namespace _project.Scripts
                         _hit = null;
                         return;
                     }
+                    else
+                    {
+                        _hit.transform.position = _initialPosition;
+                    }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
                 Image hitImage = _hit.GetComponent<Image>();
@@ -180,6 +191,7 @@ namespace _project.Scripts
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMask);
                 if (hit != null)
                 {
+                    _initialPosition = hit.transform.position;
                     Debug.Log("Hit");
                     _isDragging = true;
                     _hit = hit;
@@ -190,6 +202,7 @@ namespace _project.Scripts
             }
             else if (context.canceled)
             {
+                _lastTouchScreenPosition = _currentTouchPosition;
                 _isTouch = false;
                 _isDragging = false;
                 /*Debug.Log("Untouch");*/
@@ -205,8 +218,8 @@ namespace _project.Scripts
                 {
 
                 }
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMaskCondiment);
-                _currentTouchPosition = Vector2.zero;
+                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_lastTouchScreenPosition), (int)_layerMaskCondiment);
+                
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
@@ -223,6 +236,10 @@ namespace _project.Scripts
                         Dropped(_hit.gameObject);
                         return;
                     }
+                    else
+                    {
+                        _hit.transform.position = _initialPosition; 
+                    }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }
                 Image hitImage = _hit.GetComponent<Image>();
@@ -238,12 +255,12 @@ namespace _project.Scripts
 
         private void Positive()
         {
-            /*Debug.Log("Positive");*/
+            Debug.Log("Positive");
             _hit.GetComponent<DragableObject>().AddSeosoning(1);
         }
         private void Negative()
         {
-            /*Debug.Log("Negative");*/
+            Debug.Log("Negative");
             _hit.GetComponent<DragableObject>().AddSeosoning(-1);
         }
 
