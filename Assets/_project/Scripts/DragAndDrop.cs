@@ -25,10 +25,7 @@ namespace _project.Scripts
         [SerializeField, Range(0, 1)]
         private float _lerpValue = 0.1f;
         [SerializeField] private GaugeHandler _gaugeHandler;
-<<<<<<< HEAD
         [SerializeField] private InputAction _press, _screenMousePosition, _click, _screenTouchPosition;
-=======
->>>>>>> Phase2GameFeel
         // Start is called before the first frame update
 
         [SerializeField] private Vector2 _currentMousePosition;
@@ -120,12 +117,8 @@ namespace _project.Scripts
         {
             if (context.performed)
             {
-<<<<<<< HEAD
                 /*Debug.Log("Click");*/
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMask);
-=======
-                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMask);
->>>>>>> Phase2GameFeel
                 if (hit != null)
                 {
                     _initialPosition = hit.transform.position;
@@ -152,12 +145,8 @@ namespace _project.Scripts
                 {
                   
                 }
-<<<<<<< HEAD
                 
                 Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMaskCondiment);
-=======
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), (int)_layerMaskCondiment);
->>>>>>> Phase2GameFeel
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
@@ -191,7 +180,6 @@ namespace _project.Scripts
 
         }
 
-<<<<<<< HEAD
         public void OnTouchHandler(InputAction.CallbackContext context)
         {
             
@@ -270,8 +258,6 @@ namespace _project.Scripts
             _hit.GetComponent<DragableObject>().AddSeosoning();
         }
 
-=======
->>>>>>> Phase2GameFeel
         private void Positive()
         {
             /*Debug.Log("Positive");*/
