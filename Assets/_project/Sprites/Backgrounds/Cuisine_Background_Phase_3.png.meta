@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: e15e097a75ba7a9418efed4bfe12766e
+guid: 86703a6c834577444b0f52c1955b7163
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5960075330220633441
-    second: Cuisine_Background_Phase_1_0
+      213: -2193084254773181700
+    second: Cuisine_Background_Phase_3_0
   - first:
-      213: -7179173767398583742
-    second: Cuisine_Background_Phase_1_1
+      213: 7647067227446193873
+    second: Cuisine_Background_Phase_3_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,33 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cuisine_Background_Phase_1_0
+      name: Cuisine_Background_Phase_3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 962
-        width: 207
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9251a3a01f894da0800000000000000
-      internalID: -5960075330220633441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cuisine_Background_Phase_1_1
-      rect:
-        serializedVersion: 2
-        x: 310
         y: 0
-        width: 1610
+        width: 725
         height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,8 +130,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2429765de737e5c90800000000000000
-      internalID: -7179173767398583742
+      spriteID: cf20ebf5d799091e0800000000000000
+      internalID: -2193084254773181700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cuisine_Background_Phase_3_1
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 0
+        width: 840
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1de2671a027df1a60800000000000000
+      internalID: 7647067227446193873
       vertices: []
       indices: 
       edges: []
@@ -168,8 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cuisine_Background_Phase_1_0: -5960075330220633441
-      Cuisine_Background_Phase_1_1: -7179173767398583742
+      Cuisine_Background_Phase_3_0: -2193084254773181700
+      Cuisine_Background_Phase_3_1: 7647067227446193873
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

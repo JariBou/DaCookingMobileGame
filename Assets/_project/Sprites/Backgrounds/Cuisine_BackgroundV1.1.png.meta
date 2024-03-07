@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: e15e097a75ba7a9418efed4bfe12766e
+guid: 73547917b3f6a9c4c8cf6378665bc09d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5960075330220633441
-    second: Cuisine_Background_Phase_1_0
+      213: 568834139725102979
+    second: Cuisine_BackgroundV1.1_0
   - first:
-      213: -7179173767398583742
-    second: Cuisine_Background_Phase_1_1
+      213: 4814606230018491755
+    second: Cuisine_BackgroundV1.1_1
+  - first:
+      213: -5367619032840148407
+    second: Cuisine_BackgroundV1.1_2
+  - first:
+      213: -9076890043454275798
+    second: Cuisine_BackgroundV1.1_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,11 +55,11 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.84255373, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -75,7 +81,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -116,33 +122,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cuisine_Background_Phase_1_0
+      name: Cuisine_BackgroundV1.1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 962
-        width: 207
-        height: 118
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f9251a3a01f894da0800000000000000
-      internalID: -5960075330220633441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cuisine_Background_Phase_1_1
-      rect:
-        serializedVersion: 2
-        x: 310
         y: 0
-        width: 1610
+        width: 1920
         height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,8 +136,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2429765de737e5c90800000000000000
-      internalID: -7179173767398583742
+      spriteID: 38ffd62e2a7e4e700800000000000000
+      internalID: 568834139725102979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cuisine_BackgroundV1.1_1
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6582a97bdae0d240800000000000000
+      internalID: 4814606230018491755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cuisine_BackgroundV1.1_2
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 1920
+        height: 1080
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94aefe1bde26285b0800000000000000
+      internalID: -5367619032840148407
       vertices: []
       indices: 
       edges: []
@@ -161,15 +188,16 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cuisine_Background_Phase_1_0: -5960075330220633441
-      Cuisine_Background_Phase_1_1: -7179173767398583742
+      Cuisine_BackgroundV1.1_0: 568834139725102979
+      Cuisine_BackgroundV1.1_1: 4814606230018491755
+      Cuisine_BackgroundV1.1_2: -5367619032840148407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

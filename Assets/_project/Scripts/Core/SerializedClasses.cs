@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _project.Scripts.Core
 {
@@ -101,7 +102,9 @@ namespace _project.Scripts.Core
         [SerializeField] private IngredientFamily _ingredientFamilyB;
         [SerializeField] private IngredientFamily _ingredientFamilyC;
 
-        [SerializeField] private Sprite _icon;
+        [FormerlySerializedAs("_icon")] [SerializeField] private Sprite _normalIcon;
+        [SerializeField] private Sprite _douxIcon;
+        [SerializeField] private Sprite _vifIcon;
         [SerializeField] private string _name;
 
         public IngredientFamily IngredientFamilyA => _ingredientFamilyA;
@@ -110,8 +113,9 @@ namespace _project.Scripts.Core
 
         public List<IngredientFamily> IngredientFamilies => new()
             { _ingredientFamilyA, _ingredientFamilyB, _ingredientFamilyC };
-        public Sprite Icon => _icon;
-
+        public Sprite NormalIcon => _normalIcon;
         public string Name => _name;
+        public Sprite DouxIcon => _douxIcon;
+        public Sprite VifIcon => _vifIcon;
     }
 }

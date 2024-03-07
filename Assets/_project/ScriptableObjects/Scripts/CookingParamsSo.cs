@@ -47,7 +47,7 @@ namespace _project.ScriptableObjects.Scripts
         {
             foreach (MealBaseInfo mealIcon in _mealBaseInfos.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
             {
-                return mealIcon.Icon;
+                return mealIcon.NormalIcon;
             }
 
             throw new ArgumentException();
