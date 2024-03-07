@@ -6,6 +6,7 @@ namespace _project.Scripts
     public class DraggedMealScript : MonoBehaviour, IDraggable
     {
         [FormerlySerializedAs("_lastPhasePhaseScript")] [FormerlySerializedAs("_condimentPhaseScript")] [SerializeField] private LastPhaseScript _lastPhaseScript;
+        [SerializeField] private Collider2D _collider2D;
         private Vector3 _initialPosition;
         private bool _usable;
 
@@ -13,6 +14,7 @@ namespace _project.Scripts
         private void Awake()
         {
             _initialPosition = transform.position;
+            DisableUse();
         }
 
         public void ResetPosition()
@@ -22,11 +24,13 @@ namespace _project.Scripts
 
         public void EnableUse()
         {
+            _collider2D.enabled = true;
             _usable = true;
         }
 
         public void DisableUse()
         {
+            _collider2D.enabled = false;
             _usable = false;
         }
 

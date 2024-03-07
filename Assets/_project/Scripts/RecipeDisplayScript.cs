@@ -47,12 +47,15 @@ namespace _project.Scripts
         [SerializeField] private AnimationCurve AnimationCurve;
         [SerializeField] private TMP_Text _finalMealName;
         [SerializeField] private Image _finalMealImage;
+        [SerializeField] private Button _button;
+        [SerializeField] private Button _rerollButton;
 
         [Header("Game Feel")]
         [SerializeField] private UnityEvent _onMealAppear;
         [SerializeField] private UnityEvent _onMealChange;
         [SerializeField] private UnityEvent _onMealDisappear;
         [SerializeField] private UnityEvent _goNextPhase;
+        [SerializeField] private ReRoll _reroll;
 
         // Start is called before the first frame update
         private void Start()
@@ -172,6 +175,8 @@ namespace _project.Scripts
         
         private IEnumerator SlideIngredients()
         {
+            _button.gameObject.SetActive(false);
+            _rerollButton.gameObject.SetActive(false);
 
             List<Vector2> startPositions = new List<Vector2>(3)
             {
@@ -179,6 +184,11 @@ namespace _project.Scripts
                 _ingredientStats[1]._cardImage.transform.position,
                 _ingredientStats[2]._cardImage.transform.position
             };
+
+            foreach (ClickUp card in _reroll.Cards)
+            {
+                card.Lock();
+            }
             
             float timer = 0;
             while (timer < _slideTime)
@@ -210,6 +220,12 @@ namespace _project.Scripts
                 yield return new WaitForFixedUpdate();
             }
             
+            _button.gameObject.SetActive(true);
+            _rerollButton.gameObject.SetActive(true);
+            foreach (ClickUp card in _reroll.Cards)
+            {
+                card.Unlock();
+            }
             yield return new WaitForSeconds(1);
             
             for (int i = 0; i < 3; i++)

@@ -2,6 +2,7 @@ using System.Collections;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _project.Scripts
 {
@@ -11,7 +12,8 @@ namespace _project.Scripts
         [SerializeField] private CookingParamsSo _cookingParams;
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplayScript;
-    
+        [SerializeField] private Button _button;
+
         public CookingMethod SelectedCookingMethod { get; set; }
 
         public CookingParamsSo CookingParams => _cookingParams;
@@ -41,7 +43,7 @@ namespace _project.Scripts
         public void GoToNextPhase()
         {
             if (SelectedCookingMethod == CookingMethod.Null) return;
-        
+            
             _cookingManager.CookMeal(SelectedCookingMethod);
             _cookingManager.Camera.NextPhase();
             _nextPhaseMealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
@@ -50,7 +52,9 @@ namespace _project.Scripts
 
         private IEnumerator ResetCooking()
         {
+            _button.gameObject.SetActive(false);
             yield return new WaitForSeconds(3);
+            _button.gameObject.SetActive(true);
             SelectedCookingMethod = CookingMethod.Null;
             _resultMealDisplayScript.ResetDisplay();
         }

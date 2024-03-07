@@ -71,6 +71,7 @@ namespace _project.Scripts
             _finalSatisfactionValue = meal.Stats.y;
             _finalPowerValue = meal.Stats.z;
             if (_mealImage) _mealImage.sprite = meal.Icon;
+            if (_mealImage) _mealImage.enabled = true;
             _canChangeMealValues = true;
         }
         
@@ -81,6 +82,7 @@ namespace _project.Scripts
             _mealStatY.text = "0";
             _mealStatZ.text = "0";
             if (_mealImage) _mealImage.sprite = null;
+            if (_mealImage) _mealImage.enabled = false;
             _canChangeMealValues = true;
         }
     }
