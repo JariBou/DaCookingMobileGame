@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,9 +11,16 @@ namespace _project.Scripts
     public class MonsterInstance : MonoBehaviour
     {
         [SerializeField] private MonsterDataSo _baseMonsterDataSo;
+        [SerializeField] private TMP_Text _numberOfMealsText;
         public Vector3Int CurrentStats { get; private set; }
+        
+        private int _maxNumberOfMeals;
+        private int _numberOfMeals;
 
         public MonsterDataSo MonsterData { get; private set; }
+
+        public int MaxNumberOfMeals => _maxNumberOfMeals;
+        public int NumberOfMeals => _numberOfMeals;
 
         public List<MonsterDataSo> MonsterDatas = new List<MonsterDataSo>();
 
@@ -24,6 +32,9 @@ namespace _project.Scripts
         public void InitializeMonster(MonsterDataSo dataSo)
         {
             MonsterData = dataSo;
+            _maxNumberOfMeals = dataSo.MaxNumberOfMeals;
+            _numberOfMeals = 0;
+            if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
 
             int x = Random.Range(dataSo.RandomStatsMin.x, dataSo.RandomStatsMax.x);
             int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
@@ -40,6 +51,7 @@ namespace _project.Scripts
         {
 
         }
+        
         /// <summary>
         /// Returns true if meal satisfied the monster
         /// </summary>
@@ -49,7 +61,8 @@ namespace _project.Scripts
         {
             CurrentStats += meal.Stats;
             CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
-
+            _numberOfMeals++;
+            if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
             return CurrentStats.IsInBounds(MonsterData.StatsMin, MonsterData.StatsMax);
         }
 

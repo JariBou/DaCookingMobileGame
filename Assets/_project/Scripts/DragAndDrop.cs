@@ -165,7 +165,6 @@ namespace _project.Scripts
                     else if (hitObject.gameObject.CompareTag("Boss"))
                     {
                         Dropped(_hit.gameObject);
-                        return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
                 }

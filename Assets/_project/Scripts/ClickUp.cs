@@ -57,7 +57,7 @@ namespace _project.Scripts
         [SerializeField] private UnityEvent _onCardAppear;
 
 
-        private void Start()
+        private void Awake()
         {
             _ingredientSo = GetComponent<Card>()._ingredientSo;
             _initialScale = transform.localScale;

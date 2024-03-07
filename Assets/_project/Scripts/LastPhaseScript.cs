@@ -72,7 +72,7 @@ namespace _project.Scripts
             }
             
             _cookingManager.Camera.NextPhase();
-
+            _reRoll.RedistributeCards();
 
             while (_cookingManager.GetCurrentPhase() != PhaseCode.Phase2)
             {
@@ -82,7 +82,6 @@ namespace _project.Scripts
             _uiTransform.position = _startUiPos;
             _draggedMeal.ResetPosition();
             _draggedMeal.Activate();
-            _reRoll.RedistributeCards();
         }
 
         public void EndFeedingPhase()

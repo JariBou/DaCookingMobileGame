@@ -6,6 +6,7 @@ using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace _project.Scripts
 {
@@ -18,12 +19,13 @@ namespace _project.Scripts
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
         private int _rerollCount = 0;
         private bool _isRerolling = false;
-        [SerializeField] private UnityEvent _OnReRoll;
+        [FormerlySerializedAs("_OnReRoll")] [SerializeField] private UnityEvent _onReRoll;
         private SpriteRenderer _spriteRenderer;
         /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
         void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            RedistributeCards();
         }
         /*        private void OnMouseDown()
                 {
@@ -46,7 +48,7 @@ namespace _project.Scripts
 
             _rerollCount++;
             ReRollBundle();
-            _OnReRoll?.Invoke();
+            _onReRoll?.Invoke();
         }
         public void ReRollBundle()
         {

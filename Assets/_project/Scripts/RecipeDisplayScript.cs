@@ -122,6 +122,7 @@ namespace _project.Scripts
                 _cookingManager.GaugeManager.RestartPrevGauges();
                 _onMealDisappear?.Invoke();
                 _finalMealImage.sprite = null;
+                _finalMealImage.sprite = null;
                 _currentMeal = null;
                 _finalMealName.text = "";
                 ChangeFinalMealStats(ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.x), 
@@ -149,6 +150,7 @@ namespace _project.Scripts
             else
                 _ingredientStats[order]._cardPower.text = ClickUp.EnlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
             _ingredientStats[order]._cardImage.sprite = ClickUp.EnlargedSprites[order].Ingredient.Icon;
+            _ingredientStats[order]._cardImage.enabled = true;
         }
 
         public void ConfirmMeal()
@@ -236,6 +238,7 @@ namespace _project.Scripts
                 yield return new WaitForFixedUpdate();
             }
 
+            _finalMealImage.enabled = false;
             _finalMealImage.transform.position = startPos;
         }
         
@@ -270,6 +273,7 @@ namespace _project.Scripts
             ingredientStats._cardSatisfaction.text = "";
             ingredientStats._cardPower.text = "";
             ingredientStats._cardImage.sprite = null;
+            ingredientStats._cardImage.enabled = false;
         }
 
         private void ChangeFinalMealStats(int hunger, int satisfaction, int power)
@@ -290,7 +294,6 @@ namespace _project.Scripts
 
             _timer = 0f;
             _canChangeMealValues = true;
-
         }
 
         private void UpdateFinalMealDisplay()

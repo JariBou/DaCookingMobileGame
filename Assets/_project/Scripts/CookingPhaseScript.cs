@@ -1,3 +1,4 @@
+using System.Collections;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
@@ -44,6 +45,14 @@ namespace _project.Scripts
             _cookingManager.CookMeal(SelectedCookingMethod);
             _cookingManager.Camera.NextPhase();
             _nextPhaseMealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
+            StartCoroutine(ResetCooking());
+        }
+
+        private IEnumerator ResetCooking()
+        {
+            yield return new WaitForSeconds(3);
+            SelectedCookingMethod = CookingMethod.Null;
+            _resultMealDisplayScript.ResetDisplay();
         }
     }
 }
