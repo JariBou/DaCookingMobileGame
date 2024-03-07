@@ -7,6 +7,7 @@ namespace _project.Scripts
 {
     public class LastPhaseScript : MonoBehaviour
     {
+<<<<<<< HEAD
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private GameObject _monsterInfoDisplay;
         [SerializeField] private DraggedMealScript _draggedMeal;
@@ -17,6 +18,11 @@ namespace _project.Scripts
         [SerializeField] private float _zoomTime;
         [SerializeField] private AnimationCurve _uiSlideCurve;
         [SerializeField] private ReRoll _reRoll;
+=======
+
+        [SerializeField] private CameraScript _camera;
+
+>>>>>>> Phase2GameFeel
 
         private Vector2 _startBgScale;
         private Vector2 _startUiPos;
@@ -32,9 +38,13 @@ namespace _project.Scripts
 
         public void GoNextPhase()
         {
+<<<<<<< HEAD
             _cookingManager.Camera.NextPhase();
             StartCoroutine(SlideUi());
             _monsterInfoDisplay.SetActive(false);
+=======
+            _camera.NextPhase();
+>>>>>>> Phase2GameFeel
         }
 
         private IEnumerator SlideUi()

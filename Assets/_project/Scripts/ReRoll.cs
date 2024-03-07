@@ -5,7 +5,6 @@ using _project.Scripts.Core;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace _project.Scripts
 {
@@ -18,10 +17,16 @@ namespace _project.Scripts
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
         private int _rerollCount = 0;
         private bool _isRerolling = false;
+<<<<<<< HEAD
         [SerializeField] private UnityEvent _OnReRoll;
         private SpriteRenderer _spriteRenderer;
         /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
         void Start()
+=======
+/*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
+
+        private void OnMouseDown()
+>>>>>>> Phase2GameFeel
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
@@ -46,7 +51,6 @@ namespace _project.Scripts
 
             _rerollCount++;
             ReRollBundle();
-            _OnReRoll?.Invoke();
         }
         public void ReRollBundle()
         {
@@ -55,7 +59,7 @@ namespace _project.Scripts
             foreach (IngredientSo ingredientSo in GetSelectedIngredients())
             {
                 int index = possibleIngredients.FindIndex(el => el == ingredientSo);
-                if (index != -1) // Vï¿½rifiez si l'ï¿½lï¿½ment a ï¿½tï¿½ trouvï¿½
+                if (index != -1) // Vérifiez si l'élément a été trouvé
                 {
                     possibleIngredients.RemoveAt(index);
                 }
@@ -65,7 +69,7 @@ namespace _project.Scripts
             {
                 if (clickUp.IsScaled) continue; // If not selected
 
-                if (possibleIngredients.Count > 0) // Vï¿½rifiez si la liste contient encore des ï¿½lï¿½ments
+                if (possibleIngredients.Count > 0) // Vérifiez si la liste contient encore des éléments
                 {
                     int rIndex = Random.Range(0, possibleIngredients.Count);
                     clickUp.PassIngredient(possibleIngredients[rIndex]);
@@ -73,9 +77,9 @@ namespace _project.Scripts
                 }
                 else
                 {
-                    // Gï¿½rez le cas oï¿½ il n'y a plus d'ingrï¿½dients disponibles
-                    Debug.LogWarning("Plus d'ingrï¿½dients disponibles pour le re-roll");
-                    break; // Sortez de la boucle si aucun ingrï¿½dient n'est disponible
+                    // Gérez le cas où il n'y a plus d'ingrédients disponibles
+                    Debug.LogWarning("Plus d'ingrédients disponibles pour le re-roll");
+                    break; // Sortez de la boucle si aucun ingrédient n'est disponible
                 }
             }
         }
@@ -109,6 +113,7 @@ namespace _project.Scripts
 
             return list;
         }
+<<<<<<< HEAD
 
         [NaughtyAttributes.Button]
         public void ResetCards()
@@ -144,5 +149,7 @@ namespace _project.Scripts
                 }
             }
         }
+=======
+>>>>>>> Phase2GameFeel
     }
 }
