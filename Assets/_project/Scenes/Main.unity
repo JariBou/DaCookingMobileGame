@@ -6495,6 +6495,76 @@ MonoBehaviour:
   _bossStateText: {fileID: 544474046}
   _lerpValue: 0.1
   _gaugeHandler: {fileID: 2023671285}
+  _press:
+    m_Name: Press
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c341bc81-c09a-46fd-b0ef-24882c43bc4a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 2ae4c078-8652-431a-a569-dae0adb04078
+      m_Path: <Touchscreen>/Press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Press
+      m_Flags: 0
+    m_Flags: 0
+  _screenMousePosition:
+    m_Name: Screen Mouse Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7acfe9cd-2713-40ba-a54e-ccf494219955
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7e48083a-d02c-41e5-aeae-9f43aee2bb1f
+      m_Path: <Mouse>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Screen Mouse Position
+      m_Flags: 0
+    m_Flags: 0
+  _click:
+    m_Name: Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5fa6f092-66a1-481e-ad40-8a01ec1e2f5e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 410d7c5c-64bf-4400-b2a4-d6789986dad4
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Click
+      m_Flags: 0
+    m_Flags: 0
+  _screenTouchPosition:
+    m_Name: Screen Touch Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a97d9ea2-bbc2-48f4-875c-cb73f13c2cc2
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7bc55ebd-f17c-4638-9895-fe9247f3bf79
+      m_Path: <Touchscreen>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Screen Touch Position
+      m_Flags: 0
+    m_Flags: 0
+  _currentMousePosition: {x: 0, y: 0}
+  _currentTouchPosition: {x: 0, y: 0}
 --- !u!114 &1596713405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8174,6 +8244,18 @@ MonoBehaviour:
     m_RotationOrder: 4
   _finalMealName: {fileID: 638763538}
   _finalMealImage: {fileID: 568075686}
+  _onMealAppear:
+    m_PersistentCalls:
+      m_Calls: []
+  _onMealChange:
+    m_PersistentCalls:
+      m_Calls: []
+  _onMealDisappear:
+    m_PersistentCalls:
+      m_Calls: []
+  _goNextPhase:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1928253568
 GameObject:
   m_ObjectHideFlags: 0

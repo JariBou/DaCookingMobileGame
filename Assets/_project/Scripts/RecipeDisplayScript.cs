@@ -7,6 +7,7 @@ using _project.Scripts.Core;
 using NUnit.Framework;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace _project.Scripts
@@ -46,6 +47,12 @@ namespace _project.Scripts
         [SerializeField] private AnimationCurve AnimationCurve;
         [SerializeField] private TMP_Text _finalMealName;
         [SerializeField] private Image _finalMealImage;
+
+        [Header("Game Feel")]
+        [SerializeField] private UnityEvent _onMealAppear;
+        [SerializeField] private UnityEvent _onMealChange;
+        [SerializeField] private UnityEvent _onMealDisappear;
+        [SerializeField] private UnityEvent _goNextPhase;
 
         // Start is called before the first frame update
         private void Start()
@@ -96,17 +103,13 @@ namespace _project.Scripts
                 else
                 {
                     ResetIngredientStats(_ingredientStats[i]);
-
-                    _cookingManager.GaugeManager.RestartPrevGauges();
-                    _currentMeal = null;
-                    _finalMealImage.sprite = null;
-                    _finalMealName.text = "";
-
                 }
             }
 
             if (ClickUp.EnlargedSprites.Count == 3)
-            {
+            {   
+                if (_currentMeal == null) _onMealAppear?.Invoke();
+                else if (_currentMeal != null) _onMealChange?.Invoke();
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 //_finalMealImage.sprite = _currentMeal.Icon;
@@ -116,6 +119,11 @@ namespace _project.Scripts
             }
             else
             {
+                _cookingManager.GaugeManager.RestartPrevGauges();
+                _onMealDisappear?.Invoke();
+                _finalMealImage.sprite = null;
+                _currentMeal = null;
+                _finalMealName.text = "";
                 ChangeFinalMealStats(ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.x), 
                         ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.y), 
                     ClickUp.EnlargedSprites.Sum(ingredient => (int)ingredient.Ingredient.Stats.z));     
@@ -153,6 +161,7 @@ namespace _project.Scripts
                 
                 Debug.Log("Going to Phase2");
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
+                _goNextPhase?.Invoke();
             }
             else
             {

@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,17 +19,35 @@ namespace _project.Scripts
         private int _rerollCount = 0;
         private bool _isRerolling = false;
         [SerializeField] private UnityEvent _OnReRoll;
-/*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
-
+        private SpriteRenderer _spriteRenderer;
+        /*        [SerializeField] private bool _canHaveSameIngredientInDeck;*/
+        void Start()
+        {
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
         private void OnMouseDown()
         {
-            if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1 ) return;
-        
+            _spriteRenderer.color = new Color32(200, 200, 200, 255);
+            if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
+
             _rerollCount++;
             ReRollBundle();
             _OnReRoll?.Invoke();
         }
+        private void OnMouseUp()
+        {
+            _spriteRenderer.color = new Color32(255, 255, 255, 255);
+        }
+        
 
+        /*        public void Reroll()
+                {
+                    if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1 ) return;
+
+                    _rerollCount++;
+                    ReRollBundle();
+                    _OnReRoll?.Invoke();
+                }*/
         public void ReRollBundle()
         {
             List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
@@ -88,6 +108,15 @@ namespace _project.Scripts
             list.AddRange(from clickUp in _cards where clickUp.IsScaled select clickUp.Ingredient);
 
             return list;
+        }
+
+        [NaughtyAttributes.Button]
+        public void ResetCards()
+        {
+            foreach (ClickUp clickUp in _cards)
+            {
+                clickUp.ResetCard();
+            }
         }
 
         public void RedistributeCards()
