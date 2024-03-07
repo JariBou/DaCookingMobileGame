@@ -4,6 +4,7 @@ using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -11,17 +12,30 @@ namespace _project.Scripts
 {
     public class ClickableHeat : MonoBehaviour
     {
-        [FormerlySerializedAs("imageComponent")] [SerializeField] private Image _imageComponent;
+        [FormerlySerializedAs("imageComponent")][SerializeField] private Image _imageComponent;
         [SerializeField] private CookingMethod _cookingMethod;
         [SerializeField] private CookingPhaseScript _manager;
-        [FormerlySerializedAs("grayDuration")] [SerializeField, Range(0, 0.5f)] private float _grayDuration = 1f;
-        [FormerlySerializedAs("grayColor")] [SerializeField] private Color _grayColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+        [FormerlySerializedAs("grayDuration")][SerializeField, Range(0, 0.5f)] private float _grayDuration = 1f;
+        [FormerlySerializedAs("grayColor")][SerializeField] private Color _grayColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+        [SerializeField] private GameObject _ImageHoven;
 
-        [Header("Display")] 
+        [Header("Display")]
         [SerializeField] private TMP_Text _multiplierX;
         [SerializeField] private TMP_Text _multiplierY;
         [SerializeField] private TMP_Text _multiplierZ;
         private bool _isGrayed = false;
+
+        [Header("GameFeel")]
+        [SerializeField] private UnityEvent _OnHeatClick;
+
+        [Header("Particle System")]
+        [SerializeField] private ParticleSystem _particleSystem;
+        [SerializeField] private Color _particleColor = Color.red;
+        [SerializeField] private float _particleSpeed = 1f;
+        [SerializeField] private float _particleSize = 1f;
+
+        private bool _IsClick;
+        public bool IsClick => _IsClick;
 
         private void Start()
         {
@@ -34,7 +48,7 @@ namespace _project.Scripts
         private void OnMouseDown()
         {
             if (_manager.CookingManager.GetCurrentPhase() != PhaseCode.Phase2) return;
-            
+
             if (!_isGrayed)
             {
                 StartCoroutine(GrayImage());
@@ -43,7 +57,20 @@ namespace _project.Scripts
             _manager.SelectedCookingMethod = _cookingMethod;
             _manager.UpdateMealDisplay();
 
+            _ImageHoven.gameObject.SetActive(true);
+
+            if (_OnHeatClick != null)
+            {
+                _OnHeatClick.Invoke();
+            }
+
+            var mainModule = _particleSystem.main;
+            mainModule.startColor = _particleColor;
+            mainModule.startSpeed = _particleSpeed;
+            mainModule.startSize = _particleSize;
+
         }
+
 
         public Vector3 GetMultipliers()
         {
@@ -53,7 +80,7 @@ namespace _project.Scripts
         private IEnumerator GrayImage()
         {
             _isGrayed = true;
-            Debug.Log("L'image a �t� cliqu�e !");
+            Debug.Log("L'image a  t  cliqu e !");
 
             _imageComponent.color = _grayColor;
 
