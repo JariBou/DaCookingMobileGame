@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Alien Plant
   _ingredientFamily: 1
-  _stats: {x: -27, y: 4, z: 8}
+  _stats: {x: 4, y: 13, z: -10}
   _randomAddedstats: {x: 7, y: 5, z: 1}
   _icon: {fileID: 21300000, guid: 6a347aed3c0021744825f8ca0170ba8c, type: 3}
   _description: 'Alien Plant: An exotic, otherworldly ingredient, boasting unfamiliar
