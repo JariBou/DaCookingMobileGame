@@ -1,4 +1,5 @@
-﻿using _project.ScriptableObjects.Scripts;
+﻿using System;
+using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,11 +13,17 @@ namespace _project.Scripts
         [SerializeField] private CameraScript _camera;
         [SerializeField] private MonsterInstance _monsterInstance;
         [FormerlySerializedAs("_gaugeHandler")] [SerializeField] private GaugeHandler _gaugeGaugeManager;
+        private DialogMenuScript _dialogMenuScript;
         
         public CameraScript Camera => _camera;
         public GaugeHandler GaugeManager => _gaugeGaugeManager;
 
         public PhaseCode GetCurrentPhase() => (PhaseCode)_camera.CurrentIndex;
+
+        private void Start()
+        {
+            _dialogMenuScript = GetComponent<DialogMenuScript>();
+        }
 
         public Meal CreateMeal(IngredientSo ingredient1, IngredientSo ingredient2, IngredientSo ingredient3)
         {
@@ -52,14 +59,14 @@ namespace _project.Scripts
             return result;
         }
 
-        public void WinPanel()
+        private void WinPanel()
         {
-            
+            _dialogMenuScript.ActivateMenu(true);
         }
 
-        public void LosePanel()
+        private void LosePanel()
         {
-            
+            _dialogMenuScript.ActivateMenu(false);
         }
         
         public Meal CookMeal(CookingMethod cookingMethod)

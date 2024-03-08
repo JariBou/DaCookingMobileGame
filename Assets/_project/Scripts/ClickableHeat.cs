@@ -60,11 +60,12 @@ namespace _project.Scripts
             {
                 _OnHeatClick.Invoke();
             }
-
-            var mainModule = _particleSystem.main;
-            mainModule.startColor = _particleColor;
-            mainModule.startSpeed = _particleSpeed;
-            mainModule.startSize = _particleSize;
+            
+            // Reactivate if particles
+            // var mainModule = _particleSystem.main;
+            // mainModule.startColor = _particleColor;
+            // mainModule.startSpeed = _particleSpeed;
+            // mainModule.startSize = _particleSize;
 
         }
 

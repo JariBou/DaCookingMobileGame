@@ -29,8 +29,8 @@ namespace _project.Scripts
 
         [SerializeField] private Vector2 _currentMousePosition;
         [SerializeField] private Vector2 _currentTouchPosition;
-        [SerializeField] private Vector2 _lastTouchScreenPosition;
-        [SerializeField] private Collider2D _hit;
+        [SerializeField] private Vector2 _lastTouchScreenPosition; 
+        private Collider2D _hit;
         /*[SerializeField]*/ private bool _isDragging = false;
         /*[SerializeField]*/ private bool _isTouch = false;
         private void Awake()
@@ -142,9 +142,9 @@ namespace _project.Scripts
                 }
                 catch (Exception e)
                 {
-                  
+                    // ignored
                 }
-                
+
                 Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMaskCondiment);
                 if (hitObject != null)
                 {
@@ -275,7 +275,12 @@ namespace _project.Scripts
             Image hitImage = hitGameObject.GetComponent<Image>();
             hitImage.color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
 
-            hitGameObject.GetComponent<DraggedMealScript>().Deactivate();
+            DraggedMealScript mealScript = hitGameObject.GetComponent<DraggedMealScript>();
+            mealScript.Deactivate();
+            if (!result)
+            {
+                mealScript.EndPhase();
+            }
         }
 
         private void OnMouseDrag()

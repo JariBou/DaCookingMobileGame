@@ -34,9 +34,13 @@ namespace _project.Scripts
             _usable = false;
         }
 
-        public void Deactivate()
+        public void EndPhase()
         {
             _lastPhaseScript.EndFeedingPhase();
+        }
+
+        public void Deactivate()
+        {
             gameObject.SetActive(false);
             DisableUse();
         }
