@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using UnityEngine;
@@ -13,6 +15,7 @@ namespace _project.Scripts
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplayScript;
         [SerializeField] private Button _button;
+        [SerializeField, Tooltip("Reference images in order")] private List<GameObject> _hovenImages;
 
         public CookingMethod SelectedCookingMethod { get; set; }
 
@@ -32,14 +35,30 @@ namespace _project.Scripts
                     _cookingParams.GetMultiplier(SelectedCookingMethod));
             _resultMealDisplayScript.UpdateDisplay(tempMeal);
             _cookingManager.GaugeManager.PrevisualizeMeal(tempMeal);
+
+            for (int i = 0; i < _hovenImages.Count; i++)
+            {
+                _hovenImages[i].SetActive(false);
+            }
+
+            switch (SelectedCookingMethod)
+            {
+                case CookingMethod.Method1:
+                    _hovenImages[0].SetActive(true);
+                    break;
+                case CookingMethod.Method2:
+                    _hovenImages[1].SetActive(true);
+                    break;
+                case CookingMethod.Method3:
+                    _hovenImages[2].SetActive(true);
+                    break;
+                case CookingMethod.Null:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
-/*
-        public void UpdateMealDisplayPhase3(CondimentSo condiment)
-        {
-            _resultMealDisplayScript.gameObject.SetActive(true);
-            _resultMealDisplayScript.UpdateDisplay(new Meal(_cookingManager.GetCurrentMeal()).AddCondiment(condiment));
-        }
-*/
+        
         public void GoToNextPhase()
         {
             if (SelectedCookingMethod == CookingMethod.Null) return;

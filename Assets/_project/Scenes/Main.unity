@@ -21061,7 +21061,7 @@ MonoBehaviour:
   m_text: + 32
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -9199878852390856223, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -21085,7 +21085,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
+  m_fontSize: 0.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -21216,6 +21216,10 @@ MonoBehaviour:
   _cookingManager: {fileID: 1596713401}
   _nextPhaseMealDisplayScript: {fileID: 5162864852790932402}
   _button: {fileID: 7723530853526200893}
+  _hovenImages:
+  - {fileID: 644046451}
+  - {fileID: 1891981389}
+  - {fileID: 1926480462}
 --- !u!222 &1461106471514495447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21827,7 +21831,7 @@ MonoBehaviour:
   m_text: +74
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -9199878852390856223, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -21851,7 +21855,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
+  m_fontSize: 0.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -22290,7 +22294,7 @@ MonoBehaviour:
   m_text: +64
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -9199878852390856223, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -22314,7 +22318,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.5
+  m_fontSize: 0.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -22773,7 +22777,7 @@ MonoBehaviour:
   m_text: Final Stats
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: -9199878852390856223, guid: 628ebc3abc8cd9e44964e22d23b341da, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -23322,7 +23326,6 @@ MonoBehaviour:
   _manager: {fileID: 1425778744038148602}
   _grayDuration: 0.05
   _grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _ImageHoven: {fileID: 1891981389}
   _multiplierX: {fileID: 345077033}
   _multiplierY: {fileID: 1432854087}
   _multiplierZ: {fileID: 1928253570}
@@ -23604,7 +23607,7 @@ Transform:
   m_GameObject: {fileID: 7632357557752821341}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.69078064, y: 3.0058274, z: -0.49612054}
+  m_LocalPosition: {x: 0.69078064, y: 3.0058274, z: 2}
   m_LocalScale: {x: 0.5963458, y: 0.83447105, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23792,7 +23795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.40784314}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23936,7 +23939,6 @@ MonoBehaviour:
   _manager: {fileID: 1425778744038148602}
   _grayDuration: 0.05
   _grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _ImageHoven: {fileID: 644046451}
   _multiplierX: {fileID: 2320535949939401777}
   _multiplierY: {fileID: 2155859822160018021}
   _multiplierZ: {fileID: 243250714}
@@ -24511,7 +24513,6 @@ MonoBehaviour:
   _manager: {fileID: 1425778744038148602}
   _grayDuration: 0.05
   _grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _ImageHoven: {fileID: 1926480462}
   _multiplierX: {fileID: 2044491034}
   _multiplierY: {fileID: 2097645066}
   _multiplierZ: {fileID: 1775886072}

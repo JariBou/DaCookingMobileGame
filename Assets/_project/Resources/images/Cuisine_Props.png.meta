@@ -215,7 +215,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cuisine_Props_0: 2287072612128492589
+      Cuisine_Props_1: -571990439144971236
+      Cuisine_Props_2: -5263561580911391827
+      Cuisine_Props_3: 8657420404322511319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
