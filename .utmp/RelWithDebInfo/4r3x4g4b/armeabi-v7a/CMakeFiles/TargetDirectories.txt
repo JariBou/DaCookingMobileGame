@@ -1,0 +1,5 @@
+C:/Users/minef/Documents/UNITY projects/DaCookingMobileGame/.utmp/RelWithDebInfo/4r3x4g4b/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/minef/Documents/UNITY projects/DaCookingMobileGame/.utmp/RelWithDebInfo/4r3x4g4b/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/minef/Documents/UNITY projects/DaCookingMobileGame/.utmp/RelWithDebInfo/4r3x4g4b/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/minef/Documents/UNITY projects/DaCookingMobileGame/.utmp/RelWithDebInfo/4r3x4g4b/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/minef/Documents/UNITY projects/DaCookingMobileGame/.utmp/RelWithDebInfo/4r3x4g4b/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
