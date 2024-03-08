@@ -41,7 +41,25 @@ namespace _project.Scripts
             _gaugeGaugeManager.NewPhase();
             _currentMeal = null;
             Debug.Log($"Result: {result}");
+            if (result)
+            {
+                WinPanel();
+            }
+            else if (_monsterInstance.NumberOfMeals >= _monsterInstance.MaxNumberOfMeals && !result)
+            {
+                LosePanel();
+            }
             return result;
+        }
+
+        public void WinPanel()
+        {
+            
+        }
+
+        public void LosePanel()
+        {
+            
         }
         
         public Meal CookMeal(CookingMethod cookingMethod)

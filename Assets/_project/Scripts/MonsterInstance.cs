@@ -13,6 +13,7 @@ namespace _project.Scripts
         [SerializeField] private MonsterDataSo _baseMonsterDataSo;
         [SerializeField] private TMP_Text _numberOfMealsText;
         public Vector3Int CurrentStats { get; private set; }
+        public Vector2Int CurrentMarks { get; private set; }
         
         private int _maxNumberOfMeals;
         private int _numberOfMeals;
@@ -40,6 +41,7 @@ namespace _project.Scripts
             int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
             int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
             CurrentStats = new Vector3Int(x, y, z);
+            CurrentMarks = new Vector2Int(dataSo.StatsMin.x, dataSo.StatsMin.y);
         }
 
         public void BackToMenu()

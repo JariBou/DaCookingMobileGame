@@ -38,6 +38,13 @@ namespace _project.Scripts
             _gaugeY.SetTolerance(value);
             _gaugeZ.SetTolerance(value);
         }
+
+        public void SetGaugesMarks(int min, int max)
+        {
+            _gaugeX.SetMarks(min, max);
+            _gaugeY.SetMarks(min, max);
+            _gaugeZ.SetMarks(min, max);
+        }
         private int ClampValue(int val, float valToAdd)
         {
             return (int)Math.Clamp(val + valToAdd, 0, 100);
@@ -46,8 +53,14 @@ namespace _project.Scripts
         public void NewPhase()
         {
             _gaugeX.PassBoth(_monsterInstance.CurrentStats.x);
+            _gaugeX.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
+
             _gaugeY.PassBoth(_monsterInstance.CurrentStats.y);
+            _gaugeY.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
+
             _gaugeZ.PassBoth(_monsterInstance.CurrentStats.z);
+            _gaugeZ.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
+
         }
     }
 }
