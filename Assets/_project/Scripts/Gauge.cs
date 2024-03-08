@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -12,6 +14,9 @@ namespace _project.Scripts
         [FormerlySerializedAs("_GaugeOffset")]
         [Range(-5, 5)]
         [SerializeField] private float _gaugeOffset;
+        
+        [SerializeField, Range(-5, 5)] private float _leftMarkerOffset;
+        [SerializeField, Range(-5, 5)] private float _rightMarkerOffset;
 
         [Header("Gauge's Values")]
         [Range(0, 180)]
@@ -23,6 +28,7 @@ namespace _project.Scripts
         private float _angle2;
         
         [SerializeField, Range(0, 100)] private int _currentValue = 0;
+        [SerializeField] private TextMeshProUGUI _valueText;
         [SerializeField, Range(0, 100)] private int _previsualizationValue = 0;
         private float _previousValue = 0;
 
@@ -35,6 +41,13 @@ namespace _project.Scripts
         [Header("Gauge's Needle")]
         [SerializeField] private GameObject _needle;
         [SerializeField] private GameObject _needlePrevisualization;
+
+        [Header("Gauge's Limits Marks")]
+        [SerializeField] private GameObject _leftLimit;
+        [SerializeField] private GameObject _rightLimit;
+/*        [SerializeField, Range(0, 100)] private int _leftLimitValue;
+        [SerializeField, Range(0, 100)] private int _rightLimitValue;*/
+        [SerializeField, Range(0, 50)] private int _tolerance = 5;
 
         private bool _isPassingValue = false;
         private bool _isPassingPrevisualizationValue = false;
@@ -83,16 +96,19 @@ namespace _project.Scripts
             
             PassPrevisualizationValue(_previsualizationValue);
 
+            SetTolerance(_tolerance);
+
             float normalizedDifference = Mathf.Abs(_currentValue - _previsualizationValue)/50f;
-            
+            normalizedDifference = Mathf.Lerp(0.7f, 1f, normalizedDifference);
+
 
             if (_previsualizationValue > _currentValue)
             {
-                _needlePrevisualization.GetComponent<Image>().color = new Color(0, normalizedDifference, 0, 0.2f);
+                _needlePrevisualization.GetComponent<Image>().color = new Color(0, normalizedDifference, 0, 0.7f);
             }
             else
             {
-                _needlePrevisualization.GetComponent<Image>().color = new Color(normalizedDifference, 0, 0, 0.2f);
+                _needlePrevisualization.GetComponent<Image>().color = new Color(normalizedDifference, 0, 0, 0.7f);
             }
         }
 
@@ -112,6 +128,7 @@ namespace _project.Scripts
             _angle = Mathf.Atan2(_needle.transform.position.y - position.y, _needle.transform.position.x - position.x) * Mathf.Rad2Deg;
             _isPassingValue = true;
             _currentValue = value;
+            _valueText.text = value.ToString();
         }
 
         public void PassPrevisualizationValue(int prevValue)
@@ -126,7 +143,44 @@ namespace _project.Scripts
             _previsualizationValue = prevValue;
         }
 
+        public void SetTolerance(int value)
+        {
+            value = Mathf.Clamp(value, 0, 50); // C'est une sécurité pour éviter que la tolérance soit plus grande que la moitié de la jauge
+            float mid = _maxValue / 2;
+            SetMarks((int)mid - value, (int)mid + value);
+        }
+        public void SetMarks(int left, int right)
+        {
+            SetMark(left, _leftLimit, true);
+            SetMark(right, _rightLimit, false);
+        }
 
+        public void SetMark(int value, GameObject mark, bool _isLeftMarker)
+        {
+            if (_isLeftMarker)
+            {
+                SetMarkerOffset(ref _leftMarkerOffset, value);
+            }
+            else
+            {
+                SetMarkerOffset(ref _rightMarkerOffset, value);
+            }
+            float MarkerOffset = _isLeftMarker ? _leftMarkerOffset : _rightMarkerOffset;
+            Vector3 position = transform.position + Vector3.up * _yOffset;
+            float x = position.x + (Mathf.Abs(_yOffset + MarkerOffset) * Mathf.Cos(ConvertValueToAngle(value) * Mathf.Deg2Rad));
+            float y = position.y + (Mathf.Abs(_yOffset + MarkerOffset) * Mathf.Sin(ConvertValueToAngle(value) * Mathf.Deg2Rad));
+            mark.transform.position = new Vector3(x, y, 0);
+            float angle = Mathf.Atan2(mark.transform.position.y - position.y, mark.transform.position.x - position.x) * Mathf.Rad2Deg;
+            mark.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
+        }
+
+        private void SetMarkerOffset(ref float gaugeOffset, int markerValue)
+        {
+            float distanceFrom50 = Mathf.Abs(markerValue - 50);
+            float maxDistance = _maxValue/2;
+            float t = distanceFrom50 / maxDistance;
+            gaugeOffset = Mathf.Lerp(0.25f, 0.1f, t);
+        }
         public float ConvertValueToAngle(float value)
         {
             float ratio = ((90 - _rightAngleCramped) - (90 + _leftAngleCramped)) / _maxValue;

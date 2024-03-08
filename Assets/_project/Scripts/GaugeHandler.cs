@@ -32,6 +32,12 @@ namespace _project.Scripts
             _gaugeZ.PassPrevisualizationValue(_monsterInstance.CurrentStats.z);
         }
 
+        public void SetGaugesTolerance(int value)
+        {
+            _gaugeX.SetTolerance(value);
+            _gaugeY.SetTolerance(value);
+            _gaugeZ.SetTolerance(value);
+        }
         private int ClampValue(int val, float valToAdd)
         {
             return (int)Math.Clamp(val + valToAdd, 0, 100);
