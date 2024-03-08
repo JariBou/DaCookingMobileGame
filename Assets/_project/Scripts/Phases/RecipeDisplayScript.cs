@@ -24,6 +24,7 @@ namespace _project.Scripts
         [SerializeField] private TMP_Text _finalPower;
         [SerializeField] private float _slideTime = 1f;
         [SerializeField] private Transform _uiTransform;
+        [SerializeField] private Transform _cauldronTransform;
 
         [SerializeField] private AnimationCurve _uiSlideCurve;
         [SerializeField] private AnimationCurve _mealSlideCurve;
@@ -160,7 +161,6 @@ namespace _project.Scripts
         {
             if (_currentMeal != null)
             {
-                
                 StartCoroutine(SlideIngredients());
                 
                 Debug.Log("Going to Phase2");
@@ -260,14 +260,17 @@ namespace _project.Scripts
         
         private IEnumerator SlideUi()
         {
-            Vector2 startPos = _uiTransform.position;
+            Vector2 startCauldronPos = _cauldronTransform.position;
+            Vector2 startUiPos = _uiTransform.position;
             
             float timer = 0;
             float slideTime = 0.5f;
             while (timer < slideTime)
             {
                 timer += Time.deltaTime;
-                _uiTransform.position = Vector2.Lerp(startPos, startPos + Vector2.down * 20f,
+                _uiTransform.position = Vector2.Lerp(startUiPos, startUiPos + Vector2.down * 20f,
+                    _uiSlideCurve.Evaluate(timer / slideTime));
+                _cauldronTransform.position = Vector2.Lerp(startCauldronPos, startCauldronPos + Vector2.up * 15f,
                     _uiSlideCurve.Evaluate(timer / slideTime));
                 yield return new WaitForEndOfFrame();
             }
@@ -279,7 +282,8 @@ namespace _project.Scripts
                 yield return new WaitForFixedUpdate();
             }
 
-            _uiTransform.position = startPos;
+            _uiTransform.position = startUiPos;
+            _cauldronTransform.position = startCauldronPos;
         }
 
         private void ResetIngredientStats(IngredientStats ingredientStats)
