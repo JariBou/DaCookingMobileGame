@@ -287,7 +287,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Hellcoker cover_0: -8100270302219017360
+      Hellcoker cover_1: 5009920840867832625
+      Hellcoker cover_2: -7902259455058782770
+      Hellcoker cover_3: 7058311973833645443
+      Hellcoker cover_4: -2040301402191770774
+      Hellcoker cover_5: 1188522797129473065
+      Hellcoker cover_6: -4531955957987312457
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
