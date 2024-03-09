@@ -22,6 +22,7 @@ namespace _project.ScriptableObjects.Scripts
         [SerializeField, TabProperty("Sprites")] private Sprite _sleepingSprite;
         [SerializeField, TabProperty("Sprites")] private Sprite _normalSprite;
         [SerializeField, TabProperty("Sprites")] private Sprite _angrySprite;
+        [SerializeField, TabProperty("Sprites")] private GameObject _monsterPrefab;
 
         public string Name => _name;
         public string Description => _description;
@@ -37,5 +38,6 @@ namespace _project.ScriptableObjects.Scripts
         public Vector3Int RandomStatsMin => _randomStatsMin;
         public Vector3Int RandomStatsMax => _randomStatsMax;
         public int MaxNumberOfMeals => _maxNumberOfMeals;
+        public GameObject MonsterPrefab => _monsterPrefab;
     }
 }

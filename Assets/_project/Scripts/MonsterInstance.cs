@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using _project.Scripts.Meals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _project.Scripts
@@ -12,7 +14,10 @@ namespace _project.Scripts
     {
         [SerializeField] private MonsterDataSo _baseMonsterDataSo;
         [SerializeField] private TMP_Text _numberOfMealsText;
+
+        [SerializeField] private BossScript _bossScript; // TODO: get this at runtime from monster SO
         public Vector3Int CurrentStats { get; private set; }
+        public Vector2Int CurrentMarks { get; private set; }
         
         private int _maxNumberOfMeals;
         private int _numberOfMeals;
@@ -22,7 +27,7 @@ namespace _project.Scripts
         public int MaxNumberOfMeals => _maxNumberOfMeals;
         public int NumberOfMeals => _numberOfMeals;
 
-        public List<MonsterDataSo> MonsterDatas = new List<MonsterDataSo>();
+        [SerializeField] private List<MonsterDataSo> _monsterDatas = new List<MonsterDataSo>();
 
         private void Awake()
         {
@@ -40,6 +45,10 @@ namespace _project.Scripts
             int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
             int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
             CurrentStats = new Vector3Int(x, y, z);
+            CurrentMarks = new Vector2Int(dataSo.StatsMin.x, dataSo.StatsMin.y);
+            
+            // TODO: TEMP
+            _bossScript.SetState(GetBossState());
         }
 
         public void BackToMenu()
@@ -49,7 +58,7 @@ namespace _project.Scripts
 
         public void ChangeMonster(MonsterDataSo dataSo)
         {
-
+            // InitializeMonster(dataSo); Y'a deja ça
         }
         
         /// <summary>
@@ -63,6 +72,9 @@ namespace _project.Scripts
             CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
             _numberOfMeals++;
             if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
+            
+            _bossScript.SetState(GetBossState());
+            
             return CurrentStats.IsInBounds(MonsterData.StatsMin, MonsterData.StatsMax);
         }
 
@@ -73,17 +85,44 @@ namespace _project.Scripts
 
         public Sprite GetDisplayedSprite()
         {
-            int xDelta = (int)Math.Abs((MonsterData.StatsMax.x - MonsterData.StatsMin.x) / 2f - CurrentStats.x);
-            int yDelta = (int)Math.Abs((MonsterData.StatsMax.y - MonsterData.StatsMin.y) / 2f - CurrentStats.y);
-            int zDelta = (int)Math.Abs((MonsterData.StatsMax.z - MonsterData.StatsMin.z) / 2f - CurrentStats.z);
+            // int xDelta = (int)Math.Abs((MonsterData.StatsMax.x - MonsterData.StatsMin.x) / 2f - CurrentStats.x);
+            // int yDelta = (int)Math.Abs((MonsterData.StatsMax.y - MonsterData.StatsMin.y) / 2f - CurrentStats.y);
+            // int zDelta = (int)Math.Abs((MonsterData.StatsMax.z - MonsterData.StatsMin.z) / 2f - CurrentStats.z);
 
-            int averageDistance = (xDelta + yDelta + zDelta) / 3;
+            // int averageDistance = (xDelta + yDelta + zDelta) / 3;
             
-            return averageDistance switch
+            return GetBossState() switch
             {
-                < 50 => MonsterData.SleepingSprite,
-                > 100 => MonsterData.AngrySprite,
+                BossState.Calm => MonsterData.SleepingSprite,
+                BossState.Angry => MonsterData.AngrySprite,
                 _ => MonsterData.NormalSprite
+            };
+        }
+        
+        public BossState GetBossState()
+        {
+            int numberOfGoodStats = 0;
+
+            if (CurrentStats.x >= MonsterData.StatsMin.x && CurrentStats.x <= MonsterData.StatsMax.x)
+            {
+                numberOfGoodStats++;
+            }
+            
+            if (CurrentStats.y >= MonsterData.StatsMin.y && CurrentStats.y <= MonsterData.StatsMax.y)
+            {
+                numberOfGoodStats++;
+            }
+            
+            if (CurrentStats.z >= MonsterData.StatsMin.z && CurrentStats.z <= MonsterData.StatsMax.z)
+            {
+                numberOfGoodStats++;
+            }
+            
+            return numberOfGoodStats switch
+            {
+                >= 2 => BossState.Calm,
+                0 => BossState.Angry,
+                _ => BossState.Neutral
             };
         }
     }
