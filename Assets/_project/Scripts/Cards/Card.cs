@@ -2,11 +2,10 @@ using System.Collections.Generic;
 using System.Globalization;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
-using NUnit.Framework;
 using TMPro;
 using UnityEngine;
 
-namespace _project.Scripts
+namespace _project.Scripts.Cards
 {
     public class Card : MonoBehaviour
     {

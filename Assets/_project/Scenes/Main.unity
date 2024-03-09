@@ -2266,6 +2266,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1097945686071476901, guid: 8ade7a37f257c9b4e8e68626774b3456, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1140176546645467659, guid: 8ade7a37f257c9b4e8e68626774b3456, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -2833,6 +2837,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 4.306328, y: 6.6677675}
   m_EdgeRadius: 0
+--- !u!95 &402377429 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5305505877887179141, guid: 8ade7a37f257c9b4e8e68626774b3456, type: 3}
+  m_PrefabInstance: {fileID: 402377424}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &402377430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2846,6 +2855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _collider2D: {fileID: 402377428}
+  _bossAnimator: {fileID: 402377429}
 --- !u!4 &423553473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 371429303083124075, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
@@ -3749,7 +3759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7736811118848834734, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_Color.g
-      value: 0.957
+      value: 0.742
       objectReference: {fileID: 0}
     - target: {fileID: 7736811118848834734, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_Color.r
@@ -10037,7 +10047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7736811118848834734, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_Color.r
-      value: 0.51
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7753099417255835183, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -11015,7 +11025,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseMonsterDataSo: {fileID: 11400000, guid: 99b889a07f15a464787d513140eb978f, type: 2}
   _numberOfMealsText: {fileID: 993251335}
-  MonsterDatas: []
+  _bossScript: {fileID: 402377430}
+  _monsterDatas: []
 --- !u!114 &1596713406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12637,11 +12648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7736811118848834734, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_Color.g
-      value: 0.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7736811118848834734, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 7753099417255835183, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
       propertyPath: m_AnchoredPosition.y

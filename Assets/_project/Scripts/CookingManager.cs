@@ -1,6 +1,9 @@
 ﻿using System;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using _project.Scripts.Gauges;
+using _project.Scripts.Meals;
+using _project.Scripts.UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 

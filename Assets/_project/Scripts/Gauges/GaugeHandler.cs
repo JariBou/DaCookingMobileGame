@@ -1,8 +1,9 @@
 using System;
 using _project.Scripts.Core;
+using _project.Scripts.Meals;
 using UnityEngine;
 
-namespace _project.Scripts
+namespace _project.Scripts.Gauges
 {
     public class GaugeHandler : MonoBehaviour
     {

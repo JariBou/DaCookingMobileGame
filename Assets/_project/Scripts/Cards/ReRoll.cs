@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
-using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
-using NaughtyAttributes;
+using _project.Scripts.Phases;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-namespace _project.Scripts
+namespace _project.Scripts.Cards
 {
     public class ReRoll : MonoBehaviour
     {

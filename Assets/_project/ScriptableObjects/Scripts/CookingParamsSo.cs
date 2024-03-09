@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _project.Scripts.Core;
+using _project.Scripts.Meals;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.ScriptableObjectAttributes;
 using UnityEngine;

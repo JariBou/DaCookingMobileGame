@@ -1,10 +1,9 @@
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace _project.Scripts
+namespace _project.Scripts.Core
 {
     public class Gauge : MonoBehaviour
     {
@@ -28,7 +27,7 @@ namespace _project.Scripts
         private float _angle2;
         
         [SerializeField, Range(0, 100)] private int _currentValue = 0;
-        [SerializeField] private TextMeshProUGUI _valueText;
+        [SerializeField] private TMP_Text _valueText;
         [SerializeField, Range(0, 100)] private int _previsualizationValue = 0;
         private float _previousValue = 0;
 
@@ -145,7 +144,7 @@ namespace _project.Scripts
 
         public void SetTolerance(int value)
         {
-            value = Mathf.Clamp(value, 0, 50); // C'est une sécurité pour éviter que la tolérance soit plus grande que la moitié de la jauge
+            value = Mathf.Clamp(value, 0, 50); // C'est une sï¿½curitï¿½ pour ï¿½viter que la tolï¿½rance soit plus grande que la moitiï¿½ de la jauge
             float mid = _maxValue / 2;
             SetMarks((int)mid - value, (int)mid + value);
         }

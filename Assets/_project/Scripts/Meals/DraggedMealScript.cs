@@ -1,7 +1,9 @@
+using _project.Scripts.Core;
+using _project.Scripts.Phases;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace _project.Scripts
+namespace _project.Scripts.Meals
 {
     public class DraggedMealScript : MonoBehaviour, IDraggable
     {

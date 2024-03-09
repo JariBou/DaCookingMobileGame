@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
+using _project.Scripts.Core;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace _project.Scripts.Core
+namespace _project.Scripts.Meals
 {
     [Serializable]
     public class Meal

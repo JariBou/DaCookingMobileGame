@@ -2,7 +2,7 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace _project.Scripts
+namespace _project.Scripts.UI
 {
     public class SlideScreen : MonoBehaviour
     {

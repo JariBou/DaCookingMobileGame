@@ -1,11 +1,10 @@
-using System;
 using System.Globalization;
-using _project.Scripts.Core;
+using _project.Scripts.Meals;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _project.Scripts
+namespace _project.Scripts.UI
 {
     public class MealDisplayScript : MonoBehaviour
     {

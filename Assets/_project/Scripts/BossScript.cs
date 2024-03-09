@@ -1,4 +1,5 @@
 using System;
+using _project.Scripts.Core;
 using UnityEngine;
 
 namespace _project.Scripts
@@ -6,6 +7,8 @@ namespace _project.Scripts
     public class BossScript : MonoBehaviour
     {
         [SerializeField] private Collider2D _collider2D;
+        [SerializeField] private Animator _bossAnimator;
+        private static readonly int Phase = Animator.StringToHash("Phase");
 
         private void Start()
         {
@@ -21,5 +24,11 @@ namespace _project.Scripts
         {
             _collider2D.enabled = false;
         }
+
+        public void SetState(BossState state)
+        {
+            _bossAnimator.SetInteger(Phase, (int)state);
+        }
+        
     }
 }

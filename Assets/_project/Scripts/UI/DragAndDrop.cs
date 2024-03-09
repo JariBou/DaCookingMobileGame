@@ -1,15 +1,13 @@
 using System;
-using GraphicsLabor.Scripts.Core.Tags;
-using GraphicsLabor.Scripts.Core.Tags.Components;
+using _project.Scripts.Core;
+using _project.Scripts.Gauges;
+using _project.Scripts.Meals;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using GraphicsLabor.Scripts.Core.Utility;
-using TMPro;
-using System.Collections;
 
-namespace _project.Scripts
+namespace _project.Scripts.UI
 {
     public class DragAndDrop : MonoBehaviour
     {

@@ -1,4 +1,4 @@
-﻿namespace _project.Scripts
+﻿namespace _project.Scripts.Core
 {
     public interface IDraggable
     {

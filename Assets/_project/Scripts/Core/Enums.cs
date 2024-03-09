@@ -18,4 +18,11 @@
         Phase3 = 2,
         Phase4 = 3,
     }
+    
+    public enum BossState
+    {
+        Calm = 0,
+        Neutral = 1,
+        Angry = 2,
+    }
 }

@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using _project.Scripts.Phases;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace _project.Scripts
+namespace _project.Scripts.Cards
 {
     [Serializable]
     public class ClickUp : MonoBehaviour
