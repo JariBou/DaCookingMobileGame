@@ -4788,6 +4788,18 @@ PrefabInstance:
       propertyPath: _ingredientSo
       value: 
       objectReference: {fileID: 11400000, guid: b90668efb3810134ca7a12ef8941963f, type: 2}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 42277e8a5952b444b92fedc7bb3294f6, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf30a360348e07478c0e3ce0ec8c235, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 5573334400836596103, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_OverrideSorting
       value: 1
@@ -4808,6 +4820,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_SortingOrder
       value: 51
@@ -5619,6 +5635,18 @@ PrefabInstance:
       propertyPath: _ingredientSo
       value: 
       objectReference: {fileID: 11400000, guid: e85857bd25e6c1f4cb84944a9f293c89, type: 2}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 42277e8a5952b444b92fedc7bb3294f6, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf30a360348e07478c0e3ce0ec8c235, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 5573334400836596103, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_OverrideSorting
       value: 1
@@ -5639,6 +5667,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_SortingOrder
       value: 51
@@ -8470,6 +8502,18 @@ PrefabInstance:
       propertyPath: _ingredientSo
       value: 
       objectReference: {fileID: 11400000, guid: b90668efb3810134ca7a12ef8941963f, type: 2}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 42277e8a5952b444b92fedc7bb3294f6, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf30a360348e07478c0e3ce0ec8c235, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 5573334400836596103, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_OverrideSorting
       value: 1
@@ -8490,6 +8534,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_SortingOrder
       value: 51
@@ -9343,6 +9391,18 @@ PrefabInstance:
       propertyPath: _ingredientSo
       value: 
       objectReference: {fileID: 11400000, guid: 5b1590b077e235c438a519bb4a3610a6, type: 2}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 42277e8a5952b444b92fedc7bb3294f6, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf30a360348e07478c0e3ce0ec8c235, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 5573334400836596103, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_OverrideSorting
       value: 1
@@ -9363,6 +9423,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_SortingOrder
       value: 51
@@ -11524,6 +11588,18 @@ PrefabInstance:
       propertyPath: _ingredientSo
       value: 
       objectReference: {fileID: 11400000, guid: 561ef4c25d37b604b90f4db779d14b51, type: 2}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 42277e8a5952b444b92fedc7bb3294f6, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf30a360348e07478c0e3ce0ec8c235, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 5573334400836596103, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_OverrideSorting
       value: 1
@@ -11544,6 +11620,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_SortingOrder
       value: 51
@@ -18916,6 +18996,18 @@ PrefabInstance:
       propertyPath: _appearCurve.m_Curve.Array.data[2].tangentMode
       value: 34
       objectReference: {fileID: 0}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[0]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 42277e8a5952b444b92fedc7bb3294f6, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 9bf30a360348e07478c0e3ce0ec8c235, type: 3}
+    - target: {fileID: 5455532294947510883, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: '_cardBacks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 5573334400836596103, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -18940,6 +19032,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 447ff974ab8ad3144aa8395a9c352144, type: 3}
     - target: {fileID: 7733353093256333417, guid: 0b0123df0c9ba6f4c8cb4dd82abfda26, type: 3}
       propertyPath: m_SortingOrder
       value: 51
