@@ -11,12 +11,12 @@ namespace _project.Scripts
 
         [SerializeField] private List<Vector3> _positions;
         [SerializeField] private List<Vector3> _monsterPositions;
-        [SerializeField] private Transform _monster;
         private int _currentPosIndex;
 
         [SerializeField] private float _timeToSlide;
         [SerializeField] private AnimationCurve _slideCurve;
         
+        private Transform _monster;
         private float _timer;
         private bool _isMoving;
         public int CurrentIndex => _currentPosIndex;
@@ -26,6 +26,11 @@ namespace _project.Scripts
         void Start()
         {
             _currentPosIndex = 0;
+        }
+
+        public void PassMonsterTransform(Transform monsterTransform)
+        {
+            _monster = monsterTransform;
             _monster.position = _monsterPositions[0];
         }
 

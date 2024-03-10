@@ -14,8 +14,10 @@ namespace _project.Scripts
     {
         [SerializeField] private MonsterDataSo _baseMonsterDataSo;
         [SerializeField] private TMP_Text _numberOfMealsText;
+        [SerializeField] private CameraScript _cameraScript;
+        private GameObject _monsterGameObject;
 
-        [SerializeField] private BossScript _bossScript; // TODO: get this at runtime from monster SO
+        private BossScript _bossScript;
         public Vector3Int CurrentStats { get; private set; }
         public Vector2Int CurrentMarks { get; private set; }
         
@@ -36,18 +38,30 @@ namespace _project.Scripts
 
         public void InitializeMonster(MonsterDataSo dataSo)
         {
+            if(_monsterGameObject != null) Destroy(_monsterGameObject);
+            
+            _monsterGameObject = Instantiate(dataSo.MonsterPrefab);
+
+            _bossScript = _monsterGameObject.GetComponent<BossScript>();
+            
             MonsterData = dataSo;
             _maxNumberOfMeals = dataSo.MaxNumberOfMeals;
             _numberOfMeals = 0;
             if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
 
-            int x = Random.Range(dataSo.RandomStatsMin.x, dataSo.RandomStatsMax.x);
-            int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
-            int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
-            CurrentStats = new Vector3Int(x, y, z);
+            do
+            {
+                int x = Random.Range(dataSo.RandomStatsMin.x, dataSo.RandomStatsMax.x);
+                int y = Random.Range(dataSo.RandomStatsMin.y, dataSo.RandomStatsMax.y);
+                int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
+                CurrentStats = new Vector3Int(x, y, z);
+            } while (GetNumberOfGoodStats() == 3);
+            
             CurrentMarks = new Vector2Int(dataSo.StatsMin.x, dataSo.StatsMin.y);
             
-            // TODO: TEMP
+            _cameraScript.PassMonsterTransform(_monsterGameObject.transform);
+            
+            // TODO
             _bossScript.SetState(GetBossState());
         }
 
@@ -101,6 +115,18 @@ namespace _project.Scripts
         
         public BossState GetBossState()
         {
+            int numberOfGoodStats = GetNumberOfGoodStats();
+            
+            return numberOfGoodStats switch
+            {
+                >= 2 => BossState.Calm,
+                0 => BossState.Angry,
+                _ => BossState.Neutral
+            };
+        }
+
+        private int GetNumberOfGoodStats()
+        {
             int numberOfGoodStats = 0;
 
             if (CurrentStats.x >= MonsterData.StatsMin.x && CurrentStats.x <= MonsterData.StatsMax.x)
@@ -117,13 +143,8 @@ namespace _project.Scripts
             {
                 numberOfGoodStats++;
             }
-            
-            return numberOfGoodStats switch
-            {
-                >= 2 => BossState.Calm,
-                0 => BossState.Angry,
-                _ => BossState.Neutral
-            };
+
+            return numberOfGoodStats;
         }
     }
 }
