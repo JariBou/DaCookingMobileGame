@@ -47,6 +47,7 @@ namespace _project.Scripts.UI
         
             // TODO
             // Add change of monster
+            _monsterInstance.NewRandomMonster();
         
             _menuGameObject.SetActive(false);
         }

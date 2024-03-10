@@ -12,7 +12,7 @@ namespace _project.Scripts.Cards
     public class ReRoll : MonoBehaviour
     {
 
-        [SerializeField] private IngredientsBundleSo _bundleSo;
+        [SerializeField] private MonsterInstance _monsterInstance;
         [SerializeField] private ClickUp[] _cards;
         [SerializeField] private RecipeDisplayScript _recipeDisplayScript;
         [SerializeField, Range(1, 10)] private int _rerollChance = 2;
@@ -54,7 +54,7 @@ namespace _project.Scripts.Cards
         }
         public void ReRollBundle()
         {
-            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
+            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_monsterInstance.GetIngredients());
 
             foreach (IngredientSo ingredientSo in GetSelectedIngredients())
             {
@@ -125,7 +125,7 @@ namespace _project.Scripts.Cards
 
         public void RedistributeCards()
         {
-            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_bundleSo.BundleIngredients);
+            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_monsterInstance.GetIngredients());
             
             foreach (ClickUp clickUp in Cards)
             {

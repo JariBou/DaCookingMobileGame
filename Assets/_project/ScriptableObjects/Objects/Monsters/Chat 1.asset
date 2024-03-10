@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e876b39fd831400ca6bdafaf4cabf998, type: 3}
-  m_Name: Chat
+  m_Name: Chat 1
   m_EditorClassIdentifier: 
   _name: Le Chat
   _description: Le Chat, first monster encountered. He serve as a tutorial for the

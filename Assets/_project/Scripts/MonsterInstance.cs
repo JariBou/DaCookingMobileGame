@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
+using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace _project.Scripts
@@ -15,9 +14,12 @@ namespace _project.Scripts
         [SerializeField] private MonsterDataSo _baseMonsterDataSo;
         [SerializeField] private TMP_Text _numberOfMealsText;
         [SerializeField] private CameraScript _cameraScript;
+        [SerializeField] private GaugeHandler _gaugeHandler;
+        
         private GameObject _monsterGameObject;
+        private int _ingredientBundleIndex;
 
-        private BossScript _bossScript;
+        private BossScript _bossGetBossScript;
         public Vector3Int CurrentStats { get; private set; }
         public Vector2Int CurrentMarks { get; private set; }
         
@@ -28,6 +30,8 @@ namespace _project.Scripts
 
         public int MaxNumberOfMeals => _maxNumberOfMeals;
         public int NumberOfMeals => _numberOfMeals;
+
+        public BossScript GetBossScript() => _bossGetBossScript;
 
         [SerializeField] private List<MonsterDataSo> _monsterDatas = new List<MonsterDataSo>();
 
@@ -42,7 +46,7 @@ namespace _project.Scripts
             
             _monsterGameObject = Instantiate(dataSo.MonsterPrefab);
 
-            _bossScript = _monsterGameObject.GetComponent<BossScript>();
+            _bossGetBossScript = _monsterGameObject.GetComponent<BossScript>();
             
             MonsterData = dataSo;
             _maxNumberOfMeals = dataSo.MaxNumberOfMeals;
@@ -56,18 +60,35 @@ namespace _project.Scripts
                 int z = Random.Range(dataSo.RandomStatsMin.z, dataSo.RandomStatsMax.z);
                 CurrentStats = new Vector3Int(x, y, z);
             } while (GetNumberOfGoodStats() == 3);
+
+            _ingredientBundleIndex = Random.Range(0, dataSo.IngredientBundles.Count);
             
             CurrentMarks = new Vector2Int(dataSo.StatsMin.x, dataSo.StatsMin.y);
             
             _cameraScript.PassMonsterTransform(_monsterGameObject.transform);
             
             // TODO
-            _bossScript.SetState(GetBossState());
+            GetBossScript().SetState(GetBossState());
+            _gaugeHandler.UpdateAll();
         }
 
         public void BackToMenu()
         {
 
+        }
+
+        public void NewRandomMonster(bool canTwiceInRow = false)
+        {
+            if (canTwiceInRow)
+            {
+                InitializeMonster(_monsterDatas[Random.Range(0, _monsterDatas.Count)]);
+            }
+            else
+            {
+                List<MonsterDataSo> dataSos = new List<MonsterDataSo>(_monsterDatas);
+                if (MonsterData != null) dataSos.Remove(MonsterData);
+                InitializeMonster(dataSos[Random.Range(0, dataSos.Count)]);
+            }
         }
 
         public void ChangeMonster(MonsterDataSo dataSo)
@@ -87,14 +108,14 @@ namespace _project.Scripts
             _numberOfMeals++;
             if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
             
-            _bossScript.SetState(GetBossState());
+            GetBossScript().SetState(GetBossState());
             
             return CurrentStats.IsInBounds(MonsterData.StatsMin, MonsterData.StatsMax);
         }
 
-        public List<IngredientSo> GetPossibleIngredients()
+        public List<IngredientSo> GetIngredients()
         {
-            return MonsterData.Ingredients.BundleIngredients;
+            return MonsterData.IngredientBundles[_ingredientBundleIndex].BundleIngredients;
         }
 
         public Sprite GetDisplayedSprite()

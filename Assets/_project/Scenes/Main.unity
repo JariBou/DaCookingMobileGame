@@ -10423,7 +10423,10 @@ MonoBehaviour:
   _baseMonsterDataSo: {fileID: 11400000, guid: 99b889a07f15a464787d513140eb978f, type: 2}
   _numberOfMealsText: {fileID: 993251335}
   _cameraScript: {fileID: 2098448612}
-  _monsterDatas: []
+  _gaugeHandler: {fileID: 2023671285}
+  _monsterDatas:
+  - {fileID: 11400000, guid: 32625af70dd6a7d47b3b178a73872ba3, type: 2}
+  - {fileID: 11400000, guid: 1bf265a41dff0af46884e180e4c44014, type: 2}
 --- !u!114 &1596713406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11528,7 +11531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b8a14ea3c8d0e40804934a1ae39830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bundleSo: {fileID: 11400000, guid: 551c4ff232bcca8499d30362b7103ad6, type: 2}
+  _monsterInstance: {fileID: 1596713405}
   _cards:
   - {fileID: 1876569054}
   - {fileID: 819468559}
@@ -18408,7 +18411,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cookingManager: {fileID: 1596713401}
   _draggedMeal: {fileID: 8639535067393494908}
-  _bossScript: {fileID: 0}
+  _monsterInstance: {fileID: 1596713405}
   _uiTransform: {fileID: 194766335}
   _decorTransform: {fileID: 271580001}
   _meal: {fileID: 5107978174391139929}
