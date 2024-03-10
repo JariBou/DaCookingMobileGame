@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
   m_Name: UnicornHead
   m_EditorClassIdentifier: 
-  _name: Unicorn Head
+  _name: "T\xEAte de Licorne"
   _ingredientFamily: 0
-  _stats: {x: 7, y: -15, z: -3}
+  _stats: {x: 17, y: -15, z: -6}
   _randomAddedstats: {x: 0, y: 0, z: 0}
   _icon: {fileID: 21300000, guid: 568ee5e95bf17f340b6366e37b5fe405, type: 3}
   _description: 'Unicorn Head: Rare ingredient offering an explosion of magical flavors,
