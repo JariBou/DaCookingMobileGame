@@ -44,11 +44,6 @@ namespace _project.Scripts.UI
             _multiplierZ.text = $"x{multipliers.z}";
         }
 
-        private void OnValidate()
-        {
-            throw new NotImplementedException();
-        }
-
         private void OnMouseDown()
         {
             if (_manager.CookingManager.GetCurrentPhase() != PhaseCode.Phase2) return;
