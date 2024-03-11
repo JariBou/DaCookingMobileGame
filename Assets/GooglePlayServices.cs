@@ -1,5 +1,7 @@
+using System;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using Hellcooker;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,15 +15,19 @@ public class GooglePlayServices : MonoBehaviour
 
     public string Token => _token;
 
-    public void Start()
+    private void Awake()
     {
       PlayGamesPlatform.Activate();
-      _progressDebugSlider.value = 1 / 3f;
       PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
-      _progressDebugSlider.value = 2 / 3f;
+    }
+
+    public void Start()
+    {
       PlayGamesPlatform.Instance.ReportProgress(GPGSIds.achievement_hells_cooker, 100.0f, (bool success) => {
-      _progressDebugSlider.value = 3 / 3f;
-        // handle success or failure
+        if (success)
+        {
+          _progressDebugSlider.value = 1f;
+        }
       });
     }
 
@@ -37,10 +43,10 @@ public class GooglePlayServices : MonoBehaviour
       if (status == SignInStatus.Success)
       {
         // Continue with Play Games Services
-        PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
-        {
-          _token = code;
-        });
+        // PlayGamesPlatform.Instance.RequestServerSideAccess(true, code =>
+        // {
+        //   _token = code;
+        // });
         _manualConnectButton.SetActive(false);
         _achievementsButton.SetActive(true);
         _statusImage.color = Color.green;
