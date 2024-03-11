@@ -16,7 +16,7 @@ namespace _project.Scripts.Gauges
 
         private void Start()
         {
-            NewPhase();
+            UpdateAll();
         }
 
         public void PrevisualizeMeal(Meal meal)
@@ -51,7 +51,7 @@ namespace _project.Scripts.Gauges
             return (int)Math.Clamp(val + valToAdd, 0, 100);
         }
 
-        public void NewPhase()
+        public void UpdateAll()
         {
             _gaugeX.PassBoth(_monsterInstance.CurrentStats.x);
             _gaugeX.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);

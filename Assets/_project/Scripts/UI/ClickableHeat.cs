@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using _project.Scripts.Core;
 using _project.Scripts.Phases;
@@ -41,6 +42,11 @@ namespace _project.Scripts.UI
             _multiplierX.text = $"x{multipliers.x}";
             _multiplierY.text = $"x{multipliers.y}";
             _multiplierZ.text = $"x{multipliers.z}";
+        }
+
+        private void OnValidate()
+        {
+            throw new NotImplementedException();
         }
 
         private void OnMouseDown()

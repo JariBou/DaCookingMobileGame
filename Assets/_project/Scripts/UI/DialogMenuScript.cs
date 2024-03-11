@@ -1,4 +1,5 @@
 using _project.Scripts.Phases;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -47,6 +48,7 @@ namespace _project.Scripts.UI
         
             // TODO
             // Add change of monster
+            _monsterInstance.NewRandomMonster();
         
             _menuGameObject.SetActive(false);
         }
@@ -57,6 +59,18 @@ namespace _project.Scripts.UI
             // Add reset of monster
         
             _menuGameObject.SetActive(false);
+        }
+
+        [Button]
+        private void Win()
+        {
+            ActivateMenu(true);
+        }
+
+        [Button]
+        private void Lost()
+        {
+            ActivateMenu(false);
         }
 
         public void Menu()

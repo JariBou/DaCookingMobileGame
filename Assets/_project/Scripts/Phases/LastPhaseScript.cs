@@ -13,7 +13,8 @@ namespace _project.Scripts.Phases
     {
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private DraggedMealScript _draggedMeal;
-        [SerializeField] private BossScript _bossScript;
+        [SerializeField] private MonsterInstance _monsterInstance;
+        private BossScript BossScript => _monsterInstance.GetBossScript();
         [SerializeField] private Transform _uiTransform;
         [SerializeField] private Transform _decorTransform;
         [SerializeField] private Transform _meal;
@@ -33,11 +34,6 @@ namespace _project.Scripts.Phases
         {
             _startUiPos = _uiTransform.position;
             _startBgScale = _decorTransform.localScale;
-        }
-
-        public void PassBossScript(BossScript bossScript)
-        {
-            _bossScript = bossScript;
         }
 
         public void GoNextPhase()
@@ -74,7 +70,7 @@ namespace _project.Scripts.Phases
                 yield return new WaitForEndOfFrame();
             }
             _draggedMeal.EnableUse();
-            _bossScript.ActivateFeeding();
+            BossScript.ActivateFeeding();
         }
         
         private IEnumerator EndFeedingPhaseRoutine()
@@ -98,7 +94,7 @@ namespace _project.Scripts.Phases
             _uiTransform.position = _startUiPos;
             _draggedMeal.ResetPosition();
             _draggedMeal.Activate();
-            _bossScript.DeactivateFeeding();
+            BossScript.DeactivateFeeding();
             foreach (DragableObject condiment in _condiments)
             {
                 condiment.EnableUse();

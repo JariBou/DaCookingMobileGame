@@ -9,11 +9,11 @@ namespace _project.Scripts.Cards
 {
     public class Card : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _cardName;
-        [SerializeField] private TextMeshProUGUI _cardDescription;
-        [SerializeField] private TextMeshProUGUI _cardHunger;
-        [SerializeField] private TextMeshProUGUI _cardSatisfaction;
-        [SerializeField] private TextMeshProUGUI _cardPower;
+        [SerializeField] private TMP_Text _cardName;
+        [SerializeField] private TMP_Text _cardDescription;
+        [SerializeField] private TMP_Text _cardHunger;
+        [SerializeField] private TMP_Text _cardSatisfaction;
+        [SerializeField] private TMP_Text _cardPower;
         [SerializeField] private SpriteRenderer _cardImage;
         [SerializeField] private SpriteRenderer _cardBack;
 

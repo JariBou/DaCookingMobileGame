@@ -48,7 +48,7 @@ namespace _project.Scripts
         {
             Debug.Log("Feeding Boss");
             bool result = _monsterInstance.FeedMeal(_currentMeal);
-            _gaugeGaugeManager.NewPhase();
+            _gaugeGaugeManager.UpdateAll();
             _currentMeal = null;
             Debug.Log($"Result: {result}");
             if (result)

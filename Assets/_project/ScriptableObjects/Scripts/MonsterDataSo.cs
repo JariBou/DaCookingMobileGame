@@ -1,4 +1,5 @@
-﻿using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
+﻿using System.Collections.Generic;
+using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.ScriptableObjectAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,7 +15,7 @@ namespace _project.ScriptableObjects.Scripts
         
         [SerializeField, Tooltip("Min stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMin;
         [SerializeField, Tooltip("Max stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMax;
-        [SerializeField, TabProperty("Stats Config")] private IngredientsBundleSo _ingredients;
+        [SerializeField, TabProperty("Stats Config")] private List<IngredientsBundleSo> _ingredientBundles;
         [SerializeField, Tooltip("Min possible random rolled value for a stat"), TabProperty("Stats Config")] private Vector3Int _randomStatsMin;
         [SerializeField, Tooltip("Max possible random rolled value for a stat"), TabProperty("Stats Config")] private Vector3Int _randomStatsMax;
 
@@ -29,7 +30,7 @@ namespace _project.ScriptableObjects.Scripts
         
         public Vector3Int StatsMin => _statsMin;
         public Vector3Int StatsMax => _statsMax;
-        public IngredientsBundleSo Ingredients => _ingredients;
+        public List<IngredientsBundleSo> IngredientBundles => _ingredientBundles;
         
         public Sprite Icon => _icon;
         public Sprite SleepingSprite => _sleepingSprite;
