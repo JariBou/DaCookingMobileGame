@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -36,6 +37,13 @@ namespace _project.Scripts.UI
         
         
             PlaceElements();
+        }
+
+        [Button]
+        private void Reset()
+        {
+            _firstElementPosition = new Vector3(-1, -1, -50);
+            _elementScale = new Vector3(-1, -1, -50);
         }
     }
 }
