@@ -110,6 +110,7 @@ namespace _project.Scripts.UI
 #endif
         }
         private Vector2 _initialPosition;
+        private Vector3 _initialScale;
         public void OnClickHandler(InputAction.CallbackContext context)
         {
             if (context.performed)
@@ -119,6 +120,7 @@ namespace _project.Scripts.UI
                 if (hit != null)
                 {
                     _initialPosition = hit.transform.position;
+                    _initialScale = hit.transform.localScale;
                     Debug.Log("Hit");
                     _isDragging = true;
                     _hit = hit;
@@ -132,7 +134,7 @@ namespace _project.Scripts.UI
                 /*Debug.Log("Unclick");*/
                 if (_hit == null) return;
                 _isDragging = false;
-                if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
+                if (_hit != null) _hit.transform.localScale = _initialScale;
 
                 try
                 {
