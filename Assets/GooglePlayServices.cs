@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class GooglePlayServices : MonoBehaviour
@@ -22,7 +19,7 @@ public class GooglePlayServices : MonoBehaviour
       _progressDebugSlider.value = 1 / 3f;
       PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
       _progressDebugSlider.value = 2 / 3f;
-      PlayGamesPlatform.Instance.ReportProgress("CgkI_ND8rucOEAIQAQ", 100.0f, (bool success) => {
+      PlayGamesPlatform.Instance.ReportProgress(GPGSIds.achievement_hells_cooker, 100.0f, (bool success) => {
       _progressDebugSlider.value = 3 / 3f;
         // handle success or failure
       });
@@ -34,6 +31,9 @@ public class GooglePlayServices : MonoBehaviour
     }
 
     private void ProcessAuthentication(SignInStatus status) {
+      
+      _statusImage.color = Color.yellow ;
+
       if (status == SignInStatus.Success)
       {
         // Continue with Play Games Services
