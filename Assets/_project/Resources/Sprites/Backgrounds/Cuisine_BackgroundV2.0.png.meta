@@ -145,7 +145,7 @@ TextureImporter:
         serializedVersion: 2
         x: 1920
         y: 0
-        width: 1920
+        width: 1580
         height: 1080
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -164,9 +164,9 @@ TextureImporter:
       name: Cuisine_BackgroundV2.0_2
       rect:
         serializedVersion: 2
-        x: 3841
+        x: 3500
         y: 0
-        width: 2331
+        width: 2672
         height: 1080
       alignment: 9
       pivot: {x: 0.41273737, y: 0.5}
