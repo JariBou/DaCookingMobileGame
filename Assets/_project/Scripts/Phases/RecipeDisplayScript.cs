@@ -50,7 +50,8 @@ namespace _project.Scripts.Phases
         [SerializeField] private AnimationCurve AnimationCurve;
         [SerializeField] private TMP_Text _finalMealName;
         [SerializeField] private Image _finalMealImage;
-        [SerializeField] private Button _button;
+        [SerializeField] private Button _buttonPhysical;
+        [SerializeField] private Button _buttonVisual;
         [SerializeField] private Button _rerollButton;
 
         [Header("Game Feel")]
@@ -177,7 +178,8 @@ namespace _project.Scripts.Phases
         
         private IEnumerator SlideIngredients()
         {
-            _button.gameObject.SetActive(false);
+            _buttonPhysical.gameObject.SetActive(false);
+            _buttonVisual.gameObject.SetActive(false);
             _rerollButton.gameObject.SetActive(false);
 
             List<Vector2> startPositions = new List<Vector2>(3)
@@ -221,8 +223,9 @@ namespace _project.Scripts.Phases
             {
                 yield return new WaitForFixedUpdate();
             }
-            
-            _button.gameObject.SetActive(true);
+
+            _buttonPhysical.gameObject.SetActive(true);
+            _buttonVisual.gameObject.SetActive(true);
             _rerollButton.gameObject.SetActive(true);
             foreach (ClickUp card in _reroll.Cards)
             {
