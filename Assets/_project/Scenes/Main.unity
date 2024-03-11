@@ -1109,6 +1109,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7227115843080651558, guid: 4221f60078d3c9f42a611530796dbc47, type: 3}
   m_PrefabInstance: {fileID: 215610954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &215610956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4511964597460949398, guid: 4221f60078d3c9f42a611530796dbc47, type: 3}
+  m_PrefabInstance: {fileID: 215610954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2505876c85edfdd45aee27a146c15fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &234454169 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9223027669549890805, guid: 8fe80a50da64a69439a8b9d214548fbd, type: 3}
@@ -9808,6 +9819,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7227115843080651558, guid: 4221f60078d3c9f42a611530796dbc47, type: 3}
   m_PrefabInstance: {fileID: 1881899988}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881899990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4511964597460949398, guid: 4221f60078d3c9f42a611530796dbc47, type: 3}
+  m_PrefabInstance: {fileID: 1881899988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2505876c85edfdd45aee27a146c15fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1891981389
 GameObject:
   m_ObjectHideFlags: 0
@@ -14260,8 +14282,8 @@ MonoBehaviour:
   _reRoll: {fileID: 1764418026}
   _condiments:
   - {fileID: 7094078872462874225}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1881899990}
+  - {fileID: 215610956}
   _button: {fileID: 191661928}
 --- !u!224 &6063077255721491272
 RectTransform:
@@ -14318,9 +14340,9 @@ MonoBehaviour:
   _manager: {fileID: 1425778744038148602}
   _grayDuration: 0.05
   _grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _multiplierX: {fileID: 0}
-  _multiplierY: {fileID: 0}
-  _multiplierZ: {fileID: 0}
+  _multiplierX: {fileID: 361283257}
+  _multiplierY: {fileID: 1060921487}
+  _multiplierZ: {fileID: 1434402756}
   _OnHeatClick:
     m_PersistentCalls:
       m_Calls:
@@ -15369,9 +15391,9 @@ MonoBehaviour:
   _manager: {fileID: 1425778744038148602}
   _grayDuration: 0.05
   _grayColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  _multiplierX: {fileID: 0}
-  _multiplierY: {fileID: 0}
-  _multiplierZ: {fileID: 0}
+  _multiplierX: {fileID: 515496736}
+  _multiplierY: {fileID: 1042454428}
+  _multiplierZ: {fileID: 114138270}
   _OnHeatClick:
     m_PersistentCalls:
       m_Calls:
