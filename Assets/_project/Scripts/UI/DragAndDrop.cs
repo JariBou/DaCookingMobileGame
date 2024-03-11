@@ -26,11 +26,15 @@ namespace _project.Scripts.UI
         // Start is called before the first frame update
 
         [SerializeField] private Vector2 _currentMousePosition;
+        public Vector2 CurrentMousePosition => _currentMousePosition;
         [SerializeField] private Vector2 _currentTouchPosition;
+        public Vector2 CurrentTouchPosition => _currentTouchPosition;
         [SerializeField] private Vector2 _lastTouchScreenPosition; 
+        public Vector2 LastTouchScreenPosition => _lastTouchScreenPosition;
         private Collider2D _hit;
         /*[SerializeField]*/ private bool _isDragging = false;
         /*[SerializeField]*/ private bool _isTouch = false;
+        public bool IsTouch => _isTouch;
         private void Awake()
         {
             _press.Enable();
