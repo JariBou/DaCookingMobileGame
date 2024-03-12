@@ -10295,8 +10295,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _finalMealName: {fileID: 638763538}
   _finalMealImage: {fileID: 568075686}
-  _buttonPhysical: {fileID: 0}
-  _buttonVisual: {fileID: 0}
+  _buttonPhysical: {fileID: 1581226841}
+  _buttonVisual: {fileID: 488480538}
   _rerollButton: {fileID: 1764418023}
   _onMealAppear:
     m_PersistentCalls:
@@ -11625,7 +11625,7 @@ MonoBehaviour:
   - {x: -11.6, y: -4, z: 5}
   - {x: 50.1, y: -4.3, z: 5}
   - {x: 69.1, y: -2.42, z: 5}
-  - {x: 76.04, y: 0.67, z: 5}
+  - {x: 76.04, y: -0.68, z: 5}
   _timeToSlide: 1
   _slideCurve:
     serializedVersion: 2
