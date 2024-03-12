@@ -192,6 +192,7 @@ namespace _project.Scripts.UI
                 {
                     if (!hit.GetComponent<IDraggable>().IsActive()) return;
                     _initialPosition = hit.transform.position;
+                    _initialScale = hit.transform.localScale;
                     Debug.Log("Hit");
                     _isDragging = true;
                     _hit = hit;
@@ -208,7 +209,7 @@ namespace _project.Scripts.UI
                 /*Debug.Log("Untouch");*/
                 if (_hit == null) return;
 
-                if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
+                if (_hit != null) _hit.transform.localScale = _initialScale;
 
                 try
                 {
