@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
+
 
 namespace _project.Scripts.UI
 {
@@ -14,6 +14,7 @@ namespace _project.Scripts.UI
         public static OptionMenu instance;
         [SerializeField] private GameObject _optionPanel;
         [Header("Settings")]
+        public Image SettingsButton;
         [SerializeField] private GameObject _settingsPanel;
         [SerializeField] private Slider _musicSlider;
         private bool _isMusicMuted;
@@ -57,6 +58,7 @@ namespace _project.Scripts.UI
             _dragAndDrop = gameObject.GetComponent<DragAndDrop>();
 
         }
+
         void Start()
         {
             if (_valueSaver != null)
@@ -81,11 +83,9 @@ namespace _project.Scripts.UI
             {
                 _optionPanel.SetActive(true);
                 IsOptionPanelOpen = true;
+                SettingsButton.raycastTarget = false;
             }
-            else
-            {
-                CloseOptionPanel();
-            }
+
         }
 
         public void CloseOptionPanel()

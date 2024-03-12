@@ -154,7 +154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.69, y: 19.016}
+  m_AnchoredPosition: {x: 102.8, y: -0.2}
   m_SizeDelta: {x: 24.62, y: 18.033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5279169
@@ -626,7 +626,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 63924274}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -5675,7 +5675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.69, y: 18.9}
+  m_AnchoredPosition: {x: 102.8, y: -0.3160038}
   m_SizeDelta: {x: 24.62, y: 18.033}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &755730786
@@ -13127,55 +13127,21 @@ MonoBehaviour:
   _cookingManager: {fileID: 1596713401}
   _lerpValue: 0.6
   _gaugeHandler: {fileID: 2023671285}
-  _press:
-    m_Name: Press
+  _touch:
+    m_Name: Touch
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: c341bc81-c09a-46fd-b0ef-24882c43bc4a
+    m_Id: de84c024-636b-425b-81ae-50ac13e93095
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 2ae4c078-8652-431a-a569-dae0adb04078
+      m_Id: 2a08b8ba-6881-49b9-be6d-9f72bbb32568
       m_Path: <Touchscreen>/Press
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Press
-      m_Flags: 0
-    m_Flags: 0
-  _screenMousePosition:
-    m_Name: Screen Mouse Position
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 7acfe9cd-2713-40ba-a54e-ccf494219955
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 7e48083a-d02c-41e5-aeae-9f43aee2bb1f
-      m_Path: <Mouse>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Screen Mouse Position
-      m_Flags: 0
-    m_Flags: 0
-  _click:
-    m_Name: Click
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 5fa6f092-66a1-481e-ad40-8a01ec1e2f5e
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 410d7c5c-64bf-4400-b2a4-d6789986dad4
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Click
+      m_Action: Touch
       m_Flags: 0
     m_Flags: 0
   _screenTouchPosition:
@@ -13187,7 +13153,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 7bc55ebd-f17c-4638-9895-fe9247f3bf79
+      m_Id: 7ee11f93-f4c8-4c2f-8bd7-c333985dc318
       m_Path: <Touchscreen>/position
       m_Interactions: 
       m_Processors: 
@@ -13195,9 +13161,43 @@ MonoBehaviour:
       m_Action: Screen Touch Position
       m_Flags: 0
     m_Flags: 0
+  _click:
+    m_Name: Click
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5fa6f092-66a1-481e-ad40-8a01ec1e2f5e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: ae22e37e-20fe-4697-bfd3-e72360f254b5
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Click
+      m_Flags: 0
+    m_Flags: 0
+  _screenClickPosition:
+    m_Name: Screen Click Position
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 792a3ea4-d32c-409c-9a53-289a7c9e1ce9
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: f71e227b-829a-4ba0-8dfd-b0b5b8f382dc
+      m_Path: <Mouse>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Screen Click Position
+      m_Flags: 0
+    m_Flags: 0
   _currentMousePosition: {x: 0, y: 0}
   _currentTouchPosition: {x: 0, y: 0}
-  _lastTouchScreenPosition: {x: 0, y: 0}
+  _isTouch: 0
 --- !u!114 &1596713405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13247,6 +13247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _optionPanel: {fileID: 156567564}
+  SettingsButton: {fileID: 63924278}
   _settingsPanel: {fileID: 1821980505}
   _musicSlider: {fileID: 1680626892}
   MusicVolume: 0

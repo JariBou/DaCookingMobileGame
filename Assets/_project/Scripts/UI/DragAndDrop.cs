@@ -25,18 +25,16 @@ namespace _project.Scripts.UI
         [SerializeField, Range(0, 1)]
         private float _lerpValue = 0.1f;
         [SerializeField] private GaugeHandler _gaugeHandler;
-        [SerializeField] private InputAction _press, _screenMousePosition, _click, _screenTouchPosition;
+        [SerializeField] private InputAction _touch, _screenTouchPosition, _click, _screenClickPosition;
         // Start is called before the first frame update
 
         [SerializeField] private Vector2 _currentMousePosition;
         public Vector2 CurrentMousePosition => _currentMousePosition;
         [SerializeField] private Vector2 _currentTouchPosition;
         public Vector2 CurrentTouchPosition => _currentTouchPosition;
-        [SerializeField] private Vector2 _lastTouchScreenPosition; 
-        public Vector2 LastTouchScreenPosition => _lastTouchScreenPosition;
         private Collider2D _hit;
         /*[SerializeField]*/ private bool _isDragging = false;
-        /*[SerializeField]*/ private bool _isTouch = false;
+        [SerializeField] private bool _isTouch = false;
         public bool IsTouch => _isTouch;
         private void Awake()
         {
@@ -49,21 +47,31 @@ namespace _project.Scripts.UI
                 Destroy(gameObject);
             }
 
-            _press.Enable();
+            _touch.Enable();
             _click.Enable();
-            _screenMousePosition.Enable();
+            _screenClickPosition.Enable();
             _screenTouchPosition.Enable();
 
-            _screenMousePosition.performed += context => { _currentMousePosition = context.ReadValue<Vector2>();};
-            /*_screenTouchPosition.performed += context => { _currentTouchPosition = context.ReadValue<Vector2>();};*/ // J'update la position du touch dans l'update pour éviter un bug avec le drag and drop
+            _screenClickPosition.performed += context => { _currentMousePosition = context.ReadValue<Vector2>();};
+            _screenTouchPosition.performed += context => { _currentTouchPosition = context.ReadValue<Vector2>();};
+
+            _touch.performed += _ =>
+            {
+                _isTouch = true;
+                _click.Disable();
+                OnPointerDownHandler(_);
+                
+            };
+            _touch.canceled += _ =>
+            {
+                _isTouch = false;
+                _click.Enable();
+                OnPointerDownHandler(_);
+            };
 
 
-            _press.performed += _ => OnTouchHandler(_); 
-            _press.canceled += _ => OnTouchHandler(_);
-
-
-            _click.performed += _ => OnClickHandler(_);
-            _click.canceled += _ => OnClickHandler(_);
+            _click.performed += _ => OnPointerDownHandler(_);
+            _click.canceled += _ => OnPointerDownHandler(_);
 
         }
 
@@ -71,19 +79,10 @@ namespace _project.Scripts.UI
         // Update is called once per frame
         private void Update()
         {
-            if (_isTouch)
-            {
-                _currentTouchPosition = Touchscreen.current.position.ReadValue();
-            }
-            else if (!_isTouch)
-            {
-                _currentTouchPosition = Vector2.zero;
-            }
             if (_isDragging)
             {
                 _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
-                
             }
         }
 
@@ -124,21 +123,20 @@ namespace _project.Scripts.UI
 #endif
         }
         private Vector2 _initialPosition;
-        public void OnClickHandler(InputAction.CallbackContext context)
+        public void OnPointerDownHandler(InputAction.CallbackContext context)
         {
-            if (OptionMenu.instance.IsOptionPanelOpen)
-            {
-                StartCoroutine(IsTouchingOrClickingThisLayer(OptionMenu.instance.BackgroundOptionLayer));
-                return;
-            }
+            Vector2 pointerPosition = _isTouch? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
             if (context.performed)
             {
-                /*Debug.Log("Click");*/
-                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMask);
+                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pointerPosition), (int)_layerMask);
+                if (OptionMenu.instance.IsOptionPanelOpen)
+                {
+                    IsTouchingOrClickingThisLayer(OptionMenu.instance.BackgroundOptionLayer, _isTouch);
+                    return;
+                }
                 if (hit != null)
                 {
                     _initialPosition = hit.transform.position;
-                    Debug.Log("Hit");
                     _isDragging = true;
                     _hit = hit;
                     Image hitImage = _hit.GetComponent<Image>();
@@ -148,33 +146,16 @@ namespace _project.Scripts.UI
             }
             else if (context.canceled)
             {
-                /*Debug.Log("Unclick");*/
+                if (!OptionMenu.instance.IsOptionPanelOpen && !OptionMenu.instance.SettingsButton.raycastTarget) OptionMenu.instance.SettingsButton.raycastTarget = true;
                 if (_hit == null) return;
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
 
-                try
-                {
-                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
-                }
-                catch (Exception e)
-                {
-                    // ignored
-                }
-
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layerMaskCondiment);
+                Collider2D hitObject = Physics2D.OverlapPoint(_hit.transform.position, (int)_layerMaskCondiment);
                 if (hitObject != null)
                 {
                     /*Debug.Log("Yes");*/
-                    if (hitObject.gameObject.CompareTag("MinusButton"))
-                    {
-                        Negative();
-                    }
-                    else if (hitObject.gameObject.CompareTag("PlusButton"))
-                    {
-                        Positive();
-                    }
-                    else if (hitObject.gameObject.CompareTag("Seosoning"))
+                    if (hitObject.gameObject.CompareTag("Seosoning"))
                     {
                         AddCond();
                     }
@@ -185,136 +166,40 @@ namespace _project.Scripts.UI
                         return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
+                }
+                try
+                {
+                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e);
                 }
                 Image hitImage = _hit.GetComponent<Image>();
                 _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
                 _hit = null;
-                
-                
 
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
 
         }
 
-        public void OnTouchHandler(InputAction.CallbackContext context)
+
+        public void IsTouchingOrClickingThisLayer(LayerMask _layer, bool _isTouchingScreen)
         {
-            
-            if (context.performed)
+            Vector2 pointerPosition = (_isTouchingScreen) ? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
+/*            Debug.Log(pointerPosition +" "+_isTouchingScreen);*/
+            Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pointerPosition), (int)_layer);
+            if (hit == null)
             {
-                _isTouch = true;
-                if (OptionMenu.instance.IsOptionPanelOpen)
-                {
-                    StartCoroutine(IsTouchingOrClickingThisLayer(OptionMenu.instance.BackgroundOptionLayer));
-                    return;
-                }
-                /*Debug.Log("Touch");*/
-                Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMask);
-                if (hit != null)
-                {
-                    /*if (!hit.GetComponent<IDraggable>().IsActive()) return;*/
-                    _initialPosition = hit.transform.position;
-                    Debug.Log("Hit");
-                    _isDragging = true;
-                    _hit = hit;
-                    Image hitImage = _hit.GetComponent<Image>();
-                    _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 0.2f);
-                    //Effet sonore à rajouter pour le ramassage de l'objet
-                }
+                OptionMenu.instance.CloseOptionPanel();
             }
-            else if (context.canceled)
-            {
-                _lastTouchScreenPosition = _currentTouchPosition;
-                _isTouch = false;
-                _isDragging = false;
-                if (OptionMenu.instance.IsOptionPanelOpen) return;
-                /*Debug.Log("Untouch");*/
-                if (_hit == null) return;
-
-                if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
-
-                /*Debug.Log(_lastTouchScreenPosition);*/
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_hit.transform.position), (int)_layerMaskCondiment);
-
-                if (hitObject != null)
-                {
-                    Debug.Log("Yes");
-                    if (hitObject.gameObject.CompareTag("MinusButton"))
-                    {
-                        Negative();
-                    }
-                    else if (hitObject.gameObject.CompareTag("PlusButton"))
-                    {
-                        Positive();
-                    }
-                    else if (hitObject.gameObject.CompareTag("Seosoning"))
-                    {
-                        AddCond();
-                    }
-                    else if (hitObject.gameObject.CompareTag("Boss"))
-                    {
-                        Dropped(_hit.gameObject);
-                        _hit = null;
-                        return;
-                    }
-                    //Effet sonore à rajouter pour le lâché de l'objet
-                }
-
-                try
-                {
-                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
-                }
-                catch (Exception e)
-                {
-
-                }
-                Image hitImage = _hit.GetComponent<Image>();
-                hitImage.color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
-                _hit = null;
-
-                //Effet sonore à rajouter pour le lâché de l'objet
-            }
-
-        }
-
-        public IEnumerator IsTouchingOrClickingThisLayer(LayerMask _layer)
-        {
-
-            yield return new WaitForFixedUpdate();
-            if (!IsTouch)
-            {
-                Collider2D hit1 = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layer);
-                if (hit1 == null)
-                {
-                    OptionMenu.instance.CloseOptionPanel();
-                }
-            }
-/*            else if (IsTouch) *//*A fixer !!!!!!!!!!!!!!*//*
-            {
-                Collider2D hit2 = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layer);
-                if (hit2 == null)
-                {
-                    OptionMenu.instance.CloseOptionPanel();
-                }
-            }*/
-
         }
 
         private void AddCond()
         {
            /* Debug.Log("Add cond");*/
             _hit.GetComponent<DragableObject>().AddSeosoning();
-        }
-
-        private void Positive()
-        {
-            /*Debug.Log("Positive");*/
-            _hit.GetComponent<DragableObject>().AddSeosoning(1);
-        }
-        private void Negative()
-        {
-            /*Debug.Log("Negative");*/
-            _hit.GetComponent<DragableObject>().AddSeosoning(-1);
         }
 
         private void Dropped(GameObject hitGameObject)
@@ -329,15 +214,6 @@ namespace _project.Scripts.UI
             if (!result)
             {
                 mealScript.EndPhase();
-            }
-        }
-
-        private void OnMouseDrag()
-        {
-            if (_isDragging)
-            {
-                Vector2 screenMousePosition = Camera.main.ScreenToWorldPoint(Touchscreen.current.position.ReadValue());
-                _hit.transform.position = new Vector3(screenMousePosition.x, screenMousePosition.y, _hit.transform.position.z);
             }
         }
     }
