@@ -1,5 +1,5 @@
 # ninja log v5
-1	250	7319020321556765	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	82b47c49bff66990
-251	518	7319020323640520	C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3s661r5n/obj/arm64-v8a/libswappywrapper.so	a86478757efac3f2
 4	157	7319713538836927	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	82b47c49bff66990
 157	288	7319713539824312	C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3s661r5n/obj/arm64-v8a/libswappywrapper.so	a86478757efac3f2
+5	160	7319719084409537	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	82b47c49bff66990
+160	320	7319719085565344	C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/3s661r5n/obj/arm64-v8a/libswappywrapper.so	a86478757efac3f2

@@ -65,7 +65,7 @@ namespace _project.Scripts.Phases
             while (timer < _zoomTime)
             {
                 timer += Time.deltaTime;
-                _decorTransform.localScale = Vector2.Lerp(_startBgScale, _startBgScale * 3, timer / _zoomTime);
+                _decorTransform.localScale = Vector2.Lerp(_startBgScale, _startBgScale * 4, timer / _zoomTime);
                 _meal.position = Vector2.Lerp(startMealPos, startMealPos + Vector2.down * 1.2f, timer / _zoomTime);
                 yield return new WaitForEndOfFrame();
             }
@@ -79,7 +79,7 @@ namespace _project.Scripts.Phases
             while (timer < _zoomTime)
             {
                 timer += Time.deltaTime;
-                _decorTransform.localScale = Vector2.Lerp( _startBgScale* 3, _startBgScale, timer / _zoomTime);
+                _decorTransform.localScale = Vector2.Lerp( _startBgScale * 4, _startBgScale, timer / _zoomTime);
                 yield return new WaitForEndOfFrame();
             }
             
