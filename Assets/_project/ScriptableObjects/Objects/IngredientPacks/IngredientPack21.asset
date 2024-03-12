@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a863d7a5fb422f8e930b38d1d4c25a, type: 3}
   m_Name: IngredientPack21
   m_EditorClassIdentifier: 
-  _totalStatsOfBundles: {x: 128, y: 433, z: -782}
+  _totalStatsOfBundles: {x: 20, y: 12, z: 4}
   _bundleIngredients:
   - {fileID: 11400000, guid: 561ef4c25d37b604b90f4db779d14b51, type: 2}
   - {fileID: 11400000, guid: 5b1590b077e235c438a519bb4a3610a6, type: 2}

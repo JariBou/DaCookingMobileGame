@@ -6,6 +6,7 @@ using _project.Scripts.Phases;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using _project.Scripts.UI;
 
 namespace _project.Scripts.Cards
 {
@@ -46,6 +47,7 @@ namespace _project.Scripts.Cards
 
         public void Reroll()
         {
+            if (OptionMenu.instance.IsOptionPanelOpen) return;
             if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
             _rerollCount++;

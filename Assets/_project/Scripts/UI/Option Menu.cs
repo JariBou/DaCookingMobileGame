@@ -1,32 +1,44 @@
 using MoreMountains.Tools;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 namespace _project.Scripts.UI
 {
-    public class MainMenu : MonoBehaviour
+    public class OptionMenu : MonoBehaviour
     {
-        [SerializeField] private OptionMenu _optionMenu;
-        [SerializeField] private ValueSaver _valueSaver;
+        public static OptionMenu instance;
+        [SerializeField] private GameObject _optionPanel;
+        [Header("Settings")]
+        public Image SettingsButton;
+        [SerializeField] private GameObject _settingsPanel;
         [SerializeField] private Slider _musicSlider;
-        private MMSoundManager _soundManager;
         private bool _isMusicMuted;
+        public float MusicVolume;
         [SerializeField] private Slider _sfxSlider;
         private bool _isSfxMuted;
-        private float _musicVolume;
-        private float _sfxVolume;
+        public float SfxVolume;
+        private MMSoundManager _soundManager;
+        private ValueSaver _valueSaver;
 
-        private void Start()
+        public bool IsOptionPanelOpen;
+        private DragAndDrop _dragAndDrop;
+
+        public LayerMask BackgroundOptionLayer;
+
+        private void Awake()
         {
-            try
+            if (instance == null)
             {
-                _optionMenu = FindFirstObjectByType<OptionMenu>();
+                instance = this;
             }
-            catch
+            else if (instance != this)
             {
-                Debug.LogError("OptionMenu not found");
+                Destroy(gameObject);
             }
             try
             {
@@ -36,33 +48,70 @@ namespace _project.Scripts.UI
             {
                 Debug.LogError("ValueSaver not found");
             }
-
-            if (_optionMenu != null)
+            _soundManager = FindFirstObjectByType<MMSoundManager>();
+            if (_soundManager == null)
             {
-                Destroy(GameObject.FindGameObjectWithTag("TempSoundManager"));
+                gameObject.AddComponent<MMSoundManager>();
+                _soundManager = FindFirstObjectByType<MMSoundManager>();
             }
+
+            _dragAndDrop = gameObject.GetComponent<DragAndDrop>();
+
+        }
+
+        void Start()
+        {
             if (_valueSaver != null)
             {
                 _isMusicMuted = _valueSaver.IsMusicMuted;
                 _isSfxMuted = _valueSaver.IsSfxMuted;
-                _musicVolume = _valueSaver.MusicVolume;
-                _sfxVolume = _valueSaver.SfxVolume;
+                _musicSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _isMusicMuted);
+                _sfxSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _isSfxMuted);
+                MusicVolume = _valueSaver.MusicVolume;
+                SfxVolume = _valueSaver.SfxVolume;
             }
-            _soundManager = FindFirstObjectByType<MMSoundManager>();
-            _musicSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _isMusicMuted);
-            _sfxSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _isSfxMuted);
+            SetMusicVolume();
+            SetSFXVolume();
+        }
+
+        // Update is called once per frame
+
+
+        public void OpenOptionPanel()
+        {
+            if (!IsOptionPanelOpen)
+            {
+                _optionPanel.SetActive(true);
+                IsOptionPanelOpen = true;
+                SettingsButton.raycastTarget = false;
+            }
 
         }
-        public void PlayGame()
+
+        public void CloseOptionPanel()
         {
-            if (_valueSaver != null)
-            {
-                _valueSaver.MusicVolume = _musicVolume;
-                _valueSaver.SfxVolume = _sfxVolume;
-                _valueSaver.IsMusicMuted = _isMusicMuted;
-                _valueSaver.IsSfxMuted = _isSfxMuted;
-            }
-            SceneManager.LoadSceneAsync(1);
+            _optionPanel.SetActive(false);
+            IsOptionPanelOpen = false;
+        }
+
+        public void OpenSettingsPanel()
+        {
+            _settingsPanel.SetActive(true);
+        }
+
+        public void CloseSettingsPanel()
+        {
+            _settingsPanel.SetActive(false);
+        }
+
+        public void RestartRound()
+        {
+            Debug.Log("Restarting Round");
+        }
+
+        public void GoToMenu()
+        {
+            SceneManager.LoadScene(0);
         }
 
         public void SetMusicVolume()
@@ -81,31 +130,33 @@ namespace _project.Scripts.UI
             }
             if (!_isMusicMuted)
             {
-                _musicVolume = _musicSlider.value;
-                _valueSaver.MusicVolume = _musicVolume;
+                MusicVolume = _musicSlider.value;
+                _valueSaver.MusicVolume = MusicVolume;
             }
             _valueSaver.IsMusicMuted = _isMusicMuted;
         }
+
 
         public void MusicButton()
         {
             if (_isMusicMuted)
             {
                 _isMusicMuted = false;
-                _musicSlider.value = _musicVolume;
+                _musicSlider.value = MusicVolume;
                 _soundManager.UnmuteMusic();
             }
             else
             {
                 _isMusicMuted = true;
-                _musicVolume = _musicSlider.value;
-                _valueSaver.MusicVolume = _musicVolume;
+                MusicVolume = _musicSlider.value;
+                _valueSaver.MusicVolume = MusicVolume;
 
                 _soundManager.MuteMusic();
                 _musicSlider.value = _musicSlider.minValue;
             }
             _valueSaver.IsMusicMuted = _isMusicMuted;
         }
+
 
         public void SetSFXVolume()
         {
@@ -122,8 +173,8 @@ namespace _project.Scripts.UI
             }
             if (!_isSfxMuted)
             {
-                _sfxVolume = _sfxSlider.value;
-                _valueSaver.SfxVolume = _sfxVolume;
+                SfxVolume = _sfxSlider.value;
+                _valueSaver.SfxVolume = SfxVolume;
             }
             _valueSaver.IsSfxMuted = _isSfxMuted;
         }
@@ -134,27 +185,19 @@ namespace _project.Scripts.UI
             {
                 _isSfxMuted = false;
                 _soundManager.UnmuteSfx();
-                _sfxSlider.value = _sfxVolume;
+                _sfxSlider.value = SfxVolume;
             }
             else
             {
                 _isSfxMuted = true;
-                _sfxVolume = _sfxSlider.value;
-                _valueSaver.SfxVolume = _sfxVolume;
+                SfxVolume = _sfxSlider.value;
+                _valueSaver.SfxVolume = SfxVolume;
 
                 _soundManager.MuteSfx();
                 _sfxSlider.value = _sfxSlider.minValue;
             }
             _valueSaver.IsSfxMuted = _isSfxMuted;
         }
-
-
-
-
-        /*public void QuitGame()
-        {
-            Application.Quit();
-        }*/
 
 
     }

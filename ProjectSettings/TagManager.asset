@@ -9,6 +9,7 @@ TagManager:
   - PlusButton
   - Seosoning
   - Boss
+  - TempSoundManager
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - DragableObject
   - CardFoodUp
   - Condiment
-  - 
+  - BackGroundOption
   - 
   - 
   - 

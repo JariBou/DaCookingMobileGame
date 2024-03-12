@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e876b39fd831400ca6bdafaf4cabf998, type: 3}
-  m_Name: Chat 2
+  m_Name: Serpent
   m_EditorClassIdentifier: 
-  _name: Le Chat
-  _description: Le Chat, first monster encountered. He serve as a tutorial for the
-    new players.
+  _name: Le Serpent
+  _description: Un serpent qui a le ventre vide
   _maxNumberOfMeals: 5
-  _statsMin: {x: 30, y: 30, z: 30}
-  _statsMax: {x: 70, y: 70, z: 70}
+  _statsMin: {x: 80, y: 20, z: 60}
+  _statsMax: {x: 100, y: 40, z: 80}
   _ingredientBundles:
   - {fileID: 11400000, guid: 37ea836bcca7eb2409697d9b71283656, type: 2}
   _randomStatsMin: {x: 0, y: 0, z: 0}
   _randomStatsMax: {x: 100, y: 100, z: 100}
   _icon: {fileID: 0}
-  _sleepingSprite: {fileID: 2345902212149434666, guid: c6193f4573001c949b7807f088f252a9, type: 3}
-  _normalSprite: {fileID: 2234645751215153702, guid: e2a426d6d4e9d464a957e3a959870554, type: 3}
-  _angrySprite: {fileID: 2054797484835215723, guid: a1cf74785e7de4c42b91a93103951ca2, type: 3}
+  _sleepingSprite: {fileID: -3538785558328272793, guid: 264f34c14b6dc8744a6db8b3f3afaf51, type: 3}
+  _normalSprite: {fileID: 7046968708819653081, guid: eb62da70669618c4fbbfc9b3f4e4820d, type: 3}
+  _angrySprite: {fileID: 6377761882884628293, guid: 1f0b0855cd1461443817ba875330bf04, type: 3}
   _monsterPrefab: {fileID: 1974489050927872966, guid: 8ade7a37f257c9b4e8e68626774b3456, type: 3}
