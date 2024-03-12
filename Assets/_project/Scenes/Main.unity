@@ -13790,7 +13790,7 @@ GameObject:
   - component: {fileID: 5162864852790932403}
   m_Layer: 8
   m_Name: Meal after Cooking Stats
-  m_TagString: Untagged
+  m_TagString: Seosoning
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13871,7 +13871,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.05072403, y: -0.050723314}
+  m_Offset: {x: -0.36938477, y: 0.509424}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -13881,7 +13881,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 8.710045, y: 5.1593623}
+  m_Size: {x: 7.8698273, y: 4.0390677}
   m_EdgeRadius: 0
 --- !u!224 &5196312464615381980
 RectTransform:
