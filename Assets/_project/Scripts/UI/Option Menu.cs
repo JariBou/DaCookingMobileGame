@@ -4,25 +4,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class OptionMenu : MonoBehaviour
 {
+    public static OptionMenu instance;
     [SerializeField] private GameObject _optionPanel;
     [Header("Settings")]
     [SerializeField] private GameObject _settingsPanel;
     [SerializeField] private Slider _musicSlider;
     private bool _isMusicMuted;
-    private float _musicVolume;
+    public float MusicVolume;
     [SerializeField] private Slider _sfxSlider;
     private bool _isSfxMuted;
-    private float _sfxVolume;
-    [SerializeField] private MMSoundManager _soundManager;
-    void Start()
+    public float SfxVolume;
+    private MMSoundManager _soundManager;
+    private ValueSaver _valueSaver;
+
+    private void Awake()
     {
-        /*SetMusicVolume();
-        SetSFXVolume();*/
-        Debug.Log(_soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, false));
-        Debug.Log(_soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, false));
+        try
+        {
+            _valueSaver = FindFirstObjectByType<ValueSaver>();
+        }
+        catch
+        {
+            Debug.LogError("ValueSaver not found");
+        }
+        _soundManager = FindFirstObjectByType<MMSoundManager>();
+        if (_soundManager == null)
+        {
+            gameObject.AddComponent<MMSoundManager>();
+            _soundManager = FindFirstObjectByType<MMSoundManager>();
+        }
+        
+    }
+    void Start()
+    {   
+        if (_valueSaver != null)
+        {
+            _isMusicMuted = _valueSaver.IsMusicMuted;
+            _isSfxMuted = _valueSaver.IsSfxMuted;
+            _musicSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _isMusicMuted);
+            _sfxSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _isSfxMuted);
+        }
+        SetMusicVolume();
+        SetSFXVolume();
     }
 
     // Update is called once per frame
@@ -65,43 +92,77 @@ public class OptionMenu : MonoBehaviour
     public void SetMusicVolume()
     {
         _soundManager.SetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _musicSlider.value);
-    }
-
-    public void MusicButton()
-    {
-        if (_isMusicMuted)
+        if (_musicSlider.value > _musicSlider.minValue && _isMusicMuted)
         {
             _soundManager.UnmuteMusic();
-            _musicSlider.value = _musicVolume;
+            _isMusicMuted = false;
         }
-        else
+        else if (_musicSlider.value == _musicSlider.minValue && !_isMusicMuted)
         {
-            _musicVolume = _musicSlider.value;
             _soundManager.MuteMusic();
-            _musicSlider.value = _musicSlider.minValue;
+            _isMusicMuted = true;
+
         }
-        _isMusicMuted = !_isMusicMuted;
+        _valueSaver.MusicVolume = _musicSlider.value;
+        _valueSaver.IsMusicMuted = _isMusicMuted;
     }
+
+
+        public void MusicButton()
+        {
+            if (_isMusicMuted)
+            {
+                _musicSlider.value = MusicVolume;
+                _soundManager.UnmuteMusic();
+            }
+            else
+            {
+                MusicVolume = _musicSlider.value;
+                _valueSaver.MusicVolume = MusicVolume;
+
+                _soundManager.MuteMusic();
+                _musicSlider.value = _musicSlider.minValue;
+            }
+            _isMusicMuted = !_isMusicMuted;
+            _valueSaver.IsMusicMuted = _isMusicMuted;
+        }
 
 
     public void SetSFXVolume()
     {
         _soundManager.SetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _sfxSlider.value);
+        if (_sfxSlider.value > _sfxSlider.minValue && _isSfxMuted)
+        {
+            _soundManager.UnmuteSfx();
+            _isSfxMuted = false;
+        }
+        else if (_sfxSlider.value == _sfxSlider.minValue && !_isSfxMuted)
+        {
+            _soundManager.MuteSfx();
+            _isSfxMuted = true;
+        }
+        _valueSaver.SfxVolume = _sfxSlider.value;
+        _valueSaver.IsSfxMuted = _isSfxMuted;
     }
 
-    public void SFXButton()
+        public void SFXButton()
     {
         if (_isSfxMuted)
         {
             _soundManager.UnmuteSfx();
-            _sfxSlider.value = _sfxVolume;
+            _sfxSlider.value = SfxVolume;
         }
         else
         {
-            _sfxVolume = _sfxSlider.value;
+            SfxVolume = _sfxSlider.value;
+            _valueSaver.SfxVolume = SfxVolume;
+
             _soundManager.MuteSfx();
             _sfxSlider.value = _sfxSlider.minValue;
         }
         _isSfxMuted = !_isSfxMuted;
+        _valueSaver.IsSfxMuted = _isSfxMuted;
     }
+
+    
 }

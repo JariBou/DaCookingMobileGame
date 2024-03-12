@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: MusicButton
         m_Mode: 1
@@ -611,9 +611,8 @@ GameObject:
   - component: {fileID: 63924279}
   - component: {fileID: 63924278}
   - component: {fileID: 63924277}
-  - component: {fileID: 63924276}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: Settings Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -638,23 +637,6 @@ RectTransform:
   m_AnchoredPosition: {x: 16.5256, y: 9.0773}
   m_SizeDelta: {x: 1.4661, y: 1.3766}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &63924276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63924274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4295b56674961ad4483a7895c3eba8cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _optionPanel: {fileID: 156567564}
-  _settingsPanel: {fileID: 1821980505}
-  _musicSlider: {fileID: 1680626892}
-  _sfxSlider: {fileID: 672410102}
-  _soundManager: {fileID: 1596713406}
 --- !u!114 &63924277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,7 +681,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: OpenOptionPanel
         m_Mode: 1
@@ -1014,7 +996,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: OpenSettingsPanel
         m_Mode: 1
@@ -4718,7 +4700,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: GoToMenu
         m_Mode: 1
@@ -5199,7 +5181,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: SetSFXVolume
         m_Mode: 1
@@ -5692,7 +5674,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: SFXButton
         m_Mode: 1
@@ -6473,7 +6455,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: RestartRound
         m_Mode: 1
@@ -8136,6 +8118,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1027974835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027974837}
+  - component: {fileID: 1027974836}
+  m_Layer: 0
+  m_Name: DontDestroyOnLoadManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1027974836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027974835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef76e4eb89ac6074b9ee5f81b3e0a85c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 63924274}
+  - {fileID: 1600271839}
+--- !u!4 &1027974837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027974835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3982078, y: 1.3561563, z: -0.060238425}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1062078491
 GameObject:
   m_ObjectHideFlags: 0
@@ -12797,6 +12826,7 @@ GameObject:
   - component: {fileID: 1596713405}
   - component: {fileID: 1596713406}
   - component: {fileID: 1596713407}
+  - component: {fileID: 1596713408}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -13080,6 +13110,25 @@ MonoBehaviour:
   _actionButtonText: {fileID: 387579327}
   _title: {fileID: 1943835668}
   _lastPhaseScript: {fileID: 6053581124376789861}
+--- !u!114 &1596713408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596713400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4295b56674961ad4483a7895c3eba8cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _optionPanel: {fileID: 156567564}
+  _settingsPanel: {fileID: 1821980505}
+  _musicSlider: {fileID: 1680626892}
+  MusicVolume: 0
+  _sfxSlider: {fileID: 672410102}
+  SfxVolume: 0
+  _soundManager: {fileID: 1596713406}
 --- !u!1 &1600271839
 GameObject:
   m_ObjectHideFlags: 0
@@ -13681,7 +13730,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 1
@@ -13814,7 +13863,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: CloseOptionPanel
         m_Mode: 1
@@ -17868,7 +17917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 63924276}
+      - m_Target: {fileID: 1596713408}
         m_TargetAssemblyTypeName: OptionMenu, Assembly-CSharp
         m_MethodName: CloseSettingsPanel
         m_Mode: 1
@@ -23240,3 +23289,4 @@ SceneRoots:
   - {fileID: 84670090}
   - {fileID: 742249379}
   - {fileID: 1596713402}
+  - {fileID: 1027974837}
