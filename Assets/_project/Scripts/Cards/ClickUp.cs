@@ -6,6 +6,7 @@ using _project.Scripts.Phases;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using UnityEngine;
 using UnityEngine.Events;
+using _project.Scripts.UI;
 
 namespace _project.Scripts.Cards
 {
@@ -133,6 +134,7 @@ namespace _project.Scripts.Cards
 
         public void DoClick()
         {
+            if (OptionMenu.instance.IsOptionPanelOpen) return;
             switch (_isScaled)
             {
                 case false:

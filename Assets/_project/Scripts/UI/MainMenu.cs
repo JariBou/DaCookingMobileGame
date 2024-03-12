@@ -41,25 +41,24 @@ namespace _project.Scripts.UI
             {
                 Destroy(GameObject.FindGameObjectWithTag("TempSoundManager"));
             }
+            if (_valueSaver != null)
+            {
+                _isMusicMuted = _valueSaver.IsMusicMuted;
+                _isSfxMuted = _valueSaver.IsSfxMuted;
+                _musicVolume = _valueSaver.MusicVolume;
+                _sfxVolume = _valueSaver.SfxVolume;
+            }
             _soundManager = FindFirstObjectByType<MMSoundManager>();
             _musicSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _isMusicMuted);
             _sfxSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _isSfxMuted);
-            if (_valueSaver != null)
-            {
-                _musicSlider.value = _valueSaver.MusicVolume;
-                _sfxSlider.value = _valueSaver.SfxVolume;
-                _isMusicMuted = _valueSaver.IsMusicMuted;
-                _isSfxMuted = _valueSaver.IsSfxMuted;
-            }
-
 
         }
         public void PlayGame()
         {
             if (_valueSaver != null)
             {
-                _valueSaver.MusicVolume = _musicSlider.value;
-                _valueSaver.SfxVolume = _sfxSlider.value;
+                _valueSaver.MusicVolume = _musicVolume;
+                _valueSaver.SfxVolume = _sfxVolume;
                 _valueSaver.IsMusicMuted = _isMusicMuted;
                 _valueSaver.IsSfxMuted = _isSfxMuted;
             }
@@ -68,6 +67,7 @@ namespace _project.Scripts.UI
 
         public void SetMusicVolume()
         {
+            _soundManager.SetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _musicSlider.value);
             if (_musicSlider.value > _musicSlider.minValue && _isMusicMuted)
             {
                 _soundManager.UnmuteMusic();
@@ -79,6 +79,11 @@ namespace _project.Scripts.UI
                 _isMusicMuted = true;
 
             }
+            if (!_isMusicMuted)
+            {
+                _musicVolume = _musicSlider.value;
+                _valueSaver.MusicVolume = _musicVolume;
+            }
             _valueSaver.IsMusicMuted = _isMusicMuted;
         }
 
@@ -86,21 +91,25 @@ namespace _project.Scripts.UI
         {
             if (_isMusicMuted)
             {
-                _optionMenu?.MusicButton();
+                _isMusicMuted = false;
                 _musicSlider.value = _musicVolume;
+                _soundManager.UnmuteMusic();
             }
             else
             {
+                _isMusicMuted = true;
                 _musicVolume = _musicSlider.value;
-                _optionMenu?.MusicButton();
+                _valueSaver.MusicVolume = _musicVolume;
+
+                _soundManager.MuteMusic();
                 _musicSlider.value = _musicSlider.minValue;
             }
-            _isMusicMuted = !_isMusicMuted;
+            _valueSaver.IsMusicMuted = _isMusicMuted;
         }
 
         public void SetSFXVolume()
         {
-            _soundManager.SetVolumeSfx(_sfxSlider.value);
+            _soundManager.SetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _sfxSlider.value);
             if (_sfxSlider.value > _sfxSlider.minValue && _isSfxMuted)
             {
                 _soundManager.UnmuteSfx();
@@ -111,6 +120,11 @@ namespace _project.Scripts.UI
                 _soundManager.MuteSfx();
                 _isSfxMuted = true;
             }
+            if (!_isSfxMuted)
+            {
+                _sfxVolume = _sfxSlider.value;
+                _valueSaver.SfxVolume = _sfxVolume;
+            }
             _valueSaver.IsSfxMuted = _isSfxMuted;
         }
 
@@ -118,16 +132,20 @@ namespace _project.Scripts.UI
         {
             if (_isSfxMuted)
             {
-                _optionMenu?.SFXButton();
+                _isSfxMuted = false;
+                _soundManager.UnmuteSfx();
                 _sfxSlider.value = _sfxVolume;
             }
             else
             {
+                _isSfxMuted = true;
                 _sfxVolume = _sfxSlider.value;
-                _optionMenu?.SFXButton();
+                _valueSaver.SfxVolume = _sfxVolume;
+
+                _soundManager.MuteSfx();
                 _sfxSlider.value = _sfxSlider.minValue;
             }
-            _isSfxMuted = !_isSfxMuted;
+            _valueSaver.IsSfxMuted = _isSfxMuted;
         }
 
 

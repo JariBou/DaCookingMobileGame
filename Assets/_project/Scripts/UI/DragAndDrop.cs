@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using _project.Scripts.Core;
 using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -11,6 +13,7 @@ namespace _project.Scripts.UI
 {
     public class DragAndDrop : MonoBehaviour
     {
+        public static DragAndDrop instance;
         [SerializeField] private LayerMask _layerMask = 0;
         [SerializeField, Range(1f, 2f)] private float _scaleOnDrag = 1.5f;
         [SerializeField] private LayerMask _layerMaskCondiment = 0;
@@ -37,6 +40,15 @@ namespace _project.Scripts.UI
         public bool IsTouch => _isTouch;
         private void Awake()
         {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else if (instance != this)
+            {
+                Destroy(gameObject);
+            }
+
             _press.Enable();
             _click.Enable();
             _screenMousePosition.Enable();
@@ -71,16 +83,14 @@ namespace _project.Scripts.UI
             {
                 _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
-                if (_currentMousePosition.x != 0 || _currentMousePosition.y != 0)
-                {
-                    //Effet sonore à ajouter pour le mouvement de l'objet
-                }
+                
             }
         }
 
         private void MouseScreenCheck(Collider2D hitObject)
         {
-            Vector2 screenPointerPosition = (_isTouch && _isDragging) ? _currentTouchPosition : _currentMousePosition;
+            if (OptionMenu.instance.IsOptionPanelOpen || !_isDragging) return;
+            Vector2 screenPointerPosition = (_isTouch) ? _currentTouchPosition : _currentMousePosition;
             
 #if UNITY_EDITOR
             if (screenPointerPosition.x < 0) 
@@ -116,6 +126,11 @@ namespace _project.Scripts.UI
         private Vector2 _initialPosition;
         public void OnClickHandler(InputAction.CallbackContext context)
         {
+            if (OptionMenu.instance.IsOptionPanelOpen)
+            {
+                StartCoroutine(IsTouchingOrClickingThisLayer(OptionMenu.instance.BackgroundOptionLayer));
+                return;
+            }
             if (context.performed)
             {
                 /*Debug.Log("Click");*/
@@ -188,11 +203,16 @@ namespace _project.Scripts.UI
             if (context.performed)
             {
                 _isTouch = true;
-                Debug.Log("Touch");
+                if (OptionMenu.instance.IsOptionPanelOpen)
+                {
+                    StartCoroutine(IsTouchingOrClickingThisLayer(OptionMenu.instance.BackgroundOptionLayer));
+                    return;
+                }
+                /*Debug.Log("Touch");*/
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layerMask);
                 if (hit != null)
                 {
-                    if (!hit.GetComponent<IDraggable>().IsActive()) return;
+                    /*if (!hit.GetComponent<IDraggable>().IsActive()) return;*/
                     _initialPosition = hit.transform.position;
                     Debug.Log("Hit");
                     _isDragging = true;
@@ -207,25 +227,18 @@ namespace _project.Scripts.UI
                 _lastTouchScreenPosition = _currentTouchPosition;
                 _isTouch = false;
                 _isDragging = false;
+                if (OptionMenu.instance.IsOptionPanelOpen) return;
                 /*Debug.Log("Untouch");*/
                 if (_hit == null) return;
 
                 if (_hit != null) _hit.transform.localScale = new Vector3(1, 1, 1);
 
-                try
-                {
-                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
-                }
-                catch (Exception e)
-                {
-
-                }
-                Debug.Log(_lastTouchScreenPosition);
-                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_lastTouchScreenPosition), (int)_layerMaskCondiment);
+                /*Debug.Log(_lastTouchScreenPosition);*/
+                Collider2D hitObject = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_hit.transform.position), (int)_layerMaskCondiment);
 
                 if (hitObject != null)
                 {
-                    /*Debug.Log("Yes");*/
+                    Debug.Log("Yes");
                     if (hitObject.gameObject.CompareTag("MinusButton"))
                     {
                         Negative();
@@ -241,8 +254,19 @@ namespace _project.Scripts.UI
                     else if (hitObject.gameObject.CompareTag("Boss"))
                     {
                         Dropped(_hit.gameObject);
+                        _hit = null;
+                        return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
+                }
+
+                try
+                {
+                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
+                }
+                catch (Exception e)
+                {
+
                 }
                 Image hitImage = _hit.GetComponent<Image>();
                 hitImage.color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
@@ -250,6 +274,29 @@ namespace _project.Scripts.UI
 
                 //Effet sonore à rajouter pour le lâché de l'objet
             }
+
+        }
+
+        public IEnumerator IsTouchingOrClickingThisLayer(LayerMask _layer)
+        {
+
+            yield return new WaitForFixedUpdate();
+            if (!IsTouch)
+            {
+                Collider2D hit1 = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentMousePosition), (int)_layer);
+                if (hit1 == null)
+                {
+                    OptionMenu.instance.CloseOptionPanel();
+                }
+            }
+/*            else if (IsTouch) *//*A fixer !!!!!!!!!!!!!!*//*
+            {
+                Collider2D hit2 = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(_currentTouchPosition), (int)_layer);
+                if (hit2 == null)
+                {
+                    OptionMenu.instance.CloseOptionPanel();
+                }
+            }*/
 
         }
 
