@@ -2065,7 +2065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _optionMenu: {fileID: 0}
-  _valueSaver: {fileID: 0}
+  _valueSaver: {fileID: 2028678877}
   _musicSlider: {fileID: 1416291981}
   _sfxSlider: {fileID: 1801168433}
 --- !u!1 &1610854009

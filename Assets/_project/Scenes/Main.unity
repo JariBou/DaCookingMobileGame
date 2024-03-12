@@ -4908,6 +4908,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993251333}
   m_CullTransparentMesh: 1
+--- !u!1 &1006460565 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4310209401280756556, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
+  m_PrefabInstance: {fileID: 4796849997882972384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1011688975
 GameObject:
   m_ObjectHideFlags: 0
@@ -8506,11 +8511,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _optionPanel: {fileID: 156567564}
-  SettingsButton: {fileID: 63924278}
-  _settingsPanel: {fileID: 1821980505}
+  SettingsButton: {fileID: 4796849997882972387}
+  _settingsPanel: {fileID: 1006460565}
   _musicSlider: {fileID: 1680626892}
   MusicVolume: 0
-  _sfxSlider: {fileID: 672410102}
+  _sfxSlider: {fileID: 4796849997882972385}
   SfxVolume: 0
   IsOptionPanelOpen: 0
   BackgroundOptionLayer:
@@ -10290,8 +10295,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   _finalMealName: {fileID: 638763538}
   _finalMealImage: {fileID: 568075686}
-  _buttonPhysical: {fileID: 1581226841}
-  _buttonVisual: {fileID: 488480538}
+  _buttonPhysical: {fileID: 0}
+  _buttonVisual: {fileID: 0}
   _rerollButton: {fileID: 1764418023}
   _onMealAppear:
     m_PersistentCalls:
@@ -10753,7 +10758,7 @@ RectTransform:
   - {fileID: 234454169}
   - {fileID: 6634066183887564810}
   - {fileID: 1610423078}
-  - {fileID: 1092715088}
+  - {fileID: 4796849997882972386}
   m_Father: {fileID: 2098448610}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -13750,6 +13755,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1596713408}
+    - target: {fileID: 5968258013656370354, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6563311411482870400, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13775,6 +13784,33 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
+--- !u!114 &4796849997882972385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7671314913216261913, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
+  m_PrefabInstance: {fileID: 4796849997882972384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!224 &4796849997882972386 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4779109536212085951, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
+  m_PrefabInstance: {fileID: 4796849997882972384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4796849997882972387 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6960056826249277278, guid: 65b48ddd6d89c9148b76205e4a46b436, type: 3}
+  m_PrefabInstance: {fileID: 4796849997882972384}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4830373316692910929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15822,6 +15858,5 @@ SceneRoots:
   - {fileID: 84670090}
   - {fileID: 742249379}
   - {fileID: 1596713402}
-  - {fileID: 1027974837}
   - {fileID: 816412404}
   - {fileID: 388761710}

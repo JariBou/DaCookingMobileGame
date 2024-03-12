@@ -123,6 +123,7 @@ namespace _project.Scripts.UI
 #endif
         }
         private Vector2 _initialPosition;
+        private Vector3 _initialScale;
         public void OnPointerDownHandler(InputAction.CallbackContext context)
         {
             Vector2 pointerPosition = _isTouch? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
@@ -137,6 +138,7 @@ namespace _project.Scripts.UI
                 if (hit != null)
                 {
                     _initialPosition = hit.transform.position;
+                    _initialScale = hit.transform.localScale;
                     _isDragging = true;
                     _hit = hit;
                     Image hitImage = _hit.GetComponent<Image>();
