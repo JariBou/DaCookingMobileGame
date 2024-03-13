@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using _project.Scripts.Core;
+using _project.Scripts.Meals;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.ScriptableObjectAttributes;
 using UnityEngine;
@@ -47,7 +48,7 @@ namespace _project.ScriptableObjects.Scripts
         {
             foreach (MealBaseInfo mealIcon in _mealBaseInfos.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
             {
-                return mealIcon.Icon;
+                return mealIcon.NormalIcon;
             }
 
             throw new ArgumentException();

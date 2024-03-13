@@ -7,6 +7,9 @@ TagManager:
   - Food
   - MinusButton
   - PlusButton
+  - Seosoning
+  - Boss
+  - TempSoundManager
   layers:
   - Default
   - TransparentFX
@@ -17,7 +20,7 @@ TagManager:
   - DragableObject
   - CardFoodUp
   - Condiment
-  - 
+  - BackGroundOption
   - 
   - 
   - 
@@ -43,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CardLayer
+    uniqueID: 1717442861
     locked: 0

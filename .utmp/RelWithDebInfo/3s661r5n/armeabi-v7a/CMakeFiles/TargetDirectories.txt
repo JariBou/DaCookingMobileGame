@@ -1,0 +1,5 @@
+C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/.utmp/RelWithDebInfo/3s661r5n/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/.utmp/RelWithDebInfo/3s661r5n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/.utmp/RelWithDebInfo/3s661r5n/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/.utmp/RelWithDebInfo/3s661r5n/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/Jari/Documents/CODING/Unity Projects/DaCookingMobileGame/.utmp/RelWithDebInfo/3s661r5n/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir
