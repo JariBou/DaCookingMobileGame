@@ -5,6 +5,7 @@ using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -36,6 +37,12 @@ namespace _project.Scripts.UI
         /*[SerializeField]*/ private bool _isDragging = false;
         [SerializeField] private bool _isTouch = false;
         public bool IsTouch => _isTouch;
+
+        private bool _canEndPhase = false;
+        private DraggedMealScript _draggedMealScript;
+
+        [Header("GameFeel")]
+        [SerializeField] private UnityEvent _OnDrag, _OnDrop;
         private void Awake()
         {
             if (instance == null)
@@ -90,6 +97,11 @@ namespace _project.Scripts.UI
                 _hit.transform.localScale = new Vector3(_scaleOnDrag, _scaleOnDrag, 1);
                 MouseScreenCheck(_hit);
             }
+            if (_canEndPhase && _gaugeHandler.AllGaugesAreSetUp())
+            {
+                _canEndPhase = false;
+                _draggedMealScript.EndPhase();
+            }
         }
 
         private void MouseScreenCheck(Collider2D hitObject)
@@ -139,9 +151,18 @@ namespace _project.Scripts.UI
                     _initialPosition = hit.transform.position;
                     _initialScale = hit.transform.localScale;
                     _isDragging = true;
+                    _OnDrag?.Invoke();
                     _hit = hit;
+                    try
+                    {
+                       _hit.GetComponent<DragableObject>().ParticleSystem.Play();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError(e);
+                    }
                     Image hitImage = _hit.GetComponent<Image>();
-                    _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b,0.2f);
+                    _hit.GetComponent<Image>().color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b,0.5f);
                     //Effet sonore à rajouter pour le ramassage de l'objet
                 }
             }
@@ -150,6 +171,7 @@ namespace _project.Scripts.UI
                 if (!OptionMenu.Instance.IsOptionPanelOpen && !OptionMenu.Instance._settingsButton.raycastTarget) OptionMenu.Instance._settingsButton.raycastTarget = true;
                 if (_hit == null) return;
                 _isDragging = false;
+                _OnDrop?.Invoke();
                 if (_hit != null) _hit.transform.localScale = _initialScale;
 
                 Collider2D hitObject = Physics2D.OverlapPoint(_hit.transform.position, (int)_layerMaskCondiment);
@@ -172,6 +194,7 @@ namespace _project.Scripts.UI
                 try
                 {
                     _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
+                    _hit.GetComponent<DragableObject>().ParticleSystem.Stop();
                 }
                 catch (Exception e)
                 {
@@ -206,16 +229,17 @@ namespace _project.Scripts.UI
 
         private void Dropped(GameObject hitGameObject)
         {
+            /*Debug.Log("Dropped");*/
             bool result = _cookingManager.FeedMeal();
             
             Image hitImage = hitGameObject.GetComponent<Image>();
             hitImage.color = new Color(hitImage.color.r, hitImage.color.g, hitImage.color.b, 1);
 
-            DraggedMealScript mealScript = hitGameObject.GetComponent<DraggedMealScript>();
-            mealScript.Deactivate();
+            _draggedMealScript = hitGameObject.GetComponent<DraggedMealScript>();
+            _draggedMealScript.Deactivate();
             if (!result)
             {
-                mealScript.EndPhase();
+                _canEndPhase = true;
             }
         }
     }

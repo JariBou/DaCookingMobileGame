@@ -2,7 +2,9 @@ using System;
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts.Gauges
 {
@@ -14,10 +16,36 @@ namespace _project.Scripts.Gauges
         [SerializeField] private Gauge _gaugeZ;
 
         [SerializeField] private MonsterInstance _monsterInstance;
+        [SerializeField] private CookingManager _cookingManager;
+
+        [HideInInspector] public bool HasToInvokeWinPanel;
+        [HideInInspector] public bool HasWin;
+
+        [SerializeField] private UnityEvent _onPanelInvoke, _onGaugesMoves, _onGaugesStop;
+        private bool _isGameSetUp;
+
 
         private void Start()
         {
             UpdateAll();
+        }
+
+        private void Update()
+        {
+            if (!AllGaugesAreSetUp() && _isGameSetUp)
+            {
+                _onGaugesMoves?.Invoke(); // Tremblement de caméra quand les jauges bougent
+            }
+            else
+            {
+                _onGaugesStop?.Invoke();  // Arrêt du tremblement de caméra quand les jauges se stoppent
+            }
+            if (HasToInvokeWinPanel && AllGaugesAreSetUp())
+            {
+                HasToInvokeWinPanel = false;
+                _cookingManager.InvokeWinPanel(HasWin);
+                _onPanelInvoke?.Invoke();
+            }
         }
 
         public void PrevisualizeMeal(Meal meal)
@@ -65,10 +93,20 @@ namespace _project.Scripts.Gauges
 
         }
 
+        public void UpdateGauges()
+        {
+            _isGameSetUp = true; // ça empêche le tremblement de caméra de se lancer avant que les jauges ne soient prêtes
+            /*Debug.Log("UpdateGauges");*/
+            _gaugeX.PassValue(_monsterInstance.CurrentStats.x);
+            _gaugeY.PassValue(_monsterInstance.CurrentStats.y);
+            _gaugeZ.PassValue(_monsterInstance.CurrentStats.z);
+        }
+
+
         [Button]
         public bool AllGaugesAreSetUp()
         {
-            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);
+/*            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);*/
             return !_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue;
         }
     }

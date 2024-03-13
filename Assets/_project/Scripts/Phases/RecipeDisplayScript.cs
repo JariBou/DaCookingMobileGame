@@ -55,11 +55,10 @@ namespace _project.Scripts.Phases
         [SerializeField] private Button _rerollButton;
 
         [Header("Game Feel")]
-        [SerializeField] private UnityEvent _onMealAppear;
-        [SerializeField] private UnityEvent _onMealChange;
-        [SerializeField] private UnityEvent _onMealDisappear;
         [SerializeField] private UnityEvent _goNextPhase;
         [SerializeField] private ReRoll _reroll;
+        [SerializeField] private UnityEvent _onConfirmMealTrue, _onMealSpawn;
+
 
         // Start is called before the first frame update
         private void Start()
@@ -115,8 +114,6 @@ namespace _project.Scripts.Phases
 
             if (ClickUp.EnlargedSprites.Count == 3)
             {   
-                if (_currentMeal == null) _onMealAppear?.Invoke();
-                else if (_currentMeal != null) _onMealChange?.Invoke();
                 _currentMeal = _cookingManager.SetCurrentMeal(_cookingManager.CreateMeal(ClickUp.EnlargedSprites[0].Ingredient,
                     ClickUp.EnlargedSprites[1].Ingredient, ClickUp.EnlargedSprites[2].Ingredient));
                 //_finalMealImage.sprite = _currentMeal.Icon;
@@ -127,7 +124,6 @@ namespace _project.Scripts.Phases
             else
             {
                 _cookingManager.GaugeManager.RestartPrevGauges();
-                _onMealDisappear?.Invoke();
                 _finalMealImage.sprite = null;
                 _finalMealImage.sprite = null;
                 _currentMeal = null;
@@ -165,7 +161,7 @@ namespace _project.Scripts.Phases
             if (_currentMeal != null)
             {
                 StartCoroutine(SlideIngredients());
-                
+                _onConfirmMealTrue?.Invoke();
                 Debug.Log("Going to Phase2");
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
                 _goNextPhase?.Invoke();
@@ -214,6 +210,7 @@ namespace _project.Scripts.Phases
 
             _finalMealImage.enabled = true;
             _finalMealImage.gameObject.SetActive(true);
+            _onMealSpawn?.Invoke();
             _finalMealImage.sprite = _currentMeal.Icon;
 
             yield return new WaitForSeconds(0.5f);

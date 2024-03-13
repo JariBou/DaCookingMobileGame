@@ -65,11 +65,11 @@ namespace _project.Scripts.Core
             if (_isPassingValue)
             {
                 _timer += Time.deltaTime;
-                _needle.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle - 90), _appearCurve.Evaluate(_timer / _animationDuration));
+                _needle.transform.rotation = Quaternion.Lerp(_needle.transform.rotation, Quaternion.Euler(0, 0, _angle - 90), _appearCurve.Evaluate(_timer / _animationDuration));
                 if (_timer >= _animationDuration)
                 {
-                    _isPassingValue = false;
                     _timer = 0;
+                    _isPassingValue = false;
                 }
             }
             if (_isPassingPrevisualizationValue)
@@ -78,8 +78,8 @@ namespace _project.Scripts.Core
                 _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/_animationDuration));
                 if (_timer2 >= _animationDuration)
                 {
-                    _isPassingPrevisualizationValue = false;
                     _timer2 = 0;
+                    _isPassingPrevisualizationValue = false;
                 }
             }
         }
@@ -118,6 +118,7 @@ namespace _project.Scripts.Core
             PassPrevisualizationValue(value);
         }
 
+
         public void PassValue(int value)
         {
             _timer = 0;
@@ -128,7 +129,7 @@ namespace _project.Scripts.Core
             _angle = Mathf.Atan2(_needle.transform.position.y - position.y, _needle.transform.position.x - position.x) * Mathf.Rad2Deg;
             _isPassingValue = true;
             _currentValue = value;
-            _valueText.text = value.ToString();
+            _valueText.text = value.ToString(); // Pour afficher au joueur la valeur actuelle du curseur
         }
 
         public void PassPrevisualizationValue(int prevValue)

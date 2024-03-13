@@ -22,6 +22,9 @@ namespace _project.Scripts.UI
         [SerializeField] private CondimentSo _condimentSo;
         private Vector3 _initialPosition;
 
+        [Header("Particles")]
+        public ParticleSystem ParticleSystem;
+
         [Header("References")]
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private MealDisplayScript _mealDisplayScript;
@@ -34,6 +37,7 @@ namespace _project.Scripts.UI
         void Start()
         {
             _initialPosition = transform.position;
+            ParticleSystem.Stop();
         }
 
         // Update is called once per frame

@@ -46,31 +46,36 @@ namespace _project.Scripts
         /// <returns></returns>
         public bool FeedMeal()
         {
-            Debug.Log("Feeding Boss");
             bool result = _monsterInstance.FeedMeal(_currentMeal);
-            _gaugeGaugeManager.UpdateAll();
+            _gaugeGaugeManager.UpdateGauges();
             _currentMeal = null;
             Debug.Log($"Result: {result}");
             if (result)
             {
-                WinPanel();
+                _gaugeGaugeManager.HasWin = true;
+                _gaugeGaugeManager.HasToInvokeWinPanel = true;
             }
             else if (_monsterInstance.NumberOfMeals >= _monsterInstance.MaxNumberOfMeals && !result)
             {
-                LosePanel();
+                _gaugeGaugeManager.HasWin = false;
+                _gaugeGaugeManager.HasToInvokeWinPanel = true;
             }
             return result;
         }
 
-        private void WinPanel()
+        public void InvokeWinPanel(bool hasWin)
+        {
+            _dialogMenuScript.ActivateMenu(hasWin);
+        }
+/*        public void WinPanel()
         {
             _dialogMenuScript.ActivateMenu(true);
         }
 
-        private void LosePanel()
+        public void LosePanel()
         {
             _dialogMenuScript.ActivateMenu(false);
-        }
+        }*/
         
         public Meal CookMeal(CookingMethod cookingMethod)
         {
