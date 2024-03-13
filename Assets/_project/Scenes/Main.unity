@@ -2101,8 +2101,8 @@ MonoBehaviour:
         Mode: 0
         AnimateScaleTarget: {fileID: 1646628199815693050}
         AnimateScaleDuration: 0.2
-        RemapCurveZero: 1
-        RemapCurveOne: 0.8
+        RemapCurveZero: 0.8
+        RemapCurveOne: 0.5
         Offset: 0
         AnimateX: 1
         AnimateScaleTweenX:
@@ -3270,7 +3270,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.61, y: 2.11}
+  m_AnchoredPosition: {x: 34.610004, y: 2.0720205}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &599701325
@@ -4634,8 +4634,8 @@ MonoBehaviour:
         Mode: 0
         AnimateScaleTarget: {fileID: 7309374980510838360}
         AnimateScaleDuration: 0.2
-        RemapCurveZero: 1
-        RemapCurveOne: 0.8
+        RemapCurveZero: 0.8
+        RemapCurveOne: 0.5
         Offset: 0
         AnimateX: 1
         AnimateScaleTweenX:
@@ -11344,8 +11344,8 @@ MonoBehaviour:
         Mode: 0
         AnimateScaleTarget: {fileID: 2815485065583798483}
         AnimateScaleDuration: 0.2
-        RemapCurveZero: 1
-        RemapCurveOne: 0.8
+        RemapCurveZero: 0.8
+        RemapCurveOne: 0.5
         Offset: 0
         AnimateX: 1
         AnimateScaleTweenX:
@@ -15920,8 +15920,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 799982994}
-  - {fileID: 2098448610}
   - {fileID: 599701324}
+  - {fileID: 2098448610}
   - {fileID: 84670090}
   - {fileID: 742249379}
   - {fileID: 1596713402}
