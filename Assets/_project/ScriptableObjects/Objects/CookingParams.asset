@@ -18,54 +18,74 @@ MonoBehaviour:
   _method2StatsMultiplier: {x: 1, y: 0.5, z: 1.5}
   _cookingMethod3: 2
   _method3StatsMultiplier: {x: 0.25, y: 2, z: 1}
-  _mealIcons:
+  _mealBaseInfos:
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 2
     _ingredientFamilyC: 2
-    _icon: {fileID: -5159998450949331858, guid: 328bdc3fa1650e7448bbabfd13231804, type: 3}
+    _normalIcon: {fileID: -409555361024515616, guid: 6b53304d41fcfd749a74f831ffe560fd, type: 3}
+    _douxIcon: {fileID: -3447843518202352759, guid: 763c4d31a80e641478b45b10e1f6d062, type: 3}
+    _vifIcon: {fileID: -2321636824763015860, guid: 19568518d8e063345a09c096014c6d1e, type: 3}
     _name: Psychosushis
   - _ingredientFamilyA: 0
     _ingredientFamilyB: 0
     _ingredientFamilyC: 0
-    _icon: {fileID: 6071268267034401230, guid: 8122a9710ef4dcd41bd87d15c08378e6, type: 3}
+    _normalIcon: {fileID: -107011667554480771, guid: feb3bd31df96fd04c84d6f8397b0d6d4, type: 3}
+    _douxIcon: {fileID: 6140743867274381093, guid: aac544f166dc8364eb6419baf4cde1fb, type: 3}
+    _vifIcon: {fileID: 3390481682256552873, guid: bb21b46872dc50d4fbec12b030d5c23c, type: 3}
     _name: Brochette humainement viandue
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 1
     _ingredientFamilyC: 0
-    _icon: {fileID: 7548794707154259472, guid: 59b934c2dbba92f4a9f44a724aed03ab, type: 3}
+    _normalIcon: {fileID: 6736018932717634552, guid: 876dfa833763841449dad70eed8c6a0e, type: 3}
+    _douxIcon: {fileID: -6069423844189055084, guid: 096e25af5ddda3444b82585d5990776c, type: 3}
+    _vifIcon: {fileID: 3841373259986725186, guid: 8df652ce4a556154ba50b76bd4750aab, type: 3}
     _name: "M\xE9li-m\xE9lo de coeur humain sur son lit de plante carnivore"
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 0
     _ingredientFamilyC: 0
-    _icon: {fileID: 6919195248809828904, guid: 11815b43f1cc7d8488bc6299993065ae, type: 3}
+    _normalIcon: {fileID: 5791855850879926487, guid: 2c256354c76b10a4a9b5766ec2a497fb, type: 3}
+    _douxIcon: {fileID: -6395028420028394204, guid: 85a11c663375093439cf8d0f641dd35d, type: 3}
+    _vifIcon: {fileID: -7265799594422231033, guid: fb060d6cc54526348b57f09d3f854e01, type: 3}
     _name: "R\xF4ti c\xE9r\xE9bral en salade"
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 1
     _ingredientFamilyC: 1
-    _icon: {fileID: 7077826869597143375, guid: f758b57142bc61a4aa0da898cdfd41d1, type: 3}
+    _normalIcon: {fileID: 4441484481042104803, guid: f839d30a2a2d0f14bad14dd4fe5a3d51, type: 3}
+    _douxIcon: {fileID: 4748101312796229365, guid: 2bd5eae72b9871948b8df4f84f946f41, type: 3}
+    _vifIcon: {fileID: -2605765238957323774, guid: 06c143f16a35d424092f8599be13433c, type: 3}
     _name: "Salade v\xE9n\xE9neuse"
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 0
     _ingredientFamilyC: 2
-    _icon: {fileID: -8071964510408386132, guid: 606aec2f50bae83469c2d83b86c168d1, type: 3}
+    _normalIcon: {fileID: -6641635650062251865, guid: bf673cb50819e2a44a68070f7091b020, type: 3}
+    _douxIcon: {fileID: -5585471441769250406, guid: eb613ada68c82dc4f8b5f2e8fb9f88cf, type: 3}
+    _vifIcon: {fileID: -147162662640101526, guid: 33f02617ea18fac47b50bbad244dde2e, type: 3}
     _name: Sandwich mordant
   - _ingredientFamilyA: 1
     _ingredientFamilyB: 1
     _ingredientFamilyC: 2
-    _icon: {fileID: 6044799029972071473, guid: 1ef3bba173cd1d341bb7b52343de1984, type: 3}
+    _normalIcon: {fileID: 6866408728562927263, guid: 15a0bbb513349754e80efeafcc72ae15, type: 3}
+    _douxIcon: {fileID: 3377448272641402339, guid: 9d5b6c2d560b9ac42bd43d17fccc709c, type: 3}
+    _vifIcon: {fileID: 2041772308894812251, guid: 70869a3e00dd72e40b51502e0caa24d2, type: 3}
     _name: "Soupe oculaire aux l\xE9gumes"
   - _ingredientFamilyA: 2
     _ingredientFamilyB: 2
     _ingredientFamilyC: 2
-    _icon: {fileID: -7890828034357963859, guid: f2b7be6617c032b419898d7e8b518a7f, type: 3}
+    _normalIcon: {fileID: 5228555698891438466, guid: 800b6007665cf2f46abe82976604d607, type: 3}
+    _douxIcon: {fileID: -7642172338373526075, guid: 2641d1cfec9759c428a4ec1fd1098ed1, type: 3}
+    _vifIcon: {fileID: 8417395702626334791, guid: 5b1b61c3475cc2740965b08fca546fbd, type: 3}
     _name: "Brandade de fruits de mer avari\xE9s"
   - _ingredientFamilyA: 0
     _ingredientFamilyB: 0
     _ingredientFamilyC: 2
-    _icon: {fileID: -3408478300425195292, guid: e17a29ad8e856d6409a4e48a9e25fa73, type: 3}
+    _normalIcon: {fileID: -4359157620736831636, guid: bc4fc1c298ad96f4ba626641318be86e, type: 3}
+    _douxIcon: {fileID: 6022890020928055326, guid: ea204127c0339f2418d5612dc3b8b7ab, type: 3}
+    _vifIcon: {fileID: -6348510185004584925, guid: 9b6264ee66cbe434f9326a95576ef7e3, type: 3}
     _name: Brochette de rat et poiscaille
   - _ingredientFamilyA: 2
     _ingredientFamilyB: 2
     _ingredientFamilyC: 0
-    _icon: {fileID: -5807574126089160812, guid: a52ad542bad371f4c894fd3c6610fe83, type: 3}
+    _normalIcon: {fileID: -4414338766393662309, guid: c81c0072988760b45a3ac36d29a56006, type: 3}
+    _douxIcon: {fileID: -428380392236548514, guid: 8b800222af5676b49b1c7709f4ef1eda, type: 3}
+    _vifIcon: {fileID: -4414338766393662309, guid: 58dbc8de029369e46af609c5c9379de3, type: 3}
     _name: Filet spectral avec barbaque humaine
