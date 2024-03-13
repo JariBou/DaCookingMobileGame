@@ -16,8 +16,9 @@ namespace _project.Scripts.Cards
         [SerializeField] private MonsterInstance _monsterInstance;
         [SerializeField] private ClickUp[] _cards;
         [SerializeField] private RecipeDisplayScript _recipeDisplayScript;
-        [SerializeField, Range(1, 10)] private int _rerollChance = 2;
-        private int _rerollCount = 0;
+        private int MaxRerollChances => _monsterInstance.MaxNumberOfRerolls;
+        
+        private int RerollCount => _monsterInstance.NumberOfRerolls;
         private bool _isRerolling = false;
         [FormerlySerializedAs("_OnReRoll")] [SerializeField] private UnityEvent _onReRoll;
         private SpriteRenderer _spriteRenderer;
@@ -48,9 +49,9 @@ namespace _project.Scripts.Cards
         public void Reroll()
         {
             if (OptionMenu.Instance.IsOptionPanelOpen) return;
-            if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
+            if (RerollCount >= MaxRerollChances || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
-            _rerollCount++;
+            _monsterInstance.AddReroll();
             ReRollBundle();
             _onReRoll?.Invoke();
         }

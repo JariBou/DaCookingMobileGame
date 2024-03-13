@@ -18,6 +18,8 @@ namespace _project.Scripts
         [FormerlySerializedAs("_gaugeHandler")] [SerializeField] private GaugeHandler _gaugeGaugeManager;
         private DialogMenuScript _dialogMenuScript;
         
+        public static event Action<Meal> MealFed;
+        
         public CameraScript Camera => _camera;
         public GaugeHandler GaugeManager => _gaugeGaugeManager;
 
@@ -103,6 +105,11 @@ namespace _project.Scripts
         public Meal GetCurrentMeal()
         {
             return _currentMeal;
+        }
+        
+        private static void OnMealFed(Meal obj)
+        {
+            MealFed?.Invoke(obj);
         }
     }
 }

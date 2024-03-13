@@ -12,6 +12,7 @@ namespace _project.ScriptableObjects.Scripts
         [SerializeField] private string _name;
         [SerializeField, TextArea] private string _description;
         [FormerlySerializedAs("_numberOfMeals")] [SerializeField] private int _maxNumberOfMeals;
+        [SerializeField] private int _maxRerolls;
         
         [SerializeField, Tooltip("Min stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMin;
         [SerializeField, Tooltip("Max stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMax;
@@ -40,5 +41,7 @@ namespace _project.ScriptableObjects.Scripts
         public Vector3Int RandomStatsMax => _randomStatsMax;
         public int MaxNumberOfMeals => _maxNumberOfMeals;
         public GameObject MonsterPrefab => _monsterPrefab;
+
+        public int MaxRerolls => _maxRerolls;
     }
 }

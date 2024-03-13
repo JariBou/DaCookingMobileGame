@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using _project.Scripts.Gauges;
@@ -16,6 +17,8 @@ namespace _project.Scripts
         [SerializeField] private TMP_Text _numberOfMealsText;
         [SerializeField] private CameraScript _cameraScript;
         [SerializeField] private GaugeHandler _gaugeHandler;
+
+        public static event Action NewMonster;
         
         private GameObject _monsterGameObject;
         private int _ingredientBundleIndex;
@@ -28,11 +31,14 @@ namespace _project.Scripts
 
         private int _maxNumberOfMeals;
         private int _numberOfMeals;
+        private int _numberOfRerolls;
 
         public MonsterDataSo MonsterData { get; private set; }
 
         public int MaxNumberOfMeals => _maxNumberOfMeals;
         public int NumberOfMeals => _numberOfMeals;
+        public int NumberOfRerolls => _numberOfRerolls;
+        public int MaxNumberOfRerolls => MonsterData.MaxRerolls;
 
         public BossScript GetBossScript() => _bossGetBossScript;
 
@@ -54,6 +60,7 @@ namespace _project.Scripts
             MonsterData = dataSo;
             _maxNumberOfMeals = dataSo.MaxNumberOfMeals;
             _numberOfMeals = 0;
+            _numberOfRerolls = 0;
             if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
 
             do
@@ -75,6 +82,8 @@ namespace _project.Scripts
             // TODO
             GetBossScript().SetState(GetBossState());
             _gaugeHandler.UpdateAll();
+            
+            OnNewMonster();
         }
 
         public void BackToMenu()
@@ -84,23 +93,7 @@ namespace _project.Scripts
 
         public void RetryMonster()
         {
-            if (_monsterGameObject != null) Destroy(_monsterGameObject);
-
-            _monsterGameObject = Instantiate(MonsterData.MonsterPrefab);
-
-            _bossGetBossScript = _monsterGameObject.GetComponent<BossScript>();
-
-            _maxNumberOfMeals = MonsterData.MaxNumberOfMeals;
-            _numberOfMeals = 0;
-            if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
-
-            _ingredientBundleIndex = Random.Range(0, MonsterData.IngredientBundles.Count);
-            CurrentStats = _currentMonsterStats;
-            CurrentMarks = _currentMonsterMarks;
-
-            _cameraScript.PassMonsterTransform(_monsterGameObject.transform);
-            GetBossScript().SetState(GetBossState());
-            _gaugeHandler.UpdateAll();
+            InitializeMonster(MonsterData);
         }
 
         public void NewRandomMonster(bool canTwiceInRow = false)
@@ -192,6 +185,16 @@ namespace _project.Scripts
             }
 
             return numberOfGoodStats;
+        }
+
+        private static void OnNewMonster()
+        {
+            NewMonster?.Invoke();
+        }
+
+        public void AddReroll()
+        {
+            _numberOfRerolls++;
         }
     }
 }
