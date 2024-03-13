@@ -95,7 +95,6 @@ namespace _project.Scripts.UI
         {
             _optionPanel.SetActive(false);
             _isOptionPanelOpen = false;
-            _settingsButton.raycastTarget = true;
         }
 
         public void OpenSettingsPanel()
@@ -188,8 +187,8 @@ namespace _project.Scripts.UI
             if (_isSfxMuted)
             {
                 _isSfxMuted = false;
-                _soundManager.UnmuteSfx();
                 _sfxSlider.value = _sfxVolume;
+                _soundManager.UnmuteSfx();
             }
             else
             {

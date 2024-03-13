@@ -128,13 +128,13 @@ namespace _project.Scripts.UI
             _valueSaver.IsSfxMuted = _isSfxMuted;
         }
 
-        public void SFXButton()
+        public void SfxButton()
         {
             if (_isSfxMuted)
             {
                 _isSfxMuted = false;
-                _soundManager.UnmuteSfx();
                 _sfxSlider.value = _sfxVolume;
+                _soundManager.UnmuteSfx();
             }
             else
             {

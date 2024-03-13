@@ -48,30 +48,36 @@ namespace _project.Scripts.UI
             }
 
             _touch.Enable();
+            _screenTouchPosition.Enable();
+            _screenTouchPosition.performed += context => { _currentTouchPosition = context.ReadValue<Vector2>(); };
+
+            #if UNITY_EDITOR
             _click.Enable();
             _screenClickPosition.Enable();
-            _screenTouchPosition.Enable();
-
-            _screenClickPosition.performed += context => { _currentMousePosition = context.ReadValue<Vector2>();};
-            _screenTouchPosition.performed += context => { _currentTouchPosition = context.ReadValue<Vector2>();};
-
+            _screenClickPosition.performed += context => { _currentMousePosition = context.ReadValue<Vector2>(); };
+            _click.performed += _ => OnPointerDownHandler(_);
+            _click.canceled += _ => OnPointerDownHandler(_);
+            #endif
             _touch.performed += _ =>
             {
                 _isTouch = true;
+                #if UNITY_EDITOR
                 _click.Disable();
+                #endif
                 OnPointerDownHandler(_);
                 
             };
             _touch.canceled += _ =>
             {
                 _isTouch = false;
+                #if UNITY_EDITOR
                 _click.Enable();
+                #endif
                 OnPointerDownHandler(_);
             };
 
 
-            _click.performed += _ => OnPointerDownHandler(_);
-            _click.canceled += _ => OnPointerDownHandler(_);
+
 
         }
 
@@ -89,9 +95,10 @@ namespace _project.Scripts.UI
         private void MouseScreenCheck(Collider2D hitObject)
         {
             if (OptionMenu.Instance.IsOptionPanelOpen || !_isDragging) return;
-            Vector2 screenPointerPosition = (_isTouch) ? _currentTouchPosition : _currentMousePosition;
-            
+            Vector2 screenPointerPosition;
+
 #if UNITY_EDITOR
+            screenPointerPosition = (_isTouch) ? _currentTouchPosition : _currentMousePosition;
             if (screenPointerPosition.x < 0) 
                 hitObject.transform.position = new Vector3(Mathf.Lerp(_hit.transform.position.x, 0 - Camera.main.ScreenToWorldPoint(Handles.GetMainGameViewSize()).x, _lerpValue), hitObject.transform.position.y, hitObject.transform.position.z);
             else if (screenPointerPosition.x > Handles.GetMainGameViewSize().x)
@@ -106,27 +113,19 @@ namespace _project.Scripts.UI
             else 
                 hitObject.transform.position = new Vector3(hitObject.transform.position.x, Mathf.Lerp(_hit.transform.position.y, Camera.main.ScreenToWorldPoint(screenPointerPosition).y, _lerpValue), hitObject.transform.position.z);
 #else
-        Vector2 ScreenWidthHeight = new Vector2(Screen.width, Screen.height);
-        if (screenPointerPosition.x < 0)
-            hitObject.transform.position = new Vector3(Mathf.Lerp(_hit.transform.position.x, 0 - Camera.main.ScreenToWorldPoint(ScreenWidthHeight).x, _lerpValue), hitObject.transform.position.y, hitObject.transform.position.z);
-        else if (screenPointerPosition.x > Screen.width)
-            hitObject.transform.position = new Vector3(Mathf.Lerp(_hit.transform.position.x, Camera.main.ScreenToWorldPoint(ScreenWidthHeight).x, _lerpValue), hitObject.transform.position.y, hitObject.transform.position.z);
-        else 
-            hitObject.transform.position = new Vector3(Mathf.Lerp(_hit.transform.position.x, Camera.main.ScreenToWorldPoint(screenPointerPosition).x, _lerpValue), hitObject.transform.position.y, hitObject.transform.position.z);
-
-        if (screenPointerPosition.y < 0)
-            hitObject.transform.position = new Vector3(hitObject.transform.position.x, Mathf.Lerp(_hit.transform.position.y, 0 - Camera.main.ScreenToWorldPoint(ScreenWidthHeight).y, _lerpValue), hitObject.transform.position.z);
-        else if (screenPointerPosition.y > Screen.height - 1)
-            hitObject.transform.position = new Vector3(hitObject.transform.position.x, Mathf.Lerp(_hit.transform.position.y, Camera.main.ScreenToWorldPoint(ScreenWidthHeight).y - 1, _lerpValue), hitObject.transform.position.z);
-        else 
-            hitObject.transform.position = new Vector3(hitObject.transform.position.x, Mathf.Lerp(_hit.transform.position.y, Camera.main.ScreenToWorldPoint(screenPointerPosition).y, _lerpValue), hitObject.transform.position.z);
+            screenPointerPosition = _currentTouchPosition;
+            hitObject.transform.position = new Vector3(Mathf.Lerp(_hit.transform.position.x, Camera.main.ScreenToWorldPoint(screenPointerPosition).x, _lerpValue), Mathf.Lerp(_hit.transform.position.y, Camera.main.ScreenToWorldPoint(screenPointerPosition).y, _lerpValue), hitObject.transform.position.z);
 #endif
         }
         private Vector2 _initialPosition;
         private Vector3 _initialScale;
         public void OnPointerDownHandler(InputAction.CallbackContext context)
         {
+        #if UNITY_EDITOR
             Vector2 pointerPosition = _isTouch ? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
+        #else
+            Vector2 pointerPosition = _currentTouchPosition;
+        #endif
             if (context.performed)
             {
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pointerPosition), (int)_layerMask);
