@@ -187,8 +187,8 @@ namespace _project.Scripts.UI
             if (_isSfxMuted)
             {
                 _isSfxMuted = false;
-                _soundManager.UnmuteSfx();
                 _sfxSlider.value = _sfxVolume;
+                _soundManager.UnmuteSfx();
             }
             else
             {
