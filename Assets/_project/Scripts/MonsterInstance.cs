@@ -5,6 +5,7 @@ using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace _project.Scripts
@@ -21,8 +22,10 @@ namespace _project.Scripts
 
         private BossScript _bossGetBossScript;
         public Vector3Int CurrentStats { get; private set; }
+        private Vector3Int _currentMonsterStats;
         public Vector2Int CurrentMarks { get; private set; }
-        
+        private Vector2Int _currentMonsterMarks;
+
         private int _maxNumberOfMeals;
         private int _numberOfMeals;
 
@@ -64,6 +67,8 @@ namespace _project.Scripts
             _ingredientBundleIndex = Random.Range(0, dataSo.IngredientBundles.Count);
             
             CurrentMarks = new Vector2Int(dataSo.StatsMin.x, dataSo.StatsMin.y);
+            _currentMonsterStats = CurrentStats; // On les garde si on veut recommencer
+            _currentMonsterMarks = CurrentMarks;
             
             _cameraScript.PassMonsterTransform(_monsterGameObject.transform);
             
@@ -74,7 +79,28 @@ namespace _project.Scripts
 
         public void BackToMenu()
         {
+            SceneManager.LoadSceneAsync(0);
+        }
 
+        public void RetryMonster()
+        {
+            if (_monsterGameObject != null) Destroy(_monsterGameObject);
+
+            _monsterGameObject = Instantiate(MonsterData.MonsterPrefab);
+
+            _bossGetBossScript = _monsterGameObject.GetComponent<BossScript>();
+
+            _maxNumberOfMeals = MonsterData.MaxNumberOfMeals;
+            _numberOfMeals = 0;
+            if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
+
+            _ingredientBundleIndex = Random.Range(0, MonsterData.IngredientBundles.Count);
+            CurrentStats = _currentMonsterStats;
+            CurrentMarks = _currentMonsterMarks;
+
+            _cameraScript.PassMonsterTransform(_monsterGameObject.transform);
+            GetBossScript().SetState(GetBossState());
+            _gaugeHandler.UpdateAll();
         }
 
         public void NewRandomMonster(bool canTwiceInRow = false)

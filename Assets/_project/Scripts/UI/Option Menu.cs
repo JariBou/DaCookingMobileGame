@@ -114,7 +114,7 @@ namespace _project.Scripts.UI
 
         public void GoToMenu()
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadSceneAsync(0);
         }
 
         public void SetMusicVolume()

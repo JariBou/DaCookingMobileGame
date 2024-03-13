@@ -1,6 +1,7 @@
 using System;
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace _project.Scripts.Gauges
@@ -62,6 +63,13 @@ namespace _project.Scripts.Gauges
             _gaugeZ.PassBoth(_monsterInstance.CurrentStats.z);
             _gaugeZ.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
 
+        }
+
+        [Button]
+        public bool AllGaugesAreSetUp()
+        {
+            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);
+            return !_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue;
         }
     }
 }

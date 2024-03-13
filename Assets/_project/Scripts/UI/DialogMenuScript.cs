@@ -57,7 +57,7 @@ namespace _project.Scripts.UI
         {
             // TODO
             // Add reset of monster
-        
+            _monsterInstance.RetryMonster();
             _menuGameObject.SetActive(false);
         }
 

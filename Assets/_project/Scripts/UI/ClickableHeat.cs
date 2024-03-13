@@ -79,7 +79,7 @@ namespace _project.Scripts.UI
         private IEnumerator GrayImage()
         {
             _isGrayed = true;
-            Debug.Log("L'image a  t  cliqu e !");
+/*            Debug.Log("L'image a  ete  cliquee !");*/
 
             _imageComponent.color = _grayColor;
 

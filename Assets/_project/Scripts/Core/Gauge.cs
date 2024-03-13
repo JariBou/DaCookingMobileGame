@@ -49,6 +49,7 @@ namespace _project.Scripts.Core
         [SerializeField, Range(0, 50)] private int _tolerance = 5;
 
         private bool _isPassingValue = false;
+        public bool IsPassingValue => _isPassingValue;
         private bool _isPassingPrevisualizationValue = false;
 
 
