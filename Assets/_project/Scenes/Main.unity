@@ -8244,6 +8244,7 @@ GameObject:
   - component: {fileID: 1596713405}
   - component: {fileID: 1596713407}
   - component: {fileID: 1596713408}
+  - component: {fileID: 1596713409}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -8534,6 +8535,18 @@ MonoBehaviour:
   _backgroundOptionLayer:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &1596713409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596713400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ad1cb06db44bbc983d42bcc1a5a197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1600271839
 GameObject:
   m_ObjectHideFlags: 0
@@ -9065,7 +9078,6 @@ MonoBehaviour:
   - {fileID: 357402756}
   - {fileID: 1206991701}
   _recipeDisplayScript: {fileID: 1922875642}
-  _rerollChance: 10
   _onReRoll:
     m_PersistentCalls:
       m_Calls:

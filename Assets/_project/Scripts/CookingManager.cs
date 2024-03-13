@@ -4,6 +4,7 @@ using _project.Scripts.Core;
 using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using _project.Scripts.UI;
+using Hellcooker;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -18,7 +19,7 @@ namespace _project.Scripts
         [FormerlySerializedAs("_gaugeHandler")] [SerializeField] private GaugeHandler _gaugeGaugeManager;
         private DialogMenuScript _dialogMenuScript;
         
-        public static event Action<Meal> MealFed;
+        public static event Action<Meal, bool, int, bool> MealFed; // Meal, bool satisfied, int number_of_meals, bool rerolledForMeal
         
         public CameraScript Camera => _camera;
         public GaugeHandler GaugeManager => _gaugeGaugeManager;
@@ -49,16 +50,19 @@ namespace _project.Scripts
         public bool FeedMeal()
         {
             Debug.Log("Feeding Boss");
+            bool rerolledForMeal = _monsterInstance.RerolledForMeal;
             bool result = _monsterInstance.FeedMeal(_currentMeal);
             _gaugeGaugeManager.UpdateAll();
+            OnMealFed(_currentMeal, result, _monsterInstance.NumberOfMeals, rerolledForMeal);
             _currentMeal = null;
             Debug.Log($"Result: {result}");
             if (result)
             {
                 WinPanel();
             }
-            else if (_monsterInstance.NumberOfMeals >= _monsterInstance.MaxNumberOfMeals && !result)
+            else if (_monsterInstance.NumberOfMeals >= _monsterInstance.MaxNumberOfMeals)
             {
+                AchievementsHandler.UnlockAchievement(GPGSIds.achievement_faire__manger_ou_tre_mang);
                 LosePanel();
             }
             return result;
@@ -107,9 +111,9 @@ namespace _project.Scripts
             return _currentMeal;
         }
         
-        private static void OnMealFed(Meal obj)
+        private static void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
         {
-            MealFed?.Invoke(obj);
+            MealFed?.Invoke(meal, satisfied, numberOfMeals, rerolledForMeal);
         }
     }
 }

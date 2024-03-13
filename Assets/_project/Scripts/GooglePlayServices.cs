@@ -9,13 +9,12 @@ namespace _project.Scripts
     {
         private void Awake()
         {
+            PlayGamesPlatform.Activate();
             PlayGamesPlatform.Instance.Authenticate(ProcessAuthentication);
         }
 
         public void Start() {
-            PlayGamesPlatform.Instance.ReportProgress(GPGSIds.achievement_hellcooker, 100.0f, (bool success) => {
-                // handle success or failure
-            });
+            AchievementsHandler.UnlockAchievement(GPGSIds.achievement_bienvenue_en_enfer);
         }
 
         private void ProcessAuthentication(SignInStatus status) {

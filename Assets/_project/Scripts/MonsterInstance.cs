@@ -32,6 +32,7 @@ namespace _project.Scripts
         private int _maxNumberOfMeals;
         private int _numberOfMeals;
         private int _numberOfRerolls;
+        private bool _rerolledForMeal;
 
         public MonsterDataSo MonsterData { get; private set; }
 
@@ -39,6 +40,7 @@ namespace _project.Scripts
         public int NumberOfMeals => _numberOfMeals;
         public int NumberOfRerolls => _numberOfRerolls;
         public int MaxNumberOfRerolls => MonsterData.MaxRerolls;
+        public bool RerolledForMeal => _rerolledForMeal;
 
         public BossScript GetBossScript() => _bossGetBossScript;
 
@@ -83,7 +85,7 @@ namespace _project.Scripts
             GetBossScript().SetState(GetBossState());
             _gaugeHandler.UpdateAll();
             
-            OnNewMonster();
+            //OnNewMonster();
         }
 
         public void BackToMenu()
@@ -125,6 +127,7 @@ namespace _project.Scripts
             CurrentStats += meal.Stats;
             CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
             _numberOfMeals++;
+            _rerolledForMeal = false;
             if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";
             
             GetBossScript().SetState(GetBossState());
@@ -194,6 +197,7 @@ namespace _project.Scripts
 
         public void AddReroll()
         {
+            _rerolledForMeal = true;
             _numberOfRerolls++;
         }
     }
