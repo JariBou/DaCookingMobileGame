@@ -34,6 +34,7 @@ namespace _project.Scripts.Core
         [Header("Gauge's Animation")]
         [SerializeField] private AnimationCurve _appearCurve;
         [SerializeField] private float _animationDuration = 0.5f;
+        [SerializeField] private float _previsualizationAnimationDuration = 0.5f;
         private float _timer = 0;
         private float _timer2 = 0;
 
@@ -75,8 +76,8 @@ namespace _project.Scripts.Core
             if (_isPassingPrevisualizationValue)
             {
                 _timer2 += Time.deltaTime;
-                _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/_animationDuration));
-                if (_timer2 >= _animationDuration)
+                _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/ _previsualizationAnimationDuration));
+                if (_timer2 >= _previsualizationAnimationDuration)
                 {
                     _timer2 = 0;
                     _isPassingPrevisualizationValue = false;
