@@ -46,7 +46,7 @@ namespace _project.Scripts.UI
 
         private void OnMouseDown()
         {
-            if (OptionMenu.instance.IsOptionPanelOpen) return;
+            if (OptionMenu.Instance.IsOptionPanelOpen) return;
             if (_manager.CookingManager.GetCurrentPhase() != PhaseCode.Phase2) return;
 
             if (!_isGrayed)

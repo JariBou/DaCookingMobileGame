@@ -47,7 +47,7 @@ namespace _project.Scripts.Cards
 
         public void Reroll()
         {
-            if (OptionMenu.instance.IsOptionPanelOpen) return;
+            if (OptionMenu.Instance.IsOptionPanelOpen) return;
             if (_rerollCount >= _rerollChance || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
             _rerollCount++;

@@ -134,7 +134,7 @@ namespace _project.Scripts.Cards
 
         public void DoClick()
         {
-            if (OptionMenu.instance.IsOptionPanelOpen) return;
+            if (OptionMenu.Instance.IsOptionPanelOpen) return;
             switch (_isScaled)
             {
                 case false:

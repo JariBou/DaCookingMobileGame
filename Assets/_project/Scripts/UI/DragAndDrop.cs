@@ -88,7 +88,7 @@ namespace _project.Scripts.UI
 
         private void MouseScreenCheck(Collider2D hitObject)
         {
-            if (OptionMenu.instance.IsOptionPanelOpen || !_isDragging) return;
+            if (OptionMenu.Instance.IsOptionPanelOpen || !_isDragging) return;
             Vector2 screenPointerPosition = (_isTouch) ? _currentTouchPosition : _currentMousePosition;
             
 #if UNITY_EDITOR
@@ -126,13 +126,13 @@ namespace _project.Scripts.UI
         private Vector3 _initialScale;
         public void OnPointerDownHandler(InputAction.CallbackContext context)
         {
-            Vector2 pointerPosition = _isTouch? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
+            Vector2 pointerPosition = _isTouch ? Touchscreen.current.position.ReadValue() : Mouse.current.position.ReadValue();
             if (context.performed)
             {
                 Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pointerPosition), (int)_layerMask);
-                if (OptionMenu.instance.IsOptionPanelOpen)
+                if (OptionMenu.Instance.IsOptionPanelOpen)
                 {
-                    IsTouchingOrClickingThisLayer(OptionMenu.instance.BackgroundOptionLayer, _isTouch);
+                    IsTouchingOrClickingThisLayer(OptionMenu.Instance._backgroundOptionLayer, _isTouch);
                     return;
                 }
                 if (hit != null)
@@ -148,7 +148,7 @@ namespace _project.Scripts.UI
             }
             else if (context.canceled)
             {
-                if (!OptionMenu.instance.IsOptionPanelOpen && !OptionMenu.instance.SettingsButton.raycastTarget) OptionMenu.instance.SettingsButton.raycastTarget = true;
+                if (!OptionMenu.Instance.IsOptionPanelOpen && !OptionMenu.Instance._settingsButton.raycastTarget) OptionMenu.Instance._settingsButton.raycastTarget = true;
                 if (_hit == null) return;
                 _isDragging = false;
                 if (_hit != null) _hit.transform.localScale = _initialScale;
@@ -165,6 +165,7 @@ namespace _project.Scripts.UI
                     {
                         Dropped(_hit.gameObject);
                         _hit = null;
+                        
                         return;
                     }
                     //Effet sonore à rajouter pour le lâché de l'objet
@@ -194,7 +195,7 @@ namespace _project.Scripts.UI
             Collider2D hit = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(pointerPosition), (int)_layer);
             if (hit == null)
             {
-                OptionMenu.instance.CloseOptionPanel();
+                OptionMenu.Instance.CloseOptionPanel();
             }
         }
 
