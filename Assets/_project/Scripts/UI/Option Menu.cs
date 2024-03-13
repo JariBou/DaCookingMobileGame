@@ -95,7 +95,6 @@ namespace _project.Scripts.UI
         {
             _optionPanel.SetActive(false);
             _isOptionPanelOpen = false;
-            _settingsButton.raycastTarget = true;
         }
 
         public void OpenSettingsPanel()
