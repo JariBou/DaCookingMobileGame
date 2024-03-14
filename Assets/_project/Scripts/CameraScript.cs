@@ -53,6 +53,14 @@ namespace _project.Scripts
                 _isMoving = false;
             }
         }
+
+        public void Restart()
+        {
+            _currentPosIndex = 0;
+            _isMoving = true;
+            _onSlideCam?.Invoke();
+            _timer = 0;
+        }
         
         [Button]
         public void NextPhase()

@@ -1,7 +1,4 @@
 using MoreMountains.Tools;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -103,11 +100,6 @@ namespace _project.Scripts.UI
         public void CloseSettingsPanel()
         {
             _settingsPanel.SetActive(false);
-        }
-
-        public void RestartRound()
-        {
-            Debug.Log("Restarting Round");
         }
 
         public void GoToMenu()
