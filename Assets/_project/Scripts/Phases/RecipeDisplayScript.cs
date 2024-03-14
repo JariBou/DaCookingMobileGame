@@ -138,20 +138,13 @@ namespace _project.Scripts.Phases
         private void UpdateIngredient(int order)
         {
             _ingredientStats[order]._cardName.text = ClickUp.EnlargedSprites[order].Ingredient.name;
-            if (ClickUp.EnlargedSprites[order].Ingredient.Stats.x > 0)
-                _ingredientStats[order]._cardHunger.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
-            else
-                _ingredientStats[order]._cardHunger.text = ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
-            
-            if (ClickUp.EnlargedSprites[order].Ingredient.Stats.y > 0)
-                _ingredientStats[order]._cardSatisfaction.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
-            else
-                _ingredientStats[order]._cardSatisfaction.text = ClickUp.EnlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
+            _ingredientStats[order]._onStatsAppear?.Invoke();
+            _ingredientStats[order]._cardHunger.text = (ClickUp.EnlargedSprites[order].Ingredient.Stats.x > 0 ? "+" : "")  + ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
 
-            if (ClickUp.EnlargedSprites[order].Ingredient.Stats.z > 0)
-                _ingredientStats[order]._cardPower.text = "+" + ClickUp.EnlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
-            else
-                _ingredientStats[order]._cardPower.text = ClickUp.EnlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
+            _ingredientStats[order]._cardSatisfaction.text = (ClickUp.EnlargedSprites[order].Ingredient.Stats.y > 0 ? "+" : "") + ClickUp.EnlargedSprites[order].Ingredient.Stats.y.ToString(CultureInfo.InvariantCulture);
+
+            _ingredientStats[order]._cardPower.text = (ClickUp.EnlargedSprites[order].Ingredient.Stats.z > 0 ? "+" : "") + ClickUp.EnlargedSprites[order].Ingredient.Stats.z.ToString(CultureInfo.InvariantCulture);
+
             _ingredientStats[order]._cardImage.sprite = ClickUp.EnlargedSprites[order].Ingredient.Icon;
             _ingredientStats[order]._cardImage.enabled = true;
         }
@@ -347,6 +340,7 @@ namespace _project.Scripts.Phases
             public TextMeshProUGUI _cardSatisfaction;
             public TextMeshProUGUI _cardPower;
             public Image _cardImage;
+            public UnityEvent _onStatsAppear;
         }
     }
 }

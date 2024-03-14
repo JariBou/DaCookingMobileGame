@@ -48,21 +48,21 @@ namespace _project.Scripts.Phases
             switch (SelectedCookingMethod)
             {
                 case CookingMethod.Method1:
-                    _particles.Stop();
+                    _particles?.Stop();
                     settings.startColor = _particlesColors[0];
-                    _particles.Play();
+                    _particles?.Play();
                     _hovenImages[0].SetActive(true);
                     break;
                 case CookingMethod.Method2:
-                    _particles.Stop();
+                    _particles?.Stop();
                     settings.startColor = _particlesColors[1];
-                    _particles.Play();
+                    _particles?.Play();
                     _hovenImages[1].SetActive(true);
                     break;
                 case CookingMethod.Method3:
-                    _particles.Stop();
+                    _particles?.Stop();
                     settings.startColor = _particlesColors[2];
-                    _particles.Play();
+                    _particles?.Play();
                     _hovenImages[2].SetActive(true);
                     break;
                 case CookingMethod.Null:

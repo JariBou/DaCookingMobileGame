@@ -3358,7 +3358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.16, y: -2.6}
+  m_AnchoredPosition: {x: -11.21, y: -2.6}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &457570511
@@ -4841,7 +4841,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 644046451}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.110001355}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2444}
   m_LocalScale: {x: 1.120452, y: 1.146467, z: 0.83206}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4849,8 +4849,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.15, y: -2.59}
-  m_SizeDelta: {x: 4.9926, y: 3.2831}
+  m_AnchoredPosition: {x: -11.19, y: -2.729}
+  m_SizeDelta: {x: 3.9911, y: 2.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &644046454
 CanvasRenderer:
@@ -18181,16 +18181,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891981389}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.110001355}
-  m_LocalScale: {x: 1.1799717, y: 1.1800528, z: 0.87626}
+  m_LocalPosition: {x: 0, y: 0, z: 0.2444}
+  m_LocalScale: {x: 1.09, y: 1.1800528, z: 0.87626}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 599701324}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.14, y: -2.5999997}
-  m_SizeDelta: {x: 4.9926, y: 3.2831}
+  m_AnchoredPosition: {x: -11.181999, y: -2.737}
+  m_SizeDelta: {x: 3.9911, y: 2.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1891981392
 CanvasRenderer:
@@ -18527,16 +18527,25 @@ MonoBehaviour:
     _cardSatisfaction: {fileID: 641391783}
     _cardPower: {fileID: 796088618}
     _cardImage: {fileID: 1228014898}
+    _onStatsAppear:
+      m_PersistentCalls:
+        m_Calls: []
   - _cardName: {fileID: 1559017068}
     _cardHunger: {fileID: 1559017067}
     _cardSatisfaction: {fileID: 1559017066}
     _cardPower: {fileID: 1559017065}
     _cardImage: {fileID: 1559017064}
+    _onStatsAppear:
+      m_PersistentCalls:
+        m_Calls: []
   - _cardName: {fileID: 651821888}
     _cardHunger: {fileID: 651821887}
     _cardSatisfaction: {fileID: 651821886}
     _cardPower: {fileID: 651821885}
     _cardImage: {fileID: 651821884}
+    _onStatsAppear:
+      m_PersistentCalls:
+        m_Calls: []
   _camera: {fileID: 2098448612}
   _nextPhaseMealDisplay: {fileID: 5608204401457565526}
   _finalHunger: {fileID: 463749158}
@@ -18726,8 +18735,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.16, y: -2.5599997}
-  m_SizeDelta: {x: 4.9926, y: 3.2831}
+  m_AnchoredPosition: {x: -11.197999, y: -2.705}
+  m_SizeDelta: {x: 3.9911, y: 2.6245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1926480465
 CanvasRenderer:
@@ -22097,7 +22106,10 @@ MonoBehaviour:
   - {fileID: 644046451}
   - {fileID: 1891981389}
   - {fileID: 1926480462}
-  _particlesColors: []
+  _particlesColors:
+  - {r: 0.82745105, g: 0.1764706, b: 0.1764706, a: 1}
+  - {r: 1, g: 0.56078434, b: 0, a: 1}
+  - {r: 0.19215688, g: 0.6039216, b: 0.98823535, a: 1}
   _particles: {fileID: 1177527765}
 --- !u!222 &1461106471514495447
 CanvasRenderer:
