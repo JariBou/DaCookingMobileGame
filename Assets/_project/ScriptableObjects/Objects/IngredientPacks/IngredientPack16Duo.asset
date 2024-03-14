@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44a863d7a5fb422f8e930b38d1d4c25a, type: 3}
   m_Name: IngredientPack16Duo
   m_EditorClassIdentifier: 
-  _totalStatsOfBundles: {x: 14, y: 20, z: 14}
+  _totalStatsOfBundles: {x: 30, y: 40, z: 34}
   _bundleIngredients:
   - {fileID: 11400000, guid: e85857bd25e6c1f4cb84944a9f293c89, type: 2}
   - {fileID: 11400000, guid: e85857bd25e6c1f4cb84944a9f293c89, type: 2}
@@ -32,3 +32,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5b1590b077e235c438a519bb4a3610a6, type: 2}
   - {fileID: 11400000, guid: ac2e20e5bd10569468f4a08ff438b29a, type: 2}
   - {fileID: 11400000, guid: ac2e20e5bd10569468f4a08ff438b29a, type: 2}
+  - {fileID: 11400000, guid: ee6a0e0a4d4a68c4196b499f699d81b9, type: 2}
+  - {fileID: 11400000, guid: ee6a0e0a4d4a68c4196b499f699d81b9, type: 2}
+  - {fileID: 11400000, guid: 765bccbd1333e70449b54b4021da0db4, type: 2}
+  - {fileID: 11400000, guid: 765bccbd1333e70449b54b4021da0db4, type: 2}
+  - {fileID: 11400000, guid: 8c371b821b120a246bb9c8c13870cb77, type: 2}
+  - {fileID: 11400000, guid: 8c371b821b120a246bb9c8c13870cb77, type: 2}
+  - {fileID: 11400000, guid: 20daee6899b1a8e449695f8b99ded092, type: 2}
+  - {fileID: 11400000, guid: 20daee6899b1a8e449695f8b99ded092, type: 2}
+  - {fileID: 11400000, guid: 2c69917c9987aa5498757c9f37708a73, type: 2}
+  - {fileID: 11400000, guid: 2c69917c9987aa5498757c9f37708a73, type: 2}
+  - {fileID: 11400000, guid: c026f185182931b47b3ed5ce7a3a50e9, type: 2}
+  - {fileID: 11400000, guid: c026f185182931b47b3ed5ce7a3a50e9, type: 2}
+  - {fileID: 11400000, guid: e91ef6a37e0726f449f78e01865ad78f, type: 2}
+  - {fileID: 11400000, guid: e91ef6a37e0726f449f78e01865ad78f, type: 2}
+  - {fileID: 11400000, guid: ce672407376ec07458b8a6076906d569, type: 2}
+  - {fileID: 11400000, guid: ce672407376ec07458b8a6076906d569, type: 2}
+  - {fileID: 11400000, guid: 1f198d2d5d857044db311263ca9fff2c, type: 2}
+  - {fileID: 11400000, guid: 1f198d2d5d857044db311263ca9fff2c, type: 2}

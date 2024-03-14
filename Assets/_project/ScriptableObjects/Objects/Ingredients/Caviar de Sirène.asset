@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
+  m_Name: "Caviar de Sir\xE8ne"
+  m_EditorClassIdentifier: 
+  _name: "Caviar de Sir\xE8ne"
+  _ingredientFamily: 2
+  _stats: {x: -14, y: -4, z: 9}
+  _randomAddedstats: {x: 0, y: 0, z: 0}
+  _icon: {fileID: -1096578601655503199, guid: 08ba6d160f5c57f4f9fdf3cb63e9e283, type: 3}
+  _description: 'Octopus: A versatile seafood with a unique taste and texture, often
+    tenderized and cooked to achieve a balance between its natural chewiness and
+    succulence.'
