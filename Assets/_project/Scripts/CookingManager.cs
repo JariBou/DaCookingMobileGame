@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using _project.Scripts.Gauges;
@@ -48,13 +48,11 @@ namespace _project.Scripts
         /// <returns></returns>
         public bool FeedMeal()
         {
-            Debug.Log("Feeding Boss");
             bool rerolledForMeal = _monsterInstance.RerolledForMeal;
             bool result = _monsterInstance.FeedMeal(_currentMeal);
             _gaugeGaugeManager.UpdateGauges();
             OnMealFed(_currentMeal, result, _monsterInstance.NumberOfMeals, rerolledForMeal);
             _currentMeal = null;
-            Debug.Log($"Result: {result}");
             if (result)
             {
                 _gaugeGaugeManager.HasWin = true;
