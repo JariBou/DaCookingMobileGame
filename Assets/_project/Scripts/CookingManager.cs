@@ -55,7 +55,7 @@ namespace _project.Scripts
                 _gaugeGaugeManager.HasWin = true;
                 _gaugeGaugeManager.HasToInvokeWinPanel = true;
             }
-            else if (_monsterInstance.NumberOfMeals >= _monsterInstance.MaxNumberOfMeals && !result)
+            else if (_monsterInstance.NumberOfMeals > _monsterInstance.MaxNumberOfMeals && !result)
             {
                 _gaugeGaugeManager.HasWin = false;
                 _gaugeGaugeManager.HasToInvokeWinPanel = true;

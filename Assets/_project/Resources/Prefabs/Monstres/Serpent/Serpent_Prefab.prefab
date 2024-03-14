@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840831892848049167}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.14455499, w: 0.9894968}
+  m_LocalRotation: {x: -0, y: -0, z: 0.00000004470348, w: 1}
   m_LocalPosition: {x: 1.2, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41,9 +41,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2473550619971886045}
   - component: {fileID: 84028491906195266}
-  - component: {fileID: 7800399454732533756}
-  - component: {fileID: 6462566656795585628}
-  - component: {fileID: 6282094915836079596}
+  - component: {fileID: 671948401771760632}
+  - component: {fileID: 4217694967200209551}
+  - component: {fileID: 3725597473073662137}
   m_Layer: 8
   m_Name: Serpent_Prefab
   m_TagString: Boss
@@ -91,7 +91,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &7800399454732533756
+--- !u!61 &671948401771760632
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.09770608, y: 4.3305}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -135,9 +135,9 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.142737, y: 8.554866}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &6462566656795585628
+--- !u!114 &4217694967200209551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   _linkedMonoBehaviour: {fileID: 0}
   _linkGameObject: 0
   _linkMonoBehaviour: 1
---- !u!114 &6282094915836079596
+--- !u!114 &3725597473073662137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f7528076de20c4fa1f883f0a58cc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider2D: {fileID: 7800399454732533756}
+  _collider2D: {fileID: 671948401771760632}
   _bossAnimator: {fileID: 84028491906195266}
 --- !u!1 &4254426901920288119
 GameObject:
@@ -960,11 +960,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6817649596711525236, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.94842
+      value: 0.9742237
       objectReference: {fileID: 0}
     - target: {fileID: -6817649596711525236, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.3170167
+      value: -0.22558436
       objectReference: {fileID: 0}
     - target: {fileID: -6125137496059698321, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_Layer
@@ -982,25 +982,17 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.798
       objectReference: {fileID: 0}
-    - target: {fileID: -4860660486462177341, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.1504184
-      objectReference: {fileID: 0}
-    - target: {fileID: -4860660486462177341, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.91990054
-      objectReference: {fileID: 0}
     - target: {fileID: -4840746787294174335, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -4349183894990376327, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.81188
+      value: 0.81330305
       objectReference: {fileID: 0}
     - target: {fileID: -4349183894990376327, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.58382434
+      value: 0.58184034
       objectReference: {fileID: 0}
     - target: {fileID: -4286330614730449622, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_Layer
@@ -1072,19 +1064,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40621541799366916, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9281443
+      value: 0.9331701
       objectReference: {fileID: 0}
     - target: {fileID: 40621541799366916, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.37222067
+      value: -0.35943517
       objectReference: {fileID: 0}
     - target: {fileID: 1019774405041215858, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.93916464
+      value: 0.95030236
       objectReference: {fileID: 0}
     - target: {fileID: 1019774405041215858, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.34346744
+      value: -0.3113285
       objectReference: {fileID: 0}
     - target: {fileID: 1103568884613311077, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_Layer
@@ -1132,11 +1124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5039736866609092439, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9416911
+      value: 0.94326603
       objectReference: {fileID: 0}
     - target: {fileID: 5039736866609092439, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.33647865
+      value: -0.332038
       objectReference: {fileID: 0}
     - target: {fileID: 5390716573832730655, guid: f3df455f9491ebe4bacc8c6f8d66b5e6, type: 3}
       propertyPath: m_LocalRotation.w
