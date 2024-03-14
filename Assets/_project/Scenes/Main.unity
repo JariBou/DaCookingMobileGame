@@ -20502,7 +20502,7 @@ MonoBehaviour:
   - {fileID: 1891981389}
   - {fileID: 1926480462}
   _particlesColors: []
-  _particles: {fileID: 0}
+  _particles: {fileID: 1177527765}
 --- !u!222 &1461106471514495447
 CanvasRenderer:
   m_ObjectHideFlags: 0
