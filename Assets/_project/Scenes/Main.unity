@@ -17873,7 +17873,7 @@ MonoBehaviour:
   _gaugeY: {fileID: 642731248}
   _gaugeZ: {fileID: 234454170}
   _monsterInstance: {fileID: 1596713405}
-  _cookingManager: {fileID: 0}
+  _cookingManager: {fileID: 1596713401}
   HasToInvokeWinPanel: 0
   HasWin: 0
   _onPanelInvoke:
