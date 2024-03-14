@@ -18,6 +18,8 @@ namespace _project.Scripts.Phases
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplayScript;
         [SerializeField] private Button _button;
         [SerializeField, Tooltip("Reference images in order")] private List<GameObject> _hovenImages;
+        [SerializeField, Tooltip("Reference colors in order")] private List<Color> _particlesColors;
+        [SerializeField] private ParticleSystem _particles;
 
         public CookingMethod SelectedCookingMethod { get; set; }
 
@@ -42,16 +44,25 @@ namespace _project.Scripts.Phases
             {
                 _hovenImages[i].SetActive(false);
             }
-
+            ParticleSystem.MainModule settings = _particles.main;
             switch (SelectedCookingMethod)
             {
                 case CookingMethod.Method1:
+                    _particles.Stop();
+                    settings.startColor = _particlesColors[0];
+                    _particles.Play();
                     _hovenImages[0].SetActive(true);
                     break;
                 case CookingMethod.Method2:
+                    _particles.Stop();
+                    settings.startColor = _particlesColors[1];
+                    _particles.Play();
                     _hovenImages[1].SetActive(true);
                     break;
                 case CookingMethod.Method3:
+                    _particles.Stop();
+                    settings.startColor = _particlesColors[2];
+                    _particles.Play();
                     _hovenImages[2].SetActive(true);
                     break;
                 case CookingMethod.Null:
