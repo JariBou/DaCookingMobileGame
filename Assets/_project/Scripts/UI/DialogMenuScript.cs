@@ -1,6 +1,7 @@
 using _project.Scripts.Phases;
 using NaughtyAttributes;
 using TMPro;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ namespace _project.Scripts.UI
         [SerializeField] private Sprite _retrySprite;
         [SerializeField] private TMP_Text _title;
         [SerializeField] private LastPhaseScript _lastPhaseScript;
+        [SerializeField] AudioSource _backgroundMusic;
+        [SerializeField] AudioSource _winSound;
+        [SerializeField] AudioSource _loseSound;
         private MonsterInstance _monsterInstance;
 
 
@@ -25,19 +29,27 @@ namespace _project.Scripts.UI
 
         public void ActivateMenu(bool won)
         {
-            _actionButton.onClick.RemoveAllListeners();
+            _actionButton.onClick.RemoveAllListeners();   
+            _backgroundMusic.Stop();
             if (won)
             {
                 _actionButton.onClick.AddListener(NextMonster);
                 _actionButton.image.sprite = _nextMonsterSprite;
-                _title.text = "Won";
+                _title.text = "Won";   
+                
+                _winSound.gameObject.SetActive(true);
+                _winSound.Play();
+            
             }
             else
             {
                 _actionButton.onClick.AddListener(Retry);
                 _actionButton.image.sprite = _retrySprite;
-                _title.text = "Lost";
-            }
+                _title.text = "Lost";  
+                
+                _loseSound.gameObject.SetActive(true);
+                _loseSound.Play();
+            }          
         
             _menuGameObject.SetActive(true);
         }
