@@ -28,6 +28,7 @@ namespace _project.Scripts
         private void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
         {
             UnlockAchievement(GPGSIds.achievement_cuistot_en_herbe);
+            AdvanceAchievement(GPGSIds.achievement_recettes_avaries);
 
             if (!rerolledForMeal)
             {
@@ -37,6 +38,7 @@ namespace _project.Scripts
             if (satisfied)
             {
                 UnlockAchievement(GPGSIds.achievement_rassasi_pour_linstant);
+                AdvanceAchievement(GPGSIds.achievement_hellcooker);
                 if (numberOfMeals == 1)
                 {
                     UnlockAchievement(GPGSIds.achievement_let_me_cook);
@@ -58,6 +60,13 @@ namespace _project.Scripts
         public static void UnlockAchievement(string achievementId)
         {
             PlayGamesPlatform.Instance.ReportProgress(achievementId, 100.0f, (bool success) => {
+                // handle success or failure
+            });
+        }
+        
+        public static void AdvanceAchievement(string achievementId, int steps = 1)
+        {
+            PlayGamesPlatform.Instance.IncrementAchievement(achievementId, steps, (bool success) => {
                 // handle success or failure
             });
         }
