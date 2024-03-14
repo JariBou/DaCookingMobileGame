@@ -5,6 +5,7 @@ using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -37,6 +38,9 @@ namespace _project.Scripts
         public BossScript GetBossScript() => _bossGetBossScript;
 
         [SerializeField] private List<MonsterDataSo> _monsterDatas = new List<MonsterDataSo>();
+
+        [Header("Game Feel")]
+        [SerializeField] private UnityEvent _OnMonsterFeed;
 
         private void Awake()
         {
@@ -130,6 +134,7 @@ namespace _project.Scripts
         public bool FeedMeal(Meal meal)
         {
             CurrentStats += meal.Stats;
+            _OnMonsterFeed?.Invoke();
             CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
             _numberOfMeals++;
             if (_numberOfMealsText) _numberOfMealsText.text = $"{_numberOfMeals}/{MaxNumberOfMeals}";

@@ -106,7 +106,11 @@ namespace _project.Scripts.Gauges
         [Button]
         public bool AllGaugesAreSetUp()
         {
-/*            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);*/
+            /*            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);*/
+            if (!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue)
+            {
+                _isGameSetUp = false;
+            }
             return !_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue;
         }
     }

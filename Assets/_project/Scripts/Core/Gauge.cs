@@ -27,6 +27,7 @@ namespace _project.Scripts.Core
         private float _angle2;
         
         [SerializeField, Range(0, 100)] private int _currentValue = 0;
+        private int _finalValue;
         [SerializeField] private TMP_Text _valueText;
         [SerializeField, Range(0, 100)] private int _previsualizationValue = 0;
         private float _previousValue = 0;
@@ -67,17 +68,23 @@ namespace _project.Scripts.Core
             {
                 _timer += Time.deltaTime;
                 _needle.transform.rotation = Quaternion.Lerp(_needle.transform.rotation, Quaternion.Euler(0, 0, _angle - 90), _appearCurve.Evaluate(_timer / _animationDuration));
-                if (_timer >= _animationDuration)
+                _currentValue = (int) Mathf.Lerp(_currentValue, _finalValue, _appearCurve.Evaluate(_timer / _animationDuration));
+                _valueText.text = _currentValue.ToString();
+                float differenceBetweenAngles = Mathf.Abs(_needle.transform.rotation.eulerAngles.z - (_angle- 90));
+                if (_timer >= _animationDuration || differenceBetweenAngles < 0.01f)
                 {
                     _timer = 0;
                     _isPassingValue = false;
+                    _currentValue = _finalValue;
+                    _valueText.text = _currentValue.ToString();
                 }
             }
             if (_isPassingPrevisualizationValue)
             {
                 _timer2 += Time.deltaTime;
                 _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/ _previsualizationAnimationDuration));
-                if (_timer2 >= _previsualizationAnimationDuration)
+                float differenceBetweenAnglesPrev = Mathf.Abs(_needlePrevisualization.transform.rotation.eulerAngles.z - (_angle2 - 90));
+                if (_timer2 >= _previsualizationAnimationDuration || differenceBetweenAnglesPrev < 0.01f)
                 {
                     _timer2 = 0;
                     _isPassingPrevisualizationValue = false;
@@ -129,8 +136,7 @@ namespace _project.Scripts.Core
             _needle.transform.position = new Vector3(x, y, 0);
             _angle = Mathf.Atan2(_needle.transform.position.y - position.y, _needle.transform.position.x - position.x) * Mathf.Rad2Deg;
             _isPassingValue = true;
-            _currentValue = value;
-            _valueText.text = value.ToString(); // Pour afficher au joueur la valeur actuelle du curseur
+            _finalValue = value;
         }
 
         public void PassPrevisualizationValue(int prevValue)
