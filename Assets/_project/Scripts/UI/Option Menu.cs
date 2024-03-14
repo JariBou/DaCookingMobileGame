@@ -14,6 +14,7 @@ namespace _project.Scripts.UI
         [FormerlySerializedAs("SettingsButton")] [Header("Settings")]
         public Image _settingsButton;
         [SerializeField] private GameObject _settingsPanel;
+        [SerializeField] private GameObject _creditsPanel;
         [SerializeField] private Slider _musicSlider;
         private bool _isMusicMuted;
         [FormerlySerializedAs("MusicVolume")] public float _musicVolume;
@@ -89,6 +90,8 @@ namespace _project.Scripts.UI
         public void CloseOptionPanel()
         {
             _optionPanel.SetActive(false);
+            CloseSettingsPanel();
+            CloseCreditsPanel();
             _isOptionPanelOpen = false;
         }
 
@@ -96,10 +99,20 @@ namespace _project.Scripts.UI
         {
             _settingsPanel.SetActive(true);
         }
+        
+        public void OpenCreditsPanel()
+        {
+            _creditsPanel.SetActive(true);
+        }
 
         public void CloseSettingsPanel()
         {
             _settingsPanel.SetActive(false);
+        }
+        
+        public void CloseCreditsPanel()
+        {
+            _creditsPanel.SetActive(false);
         }
 
         public void GoToMenu()
