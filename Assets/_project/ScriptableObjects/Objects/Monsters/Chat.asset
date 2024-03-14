@@ -16,6 +16,7 @@ MonoBehaviour:
   _description: Le Chat, first monster encountered. He serve as a tutorial for the
     new players.
   _maxNumberOfMeals: 5
+  _maxRerolls: 3
   _statsMin: {x: 30, y: 30, z: 30}
   _statsMax: {x: 70, y: 70, z: 70}
   _ingredientBundles:

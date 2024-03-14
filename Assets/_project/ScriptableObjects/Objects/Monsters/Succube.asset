@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: La Succube
   _description: A sensual succubus who want to be pleased
   _maxNumberOfMeals: 5
+  _maxRerolls: 3
   _statsMin: {x: 40, y: 30, z: 50}
   _statsMax: {x: 60, y: 50, z: 70}
   _ingredientBundles:

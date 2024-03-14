@@ -15,6 +15,7 @@ MonoBehaviour:
   _name: Le Serpent
   _description: Un serpent qui a le ventre vide
   _maxNumberOfMeals: 5
+  _maxRerolls: 3
   _statsMin: {x: 80, y: 20, z: 60}
   _statsMax: {x: 100, y: 40, z: 80}
   _ingredientBundles:
