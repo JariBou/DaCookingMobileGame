@@ -21,8 +21,7 @@
 /// Resources.
 ///
 
-namespace Hellcooker
-{
+
 public static class GPGSIds
 {
         public const string achievement_poiscaille_party = "CgkI_ND8rucOEAIQBw"; // <GPGSID>
@@ -38,4 +37,4 @@ public static class GPGSIds
         public const string achievement_rassasi_pour_linstant = "CgkI_ND8rucOEAIQBA"; // <GPGSID>
 
 }
-}
+

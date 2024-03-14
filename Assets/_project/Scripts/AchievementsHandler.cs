@@ -2,7 +2,6 @@
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
 using GooglePlayGames;
-using Hellcooker;
 using UnityEngine;
 
 namespace _project.Scripts
