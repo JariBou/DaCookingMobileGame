@@ -71,7 +71,7 @@ namespace _project.Scripts.Core
                 _currentValue = (int) Mathf.Lerp(_currentValue, _finalValue, _appearCurve.Evaluate(_timer / _animationDuration));
                 _valueText.text = _currentValue.ToString();
                 float differenceBetweenAngles = Mathf.Abs(_needle.transform.rotation.eulerAngles.z - (_angle- 90));
-                if (_timer >= _animationDuration || differenceBetweenAngles < 0.01f)
+                if (_timer >= _animationDuration || differenceBetweenAngles < 0.5f)
                 {
                     _timer = 0;
                     _isPassingValue = false;
@@ -84,7 +84,7 @@ namespace _project.Scripts.Core
                 _timer2 += Time.deltaTime;
                 _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/ _previsualizationAnimationDuration));
                 float differenceBetweenAnglesPrev = Mathf.Abs(_needlePrevisualization.transform.rotation.eulerAngles.z - (_angle2 - 90));
-                if (_timer2 >= _previsualizationAnimationDuration || differenceBetweenAnglesPrev < 0.01f)
+                if (_timer2 >= _previsualizationAnimationDuration || differenceBetweenAnglesPrev < 0.5f)
                 {
                     _timer2 = 0;
                     _isPassingPrevisualizationValue = false;
