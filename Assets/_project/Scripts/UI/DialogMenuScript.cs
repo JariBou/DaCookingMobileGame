@@ -11,7 +11,8 @@ namespace _project.Scripts.UI
     {
         [SerializeField] private GameObject _menuGameObject;
         [SerializeField] private Button _actionButton;
-        [SerializeField] private TMP_Text _actionButtonText;
+        [SerializeField] private Sprite _nextMonsterSprite;
+        [SerializeField] private Sprite _retrySprite;
         [SerializeField] private TMP_Text _title;
         [SerializeField] private LastPhaseScript _lastPhaseScript;
         private MonsterInstance _monsterInstance;
@@ -28,13 +29,13 @@ namespace _project.Scripts.UI
             if (won)
             {
                 _actionButton.onClick.AddListener(NextMonster);
-                _actionButtonText.text = "Next Monster";
+                _actionButton.image.sprite = _nextMonsterSprite;
                 _title.text = "Won";
             }
             else
             {
                 _actionButton.onClick.AddListener(Retry);
-                _actionButtonText.text = "Retry";
+                _actionButton.image.sprite = _retrySprite;
                 _title.text = "Lost";
             }
         

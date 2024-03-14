@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _project.Scripts.Core;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts
 {
@@ -15,6 +16,7 @@ namespace _project.Scripts
 
         [SerializeField] private float _timeToSlide;
         [SerializeField] private AnimationCurve _slideCurve;
+        [SerializeField] private UnityEvent _onSlideCam;
         
         private Transform _monster;
         private float _timer;
@@ -57,6 +59,7 @@ namespace _project.Scripts
         {
             _currentPosIndex = (_currentPosIndex + 1) % _positions.Count;
             _isMoving = true;
+            _onSlideCam?.Invoke();
             _timer = 0;
         }
         

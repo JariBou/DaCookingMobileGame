@@ -2,7 +2,9 @@ using System;
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts.Gauges
 {
@@ -14,10 +16,36 @@ namespace _project.Scripts.Gauges
         [SerializeField] private Gauge _gaugeZ;
 
         [SerializeField] private MonsterInstance _monsterInstance;
+        [SerializeField] private CookingManager _cookingManager;
+
+        [HideInInspector] public bool HasToInvokeWinPanel;
+        [HideInInspector] public bool HasWin;
+
+        [SerializeField] private UnityEvent _onPanelInvoke, _onGaugesMoves, _onGaugesStop;
+        private bool _isGameSetUp;
+
 
         private void Start()
         {
             UpdateAll();
+        }
+
+        private void Update()
+        {
+            if (!AllGaugesAreSetUp() && _isGameSetUp)
+            {
+                _onGaugesMoves?.Invoke(); // Tremblement de cam�ra quand les jauges bougent
+            }
+            else
+            {
+                _onGaugesStop?.Invoke();  // Arr�t du tremblement de cam�ra quand les jauges se stoppent
+            }
+            if (HasToInvokeWinPanel && AllGaugesAreSetUp())
+            {
+                HasToInvokeWinPanel = false;
+                _cookingManager.InvokeWinPanel(HasWin);
+                _onPanelInvoke?.Invoke();
+            }
         }
 
         public void PrevisualizeMeal(Meal meal)
@@ -58,17 +86,31 @@ namespace _project.Scripts.Gauges
             _gaugeX.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
 
             _gaugeY.PassBoth(_monsterInstance.CurrentStats.y);
-            _gaugeY.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
+            _gaugeY.SetMarks(_monsterInstance.CurrentMarks.y, _monsterInstance.MonsterData.StatsMax.y);
 
             _gaugeZ.PassBoth(_monsterInstance.CurrentStats.z);
-            _gaugeZ.SetMarks(_monsterInstance.CurrentMarks.x, _monsterInstance.MonsterData.StatsMax.x);
+            _gaugeZ.SetMarks(_monsterInstance.CurrentMarks.z, _monsterInstance.MonsterData.StatsMax.z);
 
         }
+
+        public void UpdateGauges()
+        {
+            _isGameSetUp = true; // �a emp�che le tremblement de cam�ra de se lancer avant que les jauges ne soient pr�tes
+            /*Debug.Log("UpdateGauges");*/
+            _gaugeX.PassValue(_monsterInstance.CurrentStats.x);
+            _gaugeY.PassValue(_monsterInstance.CurrentStats.y);
+            _gaugeZ.PassValue(_monsterInstance.CurrentStats.z);
+        }
+
 
         [Button]
         public bool AllGaugesAreSetUp()
         {
-            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);
+            /*            Debug.Log(!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue);*/
+            if (!_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue)
+            {
+                _isGameSetUp = false;
+            }
             return !_gaugeX.IsPassingValue && !_gaugeY.IsPassingValue && !_gaugeZ.IsPassingValue;
         }
     }

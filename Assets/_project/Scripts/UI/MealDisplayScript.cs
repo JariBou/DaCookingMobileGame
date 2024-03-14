@@ -50,6 +50,7 @@ namespace _project.Scripts.UI
                 if (_timer >= _animationDuration)
                 {
                     _canChangeMealValues = false;
+                    _timer = 0;
                 }
             }
         }
@@ -69,8 +70,8 @@ namespace _project.Scripts.UI
             _finalHungerValue = meal.Stats.x;
             _finalSatisfactionValue = meal.Stats.y;
             _finalPowerValue = meal.Stats.z;
-            if (_mealImage) _mealImage.sprite = meal.Icon;
             if (_mealImage) _mealImage.enabled = true;
+            if (_mealImage) _mealImage.sprite = meal.Icon;
             _canChangeMealValues = true;
         }
         

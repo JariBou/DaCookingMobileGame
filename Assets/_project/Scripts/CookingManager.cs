@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using _project.Scripts.Gauges;
@@ -51,31 +51,37 @@ namespace _project.Scripts
             Debug.Log("Feeding Boss");
             bool rerolledForMeal = _monsterInstance.RerolledForMeal;
             bool result = _monsterInstance.FeedMeal(_currentMeal);
-            _gaugeGaugeManager.UpdateAll();
+            _gaugeGaugeManager.UpdateGauges();
             OnMealFed(_currentMeal, result, _monsterInstance.NumberOfMeals, rerolledForMeal);
             _currentMeal = null;
             Debug.Log($"Result: {result}");
             if (result)
             {
-                WinPanel();
+                _gaugeGaugeManager.HasWin = true;
+                _gaugeGaugeManager.HasToInvokeWinPanel = true;
             }
-            else if (_monsterInstance.NumberOfMeals >= _monsterInstance.MaxNumberOfMeals)
+            else if (_monsterInstance.NumberOfMeals > _monsterInstance.MaxNumberOfMeals)
             {
+                _gaugeGaugeManager.HasWin = false;
+                _gaugeGaugeManager.HasToInvokeWinPanel = true;
                 AchievementsHandler.UnlockAchievement(GPGSIds.achievement_faire__manger_ou_tre_mang);
-                LosePanel();
             }
             return result;
         }
 
-        private void WinPanel()
+        public void InvokeWinPanel(bool hasWin)
+        {
+            _dialogMenuScript.ActivateMenu(hasWin);
+        }
+/*        public void WinPanel()
         {
             _dialogMenuScript.ActivateMenu(true);
         }
 
-        private void LosePanel()
+        public void LosePanel()
         {
             _dialogMenuScript.ActivateMenu(false);
-        }
+        }*/
         
         public Meal CookMeal(CookingMethod cookingMethod)
         {

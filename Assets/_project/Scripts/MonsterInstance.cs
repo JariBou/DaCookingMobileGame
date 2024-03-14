@@ -6,6 +6,7 @@ using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
@@ -26,8 +27,8 @@ namespace _project.Scripts
         private BossScript _bossGetBossScript;
         public Vector3Int CurrentStats { get; private set; }
         private Vector3Int _currentMonsterStats;
-        public Vector2Int CurrentMarks { get; private set; }
-        private Vector2Int _currentMonsterMarks;
+        public Vector3Int CurrentMarks { get; private set; }
+        private Vector3Int _currentMonsterMarks;
 
         private int _maxNumberOfMeals;
         private int _numberOfMeals;
@@ -45,6 +46,9 @@ namespace _project.Scripts
         public BossScript GetBossScript() => _bossGetBossScript;
 
         [SerializeField] private List<MonsterDataSo> _monsterDatas = new List<MonsterDataSo>();
+
+        [Header("Game Feel")]
+        [SerializeField] private UnityEvent _OnMonsterFeed;
 
         private void Awake()
         {
@@ -75,7 +79,7 @@ namespace _project.Scripts
 
             _ingredientBundleIndex = Random.Range(0, dataSo.IngredientBundles.Count);
             
-            CurrentMarks = new Vector2Int(dataSo.StatsMin.x, dataSo.StatsMin.y);
+            CurrentMarks = new Vector3Int(dataSo.StatsMin.x, dataSo.StatsMin.y, dataSo.StatsMin.z);
             _currentMonsterStats = CurrentStats; // On les garde si on veut recommencer
             _currentMonsterMarks = CurrentMarks;
             
@@ -125,6 +129,7 @@ namespace _project.Scripts
         public bool FeedMeal(Meal meal)
         {
             CurrentStats += meal.Stats;
+            _OnMonsterFeed?.Invoke();
             CurrentStats = CurrentStats.ClampCustom(Vector3Int.zero, new Vector3Int(100, 100, 100));
             _numberOfMeals++;
             _rerolledForMeal = false;

@@ -26,4 +26,4 @@ MonoBehaviour:
   _sleepingSprite: {fileID: 6931307242217256925, guid: 1d8075e476d36724498a22c3f50f219c, type: 3}
   _normalSprite: {fileID: -2671832720948535059, guid: e02f30784af5dde4fb54afcad077ef2b, type: 3}
   _angrySprite: {fileID: 8765262111830313865, guid: ed40234e6d2e7fb4da138fc8b9996079, type: 3}
-  _monsterPrefab: {fileID: 1974489050927872966, guid: 8ade7a37f257c9b4e8e68626774b3456, type: 3}
+  _monsterPrefab: {fileID: 6582155432711673689, guid: 2992f0ecda616af4cb8475f45488ae8b, type: 3}
