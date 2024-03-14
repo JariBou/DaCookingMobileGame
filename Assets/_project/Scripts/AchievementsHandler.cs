@@ -8,6 +8,11 @@ namespace _project.Scripts
 {
     public class AchievementsHandler : MonoBehaviour
     {
+        private void Awake()
+        {
+            PlayGamesPlatform.Instance.Authenticate(GooglePlayServices.ProcessAuthentication);
+        }
+
         private void OnEnable()
         {
             CookingManager.MealFed += OnMealFed;
@@ -23,6 +28,7 @@ namespace _project.Scripts
         private void OnNewMonster()
         {
             //throw new NotImplementedException();
+            //TODO lost achievement
         }
 
         private void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
