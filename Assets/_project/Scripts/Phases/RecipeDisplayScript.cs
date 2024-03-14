@@ -137,7 +137,7 @@ namespace _project.Scripts.Phases
 
         private void UpdateIngredient(int order)
         {
-            if (_ingredientStats[order]._cardName.text == "") _ingredientStats[order]._onStatsAppear?.Invoke();
+            if (_ingredientStats[order]._cardImage.enabled == false) _ingredientStats[order]._onStatsAppear?.Invoke();
             _ingredientStats[order]._cardName.text = ClickUp.EnlargedSprites[order].Ingredient.name;
             _ingredientStats[order]._cardHunger.text = (ClickUp.EnlargedSprites[order].Ingredient.Stats.x > 0 ? "+" : "")  + ClickUp.EnlargedSprites[order].Ingredient.Stats.x.ToString(CultureInfo.InvariantCulture);
 
@@ -341,6 +341,7 @@ namespace _project.Scripts.Phases
             public TextMeshProUGUI _cardPower;
             public Image _cardImage;
             public UnityEvent _onStatsAppear;
+
         }
     }
 }
