@@ -39,11 +39,11 @@ public class SettingsScript : MonoBehaviour
 
         try
         {
-            _musicSlider.value = EditorPrefs.GetFloat(MusicVolume);
-            _sfxSlider.value = EditorPrefs.GetFloat(SfxVolume);
+            _musicSlider.value = PlayerPrefs.GetFloat(MusicVolume);
+            _sfxSlider.value = PlayerPrefs.GetFloat(SfxVolume);
 
-            _isMusicMuted = EditorPrefs.GetBool(MusicMuted);
-            _isSfxMuted = EditorPrefs.GetBool(SfxMuted);
+            _isMusicMuted = PlayerPrefs.GetInt(MusicMuted) == 1;
+            _isSfxMuted = PlayerPrefs.GetInt(SfxMuted) == 1;
         }
         catch (Exception e)
         {
@@ -131,8 +131,8 @@ public class SettingsScript : MonoBehaviour
         UpdateMusicButtonSprite();
         _valueSaver.MusicVolume = _musicVolume;
         
-        EditorPrefs.SetBool(MusicMuted, _isMusicMuted);
-        EditorPrefs.SetFloat(MusicVolume, _musicVolume);
+        PlayerPrefs.SetInt(MusicMuted, _isMusicMuted ? 1 : 0);
+        PlayerPrefs.SetFloat(MusicVolume, _musicVolume);
     }
     
     public void MusicButton()
@@ -154,7 +154,7 @@ public class SettingsScript : MonoBehaviour
         UpdateMusicButtonSprite();
         _valueSaver.IsMusicMuted = _isMusicMuted;
         
-        EditorPrefs.SetBool(MusicMuted, _isMusicMuted);
+        PlayerPrefs.SetInt(MusicMuted, _isMusicMuted ? 1 : 0);
     }
 
     public void SetSfxVolume()
@@ -176,8 +176,8 @@ public class SettingsScript : MonoBehaviour
         UpdateSfxButtonSprite();
         _valueSaver.SfxVolume = _sfxVolume;
         
-        EditorPrefs.SetBool(SfxMuted, _isSfxMuted);
-        EditorPrefs.SetFloat(SfxVolume, _musicVolume);
+        PlayerPrefs.SetInt(SfxMuted, _isSfxMuted ? 1 : 0);
+        PlayerPrefs.SetFloat(SfxVolume, _musicVolume);
     }
     
     public void SfxButton()
@@ -199,6 +199,6 @@ public class SettingsScript : MonoBehaviour
         UpdateSfxButtonSprite();
         _valueSaver.IsSfxMuted = _isSfxMuted;
         
-        EditorPrefs.SetBool(SfxMuted, _isSfxMuted);
+        PlayerPrefs.SetInt(SfxMuted, _isSfxMuted ? 1 : 0);
     }
 }
