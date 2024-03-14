@@ -13797,6 +13797,12 @@ MonoBehaviour:
   _currentMousePosition: {x: 0, y: 0}
   _currentTouchPosition: {x: 0, y: 0}
   _isTouch: 0
+  _OnDrag:
+    m_PersistentCalls:
+      m_Calls: []
+  _OnDrop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1596713405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13816,6 +13822,9 @@ MonoBehaviour:
   _monsterDatas:
   - {fileID: 11400000, guid: 32625af70dd6a7d47b3b178a73872ba3, type: 2}
   - {fileID: 11400000, guid: 1bf265a41dff0af46884e180e4c44014, type: 2}
+  _OnMonsterFeed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1596713407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13830,7 +13839,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuGameObject: {fileID: 1610423077}
   _actionButton: {fileID: 1011688977}
-  _actionButtonText: {fileID: 0}
+  _nextMonsterSprite: {fileID: 0}
+  _retrySprite: {fileID: 0}
   _title: {fileID: 1943835668}
   _lastPhaseScript: {fileID: 6053581124376789861}
 --- !u!114 &1596713408
@@ -14388,7 +14398,6 @@ MonoBehaviour:
   - {fileID: 357402756}
   - {fileID: 1206991701}
   _recipeDisplayScript: {fileID: 1922875642}
-  _rerollChance: 2
   _onReRoll:
     m_PersistentCalls:
       m_Calls:
@@ -15878,19 +15887,16 @@ MonoBehaviour:
   _buttonPhysical: {fileID: 1581226841}
   _buttonVisual: {fileID: 488480538}
   _rerollButton: {fileID: 1764418023}
-  _onMealAppear:
-    m_PersistentCalls:
-      m_Calls: []
-  _onMealChange:
-    m_PersistentCalls:
-      m_Calls: []
-  _onMealDisappear:
-    m_PersistentCalls:
-      m_Calls: []
   _goNextPhase:
     m_PersistentCalls:
       m_Calls: []
   _reroll: {fileID: 1764418026}
+  _onConfirmMealTrue:
+    m_PersistentCalls:
+      m_Calls: []
+  _onMealSpawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!223 &1922875643
 Canvas:
   m_ObjectHideFlags: 0
@@ -16388,6 +16394,18 @@ MonoBehaviour:
   _gaugeY: {fileID: 642731248}
   _gaugeZ: {fileID: 234454170}
   _monsterInstance: {fileID: 1596713405}
+  _cookingManager: {fileID: 0}
+  HasToInvokeWinPanel: 0
+  HasWin: 0
+  _onPanelInvoke:
+    m_PersistentCalls:
+      m_Calls: []
+  _onGaugesMoves:
+    m_PersistentCalls:
+      m_Calls: []
+  _onGaugesStop:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2023671286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17801,6 +17819,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _onSlideCam:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2098448613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18890,7 +18911,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1228602782780820330
 GameObject:
   m_ObjectHideFlags: 0
@@ -19012,6 +19033,8 @@ MonoBehaviour:
   - {fileID: 644046451}
   - {fileID: 1891981389}
   - {fileID: 1926480462}
+  _particlesColors: []
+  _particles: {fileID: 0}
 --- !u!222 &1461106471514495447
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19550,7 +19573,15 @@ PrefabInstance:
     - target: {fileID: 2969119480925033717, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1596713408}
+      objectReference: {fileID: 3002771336579231445}
+    - target: {fileID: 2969119480925033717, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 2969119480925033717, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsScript, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3015641183687632736, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -19594,7 +19625,15 @@ PrefabInstance:
     - target: {fileID: 6849658361526418741, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1596713408}
+      objectReference: {fileID: 3002771336579231445}
+    - target: {fileID: 6849658361526418741, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSfxVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 6849658361526418741, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsScript, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7032237071125533621, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -19694,16 +19733,54 @@ PrefabInstance:
     - target: {fileID: 8603141830156366965, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1596713408}
+      objectReference: {fileID: 3002771336579231445}
+    - target: {fileID: 8603141830156366965, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SfxButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8603141830156366965, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsScript, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 9166057714922073789, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1596713408}
+      objectReference: {fileID: 3002771336579231445}
+    - target: {fileID: 9166057714922073789, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MusicButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 9166057714922073789, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingsScript, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+--- !u!114 &2298655585431973953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5174336444641971584, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+  m_PrefabInstance: {fileID: 2298655585431973952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2298655585431973954 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4856513311518696943, guid: 71c2d2c6b7d911849b24a7072a6e454e, type: 3}
+  m_PrefabInstance: {fileID: 2298655585431973952}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2320535949939401777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20041,13 +20118,41 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 54917745027822687}
+  - component: {fileID: 3002771336579231445}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
+--- !u!114 &3002771336579231445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002771336579231444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0390cad34a66f4f4b939b567ab042430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _musicSlider: {fileID: 8400394301759953092}
+  _muteMusicButton: {fileID: 2298655585431973954}
+  _musicIcons:
+  - {fileID: 21300000, guid: 90bc8c00daac5e34799ac105b3f18d1e, type: 3}
+  - {fileID: 21300000, guid: e1cbf7b1a355e854696629d7d5ab8fab, type: 3}
+  - {fileID: 21300000, guid: 351604b0a0e5c7041b1c6333671127ca, type: 3}
+  - {fileID: 21300000, guid: ef66f932bafac7d46a6f6881029f9923, type: 3}
+  _sfxSlider: {fileID: 2946526151655077881}
+  _muteSfxButton: {fileID: 2298655585431973953}
+  _sfxIcons:
+  - {fileID: 21300000, guid: ec040eccf3f480d40b919535b1f9a9ae, type: 3}
+  - {fileID: 21300000, guid: 9d374bde5a487414dab42ec14f3527a5, type: 3}
+  - {fileID: 21300000, guid: 2f1c65a3916501a45b8b778c7efa6bb3, type: 3}
+  - {fileID: 21300000, guid: ba59e8c8514d28c4a97ae39cc46ee89d, type: 3}
+  _valueSaver: {fileID: 0}
 --- !u!224 &3069930943596734208
 RectTransform:
   m_ObjectHideFlags: 0
