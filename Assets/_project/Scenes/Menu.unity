@@ -2267,6 +2267,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0390cad34a66f4f4b939b567ab042430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _musicSlider: {fileID: 1416291981}
+  _muteMusicButton: {fileID: 1982651582}
+  _musicIcons:
+  - {fileID: 21300000, guid: 90bc8c00daac5e34799ac105b3f18d1e, type: 3}
+  - {fileID: 21300000, guid: e1cbf7b1a355e854696629d7d5ab8fab, type: 3}
+  - {fileID: 21300000, guid: 351604b0a0e5c7041b1c6333671127ca, type: 3}
+  - {fileID: 21300000, guid: ef66f932bafac7d46a6f6881029f9923, type: 3}
+  _sfxSlider: {fileID: 1801168433}
+  _muteSfxButton: {fileID: 1911758042}
+  _sfxIcons:
+  - {fileID: 21300000, guid: ec040eccf3f480d40b919535b1f9a9ae, type: 3}
+  - {fileID: 21300000, guid: 9d374bde5a487414dab42ec14f3527a5, type: 3}
+  - {fileID: 21300000, guid: 2f1c65a3916501a45b8b778c7efa6bb3, type: 3}
+  - {fileID: 21300000, guid: ba59e8c8514d28c4a97ae39cc46ee89d, type: 3}
+  _valueSaver: {fileID: 0}
 --- !u!1 &1416291979
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,9 +2374,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1389782929}
-        m_TargetAssemblyTypeName: _project.Scripts.UI.MainMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1389782933}
+        m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
+        m_MethodName: SetMusicVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2650,9 +2665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _optionMenu: {fileID: 0}
-  _valueSaver: {fileID: 2028678877}
-  _musicSlider: {fileID: 1416291981}
-  _sfxSlider: {fileID: 1801168433}
 --- !u!1 &1610854009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,9 +2890,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559772676}
-        m_TargetAssemblyTypeName: _project.Scripts.UI.MainMenu, Assembly-CSharp
-        m_MethodName: SetSFXVolume
+      - m_Target: {fileID: 1389782933}
+        m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
+        m_MethodName: SetSfxVolume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3136,8 +3148,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107.40002, y: -0.016016006}
-  m_SizeDelta: {x: 24.62, y: 18.033}
+  m_AnchoredPosition: {x: 101.4, y: -0.0000030994}
+  m_SizeDelta: {x: 33.2567, y: 24.3589}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1911758041
 MonoBehaviour:
@@ -3183,8 +3195,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559772676}
-        m_TargetAssemblyTypeName: _project.Scripts.UI.MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1389782933}
+        m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
         m_MethodName: SfxButton
         m_Mode: 1
         m_Arguments:
@@ -3268,8 +3280,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107.4, y: 0.1}
-  m_SizeDelta: {x: 24.62, y: 18.033}
+  m_AnchoredPosition: {x: 100.9, y: -0.0000081062}
+  m_SizeDelta: {x: 33.4189, y: 24.4778}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1982651581
 MonoBehaviour:
@@ -3315,8 +3327,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1559772676}
-        m_TargetAssemblyTypeName: _project.Scripts.UI.MainMenu, Assembly-CSharp
+      - m_Target: {fileID: 1389782933}
+        m_TargetAssemblyTypeName: SettingsScript, Assembly-CSharp
         m_MethodName: MusicButton
         m_Mode: 1
         m_Arguments:
