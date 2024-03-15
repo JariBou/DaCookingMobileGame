@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -66,7 +67,7 @@ namespace _project.Scripts.Core
         {
             if (_isPassingValue)
             {
-                _timer += Time.deltaTime;
+                _timer = Math.Clamp(_timer + Time.deltaTime, 0, _animationDuration);
                 _needle.transform.rotation = Quaternion.Lerp(_needle.transform.rotation, Quaternion.Euler(0, 0, _angle - 90), _appearCurve.Evaluate(_timer / _animationDuration));
                 _currentValue = (int) Mathf.Lerp(_currentValue, _finalValue, _appearCurve.Evaluate(_timer / _animationDuration));
                 _valueText.text = _currentValue.ToString();
@@ -81,7 +82,7 @@ namespace _project.Scripts.Core
             }
             if (_isPassingPrevisualizationValue)
             {
-                _timer2 += Time.deltaTime;
+                _timer2 = Math.Clamp(_timer2 + Time.deltaTime, 0, _previsualizationAnimationDuration);
                 _needlePrevisualization.transform.rotation = Quaternion.Lerp(_needlePrevisualization.transform.rotation, Quaternion.Euler(0, 0, _angle2 - 90),_appearCurve.Evaluate(_timer2/ _previsualizationAnimationDuration));
                 float differenceBetweenAnglesPrev = Mathf.Abs(_needlePrevisualization.transform.rotation.eulerAngles.z - (_angle2 - 90));
                 if (_timer2 >= _previsualizationAnimationDuration || differenceBetweenAnglesPrev < 0.5f)
