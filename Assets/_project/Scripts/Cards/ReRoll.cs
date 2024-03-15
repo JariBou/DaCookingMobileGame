@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using _project.ScriptableObjects.Scripts;
@@ -7,6 +8,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 using _project.Scripts.UI;
+using TMPro;
+using UnityEngine.UI;
 
 namespace _project.Scripts.Cards
 {
@@ -22,6 +25,11 @@ namespace _project.Scripts.Cards
         private bool _isRerolling = false;
         [FormerlySerializedAs("_OnReRoll")] [SerializeField] private UnityEvent _onReRoll;
         private SpriteRenderer _spriteRenderer;
+        
+        [Header("Buttons")]
+        [SerializeField] private Button _rerollButton;
+        [SerializeField] private TMP_Text _rerollNumberText;
+        [SerializeField] private List<Sprite> _buttonSprites;
 
         public ClickUp[] Cards => _cards;
 
@@ -48,13 +56,29 @@ namespace _project.Scripts.Cards
 
         public void Reroll()
         {
-            if (OptionMenu.Instance.IsOptionPanelOpen) return;
+            if (OptionMenu.Instance.IsOptionPanelOpen || _isRerolling) return;
             if (RerollCount >= MaxRerollChances || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
             _monsterInstance.AddReroll();
             ReRollBundle();
+            StartCoroutine(DelayReRoll());
             _onReRoll?.Invoke();
         }
+
+        private IEnumerator DelayReRoll()
+        {
+            _isRerolling = true;
+            yield return new WaitForSeconds(1);
+            _isRerolling = false;
+        }
+
+        private void UpdateButtonAppearance()
+        {
+            _rerollButton.image.sprite = _buttonSprites[RerollCount >= MaxRerollChances ? 0 : 1];
+            
+            _rerollNumberText.text = (MaxRerollChances - RerollCount).ToString();
+        }
+        
         public void ReRollBundle()
         {
             List<IngredientSo> possibleIngredients = new List<IngredientSo>(_monsterInstance.GetIngredients());
@@ -85,6 +109,8 @@ namespace _project.Scripts.Cards
                     break; // Sortez de la boucle si aucun ingr�dient n'est disponible
                 }
             }
+            UpdateButtonAppearance();
+
         }
 
         /*        public void ReRollBundle()
@@ -150,6 +176,8 @@ namespace _project.Scripts.Cards
                     break; // Sortez de la boucle si aucun ingr�dient n'est disponible
                 }
             }
+
+            UpdateButtonAppearance();
         }
     }
 }

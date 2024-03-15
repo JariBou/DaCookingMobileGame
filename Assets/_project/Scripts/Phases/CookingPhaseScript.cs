@@ -6,6 +6,7 @@ using _project.Scripts.Core;
 using _project.Scripts.Meals;
 using _project.Scripts.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using static UnityEngine.ParticleSystem;
 
@@ -17,10 +18,12 @@ namespace _project.Scripts.Phases
         [SerializeField] private CookingParamsSo _cookingParams;
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private MealDisplayScript _nextPhaseMealDisplayScript;
-        [SerializeField] private Button _button;
         [SerializeField, Tooltip("Reference images in order")] private List<GameObject> _hovenImages;
         [SerializeField, Tooltip("Reference colors in order")] private List<Color> _particlesColors;
         [SerializeField] private ParticleSystem _particles;
+        [Header("Button")]
+        [FormerlySerializedAs("_button")] [SerializeField] private Button _nextButton;
+        [SerializeField] private List<Sprite> _buttonSprites;
 
         public CookingMethod SelectedCookingMethod { get; set; }
 
@@ -57,11 +60,12 @@ namespace _project.Scripts.Phases
             {
                 case CookingMethod.Method1:
                     _particles?.Stop();
-                    if (burstCount > 0) bursts[0].count = 250; // Supposons qu'il y ait au moins un burst à modifier
+                    if (burstCount > 0) bursts[0].count = 250; // Supposons qu'il y ait au moins un burst ï¿½ modifier
                     emission.SetBursts(bursts, burstCount);
                     _particles.startColor = _particlesColors[0];
                     _particles?.Play();
                     _hovenImages[0].SetActive(true);
+                    _nextButton.image.sprite = _buttonSprites[1];
                     break;
                 case CookingMethod.Method2:
                     _particles?.Stop();
@@ -70,6 +74,7 @@ namespace _project.Scripts.Phases
                     _particles.startColor = _particlesColors[1];
                     _particles?.Play();
                     _hovenImages[1].SetActive(true);
+                    _nextButton.image.sprite = _buttonSprites[1];
                     break;
                 case CookingMethod.Method3:
                     _particles?.Stop();
@@ -78,6 +83,7 @@ namespace _project.Scripts.Phases
                     _particles.startColor = _particlesColors[2];
                     _particles?.Play();
                     _hovenImages[2].SetActive(true);
+                    _nextButton.image.sprite = _buttonSprites[1];
                     break;
                 case CookingMethod.Null:
                     break;
@@ -99,10 +105,11 @@ namespace _project.Scripts.Phases
 
         private IEnumerator ResetCooking()
         {
-            _button.gameObject.SetActive(false);
+            _nextButton.gameObject.SetActive(false);
             yield return new WaitForSeconds(3);
-            _button.gameObject.SetActive(true);
+            _nextButton.gameObject.SetActive(true);
             SelectedCookingMethod = CookingMethod.Null;
+            _nextButton.image.sprite = _buttonSprites[0];
             _resultMealDisplayScript.ResetDisplay();
         }
     }

@@ -50,8 +50,11 @@ namespace _project.Scripts.Phases
         [SerializeField] private AnimationCurve AnimationCurve;
         [SerializeField] private TMP_Text _finalMealName;
         [SerializeField] private Image _finalMealImage;
+        
+        [Header("Buttons")]
         [SerializeField] private Button _buttonPhysical;
         [SerializeField] private Button _buttonVisual;
+        [SerializeField] private List<Sprite> _buttonSprites;
         [SerializeField] private Button _rerollButton;
 
         [Header("Game Feel")]
@@ -120,9 +123,11 @@ namespace _project.Scripts.Phases
                 ChangeFinalMealStats(_currentMeal.Stats.x, _currentMeal.Stats.y, _currentMeal.Stats.z);
 
                 _cookingManager.GaugeManager.PrevisualizeMeal(_currentMeal);
+                _buttonVisual.image.sprite = _buttonSprites[1];
             }
             else
             {
+                _buttonVisual.image.sprite = _buttonSprites[0];
                 _cookingManager.GaugeManager.RestartPrevGauges();
                 _finalMealImage.sprite = null;
                 _finalMealImage.sprite = null;
@@ -170,6 +175,7 @@ namespace _project.Scripts.Phases
             _buttonPhysical.gameObject.SetActive(false);
             _buttonVisual.gameObject.SetActive(false);
             _rerollButton.gameObject.SetActive(false);
+            _buttonVisual.image.sprite = _buttonSprites[0];
 
             List<Vector2> startPositions = new List<Vector2>(3)
             {
