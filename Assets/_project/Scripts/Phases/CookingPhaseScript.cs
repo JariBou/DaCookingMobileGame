@@ -7,6 +7,7 @@ using _project.Scripts.Meals;
 using _project.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 
 namespace _project.Scripts.Phases
 {
@@ -45,24 +46,37 @@ namespace _project.Scripts.Phases
                 _hovenImages[i].SetActive(false);
             }
             ParticleSystem.MainModule settings = _particles.main;
+
+
+
+            ParticleSystem.EmissionModule emission = _particles.emission;
+            ParticleSystem.Burst[] bursts = new ParticleSystem.Burst[emission.burstCount];
+            int burstCount = emission.GetBursts(bursts);
+
             switch (SelectedCookingMethod)
             {
                 case CookingMethod.Method1:
-                    _particles.Stop();
-                    settings.startColor = _particlesColors[0];
-                    _particles.Play();
+                    _particles?.Stop();
+                    if (burstCount > 0) bursts[0].count = 250; // Supposons qu'il y ait au moins un burst à modifier
+                    emission.SetBursts(bursts, burstCount);
+                    _particles.startColor = _particlesColors[0];
+                    _particles?.Play();
                     _hovenImages[0].SetActive(true);
                     break;
                 case CookingMethod.Method2:
-                    _particles.Stop();
-                    settings.startColor = _particlesColors[1];
-                    _particles.Play();
+                    _particles?.Stop();
+                    if (burstCount > 0) bursts[0].count = 500;
+                    emission.SetBursts(bursts, burstCount);
+                    _particles.startColor = _particlesColors[1];
+                    _particles?.Play();
                     _hovenImages[1].SetActive(true);
                     break;
                 case CookingMethod.Method3:
-                    _particles.Stop();
-                    settings.startColor = _particlesColors[2];
-                    _particles.Play();
+                    _particles?.Stop();
+                    if (burstCount > 0) bursts[0].count = 1000;
+                    emission.SetBursts(bursts, burstCount);
+                    _particles.startColor = _particlesColors[2];
+                    _particles?.Play();
                     _hovenImages[2].SetActive(true);
                     break;
                 case CookingMethod.Null:
@@ -70,8 +84,9 @@ namespace _project.Scripts.Phases
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
         }
-        
+
         public void GoToNextPhase()
         {
             if (SelectedCookingMethod == CookingMethod.Null) return;

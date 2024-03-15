@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
-  m_Name: UnicornHead
+  m_Name: Pomme d'amour
   m_EditorClassIdentifier: 
-  _name: "T\xEAte de Licorne"
-  _ingredientFamily: 0
-  _stats: {x: 17, y: -15, z: -6}
+  _name: Pomme d'amour
+  _ingredientFamily: 1
+  _stats: {x: 6, y: 17, z: -9}
   _randomAddedstats: {x: 0, y: 0, z: 0}
-  _icon: {fileID: 21300000, guid: 568ee5e95bf17f340b6366e37b5fe405, type: 3}
-  _description: 'Unicorn Head: Rare ingredient offering an explosion of magical flavors,
-    promising a magical culinary experience.'
+  _icon: {fileID: 4489620537743764778, guid: 32d15ce9bc2a3214bbd6cb3b9824b2ae, type: 3}
+  _description: "\rMandrake: A mystical plant with potent magical properties, offering
+    deep, earthy flavors and a hint of enchantment when prepared."

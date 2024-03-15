@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
+  m_Name: Tentacru
+  m_EditorClassIdentifier: 
+  _name: Tentacru
+  _ingredientFamily: 2
+  _stats: {x: -10, y: 4, z: 12}
+  _randomAddedstats: {x: 0, y: 0, z: 0}
+  _icon: {fileID: -8623156413218306376, guid: 13cb1896955827a41ac1a1b97e5608ea, type: 3}
+  _description: 'Octopus: A versatile seafood with a unique taste and texture, often
+    tenderized and cooked to achieve a balance between its natural chewiness and
+    succulence.'

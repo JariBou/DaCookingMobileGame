@@ -16,7 +16,7 @@ namespace _project.Scripts
             AchievementsHandler.UnlockAchievement(GPGSIds.achievement_bienvenue_en_enfer);
         }
 
-        private void ProcessAuthentication(SignInStatus status) {
+        public static void ProcessAuthentication(SignInStatus status) {
             if (status == SignInStatus.Success) {
                 // Continue with Play Games Services
             } else {

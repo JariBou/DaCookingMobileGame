@@ -3,6 +3,7 @@ using _project.Scripts.Core;
 using _project.Scripts.Gauges;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace _project.Scripts.UI
 {
@@ -25,6 +26,9 @@ namespace _project.Scripts.UI
         [Header("Particles")]
         public ParticleSystem ParticleSystem;
 
+        [Header("GameFeel")]
+        [SerializeField] private UnityEvent _OnCondimentsClick;
+
         [Header("References")]
         [SerializeField] private CookingManager _cookingManager;
         [SerializeField] private MealDisplayScript _mealDisplayScript;
@@ -38,6 +42,14 @@ namespace _project.Scripts.UI
         {
             _initialPosition = transform.position;
             ParticleSystem.Stop();
+        }
+
+        private void OnMouseDown()
+        {
+            if (_OnCondimentsClick != null)
+            {
+                _OnCondimentsClick.Invoke();
+            }
         }
 
         // Update is called once per frame

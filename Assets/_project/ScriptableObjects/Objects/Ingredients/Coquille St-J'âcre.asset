@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
-  m_Name: Mouse
+  m_Name: "Coquille St-J'\xE2cre"
   m_EditorClassIdentifier: 
-  _name: Rat
-  _ingredientFamily: 0
-  _stats: {x: 12, y: -14, z: 6}
+  _name: "Coquille St-J'\xE2cre"
+  _ingredientFamily: 2
+  _stats: {x: -14, y: 8, z: 19}
   _randomAddedstats: {x: 0, y: 0, z: 0}
-  _icon: {fileID: 21300000, guid: 9a2b6aec2c7b28147a48160d9a840e08, type: 3}
-  _description: 'Mouse: A fictional dish from a whimsical or fantasy culinary world,
-    where it might be prepared with imaginative ingredients for a unique, enchanting
-    flavor experience.'
+  _icon: {fileID: 21300000, guid: 3434c1318eb4d994a884e967d385627e, type: 3}
+  _description: 'Scallop: A prized seafood delicacy known for its sweet, delicate
+    flavor and tender, succulent texture, often seared to golden perfection.'
