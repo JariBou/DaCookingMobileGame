@@ -1,7 +1,6 @@
 using _project.Scripts.Phases;
 using NaughtyAttributes;
 using TMPro;
-using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
