@@ -13,7 +13,7 @@ namespace _project.ScriptableObjects.Scripts
         [SerializeField, TextArea] private string _description;
         [FormerlySerializedAs("_numberOfMeals")] [SerializeField] private int _maxNumberOfMeals;
         [SerializeField] private int _maxRerolls;
-        
+
         [SerializeField, Tooltip("Min stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMin;
         [SerializeField, Tooltip("Max stats to have for that stat to win"), TabProperty("Stats Config")] private Vector3Int _statsMax;
         [SerializeField, TabProperty("Stats Config")] private List<IngredientsBundleSo> _ingredientBundles;

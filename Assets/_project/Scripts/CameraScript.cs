@@ -23,6 +23,7 @@ namespace _project.Scripts
         
         private Transform _monster;
         private float _timer;
+        private float _timer2;
         private bool _isMoving;
         private bool _isScaling;
         public int CurrentIndex => _currentPosIndex;
@@ -38,7 +39,7 @@ namespace _project.Scripts
 
         private IEnumerator ScaleMonster()
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1f);
             _isScaling = true;
         }
         public void PassMonsterTransform(Transform monsterTransform)
@@ -50,6 +51,16 @@ namespace _project.Scripts
         // Update is called once per frame
         void Update()
         {
+            if (_isScaling)
+            {
+                _timer2 = Math.Clamp(_timer2 + Time.deltaTime, 0, _timeToSlide);
+                _monster.localScale = Vector3.Lerp(_scales[Utils.Mod(_currentScaleIndex - 1, _scales.Count)],
+                                       _scales[_currentScaleIndex], _slideCurve.Evaluate(_timer2 / _timeToSlide));
+                if (Math.Abs(_timer2 - _timeToSlide) < 0.00001)
+                {
+                    _isScaling = false;
+                }
+            }
             if (!_isMoving) return;
 
             _timer = Math.Clamp(_timer + Time.deltaTime, 0, _timeToSlide);
@@ -59,8 +70,7 @@ namespace _project.Scripts
             _monster.position = Vector3.Lerp(_monsterPositions[Utils.Mod(_currentPosIndex - 1, _monsterPositions.Count)],
                 _monsterPositions[_currentPosIndex], _slideCurve.Evaluate(_timer / _timeToSlide));
 
-            _monster.localScale = Vector3.Lerp(_scales[Utils.Mod(_currentScaleIndex - 1, _scales.Count)],
-                               _scales[_currentScaleIndex], _slideCurve.Evaluate(_timer / _timeToSlide));
+
 
             if (Math.Abs(_timer - _timeToSlide) < 0.00001)
             {
@@ -75,8 +85,10 @@ namespace _project.Scripts
             _currentPosIndex = 0;
             _currentScaleIndex = 0;
             _isMoving = true;
+            _isScaling = true;
             _onSlideCam?.Invoke();
             _timer = 0;
+            _timer2 = 0;
         }
         
         [Button]
@@ -87,6 +99,8 @@ namespace _project.Scripts
             _isMoving = true;
             _onSlideCam?.Invoke();
             _timer = 0;
+            _timer2 = 0;
+            StartCoroutine(ScaleMonster());
         }
         
        

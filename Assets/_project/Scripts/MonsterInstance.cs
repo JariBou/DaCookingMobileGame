@@ -20,6 +20,8 @@ namespace _project.Scripts
         [SerializeField] private GaugeHandler _gaugeHandler;
 
         public static event Action NewMonster;
+
+        [SerializeField] private UnityEvent _onCatSpawn, _onSnakeSpawn, _onSuccubesSpawn;
         
         private GameObject _monsterGameObject;
         private int _ingredientBundleIndex;
@@ -88,6 +90,21 @@ namespace _project.Scripts
             // TODO
             GetBossScript().SetState(GetBossState());
             _gaugeHandler.UpdateAll();
+            Debug.Log(dataSo.name);
+            switch (dataSo.name)
+            {
+                case "Chat":
+                    _onCatSpawn?.Invoke();
+                    break;
+                case "Serpent":
+                    _onSnakeSpawn?.Invoke();
+                    break;
+                case "Succube":
+                    _onSuccubesSpawn?.Invoke();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             
             //OnNewMonster();
         }
