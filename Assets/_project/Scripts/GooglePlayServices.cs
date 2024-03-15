@@ -25,5 +25,10 @@ namespace _project.Scripts
                 // PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
             }
         }
+
+        public static void ShowAchievements()
+        {
+            PlayGamesPlatform.Instance.ShowAchievementsUI();
+        }
     }
 }
