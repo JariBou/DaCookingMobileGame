@@ -144,7 +144,6 @@ namespace _project.Scripts.Cards
                         EnlargedSprites[0].StartMoving(EnlargedSprites[0].InitialPosition, EnlargedSprites[0].InitialScale, false);
                         EnlargedSprites[0]._padlock.SetActive(false);
                         EnlargedSprites.RemoveAt(0);
-                        _recipeDisplayScript.UpdateMenu();
                     }
 
                     StartMoving(_initialPosition + Vector3.up * _heightOffset, new Vector3(_initialScale.x * _scaleMultiplier, _initialScale.y * _scaleMultiplier, _initialScale.z));
