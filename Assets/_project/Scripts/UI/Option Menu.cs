@@ -62,15 +62,15 @@ namespace _project.Scripts.UI
 
         void Start()
         {
-            // if (_valueSaver != null)
-            // {
-            //     _isMusicMuted = _valueSaver.IsMusicMuted;
-            //     _isSfxMuted = _valueSaver.IsSfxMuted;
-            //     _musicSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _isMusicMuted);
-            //     _sfxSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _isSfxMuted);
-            //     _musicVolume = _valueSaver.MusicVolume;
-            //     _sfxVolume = _valueSaver.SfxVolume;
-            // }
+             if (_valueSaver != null)
+             {
+                 _isMusicMuted = _valueSaver.IsMusicMuted;
+                 _isSfxMuted = _valueSaver.IsSfxMuted;
+                 _musicSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Music, _isMusicMuted);
+                 _sfxSlider.value = _soundManager.GetTrackVolume(MMSoundManager.MMSoundManagerTracks.Sfx, _isSfxMuted);
+                 _musicVolume = _valueSaver.MusicVolume;
+                 _sfxVolume = _valueSaver.SfxVolume;
+             }
         }
 
         // Update is called once per frame
