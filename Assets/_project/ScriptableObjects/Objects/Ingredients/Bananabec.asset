@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
+  m_Name: Bananabec
+  m_EditorClassIdentifier: 
+  _name: Bananabec
+  _ingredientFamily: 1
+  _stats: {x: 3, y: 14, z: -17}
+  _randomAddedstats: {x: 0, y: 0, z: 0}
+  _icon: {fileID: 8528900814016265967, guid: a3b3fbc83d1e68840b63b8c616848df6, type: 3}
+  _description: "\rMandrake: A mystical plant with potent magical properties, offering
+    deep, earthy flavors and a hint of enchantment when prepared."

@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
-  m_Name: Heart
+  m_Name: "Trompe glac\xE9e"
   m_EditorClassIdentifier: 
-  _name: Coeur Humain
+  _name: "Trompe glac\xE9e"
   _ingredientFamily: 0
-  _stats: {x: 13, y: -12, z: 7}
+  _stats: {x: 18, y: -16, z: -5}
   _randomAddedstats: {x: 0, y: 0, z: 0}
-  _icon: {fileID: 21300000, guid: 9c95e3b5cfc49bc43bc46f9eb31642c0, type: 3}
-  _description: 'Heart: A symbol of love and courage, this vital organ is also a
-    culinary delicacy, offering rich, robust flavors and a tender texture when expertly
-    cooked.'
+  _icon: {fileID: -2028468560172318127, guid: 5b548610ced14ea41b4a694ac344c682, type: 3}
+  _description: 'Unicorn Head: Rare ingredient offering an explosion of magical flavors,
+    promising a magical culinary experience.'

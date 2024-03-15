@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e213b2b8d7446d449d67cebb17865c8, type: 3}
-  m_Name: SkeletonFish
+  m_Name: Mandragore
   m_EditorClassIdentifier: 
-  _name: Poisson Spectrale
-  _ingredientFamily: 2
-  _stats: {x: -11, y: 4, z: 11}
+  _name: Mandragore
+  _ingredientFamily: 1
+  _stats: {x: 5, y: 16, z: -10}
   _randomAddedstats: {x: 0, y: 0, z: 0}
-  _icon: {fileID: 21300000, guid: 41eb6a1df59a2f946b60e7b7a5c0f2c2, type: 3}
-  _description: 'Skeleton Fish: Mysterious ingredient from the depths, known for
-    its crystalline texture and ethereal essence, awakening secret ocean aromas.'
+  _icon: {fileID: 21300000, guid: 3932b06eafa65dd4aa77f83d53ecd935, type: 3}
+  _description: "\rMandrake: A mystical plant with potent magical properties, offering
+    deep, earthy flavors and a hint of enchantment when prepared."
