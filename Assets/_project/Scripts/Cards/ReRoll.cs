@@ -81,7 +81,12 @@ namespace _project.Scripts.Cards
         
         public void ReRollBundle()
         {
-            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_monsterInstance.GetIngredients());
+            ReRollBundle(_monsterInstance.GetIngredients());
+        }
+
+        public void ReRollBundle(IEnumerable<IngredientSo> ingredients)
+        {
+            List<IngredientSo> possibleIngredients = new List<IngredientSo>(ingredients);
 
             foreach (IngredientSo ingredientSo in GetSelectedIngredients())
             {
@@ -110,8 +115,8 @@ namespace _project.Scripts.Cards
                 }
             }
             UpdateButtonAppearance();
-
         }
+        
 
         /*        public void ReRollBundle()
                 {
@@ -154,7 +159,12 @@ namespace _project.Scripts.Cards
 
         public void RedistributeCards()
         {
-            List<IngredientSo> possibleIngredients = new List<IngredientSo>(_monsterInstance.GetIngredients());
+            RedistributeCards(_monsterInstance.GetIngredients());
+        }
+        
+        public void RedistributeCards(IEnumerable<IngredientSo> ingredients)
+        {
+            List<IngredientSo> possibleIngredients = new List<IngredientSo>(ingredients);
             
             foreach (ClickUp clickUp in Cards)
             {

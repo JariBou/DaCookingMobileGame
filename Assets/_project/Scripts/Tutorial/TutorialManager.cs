@@ -7,7 +7,6 @@ using _project.Scripts.UI;
 using MoreMountains.Tools;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace _project.Scripts.Tutorial
 {

@@ -15451,34 +15451,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogDisplayScript: {fileID: 423328632}
   _dialogInfos:
-  - _title: Element 0
+  - _actionState: 0
+    _title: Element 0
     _dialogText: Dialog 0 text
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
-    _actionState: 0
-  - _title: Hidden Element
+  - _actionState: 1
+    _title: Hidden Element
     _dialogText: Hidden thing
     _catImage: {fileID: 21300000, guid: 300d0e59fe472384b9e85015b9cba6f1, type: 3}
     _shouldVeil: 0
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
-    _actionState: 1
-  - _title: Element 2
+  - _actionState: 0
+    _title: Element 2
     _dialogText: Dialog 2 text
     _catImage: {fileID: 21300000, guid: 3c17cadd1f22b694599cac603738934a, type: 3}
     _shouldVeil: 1
     _hasButton: 0
     _position: {x: 0, y: 0, z: 0}
-    _actionState: 0
-  - _title: Element 3
+  - _actionState: 0
+    _title: Element 3
     _dialogText: Dialog 3 text
     _catImage: {fileID: 21300000, guid: 3c17cadd1f22b694599cac603738934a, type: 3}
     _shouldVeil: 0
     _hasButton: 0
     _position: {x: 0, y: 0, z: 0}
-    _actionState: 0
 --- !u!114 &1266598264
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,6 +33,8 @@ namespace _project.Scripts.Tutorial
                 Unveil();
             }
 
+            _actionButton.gameObject.SetActive(dialogInfo.HasButton);
+
             _displayTransform.position = dialogInfo.Position;
             
             return UpdateInfo(dialogInfo.CatImage, dialogInfo.Title, dialogInfo.DialogText);

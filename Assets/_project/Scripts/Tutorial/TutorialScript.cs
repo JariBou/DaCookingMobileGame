@@ -17,6 +17,7 @@ namespace _project.Scripts.Tutorial
         private int _currDialogIndex;
 
 
+        [Button]
         public void NextDialog()
         {
             _currDialogIndex++;
@@ -84,13 +85,13 @@ namespace _project.Scripts.Tutorial
     [Serializable]
     public class DialogInfo
     {
+        [SerializeField] private ActionState _actionState;
         [SerializeField] private String _title;
         [SerializeField, TextArea] private String _dialogText;
         [SerializeField] private Sprite _catImage;
         [SerializeField] private bool _shouldVeil;
         [SerializeField] private bool _hasButton;
         [SerializeField] private Vector3 _position;
-        [SerializeField] private ActionState _actionState;
 
         public string Title => _title;
         public string DialogText => _dialogText;
