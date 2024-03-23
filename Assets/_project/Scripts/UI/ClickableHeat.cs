@@ -30,6 +30,8 @@ namespace _project.Scripts.UI
         private bool _IsClick;
         public bool IsClick => _IsClick;
 
+        public CookingMethod Method => _cookingMethod;
+
         private void Start()
         {
             Vector3 multipliers = GetMultipliers();
@@ -48,7 +50,7 @@ namespace _project.Scripts.UI
                 StartCoroutine(GrayImage());
             }
 
-            _manager.SelectedCookingMethod = _cookingMethod;
+            _manager.SelectedCookingMethod = Method;
             _manager.UpdateMealDisplay();
             
             if (_OnHeatClick != null)
@@ -67,7 +69,7 @@ namespace _project.Scripts.UI
 
         public Vector3 GetMultipliers()
         {
-            return _manager.CookingParams.GetMultiplier(_cookingMethod);
+            return _manager.CookingParams.GetMultiplier(Method);
         }
 
         private IEnumerator GrayImage()

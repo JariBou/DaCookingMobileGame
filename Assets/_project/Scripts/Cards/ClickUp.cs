@@ -130,6 +130,7 @@ namespace _project.Scripts.Cards
             if (_isPassing || _isAppearing || _isLocked || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
             DoClick();
+            
         }
 
         public void DoClick()
