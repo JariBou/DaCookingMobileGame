@@ -62,6 +62,8 @@ namespace _project.Scripts.Phases
         [SerializeField] private ReRoll _reroll;
         [SerializeField] private UnityEvent _onConfirmMealTrue, _onMealSpawn;
 
+        public static event Action MealConfirm; 
+
 
         // Start is called before the first frame update
         private void Start()
@@ -160,6 +162,7 @@ namespace _project.Scripts.Phases
             {
                 StartCoroutine(SlideIngredients());
                 _onConfirmMealTrue?.Invoke();
+                MealConfirm?.Invoke();
                 Debug.Log("Going to Phase2");
                 _nextPhaseMealDisplay.UpdateDisplay(_currentMeal);
                 _goNextPhase?.Invoke();

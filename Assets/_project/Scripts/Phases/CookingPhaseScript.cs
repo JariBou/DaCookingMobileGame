@@ -29,6 +29,9 @@ namespace _project.Scripts.Phases
 
         public CookingParamsSo CookingParams => _cookingParams;
         public CookingManager CookingManager => _cookingManager;
+        
+        public static event Action CookingMethodConfirm; 
+
 
         private void Start()
         {
@@ -99,6 +102,7 @@ namespace _project.Scripts.Phases
             
             _cookingManager.CookMeal(SelectedCookingMethod);
             _cookingManager.Camera.NextPhase();
+            CookingMethodConfirm?.Invoke();
             _nextPhaseMealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
             StartCoroutine(ResetCooking());
         }

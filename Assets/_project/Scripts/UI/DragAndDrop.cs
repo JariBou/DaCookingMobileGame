@@ -155,7 +155,7 @@ namespace _project.Scripts.UI
                     _hit = hit;
                     try
                     {
-                       _hit.GetComponent<DragableObject>().ParticleSystem.Play();
+                       _hit.GetComponent<SeasoningScript>().ParticleSystem.Play();
                     }
                     catch (Exception e)
                     {
@@ -193,8 +193,8 @@ namespace _project.Scripts.UI
                 }
                 try
                 {
-                    _hit.transform.position = _hit.GetComponent<DragableObject>().InitialPosition;
-                    _hit.GetComponent<DragableObject>().ParticleSystem.Stop();
+                    _hit.transform.position = _hit.GetComponent<SeasoningScript>().InitialPosition;
+                    _hit.GetComponent<SeasoningScript>().ParticleSystem.Stop();
                 }
                 catch (Exception e)
                 {
@@ -224,7 +224,7 @@ namespace _project.Scripts.UI
         private void AddCond()
         {
            /* Debug.Log("Add cond");*/
-            _hit.GetComponent<DragableObject>().AddSeosoning();
+            _hit.GetComponent<SeasoningScript>().AddSeosoning();
         }
 
         private void Dropped(GameObject hitGameObject)

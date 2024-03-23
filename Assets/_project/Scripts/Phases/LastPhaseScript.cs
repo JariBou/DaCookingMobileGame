@@ -22,7 +22,7 @@ namespace _project.Scripts.Phases
         [SerializeField] private float _zoomTime;
         [SerializeField] private AnimationCurve _uiSlideCurve;
         [SerializeField] private ReRoll _reRoll;
-        [SerializeField] private List<DragableObject> _condiments;
+        [SerializeField] private List<SeasoningScript> _condiments;
         [SerializeField] private Button _button;
 
         private Vector2 _startBgScale;
@@ -54,7 +54,7 @@ namespace _project.Scripts.Phases
                 yield return new WaitForEndOfFrame();
             }
 
-            foreach (DragableObject condiment in _condiments)
+            foreach (SeasoningScript condiment in _condiments)
             {
                 condiment.DisableUse();
             }
@@ -95,7 +95,7 @@ namespace _project.Scripts.Phases
             _draggedMeal.ResetPosition();
             _draggedMeal.Activate();
             BossScript.DeactivateFeeding();
-            foreach (DragableObject condiment in _condiments)
+            foreach (SeasoningScript condiment in _condiments)
             {
                 condiment.EnableUse();
             }
