@@ -5,6 +5,7 @@ using _project.Scripts.Cards;
 using _project.Scripts.Core;
 using _project.Scripts.UI;
 using MoreMountains.Tools;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -56,6 +57,7 @@ namespace _project.Scripts.Tutorial
         }
 
         #endregion
+        
         private bool CanClickOnCard(ClickUp card)
         {
             RoundInfo roundInfo = _roundInfos[_roundNumber];
@@ -102,10 +104,12 @@ namespace _project.Scripts.Tutorial
     [Serializable]
     public class RoundInfo
     {
-        [SerializeField] private List<IngredientSo> _selectableIngredients;
-        [SerializeField] private List<IngredientSo> _otherIngredients;
+        [SerializeField, InfoBox("Look at tooltips"), Tooltip("Selectable ingredients for this round")] private List<IngredientSo> _selectableIngredients;
+        [SerializeField, Tooltip("Other non-selectable ingredients, total must add up to 6 ingredients")] private List<IngredientSo> _otherIngredients;
 
-        [SerializeField] private CookingMethod _selectableCookingMethod;
+        [SerializeField, Tooltip("The cooking method selectable by the player this round")] private CookingMethod _selectableCookingMethod;
+
+        [SerializeField, Tooltip("The Usable Condiment (if any) by the player")] private CondimentSo _usableCondiment;
 
         public List<IngredientSo> SelectableIngredients => _selectableIngredients;
         public List<IngredientSo> OtherIngredients => _otherIngredients;
@@ -129,6 +133,11 @@ namespace _project.Scripts.Tutorial
         public bool CanSelectCookingMethod(CookingMethod cookingMethod)
         {
             return _selectableCookingMethod == cookingMethod;
+        }
+
+        public bool CanUseCondiment(CondimentSo condiment)
+        {
+            return _usableCondiment != null && _usableCondiment == condiment;
         }
     }
 }

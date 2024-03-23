@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ namespace _project.Scripts.Tutorial
         [SerializeField] private TMP_Text _title;
         [SerializeField] private TMP_Text _dialog;
         [SerializeField] private Button _actionButton; // If needed
+        [SerializeField] private GameObject _clickVeil; // If enabled will not allow clicking outside of the tutorial
 
 
         public TutorialDialogDisplayScript UpdateInfo(Sprite image, string dialog)
@@ -24,6 +26,22 @@ namespace _project.Scripts.Tutorial
             if (_title != null) _title.text = title;
             _dialog.text = dialog;
             return this;
+        }
+
+        public void PassButtonCallback(Action predicate)
+        {
+            if (_actionButton == null) return;
+            //TODO but seems fishy 
+        }
+
+        public void Veil()
+        {
+            _clickVeil.SetActive(true);
+        }
+        
+        public void Unveil()
+        {
+            _clickVeil.SetActive(false);
         }
 
         public void Enable()
