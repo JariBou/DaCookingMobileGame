@@ -15492,7 +15492,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dialogDisplayScript: {fileID: 423328632}
-  _roundInfos: []
+  _roundInfos:
+  - _selectableIngredients:
+    - {fileID: 11400000, guid: 765bccbd1333e70449b54b4021da0db4, type: 2}
+    - {fileID: 11400000, guid: 8c371b821b120a246bb9c8c13870cb77, type: 2}
+    _otherIngredients:
+    - {fileID: 11400000, guid: 5b1590b077e235c438a519bb4a3610a6, type: 2}
+    - {fileID: 11400000, guid: 371ffdc6ea6b0ca49bb3e136dcef6d80, type: 2}
+    - {fileID: 11400000, guid: 561ef4c25d37b604b90f4db779d14b51, type: 2}
+    - {fileID: 11400000, guid: ce672407376ec07458b8a6076906d569, type: 2}
+    _selectableCookingMethod: 0
+    _usableCondiment: {fileID: 0}
+    _shouldReroll: 1
+  - _selectableIngredients:
+    - {fileID: 11400000, guid: 765bccbd1333e70449b54b4021da0db4, type: 2}
+    - {fileID: 11400000, guid: 8c371b821b120a246bb9c8c13870cb77, type: 2}
+    - {fileID: 11400000, guid: e85857bd25e6c1f4cb84944a9f293c89, type: 2}
+    _otherIngredients:
+    - {fileID: 11400000, guid: 5b1590b077e235c438a519bb4a3610a6, type: 2}
+    - {fileID: 11400000, guid: 371ffdc6ea6b0ca49bb3e136dcef6d80, type: 2}
+    - {fileID: 11400000, guid: 561ef4c25d37b604b90f4db779d14b51, type: 2}
+    _selectableCookingMethod: 0
+    _usableCondiment: {fileID: 0}
+    _shouldReroll: 0
 --- !u!4 &1266598265
 Transform:
   m_ObjectHideFlags: 0

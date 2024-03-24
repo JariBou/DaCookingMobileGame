@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _project.Scripts.Cards;
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
+using _project.Scripts.Tutorial;
 using _project.Scripts.UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -84,7 +85,17 @@ namespace _project.Scripts.Phases
             }
             
             _cookingManager.Camera.NextPhase();
-            _reRoll.RedistributeCards();
+
+            if (TutorialManager.IsPresent())
+            {
+                TutorialManager.NextRoundStatic();
+                RoundInfo roundInfo = TutorialManager.GetCurrentRoundInfoStatic();
+                _reRoll.RedistributeCards(roundInfo.GetAllIngredients());
+            }
+            else
+            {
+                _reRoll.RedistributeCards();
+            }
 
             while (_cookingManager.GetCurrentPhase() != PhaseCode.Phase2)
             {

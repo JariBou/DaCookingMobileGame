@@ -4,6 +4,7 @@ using System.Linq;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using _project.Scripts.Phases;
+using _project.Scripts.Tutorial;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -37,7 +38,19 @@ namespace _project.Scripts.Cards
         void Start()
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
-            RedistributeCards();
+            
+            if (TutorialManager.IsPresent())
+            {
+                RoundInfo roundInfo = TutorialManager.GetCurrentRoundInfoStatic();
+                RedistributeCards(roundInfo.GetAllIngredients());
+            }
+            else
+            {
+                RedistributeCards();
+            }
+
+            UpdateButtonAppearance();
+            // RedistributeCards();
         }
         /*        private void OnMouseDown()
                 {
@@ -59,6 +72,19 @@ namespace _project.Scripts.Cards
             if (OptionMenu.Instance.IsOptionPanelOpen || _isRerolling) return;
             if (RerollCount >= MaxRerollChances || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
 
+            if (TutorialManager.IsPresent())
+            {
+                if (TutorialManager.ShouldReroll())
+                {
+                    _monsterInstance.AddReroll();
+                    TutorialManager.NextRoundStatic();
+                    ReRollBundle(TutorialManager.GetReRolledIngredientsStatic());
+                    StartCoroutine(DelayReRoll());
+                    _onReRoll?.Invoke();
+                    return;
+                }
+            }
+            
             _monsterInstance.AddReroll();
             ReRollBundle();
             StartCoroutine(DelayReRoll());
@@ -74,9 +100,18 @@ namespace _project.Scripts.Cards
 
         private void UpdateButtonAppearance()
         {
-            _rerollButton.image.sprite = _buttonSprites[RerollCount >= MaxRerollChances ? 0 : 1];
-            
-            _rerollNumberText.text = (MaxRerollChances - RerollCount).ToString();
+            if (TutorialManager.IsPresent())
+            {
+                _rerollButton.image.sprite = _buttonSprites[TutorialManager.GetCurrentRoundInfoStatic().ShouldReroll ? 1 : 0];
+                _rerollNumberText.text = TutorialManager.GetCurrentRoundInfoStatic().ShouldReroll ? "1" : "0";
+
+            }
+            else
+            {
+                _rerollButton.image.sprite = _buttonSprites[RerollCount >= MaxRerollChances ? 0 : 1];
+                
+                _rerollNumberText.text = (MaxRerollChances - RerollCount).ToString();
+            }
         }
         
         public void ReRollBundle()

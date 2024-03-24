@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using _project.ScriptableObjects.Scripts;
 using _project.Scripts.Core;
 using _project.Scripts.Phases;
+using _project.Scripts.Tutorial;
 using GraphicsLabor.Scripts.Attributes.LaborerAttributes.InspectedAttributes;
 using UnityEngine;
 using UnityEngine.Events;
@@ -128,9 +129,12 @@ namespace _project.Scripts.Cards
         private void OnMouseDown()
         {
             if (_isPassing || _isAppearing || _isLocked || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
-
-            DoClick();
+            if (TutorialManager.IsPresent())
+            {
+                if (!TutorialManager.CanClickOnCardStatic(this)) return;
+            }
             
+            DoClick();
         }
 
         public void DoClick()

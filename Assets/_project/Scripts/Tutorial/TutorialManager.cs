@@ -22,25 +22,37 @@ namespace _project.Scripts.Tutorial
         private void Awake()
         {
             Instance ??= this;
+            _roundNumber = 0;
+        }
+
+        public void NextRound()
+        {
+            _roundNumber++;
+        }
+
+        public RoundInfo GetCurrentRoundInfo()
+        {
+            Debug.Log($"RoundNumber: {_roundNumber} || RoundInfosCount: {_roundInfos.Count}");
+            return _roundInfos[_roundNumber];
         }
 
         #region Static
 
         public static bool CanClickOnCardStatic(ClickUp card)
         {
-            if (Instance == null) return true;
+            if (!IsPresent()) return true;
             return Instance.CanClickOnCard(card);
         }
         
         public static bool CanClickOnCookingMethodStatic(ClickableHeat cookingMethodSource)
         {
-            if (Instance == null) return true;
+            if (!IsPresent()) return true;
             return Instance.CanClickOnCookingMethod(cookingMethodSource);
         }
 
         public static List<IngredientSo> GetRolledIngredientsStatic()
         {
-            if (Instance == null) return null;
+            if (!IsPresent()) return null;
             return Instance.GetRolledIngredients();
         }
         
@@ -51,29 +63,53 @@ namespace _project.Scripts.Tutorial
         /// <returns></returns>
         public static List<IngredientSo> GetReRolledIngredientsStatic()
         {
-            if (Instance == null) return null;
+            if (!IsPresent()) return null;
             return Instance.GetReRolledIngredients();
+        }
+        
+        
+        public static bool IsPresent()
+        {
+            return Instance != null;
+        }
+        
+        public static void NextRoundStatic()
+        {
+            if (!IsPresent()) return;
+            Instance._roundNumber++;
+        }
+
+        public static RoundInfo GetCurrentRoundInfoStatic()
+        {
+            if (!IsPresent()) return null;
+            return Instance.GetCurrentRoundInfo();
+        }
+        
+        public static bool ShouldReroll()
+        {
+            if (!IsPresent()) return true;
+            return Instance.GetCurrentRoundInfo().ShouldReroll;
         }
 
         #endregion
         
         private bool CanClickOnCard(ClickUp card)
         {
-            RoundInfo roundInfo = _roundInfos[_roundNumber];
+            RoundInfo roundInfo = GetCurrentRoundInfo();
 
             return roundInfo.CanSelectCard(card.Ingredient);
         }
         
         private bool CanClickOnCookingMethod(ClickableHeat cookingMethodSource)
         {
-            RoundInfo roundInfo = _roundInfos[_roundNumber];
+            RoundInfo roundInfo = GetCurrentRoundInfo();
 
             return roundInfo.CanSelectCookingMethod(cookingMethodSource.Method);
         }
 
         private List<IngredientSo> GetRolledIngredients()
         {
-            RoundInfo roundInfo = _roundInfos[_roundNumber];
+            RoundInfo roundInfo = GetCurrentRoundInfo();
             
             return roundInfo.GetAllIngredients();
         }
@@ -86,7 +122,7 @@ namespace _project.Scripts.Tutorial
         private List<IngredientSo> GetReRolledIngredients()
         {
             RoundInfo prevRoundInfo = _roundInfos[_roundNumber-1];
-            RoundInfo roundInfo = _roundInfos[_roundNumber];
+            RoundInfo roundInfo = GetCurrentRoundInfo();
 
             List<IngredientSo> prevRoundSelectedCards = prevRoundInfo.SelectableIngredients;
             List<IngredientSo> roundCards = roundInfo.GetAllIngredients();
@@ -98,6 +134,7 @@ namespace _project.Scripts.Tutorial
             
             return roundCards;
         }
+
     }
 
     [Serializable]
@@ -109,9 +146,12 @@ namespace _project.Scripts.Tutorial
         [SerializeField, Tooltip("The cooking method selectable by the player this round")] private CookingMethod _selectableCookingMethod;
 
         [SerializeField, Tooltip("The Usable Condiment (if any) by the player")] private CondimentSo _usableCondiment;
+        [SerializeField, Tooltip("If true, player will have to reroll this round (will go to the next round)")] private bool _shouldReroll;
 
         public List<IngredientSo> SelectableIngredients => _selectableIngredients;
         public List<IngredientSo> OtherIngredients => _otherIngredients;
+
+        public bool ShouldReroll => _shouldReroll;
 
         //TODO: find a way to contain reroll Info
         // Probably will do like a different card round tbh
