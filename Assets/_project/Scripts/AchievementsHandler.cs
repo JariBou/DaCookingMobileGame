@@ -1,5 +1,4 @@
-﻿using System;
-using _project.Scripts.Core;
+﻿using _project.Scripts.Core;
 using _project.Scripts.Meals;
 using _project.Scripts.Tutorial;
 using GooglePlayGames;
@@ -28,12 +27,11 @@ namespace _project.Scripts
 
         private void OnNewMonster()
         {
-            //throw new NotImplementedException();
-            //TODO lost achievement
         }
 
         private void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
         {
+            if (!PlayGamesPlatform.Instance.IsAuthenticated()) return;
             if (TutorialManager.IsPresent())
             {
                 UnlockAchievement(GPGSIds.achievement_cordon_bleu);
@@ -72,6 +70,7 @@ namespace _project.Scripts
 
         public static void UnlockAchievement(string achievementId)
         {
+            if (!PlayGamesPlatform.Instance.IsAuthenticated()) return;
             PlayGamesPlatform.Instance.ReportProgress(achievementId, 100.0f, (bool success) => {
                 // handle success or failure
             });
@@ -79,6 +78,7 @@ namespace _project.Scripts
         
         public static void AdvanceAchievement(string achievementId, int steps = 1)
         {
+            if (!PlayGamesPlatform.Instance.IsAuthenticated()) return;
             PlayGamesPlatform.Instance.IncrementAchievement(achievementId, steps, (bool success) => {
                 // handle success or failure
             });
