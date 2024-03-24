@@ -29,7 +29,7 @@ MonoBehaviour:
   _monsterPrefab: {fileID: 1773736016520645756, guid: b55af7104b2b6f840b897a2e6e14c659, type: 3}
   _background: {fileID: 21300000, guid: 2f33455659d620948b10340d51222930, type: 3}
   _positionsOnScreen:
-  - {x: -11.6, y: -4, z: 5}
-  - {x: 50.1, y: -4.3, z: 5}
-  - {x: 79, y: -3, z: 5}
-  - {x: 79, y: -5, z: 5}
+  - {x: -11.6, y: -4, z: 0}
+  - {x: 50.1, y: -4.3, z: 0}
+  - {x: 79, y: -3, z: 0}
+  - {x: 79, y: -5, z: 0}
