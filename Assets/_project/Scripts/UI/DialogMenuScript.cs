@@ -1,4 +1,5 @@
 using _project.Scripts.Phases;
+using _project.Scripts.Tutorial;
 using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,8 @@ namespace _project.Scripts.UI
         [SerializeField] private Sprite _nextMonsterSprite;
         [SerializeField] private Sprite _retrySprite;
         [SerializeField] private TMP_Text _title;
+        [SerializeField] private string _wonText = "Congratulations !";
+        [SerializeField] private string _lostText = "Better luck next time...";
         [SerializeField] private LastPhaseScript _lastPhaseScript;
         [SerializeField] AudioSource _backgroundMusic;
         [SerializeField] AudioSource _winSound;
@@ -32,9 +35,16 @@ namespace _project.Scripts.UI
             _backgroundMusic.Stop();
             if (won)
             {
-                _actionButton.onClick.AddListener(NextMonster);
-                _actionButton.image.sprite = _nextMonsterSprite;
-                _title.text = "Won";   
+                if (!TutorialManager.IsPresent())
+                {
+                    _actionButton.onClick.AddListener(NextMonster);
+                    _actionButton.image.sprite = _nextMonsterSprite;
+                }
+                else
+                {
+                    _actionButton.gameObject.SetActive(false);
+                }
+                _title.text = _wonText;   
                 
                 _winSound.gameObject.SetActive(true);
                 _winSound.Play();
@@ -44,7 +54,7 @@ namespace _project.Scripts.UI
             {
                 _actionButton.onClick.AddListener(Retry);
                 _actionButton.image.sprite = _retrySprite;
-                _title.text = "Lost";  
+                _title.text = _lostText;  
                 
                 _loseSound.gameObject.SetActive(true);
                 _loseSound.Play();

@@ -16,7 +16,6 @@ namespace _project.Scripts.Tutorial
 
         [SerializeField] private TutorialDialogDisplayScript _dialogDisplayScript;
         [SerializeField] private TutorialScript _tutorialScript;
-        
         [SerializeField] private List<RoundInfo> _roundInfos;
         private int _roundNumber;
         

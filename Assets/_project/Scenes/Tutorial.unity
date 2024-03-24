@@ -1115,7 +1115,7 @@ MonoBehaviour:
   m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 0
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18621,7 +18621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3b71a741c0f465fad7ddefb3da444cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _baseMonsterDataSo: {fileID: 11400000, guid: 99b889a07f15a464787d513140eb978f, type: 2}
+  _baseMonsterDataSo: {fileID: 11400000, guid: 396e24856f09f6f42ba86ec9da007708, type: 2}
   _numberOfMealsText: {fileID: 993251335}
   _cameraScript: {fileID: 2098448612}
   _gaugeHandler: {fileID: 2023671285}
@@ -18670,9 +18670,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _monsterDatas:
-  - {fileID: 11400000, guid: 32625af70dd6a7d47b3b178a73872ba3, type: 2}
-  - {fileID: 11400000, guid: 1bf265a41dff0af46884e180e4c44014, type: 2}
+  _monsterDatas: []
   _OnMonsterFeed:
     m_PersistentCalls:
       m_Calls:
@@ -18705,6 +18703,8 @@ MonoBehaviour:
   _nextMonsterSprite: {fileID: 21300000, guid: 75cf7e2cd9b8e224c9f1a8a442aa3a64, type: 3}
   _retrySprite: {fileID: 21300000, guid: 713b3b4be250a7d45ba7b157b2ddd509, type: 3}
   _title: {fileID: 1943835668}
+  _wonText: Congratulations !
+  _lostText: Better luck next time...
   _lastPhaseScript: {fileID: 6053581124376789861}
   _backgroundMusic: {fileID: 1092930569}
   _winSound: {fileID: 1104476289}
