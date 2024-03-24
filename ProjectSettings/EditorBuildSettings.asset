@@ -10,7 +10,10 @@ EditorBuildSettings:
     guid: cb3e12d19fde9484f9499d1433b5dd2f
   - enabled: 1
     path: Assets/_project/Scenes/Main.unity
-    guid: e07a5e785bba1c44886be81e9b4d89ee
+    guid: 0af61f1ea72254244a3f92ee7150734f
+  - enabled: 1
+    path: Assets/_project/Scenes/Tutorial.unity
+    guid: dca323d9b51b84b42a3189ae85e4c483
   m_configObjects:
     com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000, guid: 8dcebefea69ffe642bb79b9cc927f138, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 590b8edc65d5fe74f8b33bfa0e01c8e7, type: 2}
