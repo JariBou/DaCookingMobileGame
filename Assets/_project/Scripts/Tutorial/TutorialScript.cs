@@ -16,6 +16,11 @@ namespace _project.Scripts.Tutorial
         [SerializeField] private List<DialogInfo> _dialogInfos;
         private int _currDialogIndex;
 
+        private void Start()
+        {
+            ActivateTutorial();
+        }
+
 
         [Button]
         public void NextDialog()
