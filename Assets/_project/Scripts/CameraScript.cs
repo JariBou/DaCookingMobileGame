@@ -13,13 +13,13 @@ namespace _project.Scripts
 
         [SerializeField] private List<Vector3> _positions;
         [SerializeField] private List<Vector3> _scales;
-        [SerializeField] private List<Vector3> _monsterPositions;
         private int _currentPosIndex;
         private int _currentScaleIndex;
 
         [SerializeField] private float _timeToSlide;
         [SerializeField] private AnimationCurve _slideCurve;
         [SerializeField] private UnityEvent _onSlideCam;
+        [SerializeField] private MonsterInstance _monsterInstance;
         
         private Transform _monster;
         private float _timer;
@@ -45,7 +45,7 @@ namespace _project.Scripts
         public void PassMonsterTransform(Transform monsterTransform)
         {
             _monster = monsterTransform;
-            _monster.position = _monsterPositions[0];
+            _monster.position = _monsterInstance.GetMonsterPositions()[0];
         }
 
         // Update is called once per frame
@@ -67,8 +67,8 @@ namespace _project.Scripts
             transform.position = Vector3.Lerp(_positions[Utils.Mod(_currentPosIndex - 1, _positions.Count)],
                 _positions[_currentPosIndex], _slideCurve.Evaluate(_timer / _timeToSlide));
             
-            _monster.position = Vector3.Lerp(_monsterPositions[Utils.Mod(_currentPosIndex - 1, _monsterPositions.Count)],
-                _monsterPositions[_currentPosIndex], _slideCurve.Evaluate(_timer / _timeToSlide));
+            _monster.position = Vector3.Lerp(_monsterInstance.GetMonsterPositions()[Utils.Mod(_currentPosIndex - 1, _monsterInstance.GetMonsterPositions().Count)],
+                _monsterInstance.GetMonsterPositions()[_currentPosIndex], _slideCurve.Evaluate(_timer / _timeToSlide));
 
 
 

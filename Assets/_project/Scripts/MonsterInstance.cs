@@ -18,6 +18,7 @@ namespace _project.Scripts
         [SerializeField] private TMP_Text _numberOfMealsText;
         [SerializeField] private CameraScript _cameraScript;
         [SerializeField] private GaugeHandler _gaugeHandler;
+        [SerializeField] private SpriteRenderer _background;
 
         public static event Action NewMonster;
 
@@ -64,8 +65,8 @@ namespace _project.Scripts
             _monsterGameObject = Instantiate(dataSo.MonsterPrefab);
 
             _bossGetBossScript = _monsterGameObject.GetComponent<BossScript>();
-            
             MonsterData = dataSo;
+            _background.sprite = MonsterData.Background;
             _maxNumberOfMeals = dataSo.MaxNumberOfMeals;
             _numberOfMeals = 0;
             _numberOfRerolls = 0;
@@ -105,6 +106,11 @@ namespace _project.Scripts
             }
             
             //OnNewMonster();
+        }
+
+        public List<Vector3> GetMonsterPositions()
+        {
+            return MonsterData.PositionsOnScreen;
         }
 
         public void BackToMenu()

@@ -20,11 +20,19 @@ namespace _project.ScriptableObjects.Scripts
         [SerializeField, Tooltip("Min possible random rolled value for a stat"), TabProperty("Stats Config")] private Vector3Int _randomStatsMin;
         [SerializeField, Tooltip("Max possible random rolled value for a stat"), TabProperty("Stats Config")] private Vector3Int _randomStatsMax;
 
-        [SerializeField, TabProperty("Sprites")] private Sprite _icon;
-        [SerializeField, TabProperty("Sprites")] private Sprite _sleepingSprite;
-        [SerializeField, TabProperty("Sprites")] private Sprite _normalSprite;
-        [SerializeField, TabProperty("Sprites")] private Sprite _angrySprite;
-        [SerializeField, TabProperty("Sprites")] private GameObject _monsterPrefab;
+        [SerializeField, TabProperty("Visuals")] private Sprite _icon;
+        [SerializeField, TabProperty("Visuals")] private Sprite _sleepingSprite;
+        [SerializeField, TabProperty("Visuals")] private Sprite _normalSprite;
+        [SerializeField, TabProperty("Visuals")] private Sprite _angrySprite;
+        [SerializeField, TabProperty("Visuals")] private GameObject _monsterPrefab;
+        [SerializeField, TabProperty("Visuals")] private Sprite _background;
+        [SerializeField, TabProperty("Visuals"), Tooltip("Must contain 4 positions")] private List<Vector3> _positionsOnScreen = new()
+        {
+            new Vector3(-11.6f,-4,5),
+            new Vector3(50.1f,-4.3f,5),
+            new Vector3(79, -3, 5),
+            new Vector3(79, -5, 5),
+        };
 
         public string Name => _name;
         public string Description => _description;
@@ -43,5 +51,8 @@ namespace _project.ScriptableObjects.Scripts
         public GameObject MonsterPrefab => _monsterPrefab;
 
         public int MaxRerolls => _maxRerolls;
+        public Sprite Background => _background;
+
+        public List<Vector3> PositionsOnScreen => _positionsOnScreen;
     }
 }

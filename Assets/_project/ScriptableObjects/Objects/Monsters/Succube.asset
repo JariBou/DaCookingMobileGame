@@ -27,3 +27,9 @@ MonoBehaviour:
   _normalSprite: {fileID: -2671832720948535059, guid: e02f30784af5dde4fb54afcad077ef2b, type: 3}
   _angrySprite: {fileID: 8765262111830313865, guid: ed40234e6d2e7fb4da138fc8b9996079, type: 3}
   _monsterPrefab: {fileID: 6582155432711673689, guid: 2992f0ecda616af4cb8475f45488ae8b, type: 3}
+  _background: {fileID: 21300000, guid: 8f9e7a53f157aba4d83fb71eb2de631f, type: 3}
+  _positionsOnScreen:
+  - {x: -11.6, y: -4, z: 5}
+  - {x: 50.1, y: -4.3, z: 5}
+  - {x: 79, y: -3, z: 5}
+  - {x: 79, y: -5, z: 5}
