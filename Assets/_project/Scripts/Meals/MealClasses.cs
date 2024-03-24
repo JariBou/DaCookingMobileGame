@@ -15,6 +15,7 @@ namespace _project.Scripts.Meals
         [SerializeField] private List<IngredientSo> _ingredients = new(3);
         [SerializeField] private Sprite _icon;
         [SerializeField] private string _name;
+        private CookingMethod _cookingMethod = CookingMethod.Null;
 
         public Vector3Int Stats => _stats;
         public Vector3 AddedStats => _addedStats;
@@ -48,14 +49,17 @@ namespace _project.Scripts.Meals
 
             return list;
         }
-
-        public Meal CookMeal(Vector3 multiplier)
+        
+        public Meal CookMeal(CookingParamsSo cookingParams, CookingMethod cookingMethod)
         {
+            Vector3 multiplier = cookingParams.GetMultiplier(cookingMethod);
             _stats.x = (int)Math.Round(_stats.x * multiplier.x);
             _stats.y = (int)Math.Round(_stats.y * multiplier.y);
             _stats.z = (int)Math.Round(_stats.z * multiplier.z);
-            
-            //TODO does multiplier affect random added stats?
+
+            _cookingMethod = cookingMethod;
+
+            CreateIcon(cookingParams, cookingMethod);
             
             return this;
         }
@@ -79,6 +83,12 @@ namespace _project.Scripts.Meals
             return this;
         }
         
+        public Meal CreateIcon(CookingParamsSo cookingParamsSo, CookingMethod cookingMethod)
+        {
+            _icon = cookingParamsSo.GetMealIcon(this, cookingMethod);
+            return this;
+        }
+        
         public Meal CreateName(CookingParamsSo cookingParamsSo)
         {
             _name = cookingParamsSo.GetMealName(this);
@@ -94,6 +104,7 @@ namespace _project.Scripts.Meals
             _name = name;
             return this;
         }
+
     }
 
     [Serializable]

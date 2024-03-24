@@ -32,6 +32,11 @@ namespace _project.Scripts.UI
             SceneManager.LoadSceneAsync(1);
         }
 
+        public void PlayTutorial()
+        {
+            SceneManager.LoadSceneAsync(2);
+        }
+
 
     }
 }

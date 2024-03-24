@@ -39,7 +39,7 @@ namespace _project.Scripts.Cards
 
         [SerializeField] private GameObject _padlock;
 
-        public static List<ClickUp> EnlargedSprites = new();
+        public static List<ClickUp> EnlargedSprites = new(3);
 
         private RecipeDisplayScript _recipeDisplayScript;
 
@@ -63,6 +63,7 @@ namespace _project.Scripts.Cards
 
         private void Awake()
         {
+            EnlargedSprites = new List<ClickUp>(3);
             _ingredientSo = GetComponent<Card>()._ingredientSo;
             _initialScale = transform.localScale;
             _initialPosition = transform.position;

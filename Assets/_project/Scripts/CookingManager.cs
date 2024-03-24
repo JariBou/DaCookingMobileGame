@@ -83,12 +83,12 @@ namespace _project.Scripts
         
         public Meal CookMeal(CookingMethod cookingMethod)
         {
-            return _currentMeal?.CookMeal(_cookingParamsSo.GetMultiplier(cookingMethod));
+            return _currentMeal?.CookMeal(_cookingParamsSo, cookingMethod);
         }
         
         public Meal CookMeal(Meal meal, CookingMethod cookingMethod)
         {
-            return meal.CookMeal(_cookingParamsSo.GetMultiplier(cookingMethod));
+            return meal.CookMeal(_cookingParamsSo, cookingMethod);
         }
         
         public Meal AddCondiment(CondimentSo condimentSo)

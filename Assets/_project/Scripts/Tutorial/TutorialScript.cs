@@ -66,13 +66,13 @@ namespace _project.Scripts.Tutorial
 
         private void OnSeasoningAdded()
         {
-            NextDialog();
+            //NextDialog();
             // TODO
         }
 
         private void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
         {
-            NextDialog();
+            //NextDialog();
             // TODO
         }
         

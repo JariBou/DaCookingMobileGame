@@ -17,12 +17,12 @@ MonoBehaviour:
     new players.
   _maxNumberOfMeals: 5
   _maxRerolls: 1
-  _statsMin: {x: 30, y: 30, z: 30}
-  _statsMax: {x: 70, y: 70, z: 70}
+  _statsMin: {x: 20, y: 70, z: 33}
+  _statsMax: {x: 50, y: 90, z: 66}
   _ingredientBundles:
   - {fileID: 11400000, guid: 37ea836bcca7eb2409697d9b71283656, type: 2}
-  _randomStatsMin: {x: 90, y: 20, z: 30}
-  _randomStatsMax: {x: 100, y: 100, z: 100}
+  _randomStatsMin: {x: 56, y: 50, z: 80}
+  _randomStatsMax: {x: 56, y: 50, z: 80}
   _icon: {fileID: 0}
   _sleepingSprite: {fileID: 2345902212149434666, guid: c6193f4573001c949b7807f088f252a9, type: 3}
   _normalSprite: {fileID: 2234645751215153702, guid: e2a426d6d4e9d464a957e3a959870554, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System;
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
+using _project.Scripts.Tutorial;
 using GooglePlayGames;
 using UnityEngine;
 
@@ -33,6 +34,12 @@ namespace _project.Scripts
 
         private void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
         {
+            if (TutorialManager.IsPresent())
+            {
+                UnlockAchievement(GPGSIds.achievement_cordon_bleu);
+                return;
+            }
+            
             UnlockAchievement(GPGSIds.achievement_cuistot_en_herbe);
             AdvanceAchievement(GPGSIds.achievement_recettes_avaries);
 

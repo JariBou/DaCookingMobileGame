@@ -43,7 +43,7 @@ namespace _project.Scripts.Phases
             _resultMealDisplayScript.gameObject.SetActive(true);
             Meal tempMeal =
                 new Meal(_cookingManager.GetCurrentMeal()).CookMeal(
-                    _cookingParams.GetMultiplier(SelectedCookingMethod));
+                    _cookingParams, SelectedCookingMethod);
             _resultMealDisplayScript.UpdateDisplay(tempMeal);
             _cookingManager.GaugeManager.PrevisualizeMeal(tempMeal);
 
@@ -51,12 +51,9 @@ namespace _project.Scripts.Phases
             {
                 _hovenImages[i].SetActive(false);
             }
-            ParticleSystem.MainModule settings = _particles.main;
 
-
-
-            ParticleSystem.EmissionModule emission = _particles.emission;
-            ParticleSystem.Burst[] bursts = new ParticleSystem.Burst[emission.burstCount];
+            EmissionModule emission = _particles.emission;
+            Burst[] bursts = new Burst[emission.burstCount];
             int burstCount = emission.GetBursts(bursts);
 
             switch (SelectedCookingMethod)

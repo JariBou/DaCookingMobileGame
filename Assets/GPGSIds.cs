@@ -34,6 +34,7 @@ public static class GPGSIds
         public const string achievement_let_me_cook = "CgkI_ND8rucOEAIQCg"; // <GPGSID>
         public const string achievement_dbrouillard = "CgkI_ND8rucOEAIQCA"; // <GPGSID>
         public const string achievement_recettes_avaries = "CgkI_ND8rucOEAIQAw"; // <GPGSID>
+        public const string achievement_cordon_bleu = "CgkI_ND8rucOEAIQDA"; // <GPGSID>
         public const string achievement_rassasi_pour_linstant = "CgkI_ND8rucOEAIQBA"; // <GPGSID>
 
 }

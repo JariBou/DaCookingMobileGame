@@ -53,6 +53,28 @@ namespace _project.ScriptableObjects.Scripts
 
             throw new ArgumentException();
         }
+        
+        public Sprite GetMealIcon(Meal meal, CookingMethod cookingMethod)
+        {
+            foreach (MealBaseInfo mealIcon in _mealBaseInfos.Where(mealIcon => Utils.ListHasAllElements(meal.GetIngredientsFamilies(), mealIcon.IngredientFamilies)))
+            {
+                switch (cookingMethod)
+                {
+                    case CookingMethod.Method1:
+                        return mealIcon.DouxIcon;
+                    case CookingMethod.Method2:
+                        return mealIcon.NormalIcon;
+                    case CookingMethod.Method3:
+                        return mealIcon.VifIcon;
+                    case CookingMethod.Null:
+                        return null;
+                    default:
+                        return mealIcon.NormalIcon;
+                }
+            }
+
+            throw new ArgumentException();
+        }
 
         public string GetMealName(Meal meal)
         {
