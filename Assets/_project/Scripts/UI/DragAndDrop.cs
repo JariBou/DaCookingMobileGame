@@ -3,6 +3,7 @@ using System.Collections;
 using _project.Scripts.Core;
 using _project.Scripts.Gauges;
 using _project.Scripts.Meals;
+using _project.Scripts.Tutorial;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
@@ -148,6 +149,15 @@ namespace _project.Scripts.UI
                 }
                 if (hit != null)
                 {
+
+                    SeasoningScript potentialScript = hit.GetComponent<SeasoningScript>();
+
+                    if (TutorialManager.IsPresent())
+                    {
+                        if (potentialScript != null && !TutorialManager.CanUseCondimentStatic(potentialScript)) return;
+                        if (TutorialManager.GetCurrentDialog().ShouldVeil) return;
+                    }
+                    
                     _initialPosition = hit.transform.position;
                     _initialScale = hit.transform.localScale;
                     _isDragging = true;
@@ -155,7 +165,7 @@ namespace _project.Scripts.UI
                     _hit = hit;
                     try
                     {
-                       _hit.GetComponent<SeasoningScript>().ParticleSystem.Play();
+                        potentialScript.ParticleSystem.Play();
                     }
                     catch (Exception e)
                     {

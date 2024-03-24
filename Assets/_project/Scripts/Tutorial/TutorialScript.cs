@@ -21,7 +21,7 @@ namespace _project.Scripts.Tutorial
         public void NextDialog()
         {
             _currDialogIndex++;
-            DialogInfo dialogInfo = _dialogInfos[_currDialogIndex];
+            DialogInfo dialogInfo = GetCurrentDialogInfo();
 
             if (dialogInfo.GetActionState == DialogInfo.ActionState.Disable)
             {
@@ -41,24 +41,33 @@ namespace _project.Scripts.Tutorial
             DialogInfo dialogInfo = _dialogInfos[_currDialogIndex];
             _dialogDisplayScript.UpdateInfo(dialogInfo).Enable();
         }
+
+        public DialogInfo GetCurrentDialogInfo()
+        {
+            return _dialogInfos[_currDialogIndex];
+        }
         
         private void OnMealConfirm()
         {
+            NextDialog();
             // TODO
         }
-        
-        private void OnSeasoningAdded()
-        {
-            // TODO
-        }
-        
+
         private void OnCookingMethodSelect()
         {
+            NextDialog();
             // TODO
         }
-        
+
+        private void OnSeasoningAdded()
+        {
+            NextDialog();
+            // TODO
+        }
+
         private void OnMealFed(Meal meal, bool satisfied, int numberOfMeals, bool rerolledForMeal)
         {
+            NextDialog();
             // TODO
         }
         

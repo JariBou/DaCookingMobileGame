@@ -35,7 +35,7 @@ namespace _project.Scripts.Tutorial
 
             _actionButton.gameObject.SetActive(dialogInfo.HasButton);
 
-            _displayTransform.position = dialogInfo.Position;
+            _displayTransform.anchoredPosition = dialogInfo.Position;
             
             return UpdateInfo(dialogInfo.CatImage, dialogInfo.Title, dialogInfo.DialogText);
         }

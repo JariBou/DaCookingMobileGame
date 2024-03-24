@@ -131,7 +131,7 @@ namespace _project.Scripts.Cards
             if (_isPassing || _isAppearing || _isLocked || _recipeDisplayScript.CookingManager.GetCurrentPhase() != PhaseCode.Phase1) return;
             if (TutorialManager.IsPresent())
             {
-                if (!TutorialManager.CanClickOnCardStatic(this)) return;
+                if (!TutorialManager.CanClickOnCardStatic(this) || TutorialManager.GetCurrentDialog().ShouldVeil) return;
             }
             
             DoClick();

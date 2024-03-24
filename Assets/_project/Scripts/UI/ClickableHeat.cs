@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using _project.Scripts.Core;
 using _project.Scripts.Phases;
+using _project.Scripts.Tutorial;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -44,6 +45,12 @@ namespace _project.Scripts.UI
         {
             if (OptionMenu.Instance.IsOptionPanelOpen) return;
             if (_manager.CookingManager.GetCurrentPhase() != PhaseCode.Phase2) return;
+            
+            if (TutorialManager.IsPresent())
+            {
+                if (!TutorialManager.CanClickOnCookingMethodStatic(this) || TutorialManager.GetCurrentDialog().ShouldVeil) return;
+            }
+            
 
             if (!_isGrayed)
             {

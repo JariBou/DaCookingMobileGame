@@ -5,6 +5,7 @@ using _project.Scripts.Gauges;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace _project.Scripts.UI
 {
@@ -20,8 +21,9 @@ namespace _project.Scripts.UI
         [SerializeField] private TextMeshProUGUI _quantity;
         [SerializeField] private int _maxQuantity;
 
+        [FormerlySerializedAs("_condimentSo")]
         [Header("Condiment")]
-        [SerializeField] private CondimentSo _condimentSo;
+        [SerializeField] private CondimentSo _condimentCondiment;
         private Vector3 _initialPosition;
 
         [Header("Particles")]
@@ -36,6 +38,8 @@ namespace _project.Scripts.UI
         [SerializeField] private GaugeHandler _gaugeHandler;
         private bool _usable;
         public Vector3 InitialPosition => _initialPosition;
+
+        public CondimentSo Condiment => _condimentCondiment;
 
         public static event Action SeasoningAdded;
 
@@ -77,7 +81,7 @@ namespace _project.Scripts.UI
         {
             /*Debug.Log("Add seasoning");*/
             if (_maxQuantity <= 0) return;
-            _cookingManager.AddCondiment(_condimentSo, sign);
+            _cookingManager.AddCondiment(Condiment, sign);
             _mealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
             _maxQuantity--;
             UpdateQuantity();
@@ -88,7 +92,7 @@ namespace _project.Scripts.UI
         {
             /*Debug.Log("Add seasoning");*/
             if (_maxQuantity <= 0) return;
-            _cookingManager.AddCondiment(_condimentSo);
+            _cookingManager.AddCondiment(Condiment);
             _mealDisplayScript.UpdateDisplay(_cookingManager.GetCurrentMeal());
             _maxQuantity--;
             UpdateQuantity();
@@ -99,7 +103,7 @@ namespace _project.Scripts.UI
         private void OnValidate()
         {
             UpdateQuantity();
-            SetStats(_condimentSo);
+            SetStats(Condiment);
         }
     
         public void EnableUse()

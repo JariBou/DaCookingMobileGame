@@ -15,9 +15,11 @@ namespace _project.Scripts.Tutorial
         public static TutorialManager Instance { get; private set; }
 
         [SerializeField] private TutorialDialogDisplayScript _dialogDisplayScript;
-
+        [SerializeField] private TutorialScript _tutorialScript;
+        
         [SerializeField] private List<RoundInfo> _roundInfos;
         private int _roundNumber;
+        
         
         private void Awake()
         {
@@ -48,6 +50,12 @@ namespace _project.Scripts.Tutorial
         {
             if (!IsPresent()) return true;
             return Instance.CanClickOnCookingMethod(cookingMethodSource);
+        }
+        
+        public static bool CanUseCondimentStatic(SeasoningScript seasoningScript)
+        {
+            if (!IsPresent()) return true;
+            return Instance.CanUseCondiment(seasoningScript);
         }
 
         public static List<IngredientSo> GetRolledIngredientsStatic()
@@ -91,6 +99,11 @@ namespace _project.Scripts.Tutorial
             return Instance.GetCurrentRoundInfo().ShouldReroll;
         }
 
+        public static DialogInfo GetCurrentDialog()
+        {
+            return Instance._tutorialScript.GetCurrentDialogInfo();
+        }
+
         #endregion
         
         private bool CanClickOnCard(ClickUp card)
@@ -105,6 +118,13 @@ namespace _project.Scripts.Tutorial
             RoundInfo roundInfo = GetCurrentRoundInfo();
 
             return roundInfo.CanSelectCookingMethod(cookingMethodSource.Method);
+        }
+        
+        private bool CanUseCondiment(SeasoningScript seasoningScript)
+        {
+            RoundInfo roundInfo = GetCurrentRoundInfo();
+
+            return roundInfo.CanUseCondiment(seasoningScript.Condiment);
         }
 
         private List<IngredientSo> GetRolledIngredients()
@@ -133,6 +153,12 @@ namespace _project.Scripts.Tutorial
             }
             
             return roundCards;
+        }
+
+        [Button]
+        private void GoNextRound()
+        {
+            NextRound();
         }
 
     }
@@ -174,6 +200,8 @@ namespace _project.Scripts.Tutorial
             return _selectableCookingMethod == cookingMethod;
         }
 
+        // TODO: add number of usage (prob only 1 to make it easier and quicker for player)
+        // TODO: maybe allow multiple ones? seems overkill tho
         public bool CanUseCondiment(CondimentSo condiment)
         {
             return _usableCondiment != null && _usableCondiment == condiment;
