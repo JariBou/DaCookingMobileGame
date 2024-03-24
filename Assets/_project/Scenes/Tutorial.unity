@@ -15321,56 +15321,58 @@ MonoBehaviour:
   _dialogInfos:
   - _actionState: 0
     _title: 
-    _dialogText: "Oh ! Bonjour ! Alors c'est toi le nouveau cuistot ? Laisses moi
-      t'expliquer comment \xE7a fonctionne ici."
+    _dialogText: Oh ! Good morning ! So you're the new chef ? Let me explain how
+      it works here.
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "En tant que cuistot, tu devras cuisiner des plats r\xE9pondant
-      aux besoins de ta client\xE8le... (sp\xE9ciale ?)"
+    _dialogText: As a chef, you will have to cook dishes that meet the needs of your...
+      peculiar customers...
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Je compte sur toi pour me cuisiner un plat d\xE9licieux !..."
+    _dialogText: I'm counting on you to cook me a delicious dish !...
     _catImage: {fileID: 21300000, guid: 821cf7b58cf7639498cce780422269da, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: '  Sinon...'
+    _dialogText: Otherwise....
     _catImage: {fileID: 21300000, guid: 300d0e59fe472384b9e85015b9cba6f1, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Passons aux pr\xE9paratifs ! Voici une liste d'ingr\xE9dients \xE0
-      ta disposition. Tu devras en s\xE9lectionner 3 afin de pouvoir concocter un
-      plat. "
+    _dialogText: "Let\u2019s get started ! Here is a list of ingredients available
+      to you. You will have to select 3 in order to be able to make a dish."
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Prend moi une Bananabec et un Caviar de Sir\xE8ne !\nHum... Rien
-      d'autre ne me fait envie, clique sur le bouton bleu pour voir ce qu'il y a
-      d'autre !"
+    _dialogText: 'Get me a Bananabeak and a Mermaid Caviar !
+
+      Hmm... Nothing
+      else appeals to me, click on the blue button to see what else is there !'
     _catImage: {fileID: 21300000, guid: 3c17cadd1f22b694599cac603738934a, type: 3}
     _shouldVeil: 0
     _hasButton: 0
     _position: {x: -235, y: -82, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Oh j'aime bien ce Champigaz ! \nClique sur le bouton valider pour
-      passer \xE0 la cuisson !"
+    _dialogText: 'Oh I like this Champigaz !
+
+      Click on the validate button
+      to proceed to cooking !'
     _catImage: {fileID: 21300000, guid: 3c17cadd1f22b694599cac603738934a, type: 3}
     _shouldVeil: 0
     _hasButton: 0
@@ -15384,37 +15386,38 @@ MonoBehaviour:
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Il est l'heure de cuire ton plat. Pour \xE7a tu as 3 modes de cuisson
-      : doux, normal et vif ! \r\n"
+    _dialogText: 'It''s time to cook your dish. For this you have 3 cooking modes:
+      gentle, normal and lively !'
     _catImage: {fileID: 21300000, guid: 821cf7b58cf7639498cce780422269da, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Je voudrais mon plat... saignant, donc fais le cuire \xE0 feu doux. "
+    _dialogText: I would like my dish... rare, so cook it over low heat.
     _catImage: {fileID: 21300000, guid: 300d0e59fe472384b9e85015b9cba6f1, type: 3}
     _shouldVeil: 0
     _hasButton: 0
     _position: {x: 0, y: 103.5, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "L'odeur est enivrante, passons \xE0 l'assaisonnement."
+    _dialogText: The smell is intoxicating, let's move on to the seasoning !
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Tu as ici 3 condiments te permettant de modifier la saveur du plat
-      pour qu'il convienne \xE0 ton \"client\". Tu peux les glisser sur le plat."
+    _dialogText: Here you have 3 condiments allowing you to modify the flavor of
+      the dish so that it suits your... customer. You can slide them onto the dish.
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: "Hum tu peux utiliser du Sel, j'adore \xE7a ! Attention c'est limit\xE9..."
+    _dialogText: Hmm you can use Salt, I love that! But be careful it's quantity
+      is limited...
     _catImage: {fileID: 21300000, guid: 5921a44ec07dadc42926072a6421e56c, type: 3}
     _shouldVeil: 0
     _hasButton: 0
@@ -15428,14 +15431,14 @@ MonoBehaviour:
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: Il est l'heure de manger !
+    _dialogText: It's time for dinner !
     _catImage: {fileID: 21300000, guid: 821cf7b58cf7639498cce780422269da, type: 3}
     _shouldVeil: 1
     _hasButton: 1
     _position: {x: 0, y: 0, z: 0}
   - _actionState: 0
     _title: 
-    _dialogText: Glisse moi mon repas dans la bouche si tu l'oses !
+    _dialogText: Slip my meal into my mouth if you are brave enough !
     _catImage: {fileID: 21300000, guid: 300d0e59fe472384b9e85015b9cba6f1, type: 3}
     _shouldVeil: 1
     _hasButton: 1
