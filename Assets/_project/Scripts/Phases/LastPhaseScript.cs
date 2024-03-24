@@ -40,6 +40,10 @@ namespace _project.Scripts.Phases
         public void GoNextPhase()
         {
             _cookingManager.Camera.NextPhase();
+            if (TutorialManager.IsPresent())
+            {
+                TutorialManager.NextDialog();
+            }
             StartCoroutine(SlideUi());
         }
 
@@ -72,6 +76,10 @@ namespace _project.Scripts.Phases
             }
             _draggedMeal.EnableUse();
             BossScript.ActivateFeeding();
+            if (TutorialManager.IsPresent())
+            {
+                TutorialManager.NextDialog();
+            }
         }
         
         private IEnumerator EndFeedingPhaseRoutine()

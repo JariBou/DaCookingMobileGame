@@ -16,6 +16,7 @@ namespace _project.Scripts.Tutorial
 
         [SerializeField] private TutorialDialogDisplayScript _dialogDisplayScript;
         [SerializeField] private TutorialScript _tutorialScript;
+        [SerializeField] private ReRoll _reRoll;
         [SerializeField] private List<RoundInfo> _roundInfos;
         private int _roundNumber;
         
@@ -160,6 +161,26 @@ namespace _project.Scripts.Tutorial
             NextRound();
         }
 
+        public static bool AllCardsSelected()
+        {
+            RoundInfo roundInfo = Instance.GetCurrentRoundInfo();
+
+            List<IngredientSo> ingredients = Instance._reRoll.GetSelectedIngredients();
+
+            bool hasAll = true;
+
+            foreach (IngredientSo ingredient in roundInfo.SelectableIngredients)
+            {
+                hasAll &= ingredients.Contains(ingredient);
+            }
+            
+            return hasAll;
+        }
+
+        public static void NextDialog()
+        {
+            Instance._tutorialScript.NextDialog();
+        }
     }
 
     [Serializable]

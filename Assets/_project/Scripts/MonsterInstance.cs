@@ -102,8 +102,6 @@ namespace _project.Scripts
                 case "Succube":
                     _onSuccubesSpawn?.Invoke();
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
             
             //OnNewMonster();

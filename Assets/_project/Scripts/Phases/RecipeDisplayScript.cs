@@ -6,6 +6,7 @@ using System.Linq;
 using _project.Scripts.Cards;
 using _project.Scripts.Core;
 using _project.Scripts.Meals;
+using _project.Scripts.Tutorial;
 using _project.Scripts.UI;
 using TMPro;
 using UnityEngine;
@@ -251,6 +252,11 @@ namespace _project.Scripts.Phases
                 _finalMealImage.transform.position = Vector2.Lerp(startPos, _nextPhaseMealDisplay.transform.position,
                     _mealSlideCurve.Evaluate(timer / _slideTime));
                 yield return new WaitForEndOfFrame();
+            }
+
+            if (TutorialManager.IsPresent())
+            {
+                TutorialManager.NextDialog();
             }
 
             while (_cookingManager.GetCurrentPhase() != PhaseCode.Phase3)

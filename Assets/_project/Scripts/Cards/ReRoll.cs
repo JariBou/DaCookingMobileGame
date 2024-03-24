@@ -74,15 +74,16 @@ namespace _project.Scripts.Cards
 
             if (TutorialManager.IsPresent())
             {
-                if (TutorialManager.ShouldReroll())
+                if (TutorialManager.ShouldReroll() && TutorialManager.AllCardsSelected())
                 {
                     _monsterInstance.AddReroll();
                     TutorialManager.NextRoundStatic();
+                    TutorialManager.NextDialog();
                     ReRollBundle(TutorialManager.GetReRolledIngredientsStatic());
                     StartCoroutine(DelayReRoll());
                     _onReRoll?.Invoke();
-                    return;
                 }
+                return;
             }
             
             _monsterInstance.AddReroll();
@@ -174,7 +175,7 @@ namespace _project.Scripts.Cards
                     }
                 }*/
 
-        private List<IngredientSo> GetSelectedIngredients()
+        public List<IngredientSo> GetSelectedIngredients()
         {
             List<IngredientSo> list = new List<IngredientSo>(3);
         
